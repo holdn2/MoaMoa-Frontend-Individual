@@ -1,0 +1,26 @@
+.HeaderContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 12px 16px;
+  background-color: #ffffff;
+}
+.HeaderText {
+  color: var(--Neutral-900-Text, #131415);
+  text-align: center;
+  width: 151px;
+
+  /* bd/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.HeaderButtonContainer {
+  position: absolute;
+  display: flex;
+  right: 16px;
+  gap: 8px;
+}

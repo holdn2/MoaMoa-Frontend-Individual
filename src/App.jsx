@@ -1,0 +1,30 @@
+import { useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Collect from "./pages/Collect/Collect";
+import MyPage from "./pages/MyPage/MyPage";
+
+function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "/collect",
+          element: <Collect />,
+        },
+        {
+          path: "/mypage",
+          element: <MyPage />,
+        },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
+}
+
+export default App;
