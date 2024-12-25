@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 const sizeStyles = {
   sm: {
     padding: "8px 14px 8px 15px",
@@ -8,18 +10,40 @@ const sizeStyles = {
     fontSize: "15px",
   },
   xl: {
-    padding: "18px 112px 19px 113px",
-    fontSize: "16px",
+    display: "flex",
+    width: "335px",
+    height: "48px",
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
-
-const StyledButton = ({ type, size, color }) => {
-  return <></>;
+const colorStyles = {
+  lightblue: {},
+  blue: {},
+  white: {},
 };
 
-const Button = ({ children, type = "button", size = "sm", color = "gr" }) => {
+const StyledButton = styled.button`
+  color: white;
+  background-color: ${(props) => (props.disabled ? "#D0DFFB" : "#3182f6")};
+  font-weight: 500;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  border-width: 0;
+  border-radius: 8px;
+  padding: ${(props) => sizeStyles[props.size]?.padding};
+  font-size: ${(props) => sizeStyles[props.size]?.fontSize};
+  width: ${(props) => sizeStyles[props.size]?.width};
+  height: ${(props) => sizeStyles[props.size]?.height};
+`;
+
+const Button = ({
+  children,
+  type = "button",
+  size = "xl",
+  color = "lightblue",
+}) => {
   return (
-    <StyledButton type={type} size={size} color={color}>
+    <StyledButton type={type} size={size}>
       {children}
     </StyledButton>
   );
