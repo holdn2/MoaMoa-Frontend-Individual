@@ -1,3 +1,5 @@
+// 첫 번째 버튼 컴포넌트
+// 버튼 컴포넌트는 styled-components로 구현
 import styled from "styled-components";
 
 const sizeStyles = {

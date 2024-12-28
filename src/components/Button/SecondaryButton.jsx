@@ -1,3 +1,4 @@
+// 두 번째 버튼 컴포넌트
 import styled from "styled-components";
 
 const sizeStyles = {
