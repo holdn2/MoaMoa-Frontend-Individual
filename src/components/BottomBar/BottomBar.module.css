@@ -2,9 +2,11 @@
   position: fixed;
   display: flex;
   width: 100%;
-  bottom: 19px;
+  bottom: 0;
+  padding-bottom: 19px;
   flex-direction: row;
   justify-content: space-evenly;
+  background-color: #fff;
 }
 .NavButton {
   display: flex;

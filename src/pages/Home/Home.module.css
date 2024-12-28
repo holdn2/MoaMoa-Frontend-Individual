@@ -1,5 +1,11 @@
 .HomeContainer {
-  /* background-color: #dedede; */
-  /* color: #dedede; */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.MainArea {
+  flex: 1;
   background-color: #f8f8f8;
+  overflow: auto;
 }
