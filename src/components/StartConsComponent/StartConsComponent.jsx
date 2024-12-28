@@ -1,7 +1,8 @@
+// 나의 소비 시작하기로 이동하는 컴포넌트
+
 import styles from "./StartConsComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 
-// 나의 소비 시작하기 부분 컴포넌트
 const StartConsComponent = () => {
   return (
     <div className={styles.StartContainer}>
@@ -18,7 +19,10 @@ const StartConsComponent = () => {
         />
       </div>
 
-      <div className={styles.ButtonContainer}>
+      <div
+        className={styles.ButtonContainer}
+        onClick={() => navigate("/inputconsumption")}
+      >
         <PrimaryButton size="sp">나의 소비 시작하기</PrimaryButton>
       </div>
     </div>

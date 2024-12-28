@@ -1,7 +1,11 @@
+// 현재 소비 금액 등을 알려주고 나의 소비 입력하기로 이동하는 컴포넌트
 import styles from "./InputConsComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 const InputConsComponent = () => {
+  const navigate = useNavigate();
+
   const stateMsg = "거의 다 왔어요!";
   const restCost = 30000;
   const totalCost = 270000;
@@ -35,7 +39,10 @@ const InputConsComponent = () => {
             </div>
           </div>
         </div>
-        <div className={styles.InputButton}>
+        <div
+          className={styles.InputButton}
+          onClick={() => navigate("/inputconsumption")}
+        >
           <PrimaryButton size="sp">나의 소비 입력하기</PrimaryButton>
         </div>
       </div>
