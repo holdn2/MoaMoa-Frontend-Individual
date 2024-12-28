@@ -5,11 +5,15 @@ const Header = ({ pageName }) => {
   return (
     <div className={styles.HeaderContainer}>
       <span className={styles.HeaderText}>{pageName}</span>
-      <div className={styles.HeaderButtonContainer}>
-        <img src="../src/assets/Navigation/bell.svg" alt="알림" />
-        <img src="../src/assets/Content/pig.svg" alt="돼지" />
-        <img src="../src/assets/Content/coin3.svg" alt="동전" />
-      </div>
+      {pageName === "홈화면" ? (
+        <div className={styles.HeaderButtonContainer}>
+          <img src="../src/assets/Navigation/bell.svg" alt="알림" />
+          <img src="../src/assets/Content/pig.svg" alt="돼지" />
+          <img src="../src/assets/Content/coin3.svg" alt="동전" />
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
