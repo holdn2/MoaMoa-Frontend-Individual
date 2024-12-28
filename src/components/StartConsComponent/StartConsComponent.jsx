@@ -6,11 +6,11 @@ const StartConsComponent = () => {
   return (
     <div className={styles.StartContainer}>
       <div className={styles.TxtImgContainer}>
-        <div className={styles.TextContainer}>
+        <span className={styles.TextContainer}>
           나의 소비를 기록하고 친구들과 함께
           <br />
           돈을 모아봐요 !
-        </div>
+        </span>
         <img
           src="../src/assets/PigSub/pigHappy.svg"
           alt="행복한돼지"

@@ -1,0 +1,99 @@
+.InputContainer {
+  display: flex;
+  flex-direction: column;
+}
+.TxtImgContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: 2px 0 6px 20px;
+}
+.TextContainer {
+  display: flex;
+  width: 176px;
+  height: 80px;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 40px;
+
+  color: var(--Grey-800, #2b2b2b);
+  /* bd/28px */
+  font-family: Pretendard;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.ImgContainer {
+  display: flex;
+  width: 96px;
+  height: 92px;
+}
+.InputConsContainer {
+  display: flex;
+  width: 342px;
+  height: 187px;
+  border-radius: 12px;
+  background: #f1f1f1;
+
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.CurrentConsContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 14px 0 6px 17px;
+}
+.AllCostContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7px;
+  gap: 11px;
+}
+.ProgressCircle {
+  display: flex;
+  margin-right: 19px;
+}
+.ProgressPercent {
+  position: absolute;
+  color: #fff;
+  text-align: center;
+  /* md/22px */
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  top: 46px;
+  left: 36px;
+}
+.CostContainer {
+  display: flex;
+  flex-direction: column;
+}
+.CostText {
+  color: var(--Grey-700, #454545);
+  /* bd/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.Cost {
+  color: var(--Grey-500, #787878);
+  /* sb/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.InputButton {
+  margin-left: 11px;
+}
