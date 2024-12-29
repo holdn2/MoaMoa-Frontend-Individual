@@ -31,9 +31,9 @@ const StyledButton = styled.button`
   height: ${(props) => sizeStyles[props.size]?.height};
   border-width: 0;
   border-radius: 12px;
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
