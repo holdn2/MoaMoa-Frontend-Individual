@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import styles from "./Home.module.css";
 import StartConsComponent from "../../components/StartConsComponent/StartConsComponent";
 import InputConsComponent from "../../components/InputConsComponent/InputConsComponent";
+import MiniCallendar from "../../components/MiniCallendar/MiniCallendar";
 
 const Home = () => {
   const pageName = "홈화면";
@@ -18,6 +19,7 @@ const Home = () => {
       <div className={styles.MainArea}>
         {/* 나의 소비 입력하기 or 시작하기 */}
         {consumption ? <InputConsComponent /> : <StartConsComponent />}
+        <MiniCallendar />
       </div>
       <BottomBar />
     </div>
