@@ -1,0 +1,77 @@
+.CallendarContainer {
+  display: flex;
+  width: 321px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 20px;
+}
+.MonthContainer {
+  display: flex;
+  padding: 6.733px 6px 6.898px 9px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  border-radius: 9px;
+  border: 1px solid #dedede;
+  background-color: #f8f8f8;
+}
+.Month {
+  color: #000;
+  text-align: center;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.WeekContainer {
+  display: flex;
+  width: 321px;
+  padding: 12px 0px 15px 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+
+  border-radius: 15px;
+  border: 1px solid #dedede;
+  background: #f8f8f8;
+}
+.WeekTextContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.WeekText {
+  color: var(--Grey-800, #2b2b2b);
+  text-align: center;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.DayTextContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 34px;
+}
+.DayText {
+  color: var(--Grey-800, #2b2b2b);
+  text-align: center;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.Line {
+  width: 321px;
+  height: 1px;
+  background-color: #dedede;
+}
