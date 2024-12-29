@@ -2,6 +2,7 @@
 import styles from "./InputConsComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import ToNextLevel from "../ToNextLevel/ToNextLevel";
 
 const InputConsComponent = () => {
   const navigate = useNavigate();
@@ -46,6 +47,7 @@ const InputConsComponent = () => {
           <PrimaryButton size="sp">나의 소비 입력하기</PrimaryButton>
         </div>
       </div>
+      <ToNextLevel />
     </div>
   );
 };
