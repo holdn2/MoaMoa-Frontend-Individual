@@ -6,6 +6,8 @@ import styles from "./Home.module.css";
 import StartConsComponent from "../../components/StartConsComponent/StartConsComponent";
 import InputConsComponent from "../../components/InputConsComponent/InputConsComponent";
 import MiniCallendar from "../../components/MiniCallendar/MiniCallendar";
+import RecruitChallenge from "../../components/RecruitChallenge/RecruitChallenge";
+import ProgressChallenge from "../../components/ProgressChallenge/ProgressChallenge";
 
 const Home = () => {
   const pageName = "홈화면";
@@ -19,7 +21,12 @@ const Home = () => {
       <div className={styles.MainArea}>
         {/* 나의 소비 입력하기 or 시작하기 */}
         {consumption ? <InputConsComponent /> : <StartConsComponent />}
+        {/* 캘린더 */}
         <MiniCallendar />
+        {/* 모집 중인 챌린지 */}
+        <RecruitChallenge />
+        {/* 챌린지 진행 상황 */}
+        {/* <ProgressChallenge /> */}
       </div>
       <BottomBar />
     </div>

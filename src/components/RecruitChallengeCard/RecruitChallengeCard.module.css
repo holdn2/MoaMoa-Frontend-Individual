@@ -1,0 +1,70 @@
+.RecruitCardContainer {
+  position: relative;
+  display: flex;
+  width: 335px;
+  height: 90px;
+  border-radius: 12px;
+  background: #f1f1f1;
+  margin-top: 10px;
+}
+.CardTextContainer {
+  display: flex;
+  margin-left: 28px;
+  margin-top: 20px;
+  flex-direction: column;
+}
+.ChallengeTitle {
+  color: #2b2b2b;
+  /* bd/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.DayPeopleText {
+  display: flex;
+  align-items: center;
+  height: 37px;
+}
+.DayText {
+  display: flex;
+  color: #454545;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-right: 13px;
+}
+.PeopleImg {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+.CurrentPeople {
+  color: #454545;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.ArrowContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  width: 48px;
+  height: 90px;
+  background: #ffffff;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.ArrowImg {
+  display: flex;
+}
