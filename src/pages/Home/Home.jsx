@@ -14,6 +14,8 @@ const Home = () => {
   // 여기다가 소비 시작했는지, 이미 시작했으면 정보 저장.
   // 이 전에 시작했는지 여부에 따라 보이는 화면이 달라짐
   const [consumption, setConsumption] = useState(true);
+  // 참여중인 챌린지가 있을 경우 혹은 없을 경우
+  const participatedChallenge = 1;
 
   return (
     <div className={styles.HomeContainer}>
@@ -23,10 +25,12 @@ const Home = () => {
         {consumption ? <InputConsComponent /> : <StartConsComponent />}
         {/* 캘린더 */}
         <MiniCallendar />
-        {/* 모집 중인 챌린지 */}
-        <RecruitChallenge />
-        {/* 챌린지 진행 상황 */}
-        {/* <ProgressChallenge /> */}
+        {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
+        {participatedChallenge === null ? (
+          <RecruitChallenge />
+        ) : (
+          <ProgressChallenge />
+        )}
       </div>
       <BottomBar />
     </div>

@@ -18,7 +18,7 @@ const dummyData = [
   },
   {
     id: 3,
-    challengeContent: "예시 데이터터",
+    challengeContent: "예시 데이터",
     recruitDday: 5,
     currentPeople: 7,
   },

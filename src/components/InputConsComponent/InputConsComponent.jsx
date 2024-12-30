@@ -7,6 +7,7 @@ import ToNextLevel from "../ToNextLevel/ToNextLevel";
 const InputConsComponent = () => {
   const navigate = useNavigate();
 
+  const userName = "찬영";
   const stateMsg = "거의 다 왔어요!";
   const restCost = 30000;
   const totalCost = 270000;
@@ -15,7 +16,7 @@ const InputConsComponent = () => {
     <div className={styles.InputContainer}>
       <div className={styles.TxtImgContainer}>
         <span className={styles.TextContainer}>
-          OO님
+          {userName}님
           <br />
           {stateMsg}
         </span>
