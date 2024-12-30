@@ -1,4 +1,4 @@
-// 모집 중인 챌린지 컴포넌트 구현 시 필요한 챌린지 카드 컴포넌트
+// 챌린지 진행 상황 컴포넌트 구현 시 필요한 챌린지 카드 컴포넌트
 import React from "react";
 import styles from "./ProgressChallengeCard.module.css";
 
