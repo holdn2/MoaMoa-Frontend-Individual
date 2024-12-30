@@ -1,4 +1,4 @@
-// 모집 중인 챌린지 컴포넌트 구현
+// 챌린지 진행 상황 컴포넌트 구현
 import React from "react";
 import styles from "./ProgressChallenge.module.css";
 import ProgressChallengeCard from "../ProgressChallengeCard/ProgressChallengeCard";
