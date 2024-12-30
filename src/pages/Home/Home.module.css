@@ -12,4 +12,5 @@
   overflow: auto;
   display: flex;
   align-items: center;
+  padding-bottom: 80px;
 }

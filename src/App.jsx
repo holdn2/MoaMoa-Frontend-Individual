@@ -5,6 +5,7 @@ import Collect from "./pages/Collect/Collect";
 import MyPage from "./pages/MyPage/MyPage";
 import StartConsumption from "./pages/StartConsumption/StartConsumption";
 import InputConsumption from "./pages/InputConsumption/InputConsumption";
+import Callendar from "./pages/Callendar/Callendar";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ function App() {
         {
           path: "/inputconsumption",
           element: <InputConsumption />,
+        },
+        {
+          path: "/callendar",
+          element: <Callendar />,
         },
         {
           path: "/collect",
