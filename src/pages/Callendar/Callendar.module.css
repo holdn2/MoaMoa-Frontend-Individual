@@ -17,6 +17,7 @@
   display: flex;
   gap: 12px;
   align-items: center;
+  margin-top: 21.5px;
 }
 .Month {
   color: var(--Grey-800, #2b2b2b);
@@ -166,7 +167,7 @@
 /* 월 누르면 드롭다운으로 선택 가능하게 구현 */
 .MonthDropdown {
   position: absolute;
-  top: 120px;
+  top: 144px;
   left: 60px;
   transform: translateX(-50%);
   width: 80px;
