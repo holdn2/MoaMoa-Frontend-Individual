@@ -32,7 +32,7 @@ const Home = () => {
           <ProgressChallenge />
         )}
       </div>
-      <BottomBar />
+      <BottomBar pageName={pageName} />
     </div>
   );
 };

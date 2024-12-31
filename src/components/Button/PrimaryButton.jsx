@@ -20,6 +20,10 @@ const sizeStyles = {
     width: "321px",
     height: "40px",
   },
+  decoProfile: {
+    width: "281px",
+    height: "45px",
+  },
 };
 
 const StyledButton = styled.button`
