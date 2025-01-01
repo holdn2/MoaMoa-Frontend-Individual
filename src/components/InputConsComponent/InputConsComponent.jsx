@@ -24,12 +24,15 @@ const InputConsComponent = () => {
       </div>
       <div className={styles.InputConsContainer}>
         <div className={styles.CurrentConsContainer}>
-          <img
-            src="../src/assets/ProgressBar/progressCircle.svg"
-            alt="현재남은소비금액"
-            className={styles.ProgressCircle}
-          />
-          <span className={styles.ProgressPercent}>{progressPercent}%</span>
+          <div className={styles.ProgressCircleContainer}>
+            <img
+              src="../src/assets/ProgressBar/progressCircle.svg"
+              alt="현재 사용 소비 금액 비율"
+              className={styles.ProgressCircle}
+            />
+            <span className={styles.ProgressPercent}>{progressPercent}%</span>
+          </div>
+
           <div className={styles.AllCostContainer}>
             <div className={styles.CostContainer}>
               <span className={styles.CostText}>현재 남은 소비 금액</span>

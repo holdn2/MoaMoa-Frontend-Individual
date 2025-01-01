@@ -53,9 +53,14 @@
   margin-top: 7px;
   gap: 11px;
 }
+.ProgressCircleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 19px;
+}
 .ProgressCircle {
   display: flex;
-  margin-right: 19px;
 }
 .ProgressPercent {
   position: absolute;
@@ -67,9 +72,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-
-  top: 46px;
-  left: 36px;
+  padding-top: 10px;
 }
 .CostContainer {
   display: flex;
