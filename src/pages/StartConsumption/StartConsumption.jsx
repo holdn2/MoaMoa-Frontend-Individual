@@ -1,11 +1,14 @@
 // 나의 소비 시작하기 페이지 구현 예정
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import styles from "./StartConsumption.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
+import SelectPeriod from "./SelectPeriod";
 
 const StartConsumption = () => {
   const pageName = "나의 소비 시작하기";
+  const [modalOpen, setModalOpen] = useState(false);
+  const [text, setText] = useState("주 소비 한도 금액을 입력해주세요");
   return (
     <div className="wrapper">
       <Header pageName={pageName} />
@@ -20,17 +23,20 @@ const StartConsumption = () => {
         </div>
         <div className={styles.inputWrapper}>
           <p>나의 소비 기간</p>
-          <button type="button" className={styles.dayButton}>
+          <button
+            type="button"
+            className={styles.dayButton}
+            onClick={() => setModalOpen(true)}
+          >
             <span>24.11.24 (월) ~ 24.11.31 (일)</span>
           </button>
         </div>
         <div className={styles.inputWrapper}>
           <p>목표 금액</p>
-          <button type="button" className={styles.moneyButton}>
-            <span>주소비 한도 금액을 입력해주세요</span>
-          </button>
+          <button type="button" className></button>
         </div>
       </div>
+      {modalOpen && <SelectPeriod setModalOpen={setModalOpen} />}
       <div className={styles.buttonWrapper}>
         <PrimaryButton type="button" size="xl" disabled={true}>
           완료

@@ -46,7 +46,8 @@
   color: #2b2b2b;
   font-family: Pretendard;
   font-size: 18px;
-  line-height: 150%; /* 27px */
+  font-weight: 700;
+  line-height: 150%;
   letter-spacing: 0.72px;
   margin-bottom: 5px;
 }
