@@ -95,7 +95,7 @@ const Callendar = () => {
           </div>
         </div>
       </div>
-      <BottomBar />
+      <BottomBar pageName={pageName} />
     </div>
   );
 };

@@ -1,0 +1,149 @@
+.MyProfileContainer {
+  display: flex;
+  margin-top: 51px;
+  width: 328px;
+  height: 366px;
+  border-radius: 12px;
+  background: #f1f1f1;
+  flex-direction: column;
+  align-items: center;
+  gap: 19px;
+}
+.PigNameContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 37px;
+  margin-top: 20px;
+  align-items: center;
+  height: 91px;
+}
+.PigImg {
+  display: flex;
+  width: 101px;
+  height: 91px;
+}
+.NickNameContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.ForFixContainer {
+  display: flex;
+  flex-direction: row;
+}
+.FixText {
+  display: flex;
+  width: 73px;
+  height: 23px;
+  flex-direction: column;
+  justify-content: center;
+
+  color: #5e5e5e;
+  /* eb/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.FixImg {
+  margin-left: -3px;
+  width: 20px;
+  height: 20px;
+}
+.Username {
+  display: flex;
+  width: 145px;
+  height: 37px;
+  flex-direction: column;
+  justify-content: center;
+
+  color: var(--Grey-700, #454545);
+  /* eb/24px */
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.ToNextLevel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.TotalProgressBar {
+  display: flex;
+  width: 293px;
+  height: 14px;
+  border-radius: 12px;
+  background: #fff;
+}
+.CurrentProgressBar {
+  display: flex;
+  width: 157px;
+  height: 14px;
+  border-radius: 12px;
+  background: #00befc;
+}
+.CoinText {
+  position: absolute;
+  right: 42px;
+  display: flex;
+  margin-top: 3px;
+  color: #5e5e5e;
+  text-align: center;
+  /* rg/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.UserInfoContainer {
+  display: flex;
+  margin-top: 19px;
+  width: 293px;
+  height: 85px;
+  border-radius: 8px;
+  background: #fafafa;
+}
+.InfoContentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin: 14px 20px 14px 25px;
+  justify-content: center;
+  align-items: center;
+}
+.InfoContentText {
+  color: #2b2b2b;
+  text-align: center;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.UserInfoContent {
+  color: #454545;
+  text-align: center;
+  /* md/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.DecoProfileButton {
+  display: flex;
+  height: 45px;
+  padding: 8px 31px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 8px;
+  background: #00befc;
+}
