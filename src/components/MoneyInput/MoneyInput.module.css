@@ -1,0 +1,26 @@
+.moneyInputButton,
+.moneyInputWrapper {
+  width: 338px;
+  height: 52px;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #787878;
+  font-family: Pretendard;
+}
+.moneyInputButton span {
+  font-size: 14px;
+  font-weight: 600;
+}
+.moneyInput {
+  background-color: #f1f1f1;
+  text-align: center;
+  border: none;
+  color: #787878;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 700;
+}
