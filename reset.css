@@ -139,15 +139,3 @@ button {
   cursor: pointer;
   outline: none; /* 포커스 아웃라인 제거 (주의 필요) */
 }
-
-input {
-  all: unset; /* 모든 기본 스타일 초기화 */
-  width: 100%; /* 전체 너비 */
-  padding: 10px 12px; /* 안쪽 여백 */
-  box-sizing: border-box; /* padding 포함해 크기 계산 */
-  border: 0; /* 테두리 */
-  border-radius: 8px; /* 테두리 둥글게 */
-  font-size: 16px; /* 글자 크기 */
-  line-height: 1.5; /* 줄 높이 */
-  outline: none; /* 포커스 시 기본 외곽선 제거 */
-}

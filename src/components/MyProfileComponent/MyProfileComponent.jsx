@@ -1,32 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MyProfileComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import SecondaryButton from "../Button/SecondaryButton";
 
 // 닉네임 변경 모달 컴포넌트
-const NicknameChangeModal = ({ userName, pigImg, onClose }) => {
+const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
+  const [newNickname, setNewNickname] = useState(userName);
+  const [toConfirmModal, setToConfirmModal] = useState(false);
+  const handleUserName = () => {
+    setUserName(newNickname);
+    onClose();
+  };
   return (
     // 모달창 외부 클릭 시 모달 닫기
     <div className={styles.ModalOverlay} onClick={onClose}>
-      <div
-        className={styles.ModalContent}
-        onClick={(e) => e.stopPropagation()} // 모달창 내부 클릭 시 모달 닫히지 않게
-      >
-        <img src={pigImg} alt="돼지" className={styles.ModalPigImg} />
-        <input className={styles.InputNewNickname}></input>
-        <PrimaryButton size="lg">확인</PrimaryButton>
-      </div>
-      {/* <div
-        className={styles.ModalContent}
-        onClick={(e) => e.stopPropagation()} // 이벤트 전파 중단
-      >
-        <h2>닉네임 수정</h2>
-        <input type="text" placeholder="새 닉네임을 입력하세요" />
-        <div className={styles.ModalButtons}>
-          <button onClick={onClose}>취소</button>
-          <button>확인</button>
+      {toConfirmModal ? (
+        <div
+          className={styles.ModalContent}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img src={pigImg} alt="돼지" className={styles.ConfirmModalPigImg} />
+          <span className={styles.ConfirmNewNickname}>{newNickname}</span>
+          <span className={styles.ConfirmText}>
+            위와 같이 닉네임이 <br />
+            변경됩니다.
+          </span>
+          <div className={styles.ConfirmButtonContainer}>
+            <button onClick={handleUserName}>
+              <PrimaryButton size="sm">네</PrimaryButton>
+            </button>
+            <button onClick={onClose}>
+              <SecondaryButton size="sm">아니요</SecondaryButton>
+            </button>
+          </div>
         </div>
-      </div> */}
+      ) : (
+        <div
+          className={styles.ModalContent}
+          onClick={(e) => e.stopPropagation()} // 모달창 내부 클릭 시 모달 닫히지 않게
+        >
+          <img src={pigImg} alt="돼지" className={styles.ModalPigImg} />
+          <input
+            className={styles.InputNewNickname}
+            type="text"
+            placeholder={userName}
+            onChange={(e) => setNewNickname(e.target.value)}
+          />
+          {userName === newNickname ? (
+            <button onClick={onClose}>
+              <PrimaryButton size="lg">확인</PrimaryButton>
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setToConfirmModal(true);
+              }}
+            >
+              <PrimaryButton size="lg">확인</PrimaryButton>
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };
@@ -34,12 +69,13 @@ const NicknameChangeModal = ({ userName, pigImg, onClose }) => {
 const MyProfileComponent = () => {
   const navigate = useNavigate();
   const pigImg = "../src/assets/Pig/dirtpig.svg";
-  const [userName, setUserName] = useState("모아모아 030");
   const currentCoin = 100;
   const necessaryCoin = 200;
   const userLv = "흙돼지";
   const userJoinTime = 3;
   const userCoinCnt = 55;
+
+  const [userName, setUserName] = useState("모아모아 030");
 
   // 닉네임 변경 모달창
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -93,6 +129,7 @@ const MyProfileComponent = () => {
           userName={userName}
           pigImg={pigImg}
           onClose={closeModal}
+          setUserName={setUserName}
         />
       )}
     </div>

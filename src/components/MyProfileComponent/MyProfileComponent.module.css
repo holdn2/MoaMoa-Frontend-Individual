@@ -183,3 +183,78 @@
   border-radius: 10px;
   background: #fff;
 }
+/* 닉네임 변경 확인 모달 */
+.ConfirmModalPigImg {
+  margin-top: 26.5px;
+  width: 150px;
+  height: 136px;
+}
+.ConfirmNewNickname {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #2b2b2b;
+  text-align: center;
+  /* bd/28px */
+  font-family: Pretendard;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.ConfirmText {
+  display: flex;
+  height: 51px;
+  flex-direction: column;
+  justify-content: center;
+  color: #787878;
+  text-align: center;
+  /* sb/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 9px;
+}
+.ConfirmButtonContainer {
+  display: flex;
+  gap: 12px;
+}
+
+/* 입력창 관련 스타일링 */
+input {
+  all: unset; /* 모든 기본 스타일 초기화 */
+  width: 100%; /* 전체 너비 */
+  padding: 10px 12px; /* 안쪽 여백 */
+  box-sizing: border-box; /* padding 포함해 크기 계산 */
+  border: 0; /* 테두리 */
+  border-radius: 8px; /* 테두리 둥글게 */
+  font-size: 16px; /* 글자 크기 */
+  line-height: 1.5; /* 줄 높이 */
+  outline: none; /* 포커스 시 기본 외곽선 제거 */
+  text-align: center;
+
+  color: #2b2b2b;
+  /* bd/24px */
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+input::placeholder {
+  color: #bebebe;
+  text-align: center;
+  /* bd/24px */
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+input:focus::placeholder {
+  color: transparent;
+}
