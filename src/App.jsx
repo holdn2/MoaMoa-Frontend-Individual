@@ -7,6 +7,7 @@ import StartConsumption from "./pages/StartConsumption/StartConsumption";
 import InputConsumption from "./pages/InputConsumption/InputConsumption";
 import Callendar from "./pages/Callendar/Callendar";
 import Level from "./pages/Level/Level";
+import Setting from "./pages/Setting/Setting";
 
 function App() {
   const router = createBrowserRouter([
@@ -40,6 +41,10 @@ function App() {
         {
           path: "/mypage",
           element: <MyPage />,
+        },
+        {
+          path: "/setting",
+          element: <Setting />,
         },
       ],
     },

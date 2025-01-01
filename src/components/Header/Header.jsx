@@ -38,7 +38,7 @@ const Header = ({ pageName }) => {
             </button>
             <button
               className={styles.GoSettingButton}
-              onClick={() => navigate(-1)}
+              onClick={() => navigate("/setting")}
             >
               <img src="../src/assets/Navigation/setting.svg" alt="설정으로" />
             </button>
