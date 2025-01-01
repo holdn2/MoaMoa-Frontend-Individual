@@ -15,7 +15,7 @@ const Home = () => {
   // 이 전에 시작했는지 여부에 따라 보이는 화면이 달라짐
   const [consumption, setConsumption] = useState(true);
   // 참여중인 챌린지가 있을 경우 혹은 없을 경우
-  const participatedChallenge = 1;
+  const participatedChallenge = null;
 
   return (
     <div className={styles.HomeContainer}>

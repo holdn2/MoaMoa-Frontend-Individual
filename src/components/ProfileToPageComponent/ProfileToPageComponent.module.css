@@ -1,0 +1,30 @@
+.ProfileToPageComponentContainer {
+  display: flex;
+  flex-direction: row;
+  width: 328px;
+  height: 58px;
+  border-radius: 12px;
+  background: #f1f1f1;
+  align-items: center;
+  justify-content: space-between;
+}
+.ProfileToPageComponentText {
+  color: #454545;
+  text-align: center;
+  /* sb/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.ContentImg {
+  width: 29px;
+  height: 29px;
+  margin-left: 27px;
+}
+.ArrowImg {
+  width: 34px;
+  height: 34px;
+  margin-right: 28px;
+}
