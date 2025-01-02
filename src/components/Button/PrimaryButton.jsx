@@ -23,8 +23,8 @@ const sizeStyles = {
 };
 
 const StyledButton = styled.button`
-  color: ${(props) => (props.disabled ? "#94E5FF" : "#FFF")};
-  background-color: ${(props) => (props.disabled ? "#FAFEFF" : "#00BEFC")};
+  color: ${(props) => (props.disabled ? "#FAFAFA" : "#FFF")};
+  background-color: ${(props) => (props.disabled ? "#DEDEDE" : "#00BEFC")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
   width: ${(props) => sizeStyles[props.size]?.width};
