@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styles from "./MoneyInput.module.css";
 
-const MoneyInput = ({ children }) => {
-  const [isInputState, setIsInputState] = useState(false);
+const MoneyInput = ({ children, isInputState, setIsInputState }) => {
   const [text, setText] = useState("");
   return (
     <div>

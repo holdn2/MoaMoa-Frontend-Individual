@@ -9,6 +9,7 @@ import MoneyInput from "../../components/MoneyInput/MoneyInput";
 const StartConsumption = () => {
   const pageName = "나의 소비 시작하기";
   const [modalOpen, setModalOpen] = useState(false);
+  const [isInputState, setIsInputState] = useState(false);
 
   return (
     <div className="wrapper">
@@ -34,12 +35,16 @@ const StartConsumption = () => {
         </div>
         <div className={styles.inputWrapper}>
           <p>목표 금액</p>
-          <MoneyInput children="주소비 한도 금액을 입력해주세요" />
+          <MoneyInput
+            children="주소비 한도 금액을 입력해주세요"
+            isInputState={isInputState}
+            setIsInputState={setIsInputState}
+          />
         </div>
       </div>
       {modalOpen && <SelectPeriod setModalOpen={setModalOpen} />}
       <div className={styles.buttonWrapper}>
-        <PrimaryButton type="button" size="xl" disabled={true}>
+        <PrimaryButton type="button" size="xl" disabled={!isInputState}>
           완료
         </PrimaryButton>
       </div>
