@@ -26,9 +26,9 @@ const StyledButton = styled.button`
   border: ${(props) =>
     props.disabled ? "2px solid #C7F1FF" : "2px solid #00BEFC"};
   border-radius: 12px;
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;

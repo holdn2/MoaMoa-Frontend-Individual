@@ -1,0 +1,86 @@
+.SettingContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f8f8f8;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 80px;
+}
+.InviteFriendContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 32px;
+  gap: 10px;
+}
+.ServiceSettingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 29px;
+  gap: 10px;
+}
+.CustomerSupportContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 29px;
+  gap: 10px;
+}
+.Title {
+  color: #2b2b2b;
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 33px */
+  letter-spacing: -0.484px;
+  margin-left: 10px;
+}
+.ContentContainer {
+  display: flex;
+  flex-direction: row;
+  width: 335px;
+  height: 71px;
+  border-radius: 12px;
+  background: #f1f1f1;
+  align-items: center;
+  justify-content: space-between;
+}
+.ContentText {
+  color: var(--Grey-800, #2b2b2b);
+  /* md/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 36px;
+}
+.Imgs {
+  margin-right: 34px;
+}
+.VersionInfo {
+  margin-right: 34px;
+  color: #787878;
+  text-align: right;
+  /* rg/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.ButtonContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+  gap: 12px;
+}

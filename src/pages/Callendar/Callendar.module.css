@@ -1,0 +1,195 @@
+.CallendarPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f8f8f8;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 80px;
+}
+.MonthContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 21.5px;
+}
+.Month {
+  color: var(--Grey-800, #2b2b2b);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 75px */
+  letter-spacing: 2px;
+}
+.MonthArrow {
+  display: flex;
+  width: 26px;
+  height: 21px;
+}
+.BigCallendarContainer {
+  display: flex;
+  width: 335px;
+  padding: 6px 0px 10px 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 15px;
+  border: 1px solid #d3d3d3;
+  background: #fff;
+}
+.WeekTextContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding-bottom: 7px;
+}
+.WeekText {
+  display: flex;
+  width: 40px;
+  height: 28px;
+  flex-direction: column;
+  justify-content: center;
+  color: #2b2b2b;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.64px;
+}
+.DayTextContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  row-gap: 12px;
+  column-gap: 8px;
+  justify-items: center;
+  align-items: center;
+  padding-top: 12px;
+}
+.DayText {
+  display: flex;
+  width: 40px;
+  height: 28px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--Grey-800, #2b2b2b);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.64px;
+}
+.Line {
+  width: 335px;
+  height: 1px;
+  background-color: #d3d3d3;
+}
+.RankRateContainer {
+  display: flex;
+  flex-direction: row;
+  width: 337px;
+  height: 102px;
+  border-radius: 15px;
+  border: 0.5px solid #d3d3d3;
+  background: #fff;
+  margin-top: 28px;
+  gap: 35px;
+  justify-content: center;
+  align-items: center;
+}
+.RankContainer {
+  display: flex;
+  flex-direction: column;
+}
+.Rank {
+  color: #2b2b2b;
+  text-align: center;
+  /* md/28px */
+  font-family: Pretendard;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 60px;
+  height: 50px;
+}
+.RankType {
+  color: #5e5e5e;
+  text-align: center;
+  /* md/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.RateContainer {
+  display: flex;
+  flex-direction: column;
+}
+.Rate {
+  color: var(--Grey-800, #2b2b2b);
+  text-align: center;
+  /* eb/32px */
+  font-family: Pretendard;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  width: 75px;
+  height: 50px;
+}
+.AttendanceRate {
+  color: #5e5e5e;
+  text-align: center;
+  /* eb/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+/* 월 누르면 드롭다운으로 선택 가능하게 구현 */
+.MonthDropdown {
+  position: absolute;
+  top: 144px;
+  left: 60px;
+  transform: translateX(-50%);
+  width: 80px;
+  border: 1px solid #d3d3d3;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  overflow: hidden;
+}
+.MonthItem {
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-family: Pretendard;
+  font-size: 18px;
+  color: #2b2b2b;
+}
+.MonthItem:hover {
+  background-color: #f0f0f0;
+}
+.Selected {
+  background-color: #e6f7ff;
+  font-weight: bold;
+}

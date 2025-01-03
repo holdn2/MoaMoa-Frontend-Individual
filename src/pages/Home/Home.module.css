@@ -5,9 +5,12 @@
 }
 
 .MainArea {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   background-color: #f8f8f8;
   overflow: auto;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  padding-bottom: 80px;
 }

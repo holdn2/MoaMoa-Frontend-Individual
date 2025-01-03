@@ -20,6 +20,10 @@ const sizeStyles = {
     width: "321px",
     height: "40px",
   },
+  decoProfile: {
+    width: "281px",
+    height: "45px",
+  },
 };
 
 const StyledButton = styled.button`
@@ -31,9 +35,9 @@ const StyledButton = styled.button`
   height: ${(props) => sizeStyles[props.size]?.height};
   border-width: 0;
   border-radius: 12px;
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;

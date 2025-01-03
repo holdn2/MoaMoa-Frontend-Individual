@@ -24,3 +24,11 @@
   right: 16px;
   gap: 8px;
 }
+.GoBackButton {
+  position: absolute;
+  left: 20px;
+}
+.GoSettingButton {
+  position: absolute;
+  right: 23px;
+}

@@ -2,8 +2,10 @@
 
 import styles from "./StartConsComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 const StartConsComponent = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.StartContainer}>
       <div className={styles.TxtImgContainer}>
@@ -21,7 +23,7 @@ const StartConsComponent = () => {
 
       <div
         className={styles.ButtonContainer}
-        onClick={() => navigate("/inputconsumption")}
+        onClick={() => navigate("/startconsumption")}
       >
         <PrimaryButton size="sp">나의 소비 시작하기</PrimaryButton>
       </div>
