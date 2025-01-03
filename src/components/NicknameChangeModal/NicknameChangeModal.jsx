@@ -31,7 +31,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
       setModalState(4);
     } else {
       setUserName(newNickname);
-      setModalState(3);
+      setModalState(2);
     }
   };
 
@@ -55,11 +55,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
                 <PrimaryButton size="lg">확인</PrimaryButton>
               </button>
             ) : (
-              <button
-                onClick={() => {
-                  setModalState(2);
-                }}
-              >
+              <button onClick={checkNickname}>
                 <PrimaryButton size="lg">확인</PrimaryButton>
               </button>
             )}
@@ -82,7 +78,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
               변경됩니다.
             </span>
             <div className={styles.ConfirmButtonContainer}>
-              <button onClick={checkNickname}>
+              <button onClick={() => setModalState(3)}>
                 <PrimaryButton size="sm">네</PrimaryButton>
               </button>
               <button onClick={onClose}>
