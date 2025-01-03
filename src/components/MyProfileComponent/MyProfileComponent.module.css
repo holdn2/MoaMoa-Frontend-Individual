@@ -73,6 +73,7 @@
   align-items: flex-end;
 }
 .TotalProgressBar {
+  position: relative;
   display: flex;
   width: 293px;
   height: 14px;
@@ -88,9 +89,9 @@
 }
 .CoinText {
   position: absolute;
-  right: 42px;
+  top: 17px;
+  right: 0px;
   display: flex;
-  margin-top: 3px;
   color: #5e5e5e;
   text-align: center;
   /* rg/14px */
