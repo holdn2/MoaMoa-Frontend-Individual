@@ -122,8 +122,8 @@ const Alarm = () => {
         {dummyData.map((item) => (
           <div key={item.date}>
             <span className={styles.Date}>{item.date}</span>
-            {item.alarms.map((value) => (
-              <div className={styles.AlarmContainer}>
+            {item.alarms.map((value, index) => (
+              <div key={index} className={styles.AlarmContainer}>
                 {renderAlarm(value.type, value.content)}
               </div>
             ))}
