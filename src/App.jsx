@@ -8,6 +8,7 @@ import InputConsumption from "./pages/InputConsumption/InputConsumption";
 import Callendar from "./pages/Callendar/Callendar";
 import Level from "./pages/Level/Level";
 import Setting from "./pages/Setting/Setting";
+import Alarm from "./pages/Alarm/Alarm";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +34,10 @@ function App() {
         {
           path: "/level",
           element: <Level />,
+        },
+        {
+          path: "/alarm",
+          element: <Alarm />,
         },
         {
           path: "/collect",

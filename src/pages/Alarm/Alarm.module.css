@@ -1,0 +1,53 @@
+.AlarmPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f8f8f8;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 60px;
+  padding-top: 20px;
+}
+.Date {
+  display: flex;
+  margin-top: 12px;
+  margin-bottom: 14px;
+  color: var(--Grey-800, #2b2b2b);
+  /* sb/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.AlarmContainer {
+  display: flex;
+  margin-bottom: 16px;
+}
+.EachAlarmContainer {
+  display: flex;
+  gap: 4px;
+  width: 335px;
+  height: 49px;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f1;
+  border-radius: 10px;
+  justify-content: flex-start;
+  padding-left: 8px;
+}
+.ContentText {
+  color: #454545;
+  /* sb/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
