@@ -31,7 +31,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
       setModalState(4);
     } else {
       setUserName(newNickname);
-      setModalState(3);
+      setModalState(2);
     }
   };
 
@@ -41,7 +41,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
         return (
           <div
             className={styles.ModalContent}
-            onClick={(e) => e.stopPropagation()} // 모달창 내부 클릭 시 모달 닫히지 않게
+            // 모달창 내부 클릭 시 모달 닫히지 않게
           >
             <img src={pigImg} alt="돼지" className={styles.ModalPigImg} />
             <input
@@ -55,11 +55,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
                 <PrimaryButton size="lg">확인</PrimaryButton>
               </button>
             ) : (
-              <button
-                onClick={() => {
-                  setModalState(2);
-                }}
-              >
+              <button onClick={checkNickname}>
                 <PrimaryButton size="lg">확인</PrimaryButton>
               </button>
             )}
@@ -67,10 +63,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
         );
       case 2:
         return (
-          <div
-            className={styles.ModalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className={styles.ModalContent}>
             <img
               src={pigImg}
               alt="돼지"
@@ -82,7 +75,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
               변경됩니다.
             </span>
             <div className={styles.ConfirmButtonContainer}>
-              <button onClick={checkNickname}>
+              <button onClick={() => setModalState(3)}>
                 <PrimaryButton size="sm">네</PrimaryButton>
               </button>
               <button onClick={onClose}>
@@ -93,10 +86,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
         );
       case 3:
         return (
-          <div
-            className={styles.ModalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className={styles.ModalContent}>
             <img
               src={pigImg}
               alt="돼지"
@@ -111,16 +101,14 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
         );
       case 4:
         return (
-          <div
-            className={styles.ModalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className={styles.ModalContent}>
             <img
               src={pigImg}
               alt="돼지"
               className={styles.ChangedModalPigImg}
             />
-            <div className={styles.disabledNicknameContainer}>
+            {/* 확인 버튼 생기면 업데이트 필요 */}
+            <div className={styles.disabledNicknameContainer} onClick={onClose}>
               <span className={styles.disabledNickname}>{newNickname}</span>
             </div>
             <span className={styles.disabledText}>
@@ -135,9 +123,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
 
   return (
     // 모달창 외부 클릭 시 모달 닫기
-    <div className={styles.ModalOverlay} onClick={onClose}>
-      {renderModal()}
-    </div>
+    <div className={styles.ModalOverlay}>{renderModal()}</div>
   );
 };
 

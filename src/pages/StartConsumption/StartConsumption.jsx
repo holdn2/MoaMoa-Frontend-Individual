@@ -5,11 +5,18 @@ import styles from "./StartConsumption.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SelectPeriod from "./SelectPeriod";
 import MoneyInput from "../../components/moneyInput/MoneyInput";
+import { useNavigate } from "react-router-dom";
 
 const StartConsumption = () => {
   const pageName = "나의 소비 시작하기";
   const [modalOpen, setModalOpen] = useState(false);
   const [isInputState, setIsInputState] = useState(false);
+  const navigate = useNavigate();
+
+  const handleStartComsumption = () => {
+    // 입력한 데이터 전송 로직 추가 예정
+    navigate("/");
+  };
 
   return (
     <div className="wrapper">
@@ -43,7 +50,7 @@ const StartConsumption = () => {
         </div>
       </div>
       {modalOpen && <SelectPeriod setModalOpen={setModalOpen} />}
-      <div className={styles.buttonWrapper}>
+      <div className={styles.buttonWrapper} onClick={handleStartComsumption}>
         <PrimaryButton type="button" size="xl" disabled={!isInputState}>
           완료
         </PrimaryButton>

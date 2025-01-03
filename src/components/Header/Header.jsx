@@ -11,7 +11,7 @@ const Header = ({ pageName }) => {
       case "홈화면":
         return (
           <div className={styles.HeaderButtonContainer}>
-            <button>
+            <button onClick={() => navigate("/alarm")}>
               <img src="../src/assets/Navigation/bell.svg" alt="알림" />
             </button>
             <button onClick={() => navigate("/level")}>

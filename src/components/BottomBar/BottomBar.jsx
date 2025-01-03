@@ -12,6 +12,7 @@ const BottomBar = ({ pageName }) => {
   switch (pageName) {
     case "홈화면":
     case "레벨":
+    case "알림 페이지":
       collectImg = "../src/assets/Tab/getUnclicked.svg";
       homeImg = "../src/assets/Tab/home.svg";
       mypageImg = "../src/assets/Tab/myUnclicked.svg";
