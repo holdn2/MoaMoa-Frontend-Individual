@@ -2,69 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./MyProfileComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-import SecondaryButton from "../Button/SecondaryButton";
-
-// 닉네임 변경 모달 컴포넌트
-const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
-  const [newNickname, setNewNickname] = useState(userName);
-  const [toConfirmModal, setToConfirmModal] = useState(false);
-  const handleUserName = () => {
-    setUserName(newNickname);
-    onClose();
-  };
-  return (
-    // 모달창 외부 클릭 시 모달 닫기
-    <div className={styles.ModalOverlay} onClick={onClose}>
-      {toConfirmModal ? (
-        <div
-          className={styles.ModalContent}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <img src={pigImg} alt="돼지" className={styles.ConfirmModalPigImg} />
-          <span className={styles.ConfirmNewNickname}>{newNickname}</span>
-          <span className={styles.ConfirmText}>
-            위와 같이 닉네임이 <br />
-            변경됩니다.
-          </span>
-          <div className={styles.ConfirmButtonContainer}>
-            <button onClick={handleUserName}>
-              <PrimaryButton size="sm">네</PrimaryButton>
-            </button>
-            <button onClick={onClose}>
-              <SecondaryButton size="sm">아니요</SecondaryButton>
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div
-          className={styles.ModalContent}
-          onClick={(e) => e.stopPropagation()} // 모달창 내부 클릭 시 모달 닫히지 않게
-        >
-          <img src={pigImg} alt="돼지" className={styles.ModalPigImg} />
-          <input
-            className={styles.InputNewNickname}
-            type="text"
-            placeholder={userName}
-            onChange={(e) => setNewNickname(e.target.value)}
-          />
-          {userName === newNickname ? (
-            <button onClick={onClose}>
-              <PrimaryButton size="lg">확인</PrimaryButton>
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                setToConfirmModal(true);
-              }}
-            >
-              <PrimaryButton size="lg">확인</PrimaryButton>
-            </button>
-          )}
-        </div>
-      )}
-    </div>
-  );
-};
+import NicknameChangeModal from "../NicknameChangeModal/NicknameChangeModal";
 
 const MyProfileComponent = () => {
   const navigate = useNavigate();
