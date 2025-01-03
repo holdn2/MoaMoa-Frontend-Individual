@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import styles from "./StartConsumption.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SelectPeriod from "./SelectPeriod";
-import MoneyInput from "../../components/MoneyInput/MoneyInput";
+import MoneyInput from "../../components/moneyInput/MoneyInput";
 import { useNavigate } from "react-router-dom";
 
 const StartConsumption = () => {
