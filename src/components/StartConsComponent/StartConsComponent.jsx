@@ -20,13 +20,12 @@ const StartConsComponent = () => {
           className={styles.ImgContainer}
         />
       </div>
-
-      <div
+      <button
         className={styles.ButtonContainer}
         onClick={() => navigate("/startconsumption")}
       >
         <PrimaryButton size="sp">나의 소비 시작하기</PrimaryButton>
-      </div>
+      </button>
     </div>
   );
 };
