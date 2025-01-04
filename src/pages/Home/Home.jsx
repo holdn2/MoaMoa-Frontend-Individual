@@ -8,6 +8,7 @@ import InputConsComponent from "../../components/InputConsComponent/InputConsCom
 import MiniCallendar from "../../components/MiniCallendar/MiniCallendar";
 import RecruitChallenge from "../../components/RecruitChallenge/RecruitChallenge";
 import ProgressChallenge from "../../components/ProgressChallenge/ProgressChallenge";
+import AttendanceModal from "./AttendanceModal";
 
 const Home = () => {
   const pageName = "홈화면";
@@ -16,6 +17,8 @@ const Home = () => {
   const [consumption, setConsumption] = useState(false);
   // 참여중인 챌린지가 있을 경우 혹은 없을 경우
   const participatedChallenge = null;
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [modalState, setModalState] = useState(1);
 
   return (
     <div className={styles.HomeContainer}>
@@ -33,6 +36,12 @@ const Home = () => {
         )}
       </div>
       <BottomBar pageName={pageName} />
+      <AttendanceModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        modalState={modalState}
+        setModalState={setModalState}
+      />
     </div>
   );
 };
