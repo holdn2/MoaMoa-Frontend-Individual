@@ -24,6 +24,10 @@ const sizeStyles = {
     width: "281px",
     height: "45px",
   },
+  unsubscribeConfirm: {
+    width: "314px",
+    height: "41px",
+  },
 };
 
 const StyledButton = styled.button`

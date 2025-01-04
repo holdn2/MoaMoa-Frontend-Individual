@@ -3,12 +3,15 @@ import styles from "./Setting.module.css";
 import Header from "../../components/Header/Header";
 import SecondaryButton from "../../components/Button/SecondaryButton";
 import PrimaryButton from "../../components/Button/PrimaryButton";
+import SettingModal from "./SettingModal";
 
 const Setting = () => {
   const pageName = "설정";
   const version = "5.8.25";
   const [alarm, setAlarm] = useState(false);
   const [marketingAgree, setMarketingAgree] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalState, setModalState] = useState(0);
 
   return (
     <div className={styles.SettingContainer}>
@@ -71,10 +74,31 @@ const Setting = () => {
           </div>
         </div>
         <div className={styles.ButtonContainer}>
-          <PrimaryButton>로그아웃</PrimaryButton>
-          <SecondaryButton>회원 탈퇴</SecondaryButton>
+          <button
+            onClick={() => {
+              setModalState(1);
+              setIsModalOpen(true);
+            }}
+          >
+            <PrimaryButton>로그아웃</PrimaryButton>
+          </button>
+          <button
+            onClick={() => {
+              setModalState(2);
+              setIsModalOpen(true);
+            }}
+          >
+            <SecondaryButton>회원 탈퇴</SecondaryButton>
+          </button>
         </div>
       </div>
+
+      <SettingModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        modalState={modalState}
+        setModalState={setModalState}
+      />
     </div>
   );
 };
