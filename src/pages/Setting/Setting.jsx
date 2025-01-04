@@ -71,7 +71,7 @@ const Setting = () => {
           </div>
         </div>
         <div className={styles.ButtonContainer}>
-          <SecondaryButton>로그아웃</SecondaryButton>
+          <PrimaryButton>로그아웃</PrimaryButton>
           <SecondaryButton>회원 탈퇴</SecondaryButton>
         </div>
       </div>
