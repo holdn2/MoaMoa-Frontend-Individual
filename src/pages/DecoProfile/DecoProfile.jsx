@@ -55,7 +55,7 @@ const DecoProfile = () => {
             ))}
           </div>
         </div>
-        <button
+        <div
           onClick={() =>
             console.log(
               `테두리${selectedOutline}, 닉네임${selectedNicknameColor}구매`
@@ -64,7 +64,7 @@ const DecoProfile = () => {
           className={styles.PurchaseButton}
         >
           <PrimaryButton>구매하기</PrimaryButton>
-        </button>
+        </div>
       </div>
     </div>
   );

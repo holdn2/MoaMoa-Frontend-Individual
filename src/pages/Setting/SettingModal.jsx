@@ -22,20 +22,20 @@ const SettingModal = ({
           >
             <span className={styles.LogoutText}>정말 로그아웃 하시나요?</span>
             <div className={styles.ConfirmContainer}>
-              <button
+              <div
                 onClick={() => {
                   setIsModalOpen(false);
                 }}
               >
                 <PrimaryButton size="sm">네</PrimaryButton>
-              </button>
-              <button
+              </div>
+              <div
                 onClick={() => {
                   setIsModalOpen(false);
                 }}
               >
                 <SecondaryButton size="sm">아니요</SecondaryButton>
-              </button>
+              </div>
             </div>
           </Modal>
         );
@@ -61,20 +61,20 @@ const SettingModal = ({
                 코인이 영구적으로 소멸돼요 !
               </span>
               <div className={styles.ConfirmContainer}>
-                <button
+                <div
                   onClick={() => {
                     setModalState(3);
                   }}
                 >
                   <PrimaryButton size="sm">계속할래요</PrimaryButton>
-                </button>
-                <button
+                </div>
+                <div
                   onClick={() => {
                     setModalState(4);
                   }}
                 >
                   <SecondaryButton size="sm">중단할래요</SecondaryButton>
-                </button>
+                </div>
               </div>
             </div>
           </Modal>
@@ -97,9 +97,9 @@ const SettingModal = ({
               <span className={styles.ConfirmInfoText}>
                 앞으로의 절약생활도 응원할게요!
               </span>
-              <button onClick={() => setIsModalOpen(false)}>
+              <div onClick={() => setIsModalOpen(false)}>
                 <PrimaryButton size="unsubscribeConfirm">확인</PrimaryButton>
-              </button>
+              </div>
             </div>
           </Modal>
         );
@@ -121,9 +121,9 @@ const SettingModal = ({
               <span className={styles.ConfirmInfoText}>
                 앞으로도 함께 절약해봐요!
               </span>
-              <button onClick={() => setIsModalOpen(false)}>
+              <div onClick={() => setIsModalOpen(false)}>
                 <PrimaryButton size="unsubscribeConfirm">확인</PrimaryButton>
-              </button>
+              </div>
             </div>
           </Modal>
         );

@@ -50,13 +50,13 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
               onChange={(e) => setNewNickname(e.target.value)}
             />
             {userName === newNickname ? (
-              <button onClick={onClose}>
+              <div onClick={onClose}>
                 <PrimaryButton size="lg">확인</PrimaryButton>
-              </button>
+              </div>
             ) : (
-              <button onClick={checkNickname}>
+              <div onClick={checkNickname}>
                 <PrimaryButton size="lg">확인</PrimaryButton>
-              </button>
+              </div>
             )}
           </div>
         );
@@ -74,17 +74,17 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
               변경됩니다.
             </span>
             <div className={styles.ConfirmButtonContainer}>
-              <button
+              <div
                 onClick={() => {
                   setUserName(newNickname);
                   setModalState(3);
                 }}
               >
                 <PrimaryButton size="sm">네</PrimaryButton>
-              </button>
-              <button onClick={onClose}>
+              </div>
+              <div onClick={onClose}>
                 <SecondaryButton size="sm">아니요</SecondaryButton>
-              </button>
+              </div>
             </div>
           </div>
         );
@@ -98,9 +98,9 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
             />
             <span className={styles.ConfirmNewNickname}>{newNickname}</span>
             <span className={styles.ConfirmText}>닉네임이 변경되었어요!</span>
-            <button onClick={onClose}>
+            <div onClick={onClose}>
               <PrimaryButton size="lg">확인</PrimaryButton>
-            </button>
+            </div>
           </div>
         );
       case 4:

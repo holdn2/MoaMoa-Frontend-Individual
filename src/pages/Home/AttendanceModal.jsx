@@ -48,9 +48,9 @@ const AttendanceModal = ({
               <span className={styles.AttendanceText}>
                 앞으로도 계속해서 같이 모아봐요!
               </span>
-              <button onClick={addCoin}>
+              <div onClick={addCoin}>
                 <PrimaryButton size="lg">200코인 받기</PrimaryButton>
-              </button>
+              </div>
             </div>
           </Modal>
         );
@@ -73,9 +73,9 @@ const AttendanceModal = ({
                 <br />
                 철돼지로 레벨이 올랐어요 !!
               </span>
-              <button onClick={() => setIsModalOpen(false)}>
+              <div onClick={() => setIsModalOpen(false)}>
                 <PrimaryButton size="lg">확인</PrimaryButton>
-              </button>
+              </div>
             </div>
           </Modal>
         );

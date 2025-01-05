@@ -10,6 +10,7 @@ import Level from "./pages/Level/Level";
 import Setting from "./pages/Setting/Setting";
 import Alarm from "./pages/Alarm/Alarm";
 import DecoProfile from "./pages/DecoProfile/DecoProfile";
+import Diagnosis from "./pages/Diagnosis/Diagnosis";
 
 function App() {
   const router = createBrowserRouter([
@@ -55,6 +56,10 @@ function App() {
         {
           path: "/decoprofile",
           element: <DecoProfile />,
+        },
+        {
+          path: "/diagnosis",
+          element: <Diagnosis />,
         },
       ],
     },
