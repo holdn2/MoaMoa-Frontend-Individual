@@ -58,7 +58,7 @@ const MyProfileComponent = () => {
           <span className={styles.UserInfoContent}>{userCoinCnt}</span>
         </div>
       </div>
-      <button onClick={() => navigate(-1)}>
+      <button onClick={() => navigate("/decoprofile")}>
         <PrimaryButton size="decoProfile">프로필 꾸미기</PrimaryButton>
       </button>
 
