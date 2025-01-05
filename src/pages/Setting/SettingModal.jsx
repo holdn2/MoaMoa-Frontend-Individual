@@ -12,7 +12,6 @@ const SettingModal = ({
   setModalState,
 }) => {
   const renderSettingModal = () => {
-    if (!isModalOpen) return null; // 모달이 닫혀 있으면 렌더링하지 않음
     switch (modalState) {
       case 1:
         return (

@@ -1,5 +1,5 @@
 // 홈 페이지 제작 중
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BottomBar from "../../components/BottomBar/BottomBar";
 import Header from "../../components/Header/Header";
 import styles from "./Home.module.css";
@@ -8,6 +8,8 @@ import InputConsComponent from "../../components/InputConsComponent/InputConsCom
 import MiniCallendar from "../../components/MiniCallendar/MiniCallendar";
 import RecruitChallenge from "../../components/RecruitChallenge/RecruitChallenge";
 import ProgressChallenge from "../../components/ProgressChallenge/ProgressChallenge";
+import AttendanceModal from "./AttendanceModal";
+import useModalStore from "../../store/useModalStore";
 
 const Home = () => {
   const pageName = "홈화면";
@@ -16,6 +18,19 @@ const Home = () => {
   const [consumption, setConsumption] = useState(false);
   // 참여중인 챌린지가 있을 경우 혹은 없을 경우
   const participatedChallenge = null;
+  // 로그인 시 모달창 팝업.
+  // zustand(전역상태관리)를 이용해서 로그인 시에만 해당 팝업이 뜨게 구현!(제대로 된 공부가 필요한 부분)
+  const { hasLogin, setHasLogin } = useModalStore();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalState, setModalState] = useState(1);
+
+  // 로그인 후 첫 홈화면에서만 실행
+  useEffect(() => {
+    if (!hasLogin) {
+      setIsModalOpen(true);
+      setHasLogin();
+    }
+  }, [hasLogin, setHasLogin]);
 
   return (
     <div className={styles.HomeContainer}>
@@ -33,6 +48,12 @@ const Home = () => {
         )}
       </div>
       <BottomBar pageName={pageName} />
+      <AttendanceModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        modalState={modalState}
+        setModalState={setModalState}
+      />
     </div>
   );
 };
