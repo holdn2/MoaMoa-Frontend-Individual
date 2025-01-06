@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ pageName }) => {
+const Header = ({ pageName, diagnosisStage, setDiagnosisStage }) => {
   const navigate = useNavigate();
 
   const renderHeaderContent = () => {
@@ -44,6 +44,46 @@ const Header = ({ pageName }) => {
             </button>
           </>
         );
+      case "과소비 진단하기":
+        switch (diagnosisStage) {
+          case 0:
+            return (
+              <button
+                className={styles.GoBackButton}
+                onClick={() => navigate(-1)}
+              >
+                <img
+                  src="../src/assets/Navigation/closeBig.svg"
+                  alt="뒤로가기"
+                />
+              </button>
+            );
+          case 8:
+          case 9:
+            return (
+              <button
+                className={styles.GoBackButton}
+                onClick={() => setDiagnosisStage(diagnosisStage - 2)}
+              >
+                <img
+                  src="../src/assets/Navigation/arrowLeftBig.svg"
+                  alt="뒤로가기"
+                />
+              </button>
+            );
+          default:
+            return (
+              <button
+                className={styles.GoBackButton}
+                onClick={() => setDiagnosisStage(diagnosisStage - 1)}
+              >
+                <img
+                  src="../src/assets/Navigation/arrowLeftBig.svg"
+                  alt="뒤로가기"
+                />
+              </button>
+            );
+        }
       default:
         return (
           // navigate(-1) : 클릭 시 바로 직전 페이지로 이동
