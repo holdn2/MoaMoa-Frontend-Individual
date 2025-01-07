@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import styles from "./StartConsumption.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SelectPeriod from "./SelectPeriod";
-import MoneyInput from "../../components/moneyInput/MoneyInput";
+import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import { useNavigate } from "react-router-dom";
 
 const StartConsumption = () => {
@@ -12,6 +12,8 @@ const StartConsumption = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isInputState, setIsInputState] = useState(false);
   const navigate = useNavigate();
+  // 목표 금액
+  const [targetAmount, setTargetAmount] = useState(0);
 
   const handleStartComsumption = () => {
     // 입력한 데이터 전송 로직 추가 예정
@@ -46,11 +48,16 @@ const StartConsumption = () => {
             children="주소비 한도 금액을 입력해주세요"
             isInputState={isInputState}
             setIsInputState={setIsInputState}
+            setValue={setTargetAmount}
           />
         </div>
       </div>
       {modalOpen && <SelectPeriod setModalOpen={setModalOpen} />}
-      <div className={styles.buttonWrapper} onClick={handleStartComsumption}>
+      <div
+        className={styles.buttonWrapper}
+        onClick={handleStartComsumption}
+        style={{ pointerEvents: isInputState ? "auto" : "none" }}
+      >
         <PrimaryButton type="button" size="xl" disabled={!isInputState}>
           완료
         </PrimaryButton>
