@@ -4,12 +4,14 @@ import styles from "./InputConsumption.module.css";
 import Header from "../../components/Header/Header";
 import question from "../../assets/Content/question.svg";
 import Category from "./Category";
-import MoneyInput from "../../components/moneyInput/MoneyInput";
+import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import DescModal from "./DescModal";
+import { useNavigate } from "react-router-dom";
 
 const InputConsumption = () => {
   const pageName = "나의 소비 입력하기";
+  const navigate = useNavigate();
   const categoryName = [
     "고정비",
     "꾸밈비",
@@ -30,6 +32,8 @@ const InputConsumption = () => {
   const [categoryClicked, setCategoryClicked] = useState(0);
   const [challengeClicked, setChallengeClicked] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
+  // 나의 소비 입력하기 금액부분
+  const [myConsumption, setMyConsumption] = useState(0);
 
   return (
     <div className={styles.wrapper}>
@@ -81,6 +85,7 @@ const InputConsumption = () => {
             children="사용한 금액을 입력해주세요."
             isInputState={isInputState}
             setIsInputState={setIsInputState}
+            setValue={setMyConsumption}
           />
         </div>
         {/*목표 금액까지 남은 금액 표시*/}
@@ -92,7 +97,13 @@ const InputConsumption = () => {
           </div>
         </div>
         {!modalOpen && (
-          <div className={styles.buttonWrapper}>
+          <div
+            className={styles.buttonWrapper}
+            onClick={() => {
+              navigate("/");
+            }}
+            style={{ pointerEvents: isInputState ? "auto" : "none" }}
+          >
             <PrimaryButton type="button" size="xl" disabled={!isInputState}>
               완료
             </PrimaryButton>

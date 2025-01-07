@@ -1,30 +1,68 @@
+// 과소비 진단 페이지 구현
 import React, { useEffect, useState } from "react";
 import styles from "./Diagnosis.module.css";
 import Header from "../../components/Header/Header";
 import PrimaryButton from "../../components/Button/PrimaryButton";
-import MoneyInput from "../../components/moneyInput/MoneyInput";
+import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import SelectButtonContainer from "./SelectButtonContainer";
 import { useNavigate } from "react-router-dom";
 
 const Diagnosis = () => {
   const pageName = "과소비 진단하기";
   const navigate = useNavigate();
+  // 각 단계별 상태(0~9)
   const [diagnosisStage, setDiagnosisStage] = useState(0);
+  // 단계별 입력할 것이 있을 때 입력했는지 여부
   const [isInputState, setIsInputState] = useState(false);
+
+  const userName = "모아모아 030"; // 닉네임
+  // 계산결과 과소비하고 있는지
+  const [isOverconsumption, setIsOverconsumption] = useState(false);
+  // user가 입력한 내용을 바탕으로 과소비 진단 시 필요한 값들
+  const [incomeCost, setIncomeCost] = useState(0); // 소득액
+  const [consumeCost, setConsumeCost] = useState(0); // 소비액
+  const [savingCost, setSavingCost] = useState(0); // 저축액
+  // 연령대 별 버튼 선택 여부 및 어떤 연령 선택했는지
   const [selectedAge, setSelectedAge] = useState(0);
-  const userName = "모아모아 030";
-  const [isOverconsumption, setIsOverconsumption] = useState(true);
-  const averageConsumption = 120000;
-  const goodConsumption = 70000;
+  // 평균 소비, 적정 소비 알려주기
+  const [averageConsumption, setAverageConsumption] = useState(0);
+  const [goodConsumption, setGoodConsumption] = useState(0);
 
   // 5단계에서 2초 후 6단계로 자동 전환
   useEffect(() => {
     if (diagnosisStage === 5) {
       const timer = setTimeout(() => {
+        const calculateResult = (incomeCost - savingCost) / incomeCost;
+        console.log(
+          `소득액: ${incomeCost} 소비액: ${consumeCost} 저축액: ${savingCost} 연령대: ${selectedAge} 과소비 지수: ${calculateResult}`
+        );
+        switch (selectedAge) {
+          case 1:
+            calculateResult >= 0.5
+              ? (setGoodConsumption(70000), setDiagnosisStage(6))
+              : (setAverageConsumption(120000), setDiagnosisStage(7));
+            break;
+          case 2:
+            calculateResult >= 0.7
+              ? (setGoodConsumption(100000), setDiagnosisStage(6))
+              : (setAverageConsumption(150000), setDiagnosisStage(7));
+            break;
+
+          case 3:
+            calculateResult >= 0.8
+              ? (setGoodConsumption(120000), setDiagnosisStage(6))
+              : (setAverageConsumption(170000), setDiagnosisStage(7));
+            break;
+
+          case 4:
+            calculateResult >= 0.9
+              ? (setGoodConsumption(150000), setDiagnosisStage(6))
+              : (setAverageConsumption(200000), setDiagnosisStage(7));
+            break;
+        }
+
         if (isOverconsumption) {
-          setDiagnosisStage(6);
         } else {
-          setDiagnosisStage(7);
         }
       }, 1000); // 1초 후 실행
 
@@ -94,15 +132,17 @@ const Diagnosis = () => {
                   children="월 소득 입력하기"
                   isInputState={isInputState}
                   setIsInputState={setIsInputState}
+                  setValue={setIncomeCost}
                 />
               </div>
             </div>
             <div
               className={styles.ButtonContainer}
               onClick={() => {
-                setDiagnosisStage(2);
                 setIsInputState(false);
+                setDiagnosisStage(2);
               }}
+              style={{ pointerEvents: isInputState ? "auto" : "none" }}
             >
               <PrimaryButton disabled={!isInputState}>다음</PrimaryButton>
             </div>
@@ -129,15 +169,17 @@ const Diagnosis = () => {
                   children="지난 달 소비액 입력하기"
                   isInputState={isInputState}
                   setIsInputState={setIsInputState}
+                  setValue={setConsumeCost}
                 />
               </div>
             </div>
             <div
               className={styles.ButtonContainer}
               onClick={() => {
-                setDiagnosisStage(3);
                 setIsInputState(false);
+                setDiagnosisStage(3);
               }}
+              style={{ pointerEvents: isInputState ? "auto" : "none" }}
             >
               <PrimaryButton disabled={!isInputState}>다음</PrimaryButton>
             </div>
@@ -164,15 +206,17 @@ const Diagnosis = () => {
                   children="월 평균 저축액 입력하기"
                   isInputState={isInputState}
                   setIsInputState={setIsInputState}
+                  setValue={setSavingCost}
                 />
               </div>
             </div>
             <div
               className={styles.ButtonContainer}
               onClick={() => {
-                setDiagnosisStage(4);
                 setIsInputState(false);
+                setDiagnosisStage(4);
               }}
+              style={{ pointerEvents: isInputState ? "auto" : "none" }}
             >
               <PrimaryButton disabled={!isInputState}>다음</PrimaryButton>
             </div>
@@ -206,6 +250,7 @@ const Diagnosis = () => {
               onClick={() => {
                 setDiagnosisStage(5);
               }}
+              style={{ pointerEvents: selectedAge ? "auto" : "none" }}
             >
               <PrimaryButton disabled={!selectedAge}>완료하기</PrimaryButton>
             </div>
