@@ -25,7 +25,11 @@ const InputConsComponent = () => {
       </div>
       <div className={styles.InputConsContainer}>
         <div className={styles.CurrentConsContainer}>
-          <ProgressCircle progressPercent={progressPercent} />
+          <ProgressCircle
+            progressPercent={progressPercent}
+            width="128px"
+            height="117px"
+          />
           <div className={styles.AllCostContainer}>
             <div className={styles.CostContainer}>
               <span className={styles.CostText}>현재 남은 소비 금액</span>

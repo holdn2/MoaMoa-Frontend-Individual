@@ -40,7 +40,11 @@ const MyConsumption = () => {
   return (
     <div className={styles.wrapper}>
       {/*현재 진행중인 챌린지 */}
-      <MyChallengeBar children="현재 진행중인 챌린지" />
+      <MyChallengeBar
+        children="현재 진행중인 챌린지"
+        width="210px"
+        height="199px"
+      />
       {/*지금까지의 나의 소비는 ? */}
       <div className={styles.categoryConsWrapper}>
         <div className={styles.categoryConsTitle}>

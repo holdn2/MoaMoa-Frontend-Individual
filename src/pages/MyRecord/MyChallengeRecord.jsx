@@ -19,9 +19,12 @@ const MyChallengeRecord = ({
           <span className={styles.date}>
             {startDate}~{endDate}
           </span>
-          <span className={styles.coin}>
+          <span
+            className={styles.coin}
+            style={{ color: isSuccessed ? "#00BEFC" : "#FF3B30" }}
+          >
             <img src={coinYellow} alt="챌린지 코인 아이콘" />
-            {coin > 0 ? "+" : "-"}
+            {isSuccessed ? "+" : "-"}
             {coin}
           </span>
         </div>
