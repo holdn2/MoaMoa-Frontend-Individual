@@ -9,7 +9,7 @@ const ProfileToPageComponent = ({ dstName }) => {
       {dstName === "나의 기록" ? (
         <button
           className={styles.ProfileToPageComponentContainer}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/myrecord")}
         >
           <img
             src="../src/assets/Content/recent.svg"
