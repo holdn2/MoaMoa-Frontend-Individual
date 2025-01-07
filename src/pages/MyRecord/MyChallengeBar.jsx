@@ -17,8 +17,10 @@ const Title = styled.p`
 
 const ContentWrapper = styled.div`
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
   gap: 5px;
   height: 307px;
   flex-shrink: 0;
@@ -37,7 +39,6 @@ const Desc = styled.p`
 `;
 
 const SubDesc = styled.p`
-  padding: 10px;
   color: var(--Grey-600, #5e5e5e);
   text-align: center;
   font-family: Pretendard;
