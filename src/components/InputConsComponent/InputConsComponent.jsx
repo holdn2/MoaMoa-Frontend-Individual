@@ -29,6 +29,8 @@ const InputConsComponent = () => {
             progressPercent={progressPercent}
             width="128px"
             height="117px"
+            fontSize="22px"
+            fontWeight="500"
           />
           <div className={styles.AllCostContainer}>
             <div className={styles.CostContainer}>

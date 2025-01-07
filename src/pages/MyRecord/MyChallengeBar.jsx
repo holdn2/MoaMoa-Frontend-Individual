@@ -57,7 +57,13 @@ const MyChallengeBar = ({ children }) => {
       <Title>{children}</Title>
       <ContentWrapper>
         <CircleWrapper>
-          <ProgressCircle progressPercent={progressPercent} />
+          <ProgressCircle
+            progressPercent={progressPercent}
+            width="210px"
+            height="199px"
+            fontSize="32px"
+            fontWeight="800"
+          />
         </CircleWrapper>
         <SubDesc>상위 nn%</SubDesc>
         <Desc>전체 20회 중 18회 성공 !</Desc>

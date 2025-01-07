@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 19px;
 }
 .ProgressCircle {
   display: flex;
@@ -15,9 +14,7 @@
   text-align: center;
   /* md/22px */
   font-family: Pretendard;
-  font-size: 22px;
   font-style: normal;
-  font-weight: 500;
   line-height: normal;
   padding-top: 10px;
 }
