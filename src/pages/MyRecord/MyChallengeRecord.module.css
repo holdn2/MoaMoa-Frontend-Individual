@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 9.5px 19px;
+  height: 90px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--Grey-70, #f1f1f1);
+}
+
+.leftWrapper {
+  display: flex;
+  flex-direction: column;
+  > p {
+    color: var(--Grey-800, #2b2b2b);
+    font-family: Pretendard;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+}
+
+.challengeInfo {
+  display: flex;
+  gap: 22px;
+  padding: 0 10px 10px 10px;
+}
+.date {
+  color: var(--Grey-600, #5e5e5e);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.coin {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--Primary-500main, #00befc);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+}

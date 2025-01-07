@@ -1,0 +1,51 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 35px 20px 10px 20px;
+  height: auto;
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  background-color: #f8f8f8;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+}
+section p {
+  color: var(--Grey-800, #2b2b2b);
+  font-family: Pretendard;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.totalPricewrapper {
+  margin-bottom: 15px;
+}
+.totalPrice {
+  display: flex;
+  height: 64px;
+  padding: 3px 40px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 12px;
+  background: var(--Grey-70, #f1f1f1);
+}
+.totalPrice span {
+  color: var(--Grey-800, #2b2b2b);
+  font-family: Pretendard;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.challengeRecordWrapper {
+  margin-top: 29px;
+}
+.challengeRecord {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}

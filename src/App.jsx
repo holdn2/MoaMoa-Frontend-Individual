@@ -9,6 +9,7 @@ import Callendar from "./pages/Callendar/Callendar";
 import Level from "./pages/Level/Level";
 import Setting from "./pages/Setting/Setting";
 import Alarm from "./pages/Alarm/Alarm";
+import MyRecord from "./pages/MyRecord/MyRecord";
 
 function App() {
   const router = createBrowserRouter([
@@ -46,6 +47,10 @@ function App() {
         {
           path: "/mypage",
           element: <MyPage />,
+        },
+        {
+          path: "/myrecord",
+          element: <MyRecord />,
         },
         {
           path: "/setting",
