@@ -9,25 +9,25 @@ const Level = () => {
     <div className={styles.LevelPageContainer}>
       <Header pageName={pageName} />
       <div className={styles.MainArea}>
-        <div className={styles.PigContainer}>
+        <div className={styles.DustContainer}>
           <div className={styles.LevelContainer}>
             <img
-              className={styles.PigImg}
-              src="../src/assets/Pig/dirtpig.svg"
-              alt="흙돼지"
+              className={styles.DustImg}
+              src="../src/assets/DustLevel/Lv0.svg"
+              alt="Lv.0"
             />
-            <div className={styles.PigLevelContainer}>
-              <span className={styles.PigText}>흙돼지</span>
+            <div className={styles.Lv1Container}>
+              <span className={styles.DustText}>Lv.0</span>
             </div>
           </div>
           <div className={styles.LevelContainer}>
             <img
-              className={styles.PigImg}
-              src="../src/assets/Pig/ironpig.svg"
-              alt="철돼지"
+              className={styles.DustImg}
+              src="../src/assets/DustLevel/Lv1.svg"
+              alt="Lv.1"
             />
-            <div className={styles.PigLevelContainer}>
-              <span className={styles.PigText}>철돼지</span>
+            <div className={styles.DustLevelContainer}>
+              <span className={styles.DustText}>Lv.1</span>
               <div className={styles.TotalProgressBar}>
                 <div className={styles.IronProgressBar} />
               </div>
@@ -35,16 +35,16 @@ const Level = () => {
           </div>
           <div className={styles.LevelContainer}>
             <img
-              className={styles.PigImg}
-              src="../src/assets/Pig/copperpig.svg"
-              alt="동돼지"
+              className={styles.DustImg}
+              src="../src/assets/DustLevel/Lv2.svg"
+              alt="Lv.2"
             />
-            <div className={styles.PigLevelContainer}>
-              <span className={styles.PigText}>동돼지</span>
+            <div className={styles.DustLevelContainer}>
+              <span className={styles.DustText}>Lv.2</span>
               <span className={styles.ToLevelUp}>
                 200코인을 모으면
                 <br />
-                동돼지가 될 수 있어요!
+                <span style={{ fontWeight: 700 }}>Lv.2</span>가 될 수 있어요!
               </span>
               <div className={styles.TotalProgressBar}>
                 <div className={styles.CopperProgressBar} />
@@ -53,16 +53,16 @@ const Level = () => {
           </div>
           <div className={styles.LevelContainer}>
             <img
-              className={styles.PigImg}
-              src="../src/assets/Pig/silverpig.svg"
-              alt="은돼지"
+              className={styles.DustImg}
+              src="../src/assets/DustLevel/Lv3.svg"
+              alt="Lv.3"
             />
-            <div className={styles.PigLevelContainer}>
-              <span className={styles.PigText}>은돼지</span>
+            <div className={styles.DustLevelContainer}>
+              <span className={styles.DustText}>Lv.3</span>
               <span className={styles.ToLevelUp}>
                 650코인을 모으면
                 <br />
-                은돼지가 될 수 있어요!
+                <span style={{ fontWeight: 700 }}>Lv.3</span>가 될 수 있어요!
               </span>
               <div className={styles.TotalProgressBar}>
                 <div className={styles.SilverProgressBar} />
@@ -71,16 +71,16 @@ const Level = () => {
           </div>
           <div className={styles.LevelContainer}>
             <img
-              className={styles.PigImg}
-              src="../src/assets/Pig/goldpig.svg"
-              alt="금돼지"
+              className={styles.DustImg}
+              src="../src/assets/DustLevel/Lv4.svg"
+              alt="Lv.4"
             />
-            <div className={styles.PigLevelContainer}>
-              <span className={styles.PigText}>금돼지</span>
+            <div className={styles.DustLevelContainer}>
+              <span className={styles.DustText}>Lv.4</span>
               <span className={styles.ToLevelUp}>
                 1200코인을 모으면
                 <br />
-                금돼지가 될 수 있어요!
+                <span style={{ fontWeight: 700 }}>Lv.4</span>가 될 수 있어요!
               </span>
               <div className={styles.TotalProgressBar}>
                 <div className={styles.GoldProgressBar} />
@@ -89,16 +89,34 @@ const Level = () => {
           </div>
           <div className={styles.LevelContainer}>
             <img
-              className={styles.PigImg}
-              src="../src/assets/Pig/kingpig.svg"
-              alt="왕관돼지"
+              className={styles.DustImg}
+              src="../src/assets/DustLevel/Lv5.svg"
+              alt="Lv.5"
             />
-            <div className={styles.PigLevelContainer}>
-              <span className={styles.PigText}>왕관돼지</span>
+            <div className={styles.DustLevelContainer}>
+              <span className={styles.DustText}>Lv.5</span>
               <span className={styles.ToLevelUp}>
                 2000코인을 모으면
                 <br />
-                왕관돼지가 될 수 있어요!
+                <span style={{ fontWeight: 700 }}>Lv.5</span>가 될 수 있어요!
+              </span>
+              <div className={styles.TotalProgressBar}>
+                <div className={styles.KingProgressBar} />
+              </div>
+            </div>
+          </div>
+          <div className={styles.LevelContainer}>
+            <img
+              className={styles.DustImg}
+              src="../src/assets/DustLevel/Lv6.svg"
+              alt="Lv.6"
+            />
+            <div className={styles.DustLevelContainer}>
+              <span className={styles.DustText}>Lv.6</span>
+              <span className={styles.ToLevelUp}>
+                2000코인을 모으면
+                <br />
+                <span style={{ fontWeight: 700 }}>Lv.6</span>가 될 수 있어요!
               </span>
               <div className={styles.TotalProgressBar}>
                 <div className={styles.KingProgressBar} />
@@ -107,7 +125,6 @@ const Level = () => {
           </div>
         </div>
       </div>
-      <BottomBar pageName={pageName} />
     </div>
   );
 };

@@ -39,9 +39,9 @@ const AttendanceModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/PigSub/pigHappy.svg"
+              src="../src/assets/CharacterImgs/dustHappy.svg"
               alt="행복 돼지"
-              className={styles.HappyPigImg}
+              className={styles.HappyDustImg}
             />
             <div className={styles.AttendanceContent}>
               <span className={styles.AttendanceTitle}>오랜만에 오셨군요!</span>
@@ -62,9 +62,9 @@ const AttendanceModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/PigSub/pigHappy.svg"
+              src="../src/assets/CharacterImgs/dustHappy.svg"
               alt="행복 돼지"
-              className={styles.HappyPigImg}
+              className={styles.HappyDustImg}
             />
             <div className={styles.LevelUpContent}>
               <span className={styles.AttendanceTitle}>Level UP !</span>

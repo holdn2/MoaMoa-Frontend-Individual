@@ -91,8 +91,8 @@ const Diagnosis = () => {
                 </span>
               </div>
               <img
-                className={styles.DirtImg}
-                src="../src/assets/CharacterImgs/dirtQuestion.svg"
+                className={styles.DustImg}
+                src="../src/assets/CharacterImgs/dustQuestion.svg"
                 alt="캐릭터 물음표"
               />
             </div>
@@ -289,7 +289,7 @@ const Diagnosis = () => {
               <div className={styles.ResultContentContainer}>
                 <span className={styles.ResultTitle}>진단 완료 !</span>
                 <img
-                  src="../src/assets/CharacterImgs/dirtSad.svg"
+                  src="../src/assets/CharacterImgs/dustSad.svg"
                   alt="슬픈 먼지"
                 />
                 <span className={styles.ResultText}>
@@ -314,7 +314,7 @@ const Diagnosis = () => {
               <div className={styles.ResultContentContainer}>
                 <span className={styles.ResultTitle}>진단 완료 !</span>
                 <img
-                  src="../src/assets/CharacterImgs/dirtHappy.svg"
+                  src="../src/assets/CharacterImgs/dustSunglass.svg"
                   alt="행복한 먼지"
                 />
                 <span className={styles.ResultText}>

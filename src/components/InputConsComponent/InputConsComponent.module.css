@@ -4,19 +4,29 @@
 }
 .TxtImgContainer {
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  margin: 2px 0 6px 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  margin-top: 28px;
+  margin-bottom: 12px;
 }
 .TextContainer {
-  display: flex;
-  width: 176px;
-  height: 80px;
+  display: inline-block;
+  width: 192px;
+  height: 62px;
   flex-direction: column;
   justify-content: center;
-  margin-right: 40px;
 
-  color: var(--Grey-800, #2b2b2b);
+  color: #454545;
+  /* bd/24px */
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.UserName {
+  color: #2b2b2b;
   /* bd/28px */
   font-family: Pretendard;
   font-size: 28px;
@@ -26,8 +36,8 @@
 }
 .ImgContainer {
   display: flex;
-  width: 96px;
-  height: 92px;
+  width: 76px;
+  height: 84px;
 }
 .InputConsContainer {
   display: flex;

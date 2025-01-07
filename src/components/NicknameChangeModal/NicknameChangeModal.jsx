@@ -10,7 +10,7 @@ const dummyData = [
   },
   {
     id: 2,
-    nickname: "돼지",
+    nickname: "먼지",
   },
   {
     id: 3,
@@ -19,7 +19,7 @@ const dummyData = [
 ];
 
 // 닉네임 변경 모달 컴포넌트
-const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
+const NicknameChangeModal = ({ userName, dustImg, onClose, setUserName }) => {
   const [newNickname, setNewNickname] = useState(userName);
   const [modalState, setModalState] = useState(1); //modal의 상태를 변경하면서 보이는 부분 다르게 하기
   const checkNickname = () => {
@@ -42,7 +42,7 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
             className={styles.ModalContent}
             // 모달창 내부 클릭 시 모달 닫히지 않게
           >
-            <img src={pigImg} alt="돼지" className={styles.ModalPigImg} />
+            <img src={dustImg} alt="먼지" className={styles.ModalDustImg} />
             <input
               className={styles.InputNewNickname}
               type="text"
@@ -64,9 +64,9 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
         return (
           <div className={styles.ModalContent}>
             <img
-              src={pigImg}
-              alt="돼지"
-              className={styles.ConfirmModalPigImg}
+              src={dustImg}
+              alt="먼지"
+              className={styles.ConfirmModalDustImg}
             />
             <span className={styles.ConfirmNewNickname}>{newNickname}</span>
             <span className={styles.ConfirmText}>
@@ -92,9 +92,9 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
         return (
           <div className={styles.ModalContent}>
             <img
-              src={pigImg}
-              alt="돼지"
-              className={styles.ChangedModalPigImg}
+              src={dustImg}
+              alt="먼지"
+              className={styles.ChangedModalDustImg}
             />
             <span className={styles.ConfirmNewNickname}>{newNickname}</span>
             <span className={styles.ConfirmText}>닉네임이 변경되었어요!</span>
@@ -107,19 +107,20 @@ const NicknameChangeModal = ({ userName, pigImg, onClose, setUserName }) => {
         return (
           <div className={styles.ModalContent}>
             <img
-              src={pigImg}
-              alt="돼지"
-              className={styles.ChangedModalPigImg}
+              src={dustImg}
+              alt="먼지"
+              className={styles.ChangedModalDustImg}
             />
             {/* 확인 버튼 생기면 업데이트 필요 */}
-            <div className={styles.disabledNicknameContainer} onClick={onClose}>
+            <div className={styles.disabledNicknameContainer}>
               <span className={styles.disabledNickname}>{newNickname}</span>
             </div>
             <span className={styles.disabledText}>
-              아쉽지만 이 닉네임은
-              <br />
-              사용할 수 없어요😥
+              아쉽지만 이 닉네임은 사용할 수 없어요😥
             </span>
+            <div onClick={onClose}>
+              <PrimaryButton size="lg">확인</PrimaryButton>
+            </div>
           </div>
         );
     }

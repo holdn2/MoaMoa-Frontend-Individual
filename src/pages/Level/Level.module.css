@@ -11,16 +11,18 @@
   overflow: auto;
   display: flex;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 80px;
+  padding-top: 17px;
+  padding-bottom: 50px;
 }
-.PigContainer {
+.DustContainer {
   display: flex;
   margin-top: 29px;
   flex-direction: column;
   gap: 15px;
 }
+
 .LevelContainer {
+  position: relative;
   display: flex;
   width: 335px;
   height: 100px;
@@ -29,15 +31,17 @@
   align-items: center;
   gap: 18px;
 }
-.PigImg {
-  margin-left: 26px;
+.DustImg {
+  margin-left: 16px;
 }
-.PigLevelContainer {
+.DustLevelContainer {
   display: flex;
+  position: absolute;
   flex-direction: column;
   gap: 6px;
+  right: 10px;
 }
-.PigText {
+.DustText {
   color: #2b2b2b;
   /* bd/18px */
   font-family: Pretendard;
