@@ -26,10 +26,7 @@ const MyChallengeRecord = ({
           </span>
         </div>
       </div>
-      <img
-        src={isSuccessed ? success : fail}
-        className={isSuccessed ? styles.success : styles.fail}
-      />
+      <img src={isSuccessed ? success : fail} />
     </div>
   );
 };

@@ -33,37 +33,56 @@ const dummyData = [
 
 const MyConsumption = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState(0);
+  const btnContent = ["1주", "2주", "1개월", "6개월", "1년"];
   let totalPrice = dummyData.reduce((acc, cur) => acc + cur.price, 0);
 
   return (
     <div className={styles.wrapper}>
+      {/*현재 진행중인 챌린지 */}
       <MyChallengeBar children="현재 진행중인 챌린지" />
+      {/*지금까지의 나의 소비는 ? */}
       <div className={styles.categoryConsWrapper}>
         <div className={styles.categoryConsTitle}>
-          <span>
-            지금까지의 나의 소비는 ?
-            <img
-              src={question}
-              alt="카테고리 설명을 볼 수 있는 아이콘"
-              onClick={() => setModalOpen(true)}
-            />
-          </span>
+          <span>지금까지의 나의 소비는 ?</span>
+          <img
+            src={question}
+            alt="카테고리 설명을 볼 수 있는 아이콘"
+            onClick={() => setModalOpen(true)}
+          />
         </div>
         {modalOpen && (
           <DescModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         )}
-        <p className={styles.totalPrice}>
-          총 <span>{totalPrice}</span>원
-        </p>
-        <div className={styles.categoryCons}>
-          {dummyData.map((item) => (
-            <div key={item.category} className={styles.category}>
-              <div className={styles.categoryTitle}>{item.category}</div>
-              <p className={styles.categoryPrice}>
-                <span>{item.price}</span> 원
-              </p>
-            </div>
-          ))}
+        <div className={styles.categoryConsContent}>
+          <div className={styles.categoryBtnWrapper}>
+            {btnContent.map((content, idx) => (
+              <button
+                key={content}
+                onClick={() => setIsClicked(idx)}
+                className={
+                  isClicked === idx ? styles.activeBtn : styles.inactiveBtn
+                }
+              >
+                {content}
+              </button>
+            ))}
+          </div>
+          <p className={styles.totalPrice}>
+            <span>총</span>
+            <span style={{ fontSize: "32px" }}>{totalPrice}</span>
+            <span>원</span>
+          </p>
+          <div className={styles.categoryCons}>
+            {dummyData.map((item) => (
+              <div key={item.category} className={styles.category}>
+                <div className={styles.categoryTitle}>{item.category}</div>
+                <p className={styles.categoryPrice}>
+                  <span style={{ fontSize: "18px" }}>{item.price}</span> 원
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
