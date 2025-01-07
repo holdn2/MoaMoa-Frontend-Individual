@@ -9,18 +9,19 @@
   align-items: center;
   gap: 19px;
 }
-.PigNameContainer {
+.DustNameContainer {
   display: flex;
   flex-direction: row;
-  gap: 37px;
+  gap: 30px;
   margin-top: 20px;
+  margin-left: -25px;
   align-items: center;
   height: 91px;
 }
-.PigImg {
+.DustImg {
   display: flex;
-  width: 101px;
-  height: 91px;
+  width: 106px;
+  height: 106px;
 }
 .NickNameContainer {
   display: flex;
