@@ -11,6 +11,7 @@ import Setting from "./pages/Setting/Setting";
 import Alarm from "./pages/Alarm/Alarm";
 import DecoProfile from "./pages/DecoProfile/DecoProfile";
 import Diagnosis from "./pages/Diagnosis/Diagnosis";
+import MyCoin from "./pages/MyCoin/MyCoin";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,13 +34,18 @@ function App() {
           path: "/callendar",
           element: <Callendar />,
         },
+
+        {
+          path: "/alarm",
+          element: <Alarm />,
+        },
         {
           path: "/level",
           element: <Level />,
         },
         {
-          path: "/alarm",
-          element: <Alarm />,
+          path: "/mycoin",
+          element: <MyCoin />,
         },
         {
           path: "/collect",
