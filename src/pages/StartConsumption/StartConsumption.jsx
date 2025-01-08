@@ -18,6 +18,7 @@ const StartConsumption = () => {
   const handleStartComsumption = () => {
     // 입력한 데이터 전송 로직 추가 예정
     navigate("/");
+    console.log(targetAmount);
   };
 
   return (
