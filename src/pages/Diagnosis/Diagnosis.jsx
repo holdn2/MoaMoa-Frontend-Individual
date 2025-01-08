@@ -14,8 +14,17 @@ const Diagnosis = () => {
   const [diagnosisStage, setDiagnosisStage] = useState(0);
   // 단계별 입력할 것이 있을 때 입력했는지 여부
   const [isInputState, setIsInputState] = useState(false);
+  // 단계마다 MoneyInput의 text 값을 reset하기 위한 것.
+  const [resetInput, setResetInput] = useState(0);
+  // MoneyInput의 text값을 reset해야하는 부분에 필요한 함수
+  const handleNextStep = () => {
+    setIsInputState(false);
+    setResetInput((prev) => prev + 1);
+    setDiagnosisStage((prev) => prev + 1);
+  };
 
-  const userName = "모아모아 030"; // 닉네임
+  // 닉네임
+  const userName = "모아모아 030";
   // 계산결과 과소비하고 있는지
   const [isOverconsumption, setIsOverconsumption] = useState(false);
   // user가 입력한 내용을 바탕으로 과소비 진단 시 필요한 값들
@@ -28,7 +37,7 @@ const Diagnosis = () => {
   const [averageConsumption, setAverageConsumption] = useState(0);
   const [goodConsumption, setGoodConsumption] = useState(0);
 
-  // 5단계에서 2초 후 6단계로 자동 전환
+  // 5단계에서 2초 후 6단계 혹은 7단계로 자동 전환
   useEffect(() => {
     if (diagnosisStage === 5) {
       const timer = setTimeout(() => {
@@ -133,15 +142,13 @@ const Diagnosis = () => {
                   isInputState={isInputState}
                   setIsInputState={setIsInputState}
                   setValue={setIncomeCost}
+                  reset={resetInput}
                 />
               </div>
             </div>
             <div
               className={styles.ButtonContainer}
-              onClick={() => {
-                setIsInputState(false);
-                setDiagnosisStage(2);
-              }}
+              onClick={handleNextStep}
               style={{ pointerEvents: isInputState ? "auto" : "none" }}
             >
               <PrimaryButton disabled={!isInputState}>다음</PrimaryButton>
@@ -170,15 +177,13 @@ const Diagnosis = () => {
                   isInputState={isInputState}
                   setIsInputState={setIsInputState}
                   setValue={setConsumeCost}
+                  reset={resetInput}
                 />
               </div>
             </div>
             <div
               className={styles.ButtonContainer}
-              onClick={() => {
-                setIsInputState(false);
-                setDiagnosisStage(3);
-              }}
+              onClick={handleNextStep}
               style={{ pointerEvents: isInputState ? "auto" : "none" }}
             >
               <PrimaryButton disabled={!isInputState}>다음</PrimaryButton>
@@ -207,13 +212,13 @@ const Diagnosis = () => {
                   isInputState={isInputState}
                   setIsInputState={setIsInputState}
                   setValue={setSavingCost}
+                  reset={resetInput}
                 />
               </div>
             </div>
             <div
               className={styles.ButtonContainer}
               onClick={() => {
-                setIsInputState(false);
                 setDiagnosisStage(4);
               }}
               style={{ pointerEvents: isInputState ? "auto" : "none" }}
@@ -353,7 +358,7 @@ const Diagnosis = () => {
             </div>
             <div
               className={styles.ButtonContainer}
-              onClick={() => navigate("/")}
+              onClick={() => navigate(-1)}
             >
               <PrimaryButton>확인</PrimaryButton>
             </div>
@@ -379,7 +384,7 @@ const Diagnosis = () => {
             </div>
             <div
               className={styles.ButtonContainer}
-              onClick={() => navigate("/")}
+              onClick={() => navigate(-1)}
             >
               <PrimaryButton>확인</PrimaryButton>
             </div>

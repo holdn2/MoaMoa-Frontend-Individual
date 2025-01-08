@@ -101,6 +101,7 @@ const InputConsumption = () => {
             className={styles.buttonWrapper}
             onClick={() => {
               navigate("/");
+              console.log(myConsumption);
             }}
             style={{ pointerEvents: isInputState ? "auto" : "none" }}
           >
