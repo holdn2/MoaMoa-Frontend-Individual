@@ -47,9 +47,9 @@ const SettingModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/PigSub/pigSad.svg"
-              alt="슬픈 돼지"
-              className={styles.SadPigImg}
+              src="../src/assets/CharacterImgs/dustSweat.svg"
+              alt="땀나는 먼지"
+              className={styles.SweatDustImg}
             />
             <div className={styles.UnsubscribeContent}>
               <span className={styles.ConfirmText}>정말 탈퇴하실 건가요?</span>
@@ -88,9 +88,9 @@ const SettingModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/PigSub/pigSad.svg"
-              alt="슬픈 돼지"
-              className={styles.SadPigImg}
+              src="../src/assets/CharacterImgs/dustSad.svg"
+              alt="슬픈 먼지"
+              className={styles.SadDustImg}
             />
             <div className={styles.UnsubChoiceContent}>
               <span className={styles.ConfirmText}>그동안 즐거웠어요 !</span>
@@ -112,9 +112,9 @@ const SettingModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/PigSub/pigSad.svg"
-              alt="슬픈 돼지"
-              className={styles.SadPigImg}
+              src="../src/assets/CharacterImgs/dustHappy.svg"
+              alt="행복한 먼지"
+              className={styles.HappyDustImg}
             />
             <div className={styles.UnsubChoiceContent}>
               <span className={styles.ConfirmText}>좋은 결정이예요!</span>

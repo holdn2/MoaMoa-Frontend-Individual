@@ -42,10 +42,20 @@
   gap: 14px;
   align-items: center;
 }
-.SadPigImg {
+.SweatDustImg {
   display: flex;
-  width: 115px;
-  height: 105px;
+  width: 132px;
+  height: 132px;
+}
+.SadDustImg {
+  display: flex;
+  width: 171px;
+  height: 171px;
+}
+.HappyDustImg {
+  display: flex;
+  width: 143px;
+  height: 155px;
 }
 .UnsubscribeContent {
   display: flex;
