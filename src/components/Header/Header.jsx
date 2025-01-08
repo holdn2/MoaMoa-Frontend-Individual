@@ -17,7 +17,7 @@ const Header = ({ pageName, diagnosisStage, setDiagnosisStage }) => {
             <button onClick={() => navigate("/level")}>
               <img src="../src/assets/Content/pig.svg" alt="돼지" />
             </button>
-            <button>
+            <button onClick={() => navigate("/mycoin")}>
               <img src="../src/assets/Content/coin3.svg" alt="동전" />
             </button>
           </div>

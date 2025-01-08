@@ -1,0 +1,151 @@
+.MyCoinPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f8f8f8;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 80px;
+  gap: 30px;
+}
+.MyInfoContainer {
+  display: flex;
+  flex-direction: column;
+  background: #f1f1f1;
+  width: 375px;
+  height: 253px;
+  gap: 10px;
+}
+.MyCoinContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.MyCoinText {
+  color: #454545;
+  /* md/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.ImgCoinText {
+  display: flex;
+  align-items: center;
+}
+.CoinImg {
+  width: 24px;
+  height: 24px;
+}
+.MyCoin {
+  color: #2b2b2b;
+  text-align: center;
+  /* bd/22px */
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 4px;
+}
+.EncourageContainer {
+  display: flex;
+  flex-direction: row;
+  width: 295px;
+  height: 113px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: #fff;
+  margin-left: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.EncourageTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.UserNameText {
+  color: #2b2b2b;
+  /* sb/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.EncourageText {
+  color: #454545;
+  /* sb/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.EarnedCoinContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+}
+.EarnedText {
+  color: #2b2b2b;
+  /* sb/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 4px;
+}
+.EarnHistoryContainer {
+  display: flex;
+  flex-direction: row;
+  width: 327px;
+  height: 38px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #fff;
+  justify-content: space-between;
+}
+.EarnContentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.EarnContent {
+  color: #121212;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.EarnDate {
+  color: #5e5e5e;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.EarnedCoin {
+  color: #00befc;
+  /* sb/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

@@ -114,7 +114,7 @@ const Level = () => {
             <div className={styles.DustLevelContainer}>
               <span className={styles.DustText}>Lv.6</span>
               <span className={styles.ToLevelUp}>
-                2000코인을 모으면
+                3000코인을 모으면
                 <br />
                 <span style={{ fontWeight: 700 }}>Lv.6</span>가 될 수 있어요!
               </span>
