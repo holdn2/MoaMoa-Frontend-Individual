@@ -12,6 +12,8 @@ import Alarm from "./pages/Alarm/Alarm";
 import DecoProfile from "./pages/DecoProfile/DecoProfile";
 import Diagnosis from "./pages/Diagnosis/Diagnosis";
 import MyCoin from "./pages/MyCoin/MyCoin";
+import Join from "./pages/Join/Join";
+import JoinProcess from "./pages/Join/JoinProcess";
 
 function App() {
   const router = createBrowserRouter([
@@ -66,6 +68,19 @@ function App() {
         {
           path: "/diagnosis",
           element: <Diagnosis />,
+        },
+      ],
+    },
+    {
+      path: "/join",
+      children: [
+        {
+          index: true,
+          element: <Join />,
+        },
+        {
+          path: "/join/joinprocess",
+          element: <JoinProcess />,
         },
       ],
     },
