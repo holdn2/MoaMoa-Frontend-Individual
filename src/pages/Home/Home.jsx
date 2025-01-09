@@ -36,7 +36,8 @@ const Home = () => {
     <div className={styles.HomeContainer}>
       <Header pageName={pageName} />
       <div className={styles.MainArea}>
-        {/* 나의 소비 입력하기 or 시작하기 */}
+        {/* 나의 소비 입력하기 or 시작하기 or 과소비 진단하러 가기
+        세가지 중 상태에 따라 어떤 것이 나올지 결정됨. */}
         {consumption ? <InputConsComponent /> : <StartConsComponent />}
         {/* 캘린더 */}
         <MiniCallendar />

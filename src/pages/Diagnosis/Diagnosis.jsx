@@ -73,7 +73,7 @@ const Diagnosis = () => {
         if (isOverconsumption) {
         } else {
         }
-      }, 1000); // 1초 후 실행
+      }, 2000); // 2초 후 실행
 
       return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 정리
     }
@@ -267,7 +267,7 @@ const Diagnosis = () => {
             <div className={styles.StartContentContainer}>
               <img
                 className={styles.StageImg}
-                src="../src/assets/StageExpression/forthStage.svg"
+                src="../src/assets/StageExpression/completeStage.svg"
                 alt="네 번째 단계"
               />
               <div className={styles.TextContainer}>
