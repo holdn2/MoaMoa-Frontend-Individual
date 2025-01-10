@@ -131,7 +131,7 @@ const Join = () => {
             fontWeight: "500",
             borderBottom: "1px solid #787878",
           }}
-          onClick={() => console.log("로그인 페이지로 이동")}
+          onClick={() => navigate("/login")}
         >
           로그인 하기
         </button>

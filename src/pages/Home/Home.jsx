@@ -10,12 +10,13 @@ import RecruitChallenge from "../../components/RecruitChallenge/RecruitChallenge
 import ProgressChallenge from "../../components/ProgressChallenge/ProgressChallenge";
 import AttendanceModal from "./AttendanceModal";
 import useModalStore from "../../store/useModalStore";
+import ToDiagnosisComponent from "../../components/ToDiagnosisComponent/ToDiagnosisComponent";
 
 const Home = () => {
   const pageName = "홈화면";
   // 여기다가 소비 시작했는지, 이미 시작했으면 정보 저장.
   // 이 전에 시작했는지 여부에 따라 보이는 화면이 달라짐
-  const [consumption, setConsumption] = useState(true);
+  const [consumption, setConsumption] = useState(0);
   // 참여중인 챌린지가 있을 경우 혹은 없을 경우
   const participatedChallenge = null;
   // 로그인 시 모달창 팝업.
@@ -32,13 +33,24 @@ const Home = () => {
     }
   }, [hasLogin, setHasLogin]);
 
+  const renderConsComponent = () => {
+    switch (consumption) {
+      case 0:
+        return <ToDiagnosisComponent />;
+      case 1:
+        return <StartConsComponent />;
+      case 2:
+        return <InputConsComponent />;
+    }
+  };
+
   return (
     <div className={styles.HomeContainer}>
       <Header pageName={pageName} />
       <div className={styles.MainArea}>
         {/* 나의 소비 입력하기 or 시작하기 or 과소비 진단하러 가기
         세가지 중 상태에 따라 어떤 것이 나올지 결정됨. */}
-        {consumption ? <InputConsComponent /> : <StartConsComponent />}
+        {renderConsComponent()}
         {/* 캘린더 */}
         <MiniCallendar />
         {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
