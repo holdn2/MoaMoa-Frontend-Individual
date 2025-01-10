@@ -1,0 +1,46 @@
+.DiagnosisContainer {
+  position: relative;
+  background-color: #c7f1ff;
+  width: 342px;
+  height: 225px;
+  border-radius: 12px;
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.TxtImgContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  height: 102px;
+  margin-top: 24px;
+}
+
+.TextContainer {
+  display: flex;
+  width: 208px;
+  height: 87px;
+  padding-left: 13px;
+  color: #3f3f3f;
+  /* bd/22px */
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.ImgContainer {
+  display: flex;
+  width: 109px;
+  height: 102px;
+}
+
+.ButtonContainer {
+  display: flex;
+  margin-top: 29px;
+  margin-bottom: 21px;
+}

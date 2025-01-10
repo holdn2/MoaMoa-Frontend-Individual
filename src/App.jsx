@@ -14,6 +14,7 @@ import Diagnosis from "./pages/Diagnosis/Diagnosis";
 import MyCoin from "./pages/MyCoin/MyCoin";
 import Join from "./pages/Join/Join";
 import JoinProcess from "./pages/Join/JoinProcess";
+import Login from "./pages/Login/Login";
 
 function App() {
   const router = createBrowserRouter([
@@ -83,6 +84,10 @@ function App() {
           element: <JoinProcess />,
         },
       ],
+    },
+    {
+      path: "/login",
+      element: <Login />,
     },
   ]);
   return <RouterProvider router={router} />;
