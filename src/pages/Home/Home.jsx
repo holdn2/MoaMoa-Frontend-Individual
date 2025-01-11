@@ -11,6 +11,7 @@ import ProgressChallenge from "../../components/ProgressChallenge/ProgressChalle
 import AttendanceModal from "./AttendanceModal";
 import useModalStore from "../../store/useModalStore";
 import ToDiagnosisComponent from "../../components/ToDiagnosisComponent/ToDiagnosisComponent";
+import ToNextLevel from "../../components/ToNextLevel/ToNextLevel";
 
 const Home = () => {
   const pageName = "홈화면";
@@ -53,6 +54,8 @@ const Home = () => {
         {renderConsComponent()}
         {/* 캘린더 */}
         <MiniCallendar />
+        {/* 다음 레벨까지 */}
+        <ToNextLevel />
         {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
         {participatedChallenge === null ? (
           <RecruitChallenge />
