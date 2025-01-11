@@ -10,6 +10,29 @@
   background-color: #f8f8f8;
 }
 
+.chartWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 54px;
+  margin-bottom: 43px;
+}
+.chartWrapper span {
+  color: var(--Grey-800, #2b2b2b);
+  padding: 10px;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.chart {
+  display: flex;
+  align-items: center;
+  width: inherit;
+  height: 224px;
+  border-radius: 12px;
+  background: var(--Grey-70, #f1f1f1);
+}
 .categoryConsWrapper {
   display: flex;
   flex-direction: column;

@@ -3,6 +3,7 @@ import styles from "./MyConsumption.module.css";
 import question from "../../assets/Content/question.svg";
 import DescModal from "../InputConsumption/DescModal";
 import MyChallengeBar from "./MyChallengeBar";
+import MyConsumptionChart from "./MyConsumptionChart";
 
 const dummyData = [
   {
@@ -31,6 +32,29 @@ const dummyData = [
   },
 ];
 
+const chartData = [
+  {
+    name: "11-1",
+    target: 150000,
+    cons: 130000,
+  },
+  {
+    name: "11-2",
+    target: 70000,
+    cons: 60000,
+  },
+  {
+    name: "11-3",
+    target: 100000,
+    cons: 80000,
+  },
+  {
+    name: "11-4",
+    target: 50000,
+    cons: 55000,
+  },
+];
+
 const MyConsumption = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(0);
@@ -41,6 +65,12 @@ const MyConsumption = () => {
     <div className={styles.wrapper}>
       {/*현재 진행중인 챌린지 */}
       <MyChallengeBar children="현재 진행중인 챌린지" />
+      <div className={styles.chartWrapper}>
+        <span>나의 소비 변화는 ?</span>
+        <div className={styles.chart}>
+          <MyConsumptionChart data={chartData} />
+        </div>
+      </div>
       {/*지금까지의 나의 소비는 ? */}
       <div className={styles.categoryConsWrapper}>
         <div className={styles.categoryConsTitle}>
