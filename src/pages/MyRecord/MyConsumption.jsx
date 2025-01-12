@@ -4,6 +4,8 @@ import question from "../../assets/Content/question.svg";
 import DescModal from "../InputConsumption/DescModal";
 import MyChallengeBar from "./MyChallengeBar";
 import MyConsumptionChart from "./MyConsumptionChart";
+import descChat from "../../assets/Icon/descChat.svg";
+import line from "../../assets/Icon/line.svg";
 
 const dummyData = [
   {
@@ -66,7 +68,20 @@ const MyConsumption = () => {
       {/*현재 진행중인 챌린지 */}
       <MyChallengeBar children="현재 진행중인 챌린지" />
       <div className={styles.chartWrapper}>
-        <span>나의 소비 변화는 ?</span>
+        <div className={styles.chartTitleWrapper}>
+          <span>나의 소비 변화는 ?</span>
+          <div className={styles.chartDescWrapper}>
+            <img src={descChat} />
+            <div className={styles.chartDesc}>
+              <p>
+                <img src={line} />: 실제 소비 금액
+              </p>
+              <p>
+                <div className={styles.descIcon}></div> : 소비 목표 금액
+              </p>
+            </div>
+          </div>
+        </div>
         <div className={styles.chart}>
           <MyConsumptionChart data={chartData} />
         </div>
