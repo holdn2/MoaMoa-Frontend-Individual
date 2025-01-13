@@ -68,7 +68,7 @@
   font-weight: 500;
   line-height: normal;
 }
-.DisabledNickname {
+.CheckInputState {
   color: #ff5b5b;
   /* md/14px */
   font-family: Pretendard;

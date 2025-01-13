@@ -68,14 +68,14 @@ const Join = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "126px",
+              gap: "100px",
               alignItems: "center",
             }}
           >
             <img
               src="../src/assets/CharacterImgs/dustSunglassCoin.svg"
               alt="시작 이미지"
-              style={{ width: "222px", height: "198px", marginTop: "87px" }}
+              style={{ width: "270px", height: "230px", marginTop: "60px" }}
             />
             <div onClick={() => navigate("/join/joinprocess")}>
               <PrimaryButton>간편하기 시작하기</PrimaryButton>

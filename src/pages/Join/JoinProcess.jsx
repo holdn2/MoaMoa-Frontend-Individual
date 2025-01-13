@@ -4,6 +4,11 @@ import PrimaryButton from "../../components/Button/PrimaryButton";
 import SecondaryButton from "../../components/Button/SecondaryButton";
 import { useNavigate } from "react-router-dom";
 
+// input에 value를 명시해주면 다음으로 넘어가도 안남아있음.
+
+// 인증코드 예시 데이터
+const testAuthCode = "ASDF1234";
+
 const JoinProcess = () => {
   const navigate = useNavigate();
   const [joinStep, setJoinStep] = useState(1);
@@ -13,6 +18,70 @@ const JoinProcess = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [checkPwState, setPwState] = useState(false);
   const [visiblePw, setVisiblePw] = useState(false);
+  const [email, setEmail] = useState("");
+  // 마지막 이메일 인증에서 버튼상태 등을 위한 것.
+  const [emailJoinState, setEmailJoinState] = useState(0);
+  // 인증코드 관련
+  const [currentAuthCode, setCurrentAuthCode] = useState("");
+  const [authCodeState, setAuthCodeState] = useState(false);
+
+  // 이메일 인증 시 상태에 따라 다른 버튼 케이스
+  const renderEmailCheckButton = () => {
+    switch (emailJoinState) {
+      // 초기 상태
+      case 0:
+        return (
+          <div
+            className={styles.ButtonContainer}
+            style={{
+              pointerEvents: "none",
+            }}
+          >
+            <PrimaryButton disabled={true}>인증코드 받기</PrimaryButton>
+          </div>
+        );
+      case 1:
+        return (
+          <div
+            className={styles.ButtonContainer}
+            onClick={() => setEmailJoinState(2)}
+            // 추가적으로 인증코드 받는 로직 필요함.
+          >
+            <PrimaryButton>인증코드 받기</PrimaryButton>
+          </div>
+        );
+      case 2:
+        return (
+          <>
+            {authCodeState ? (
+              <div
+                className={styles.ButtonContainer}
+                onClick={() => {
+                  setJoinStep(4);
+                  console.log(
+                    "닉네임 : ",
+                    nickname,
+                    " 비밀번호 : ",
+                    password,
+                    " 이메일 : ",
+                    email
+                  );
+                }}
+              >
+                <PrimaryButton>가입하기</PrimaryButton>
+              </div>
+            ) : (
+              <div
+                className={styles.ButtonContainer}
+                onClick={() => {}} // 추가적으로 인증코드 받는 로직 필요함.
+              >
+                <PrimaryButton>인증코드 재전송</PrimaryButton>
+              </div>
+            )}
+          </>
+        );
+    }
+  };
 
   // 이미 존재하는 닉네임인지 some을 이용해서 확인.
   const checkNickname = (e) => {
@@ -40,11 +109,11 @@ const JoinProcess = () => {
     }
   };
 
-  // 3단계에서 2초 후 4단계로 자동 전환
+  // 4단계에서 2초 후 5단계로 자동 전환
   useEffect(() => {
-    if (joinStep === 3) {
+    if (joinStep === 4) {
       const timer = setTimeout(() => {
-        setJoinStep(4);
+        setJoinStep(5);
       }, 2000);
       return () => clearTimeout(timer);
     }
@@ -80,7 +149,7 @@ const JoinProcess = () => {
                 onChange={checkNickname}
               />
               {invalidNickname && (
-                <span className={styles.DisabledNickname}>
+                <span className={styles.CheckInputState}>
                   이미 사용중인 닉네임이에요
                 </span>
               )}
@@ -131,6 +200,7 @@ const JoinProcess = () => {
               />
               {visiblePw ? (
                 <input
+                  value={password}
                   className={styles.InputContainer}
                   type="text"
                   onChange={(e) => {
@@ -147,6 +217,7 @@ const JoinProcess = () => {
                 />
               ) : (
                 <input
+                  value={password}
                   className={styles.InputContainer}
                   type="password"
                   onChange={(e) => {
@@ -167,13 +238,14 @@ const JoinProcess = () => {
                 비밀번호 재확인
               </span>
               <input
+                value={passwordCheck}
                 className={styles.InputContainer}
                 type="password"
                 onChange={checkPassword}
                 placeholder="비밀번호 재확인"
               />
               {!checkPwState && passwordCheck && (
-                <span className={styles.DisabledNickname}>
+                <span className={styles.CheckInputState}>
                   일치하지 않는 비밀번호에요
                 </span>
               )}
@@ -215,6 +287,97 @@ const JoinProcess = () => {
                     marginBottom: "23px",
                   }}
                 />
+                <span className={styles.BoldInfo}>
+                  이메일을
+                  <br />
+                  입력해 주세요
+                </span>
+                <span className={styles.NormalInfo}>
+                  이메일 인증으로 더 안전하게 이용할 수 있어요!
+                </span>
+              </div>
+            </div>
+            <div className={styles.InputWrapper}>
+              <span className={styles.InputTitle}>이메일</span>
+              {authCodeState ? (
+                <img
+                  className={styles.VisiblePw}
+                  src="../src/assets/Content/emailOK.svg"
+                  alt="이메일 인증 여부"
+                />
+              ) : (
+                <img
+                  className={styles.VisiblePw}
+                  src="../src/assets/Content/emailCheck.svg"
+                  alt="이메일 인증 여부"
+                />
+              )}
+
+              <input
+                value={email}
+                className={styles.InputContainer}
+                type="text"
+                onChange={(e) => {
+                  const newEmail = e.target.value;
+                  setEmail(newEmail);
+                  if (newEmail == "") {
+                    setEmailJoinState(0);
+                  } else {
+                    setEmailJoinState(1);
+                  }
+                }}
+                placeholder="abcd1234@example.com"
+              />
+              <span className={styles.InputTitle} style={{ marginTop: "12px" }}>
+                인증코드
+              </span>
+              <input
+                value={currentAuthCode}
+                className={styles.InputContainer}
+                type="text"
+                onChange={(e) => {
+                  const newAuthCode = e.target.value;
+                  setCurrentAuthCode(newAuthCode);
+                  if (newAuthCode === testAuthCode) {
+                    setAuthCodeState(true);
+                  } else {
+                    setAuthCodeState(false);
+                  }
+                }}
+              />
+              {/* 빈 문자열일 때 아무것도 안뜨게 하기 */}
+              {currentAuthCode ? (
+                currentAuthCode === testAuthCode ? (
+                  <span
+                    className={styles.CheckInputState}
+                    style={{ color: "#00A413" }}
+                  >
+                    일치하는 인증번호에요
+                  </span>
+                ) : (
+                  <span className={styles.CheckInputState}>
+                    일치하지 않는 인증번호에요
+                  </span>
+                )
+              ) : null}
+            </div>
+            {renderEmailCheckButton()}
+          </>
+        );
+      case 4:
+        return (
+          <>
+            <div className={styles.StageInfoWrapper}>
+              <div className={styles.InfoTextContainer}>
+                <img
+                  src="../src/assets/ThreeStages/completeStage.svg"
+                  alt="4번째 단계"
+                  style={{
+                    width: "130px",
+                    height: "20px",
+                    marginBottom: "23px",
+                  }}
+                />
                 <span className={styles.BoldInfo}>가입 완료!</span>
                 <span className={styles.WelcomeNormal}>
                   <span style={{ color: "#454545", fontSize: "22px" }}>
@@ -231,20 +394,14 @@ const JoinProcess = () => {
             </div>
           </>
         );
-      case 4:
+      case 5:
         return (
           <>
             <div className={styles.StageInfoWrapper}>
-              <div className={styles.InfoTextContainer}>
-                <img
-                  src="../src/assets/ThreeStages/completeStage.svg"
-                  alt="완료 단계"
-                  style={{
-                    width: "130px",
-                    height: "20px",
-                    marginBottom: "23px",
-                  }}
-                />
+              <div
+                className={styles.InfoTextContainer}
+                style={{ marginTop: "30px" }}
+              >
                 <span className={styles.BoldInfo}>
                   {nickname}님,
                   <br />
@@ -259,7 +416,7 @@ const JoinProcess = () => {
               <img
                 src="../src/assets/CharacterImgs/dustCrown.svg"
                 alt="환영하는 먼지"
-                style={{ width: "210px", height: "227px", marginTop: "30px" }}
+                style={{ width: "210px", height: "227px", marginTop: "40px" }}
               />
               <div
                 onClick={() => navigate("/diagnosis")}
