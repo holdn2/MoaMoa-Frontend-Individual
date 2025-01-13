@@ -17,7 +17,7 @@ const Home = () => {
   const pageName = "홈화면";
   // 여기다가 소비 시작했는지, 이미 시작했으면 정보 저장.
   // 이 전에 시작했는지 여부에 따라 보이는 화면이 달라짐
-  const [consumption, setConsumption] = useState(0);
+  const [consumption, setConsumption] = useState(1);
   // 참여중인 챌린지가 있을 경우 혹은 없을 경우
   const participatedChallenge = null;
   // 로그인 시 모달창 팝업.
