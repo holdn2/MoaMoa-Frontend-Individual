@@ -1,0 +1,50 @@
+.CollectPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.navTab {
+  display: flex;
+  width: inherit;
+}
+.navTab .activeTab {
+  display: flex;
+  flex: 1;
+  padding: 13px 57px;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 6px solid #5e5e5e;
+  background: #fff;
+  color: #454545;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.navTab .inactiveTab {
+  display: flex;
+  flex: 1;
+  padding: 13px 57px;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #454545;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f8f8f8;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 80px;
+}

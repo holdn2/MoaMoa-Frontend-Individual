@@ -6,27 +6,28 @@ import MyChallenge from "./MyChallenge";
 
 const MyRecord = () => {
   const pageName = "나의 기록";
-  const [isClicked, setIsClicked] = useState(0);
+  // 탭바 boolean으로 수정
+  const [isChallenge, setIsChallenge] = useState(false);
 
   return (
     <div className={styles.MyRecordePageContainer}>
       <Header pageName={pageName} />
       <nav className={styles.navTab}>
         <button
-          onClick={() => setIsClicked(0)}
-          className={isClicked === 0 ? styles.activeTab : styles.inactiveTab}
+          onClick={() => setIsChallenge(false)}
+          className={!isChallenge ? styles.activeTab : styles.inactiveTab}
         >
           나의 소비
         </button>
         <button
-          onClick={() => setIsClicked(1)}
-          className={isClicked === 1 ? styles.activeTab : styles.inactiveTab}
+          onClick={() => setIsChallenge(true)}
+          className={isChallenge ? styles.activeTab : styles.inactiveTab}
         >
           챌린지
         </button>
       </nav>
       <div className={styles.wrapper}>
-        {isClicked === 0 ? <MyConsumption /> : <MyChallenge />}
+        {!isChallenge ? <MyConsumption /> : <MyChallenge />}
       </div>
     </div>
   );
