@@ -21,7 +21,7 @@
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
 }
 .InputWrapper {
@@ -54,6 +54,29 @@
   font-weight: 500;
   line-height: normal;
 }
+.InputContainer::placeholder {
+  color: #bebebe;
+  text-align: start;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.EmailInputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.EmailCheckImg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 62px;
+  right: 15px;
+}
 .VisiblePw {
   position: absolute;
   width: 20px;
@@ -81,7 +104,7 @@
 .LoginProcessTextContainer {
   display: flex;
   flex-direction: column;
-  width: 295px;
+  width: 335px;
   gap: 24px;
   margin-top: 157px;
 }
