@@ -8,6 +8,7 @@ import ProfileToPageComponent from "../../components/ProfileToPageComponent/Prof
 
 const MyPage = () => {
   const pageName = "내 프로필";
+
   return (
     <div className={styles.MyPageContainer}>
       <Header pageName={pageName} />

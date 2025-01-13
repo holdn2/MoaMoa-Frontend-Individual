@@ -2,6 +2,9 @@
 import styles from "./InputConsComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import ToNextLevel from "../ToNextLevel/ToNextLevel";
+import ProgressCircle from "../ProgressCircle/ProgressCircle";
+
 
 const InputConsComponent = () => {
   const navigate = useNavigate();
@@ -27,15 +30,13 @@ const InputConsComponent = () => {
       </div>
       <div className={styles.InputConsContainer}>
         <div className={styles.CurrentConsContainer}>
-          <div className={styles.ProgressCircleContainer}>
-            <img
-              src="../src/assets/ProgressBar/progressCircle.svg"
-              alt="현재 사용 소비 금액 비율"
-              className={styles.ProgressCircle}
-            />
-            <span className={styles.ProgressPercent}>{progressPercent}%</span>
-          </div>
-
+          <ProgressCircle
+            progressPercent={progressPercent}
+            width="128px"
+            height="117px"
+            fontSize="22px"
+            fontWeight="500"
+          />
           <div className={styles.AllCostContainer}>
             <div className={styles.CostContainer}>
               <span className={styles.CostText}>현재 남은 소비 금액</span>
