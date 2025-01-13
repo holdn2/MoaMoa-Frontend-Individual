@@ -9,7 +9,16 @@ import Callendar from "./pages/Callendar/Callendar";
 import Level from "./pages/Level/Level";
 import Setting from "./pages/Setting/Setting";
 import Alarm from "./pages/Alarm/Alarm";
+
 import MyRecord from "./pages/MyRecord/MyRecord";
+
+import DecoProfile from "./pages/DecoProfile/DecoProfile";
+import Diagnosis from "./pages/Diagnosis/Diagnosis";
+import MyCoin from "./pages/MyCoin/MyCoin";
+import Join from "./pages/Join/Join";
+import JoinProcess from "./pages/Join/JoinProcess";
+import Login from "./pages/Login/Login";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -32,13 +41,18 @@ function App() {
           path: "/callendar",
           element: <Callendar />,
         },
+
+        {
+          path: "/alarm",
+          element: <Alarm />,
+        },
         {
           path: "/level",
           element: <Level />,
         },
         {
-          path: "/alarm",
-          element: <Alarm />,
+          path: "/mycoin",
+          element: <MyCoin />,
         },
         {
           path: "/collect",
@@ -56,7 +70,32 @@ function App() {
           path: "/setting",
           element: <Setting />,
         },
+        {
+          path: "/decoprofile",
+          element: <DecoProfile />,
+        },
+        {
+          path: "/diagnosis",
+          element: <Diagnosis />,
+        },
       ],
+    },
+    {
+      path: "/join",
+      children: [
+        {
+          index: true,
+          element: <Join />,
+        },
+        {
+          path: "/join/joinprocess",
+          element: <JoinProcess />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: <Login />,
     },
   ]);
   return <RouterProvider router={router} />;

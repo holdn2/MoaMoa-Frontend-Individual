@@ -1,0 +1,126 @@
+.WelcomeTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 310px;
+  gap: 32px;
+  margin-top: 80px;
+}
+.WelcomeText {
+  color: #2b2b2b;
+  /* bd/28px */
+  font-family: Pretendard;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.NormalText {
+  color: #5e5e5e;
+  /* sb/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.InputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.InputTitle {
+  color: #454545;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.InputContainer {
+  width: 335px;
+  height: 60px;
+  border-radius: 16px;
+  background: #f1f1f1;
+  text-align: start;
+
+  color: #919191;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.VisiblePw {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 46px;
+  right: 15px;
+}
+.ToFindPwContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 150px;
+  align-items: center;
+}
+.ToFindPw {
+  color: #787878;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-bottom: 1px solid #787878;
+}
+.LoginProcessTextContainer {
+  display: flex;
+  flex-direction: column;
+  width: 295px;
+  gap: 24px;
+  margin-top: 157px;
+}
+.LoginProcessText {
+  color: #454545;
+  /* eb/32px */
+  font-family: Pretendard;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.ShowPwContainer {
+  display: flex;
+  width: 319px;
+  height: 60px;
+  border-radius: 16px;
+  background: #f1f1f1;
+  align-items: center;
+  padding-left: 16px;
+
+  color: #2b2b2b;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.WelcomeUserText {
+  color: #5e5e5e;
+  /* bd/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.ButtonContainer {
+  position: absolute;
+  bottom: 32px;
+}

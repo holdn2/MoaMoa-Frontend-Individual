@@ -74,22 +74,22 @@ const Setting = () => {
           </div>
         </div>
         <div className={styles.ButtonContainer}>
-          <button
+          <div
             onClick={() => {
               setModalState(1);
               setIsModalOpen(true);
             }}
           >
             <PrimaryButton>로그아웃</PrimaryButton>
-          </button>
-          <button
+          </div>
+          <div
             onClick={() => {
               setModalState(2);
               setIsModalOpen(true);
             }}
           >
             <SecondaryButton>회원 탈퇴</SecondaryButton>
-          </button>
+          </div>
         </div>
       </div>
 

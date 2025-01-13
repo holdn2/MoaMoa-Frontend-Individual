@@ -1,0 +1,109 @@
+.StageInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+  align-items: center;
+}
+.InfoTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 315px;
+}
+.BoldInfo {
+  color: #454545;
+  /* eb/32px */
+  font-family: Pretendard;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.NormalInfo {
+  color: #5e5e5e;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.InputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 59px;
+}
+.InputTitle {
+  color: #454545;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.InputContainer {
+  width: 335px;
+  height: 60px;
+  border-radius: 16px;
+  background: #f1f1f1;
+  text-align: start;
+  color: #2b2b2b;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.InputContainer::placeholder {
+  color: #919191;
+  /* md/16px */
+  text-align: start;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.DisabledNickname {
+  color: #ff5b5b;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.VisiblePw {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 46px;
+  right: 15px;
+}
+.WelcomeBold {
+  color: #454545;
+  /* eb/32px */
+  font-family: Pretendard;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.WelcomeNormal {
+  color: #5e5e5e;
+  /* bd/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.ButtonContainer {
+  position: absolute;
+  bottom: 32px;
+}

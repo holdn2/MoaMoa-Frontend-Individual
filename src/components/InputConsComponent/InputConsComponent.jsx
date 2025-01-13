@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import ToNextLevel from "../ToNextLevel/ToNextLevel";
 import ProgressCircle from "../ProgressCircle/ProgressCircle";
 
+
 const InputConsComponent = () => {
   const navigate = useNavigate();
 
-  const userName = "찬영";
+  const userName = "모아모아짱";
   const stateMsg = "거의 다 왔어요!";
   const restCost = 30000;
   const totalCost = 270000;
@@ -17,11 +18,15 @@ const InputConsComponent = () => {
     <div className={styles.InputContainer}>
       <div className={styles.TxtImgContainer}>
         <span className={styles.TextContainer}>
-          {userName}님
+          <span className={styles.UserName}>{userName} </span>님,
           <br />
           {stateMsg}
         </span>
-        <img src="../src/assets/PigSub/pigHappy.svg" alt="행복한돼지" />
+        <img
+          className={styles.ImgContainer}
+          src="../src/assets/CharacterImgs/dustCrown.svg"
+          alt="왕관 먼지"
+        />
       </div>
       <div className={styles.InputConsContainer}>
         <div className={styles.CurrentConsContainer}>
@@ -50,7 +55,6 @@ const InputConsComponent = () => {
           <PrimaryButton size="sp">나의 소비 입력하기</PrimaryButton>
         </div>
       </div>
-      <ToNextLevel />
     </div>
   );
 };

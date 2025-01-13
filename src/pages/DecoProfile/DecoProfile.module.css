@@ -1,0 +1,94 @@
+.DecoPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.OutlineContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 41px;
+  gap: 17px;
+  justify-content: flex-start;
+}
+.OutlineTitle {
+  color: #2b2b2b;
+  /* bd/20px */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 10px;
+}
+.OutlineSectionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.OutlineSectionText {
+  color: #454545;
+  /* bd/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 10px;
+}
+.OutlinesUserHaveContainer {
+  display: flex;
+  width: 335px;
+  height: 155px;
+  border-radius: 22px;
+  background: #f1f1f1;
+  overflow: auto;
+  flex-direction: row;
+  overflow: auto;
+  align-items: center;
+}
+.EachOutlineContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 9px;
+}
+
+.OutlinesPurchaseContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3열로 설정 */
+  grid-auto-rows: 160px; /* 행 높이 고정. 행이 2개가 되어도 위로 정렬 */
+  column-gap: -14px;
+  row-gap: 11px;
+  width: 335px;
+  height: 503px;
+  border-radius: 22px;
+  background: #f1f1f1;
+  align-items: start;
+  overflow: auto;
+}
+.EachOutlinesPurchaseContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: -20px;
+  height: 160px;
+}
+.EachOutlinesPurchaseContainer:nth-child(3n) {
+  margin-right: 0;
+}
+.PurchaseButton {
+  margin-left: 20px;
+  margin-bottom: 19px;
+  padding-top: 19px;
+}

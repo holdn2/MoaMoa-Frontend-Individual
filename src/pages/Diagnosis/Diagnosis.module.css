@@ -1,0 +1,147 @@
+.DiagnosisPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f8f8f8;
+  overflow: auto;
+  display: flex;
+  padding-bottom: 80px;
+}
+.StageImg {
+  position: absolute;
+  top: 90px;
+  left: 40px;
+}
+.TimeCircle {
+  width: 92px;
+  height: 92px;
+  margin-left: 101px;
+  margin-top: 120px;
+}
+.StartContentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  justify-content: flex-start;
+  margin-top: 113px;
+  margin-left: 40px;
+}
+.TextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: flex-start;
+}
+.TextBold {
+  color: #454545;
+  /* eb/32px */
+  font-family: Pretendard;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.TextContent {
+  color: #5e5e5e;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.DustImg {
+  width: 219px;
+  height: 219px;
+  margin-top: 5px;
+  margin-left: 53px;
+}
+.InputWrapper {
+  position: absolute;
+  bottom: 360px;
+  left: 20px;
+}
+.ButtonContainer {
+  position: absolute;
+  bottom: 32px;
+  left: 20px;
+}
+.ButtonWrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  top: 308px;
+  left: 59px;
+}
+
+.ResultContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ResultTitle {
+  color: #2b2b2b;
+  text-align: center;
+  /* eb/32px */
+  font-family: Pretendard;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  margin-top: 83px;
+  margin-bottom: 55px;
+}
+.ResultText {
+  color: #454545;
+  /* bd/24px */
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 40px;
+}
+.AverageContainer {
+  display: flex;
+  position: relative;
+  width: 335px;
+  height: 60px;
+  border-radius: 16px;
+  background: #f1f1f1;
+  margin-top: 150px;
+  margin-left: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.CostContainer {
+  display: flex;
+  color: #787878;
+  text-align: center;
+  /* bd/24px */
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-right: 10px;
+}
+.WonText {
+  position: absolute;
+  color: #787878;
+  text-align: center;
+  /* bd/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  top: 18px;
+  right: 50px;
+}

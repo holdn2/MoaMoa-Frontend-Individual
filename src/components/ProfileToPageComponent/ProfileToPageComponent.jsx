@@ -26,7 +26,7 @@ const ProfileToPageComponent = ({ dstName }) => {
       ) : (
         <button
           className={styles.ProfileToPageComponentContainer}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/diagnosis")}
         >
           <img
             src="../src/assets/Content/checkBold.svg"

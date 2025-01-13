@@ -6,10 +6,10 @@ import NicknameChangeModal from "../NicknameChangeModal/NicknameChangeModal";
 
 const MyProfileComponent = () => {
   const navigate = useNavigate();
-  const pigImg = "../src/assets/Pig/dirtpig.svg";
+  const dustImg = "../src/assets/DustLevel/Lv0.svg";
   const currentCoin = 100;
   const necessaryCoin = 200;
-  const userLv = "흙돼지";
+  const userLv = "Lv.0";
   const userJoinTime = 3;
   const userCoinCnt = 55;
 
@@ -22,8 +22,8 @@ const MyProfileComponent = () => {
 
   return (
     <div className={styles.MyProfileContainer}>
-      <div className={styles.PigNameContainer}>
-        <img src={pigImg} alt="흙돼지" className={styles.PigImg} />
+      <div className={styles.DustNameContainer}>
+        <img src={dustImg} alt="흙돼지" className={styles.DustImg} />
         <button className={styles.NicknameContainer} onClick={openModal}>
           <div className={styles.ForFixContainer}>
             <span className={styles.FixText}>내 닉네임</span>
@@ -58,14 +58,14 @@ const MyProfileComponent = () => {
           <span className={styles.UserInfoContent}>{userCoinCnt}</span>
         </div>
       </div>
-      <button onClick={() => navigate(-1)}>
+      <div onClick={() => navigate("/decoprofile")}>
         <PrimaryButton size="decoProfile">프로필 꾸미기</PrimaryButton>
-      </button>
+      </div>
 
       {isModalOpen && (
         <NicknameChangeModal
           userName={userName}
-          pigImg={pigImg}
+          dustImg={dustImg}
           onClose={closeModal}
           setUserName={setUserName}
         />

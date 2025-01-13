@@ -15,17 +15,17 @@ const StartConsComponent = () => {
           돈을 모아봐요 !
         </span>
         <img
-          src="../src/assets/PigSub/pigHappy.svg"
-          alt="행복한돼지"
+          src="../src/assets/CharacterImgs/dustCrown.svg"
+          alt="왕관 먼지"
           className={styles.ImgContainer}
         />
       </div>
-      <button
+      <div
         className={styles.ButtonContainer}
         onClick={() => navigate("/startconsumption")}
       >
-        <PrimaryButton size="sp">나의 소비 시작하기</PrimaryButton>
-      </button>
+        <PrimaryButton size="sp">소비기록 시작하기</PrimaryButton>
+      </div>
     </div>
   );
 };

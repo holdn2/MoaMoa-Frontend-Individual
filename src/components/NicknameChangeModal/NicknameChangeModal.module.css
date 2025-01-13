@@ -19,21 +19,20 @@
   background: #f1f1f1;
   align-items: center;
 }
-.ModalPigImg {
-  margin-top: 41px;
-  width: 147px;
-  height: 133px;
+.ModalDustImg {
+  margin-top: 20px;
+  width: 152px;
+  height: 152px;
 }
 .InputNewNickname {
-  margin-top: 25px;
-  margin-bottom: 21px;
+  margin-bottom: 25px;
   width: 223px;
   height: 50px;
   border-radius: 10px;
   background: #fff;
 }
 /* 닉네임 변경 확인 모달 */
-.ConfirmModalPigImg {
+.ConfirmModalDustImg {
   margin-top: 26.5px;
   width: 150px;
   height: 136px;
@@ -71,10 +70,10 @@
   display: flex;
   gap: 12px;
 }
-.ChangedModalPigImg {
-  margin-top: 42px;
-  width: 150px;
-  height: 136px;
+.ChangedModalDustImg {
+  margin-top: 20px;
+  width: 152px;
+  height: 152px;
 }
 .disabledNicknameContainer {
   display: flex;
@@ -84,7 +83,7 @@
   height: 45.5px;
   border-radius: 10px;
   background: #fff;
-  margin-top: 17px;
+  margin-top: 9px;
 }
 .disabledNickname {
   color: #ff3b30;
@@ -97,15 +96,16 @@
   line-height: normal;
 }
 .disabledText {
-  margin-top: 17px;
   color: #787878;
   text-align: center;
-  /* sb/18px */
+  /* sb/14px */
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin-top: 8px;
+  margin-bottom: 16px;
 }
 /* 입력창 관련 스타일링 */
 input {
