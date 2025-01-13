@@ -17,8 +17,8 @@
     "react-router-dom": "^7.1.0",
     "recharts": "^2.15.0",
 
-    "styled-components": "^6.1.13"
     "styled-components": "^6.1.13",
+
     "zustand": "^5.0.2"
 
   },

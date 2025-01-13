@@ -9,7 +9,7 @@ const MyRecord = () => {
   const [isClicked, setIsClicked] = useState(0);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.MyRecordePageContainer}>
       <Header pageName={pageName} />
       <nav className={styles.navTab}>
         <button
@@ -25,7 +25,9 @@ const MyRecord = () => {
           챌린지
         </button>
       </nav>
-      {isClicked === 0 ? <MyConsumption /> : <MyChallenge />}
+      <div className={styles.wrapper}>
+        {isClicked === 0 ? <MyConsumption /> : <MyChallenge />}
+      </div>
     </div>
   );
 };
