@@ -13,6 +13,7 @@ const Collect = () => {
   return (
     <div className={styles.CollectPageContainer}>
       <Header pageName={pageName} />
+
       <nav className={styles.navTab}>
         <button
           onClick={() => setIsChatting(false)}
@@ -28,9 +29,9 @@ const Collect = () => {
         </button>
       </nav>
       <div className={styles.MainArea}>
-        {!isChatting ? <AboutChallenge /> : <Chatting />}
+        {isChatting ? <Chatting /> : <AboutChallenge />}
       </div>
-      <BottomBar pageName={pageName} />
+      {isChatting ? <></> : <BottomBar pageName={pageName} />}
     </div>
   );
 };

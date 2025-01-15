@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Collect from "./pages/Collect/Collect";
@@ -18,7 +17,9 @@ import MyCoin from "./pages/MyCoin/MyCoin";
 import Join from "./pages/Join/Join";
 import JoinProcess from "./pages/Join/JoinProcess";
 import Login from "./pages/Login/Login";
-
+import ChattingRoom from "./pages/Collect/ChattingRoom/ChattingRoom";
+import RoomNameChange from "./pages/Collect/ChattingRoom/SideMenu/RoomNameChange";
+import RoomInviteFriend from "./pages/Collect/ChattingRoom/SideMenu/RoomInviteFriend";
 
 function App() {
   const router = createBrowserRouter([
@@ -57,6 +58,23 @@ function App() {
         {
           path: "/collect",
           element: <Collect />,
+        },
+        {
+          path: "/chatroom/:chatroomId",
+          children: [
+            {
+              index: true,
+              element: <ChattingRoom />,
+            },
+            {
+              path: "/chatroom/:chatroomId/roomnamechange",
+              element: <RoomNameChange />,
+            },
+            {
+              path: "/chatroom/:chatroomId/roominvitefriend",
+              element: <RoomInviteFriend />,
+            },
+          ],
         },
         {
           path: "/mypage",
