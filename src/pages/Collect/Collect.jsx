@@ -31,7 +31,7 @@ const Collect = () => {
       <div className={styles.MainArea}>
         {isChatting ? <Chatting /> : <AboutChallenge />}
       </div>
-      {isChatting ? <></> : <BottomBar pageName={pageName} />}
+      <BottomBar pageName={pageName} />
     </div>
   );
 };

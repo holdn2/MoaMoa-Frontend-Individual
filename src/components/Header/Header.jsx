@@ -22,7 +22,19 @@ const Header = ({ pageName, diagnosisStage, setDiagnosisStage }) => {
             </button>
           </div>
         );
+      case "모으기":
+        return <></>;
       case "내 프로필":
+        return (
+          <>
+            <button
+              className={styles.GoSettingButton}
+              onClick={() => navigate("/setting")}
+            >
+              <img src="../src/assets/Navigation/setting.svg" alt="설정으로" />
+            </button>
+          </>
+        );
       case "프로필 꾸미기":
       case "나의 기록":
         return (

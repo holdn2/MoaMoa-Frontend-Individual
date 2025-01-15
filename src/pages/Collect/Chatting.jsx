@@ -38,7 +38,7 @@ const Chatting = () => {
             onClick={() => console.log("채팅 만들기")}
             src="../src/assets/Btn/chatPlusBtn.svg"
             alt="채팅 만들기 버튼"
-            style={{ position: "fixed", right: "20px", bottom: "40px" }}
+            style={{ position: "fixed", right: "20px", bottom: "80px" }}
           />
         </>
       ) : (
