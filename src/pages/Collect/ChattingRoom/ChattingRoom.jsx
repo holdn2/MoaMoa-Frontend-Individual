@@ -130,7 +130,12 @@ const ChattingRoom = () => {
                 />
                 <span className={styles.MenuText}>챌린지 만들기</span>
               </div>
-              <div className={styles.EachMenuContainer}>
+              <div
+                className={styles.EachMenuContainer}
+                onClick={() =>
+                  navigate(`/chatroom/${params.chatroomId}/pastchallenge`)
+                }
+              >
                 <img
                   src="../src/assets/Content/pastChallenge.svg"
                   alt="지난 챌린지"

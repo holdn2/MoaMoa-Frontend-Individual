@@ -7,10 +7,19 @@
   border-radius: 12px;
   background: #f1f1f1;
   margin-top: 14px;
-  margin-left: 20px;
 }
 .SearchInput {
   color: #092405;
+  text-align: start;
+  /* sb/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.SearchInput::placeholder {
+  color: #bebebe;
   text-align: start;
   /* sb/14px */
   font-family: Pretendard;

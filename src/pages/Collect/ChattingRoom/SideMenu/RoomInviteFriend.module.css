@@ -10,29 +10,10 @@
   background-color: #fafafa;
   overflow: auto;
   padding-bottom: 30px;
-}
-.SearchBar {
-  display: flex;
-  width: 319px;
-  height: 20px;
-  padding: 8px;
   align-items: center;
-  border-radius: 12px;
-  background: #f1f1f1;
-  margin-top: 14px;
-  margin-left: 20px;
-}
-.SearchInput {
-  color: #092405;
-  text-align: start;
-  /* sb/14px */
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
 }
 .FriendCnt {
+  width: 335px;
   color: #092405;
   /* sb/14px */
   font-family: Pretendard;
@@ -54,6 +35,7 @@
   background: #f8f8f8;
   padding: 9px 0;
   gap: 24px;
+  width: 375px;
 }
 .UsernameStyle {
   color: #2b2b2b;
