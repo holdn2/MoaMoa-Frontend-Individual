@@ -21,6 +21,7 @@ const SearchBar = ({ setIsInputText, setFiltered, allData }) => {
         className={styles.SearchInput}
         type="text"
         onChange={handleSearch}
+        placeholder="검색"
       />
     </div>
   );
