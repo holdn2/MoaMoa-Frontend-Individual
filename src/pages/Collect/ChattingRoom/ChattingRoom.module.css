@@ -1,0 +1,106 @@
+.ChatRoomPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #fafafa;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+}
+.RoomMenu {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 10px;
+  right: 24px;
+}
+.ChallengeInfoContainer {
+  position: fixed;
+  margin-top: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 335px;
+  height: 40px;
+  padding: 12px 20px;
+  border-top: 0.8px solid var(--Grey-100, #dedede);
+  border-bottom: 0.8px solid var(--Grey-100, #dedede);
+  background: #f8f8f8;
+}
+
+.ChallengeTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.ChallengeTitle,
+.ChallengeText {
+  color: #000;
+  text-align: center;
+  /* sb/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.ChallengeText {
+  color: #535353;
+  font-size: 14px;
+  font-weight: 500;
+}
+.ToChallengeArrow {
+  width: 24px;
+  height: 24px;
+}
+
+/* 사이드 메뉴 스타일링 */
+.ChatRoomMenu {
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+}
+.SideMenuContainer {
+  position: absolute;
+  right: 0;
+  width: 287px;
+  height: 812px;
+  background: #f8f8f8;
+}
+.AllMenuWrapper {
+  margin-top: 68px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.EachMenuContainer {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.5px solid #787878;
+  background: #f8f8f8;
+  height: 56px;
+  align-items: center;
+  gap: 28px;
+  padding-left: 24px;
+}
+.MenuText {
+  color: #454545;
+  /* bd/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

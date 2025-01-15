@@ -89,7 +89,7 @@ const Header = ({ pageName, diagnosisStage, setDiagnosisStage }) => {
           // navigate(-1) : 클릭 시 바로 직전 페이지로 이동
           <button className={styles.GoBackButton} onClick={() => navigate(-1)}>
             <img
-              src="../src/assets/Navigation/arrowLeftBig.svg"
+              src="../../src/assets/Navigation/arrowLeftBig.svg"
               alt="뒤로가기"
             />
           </button>

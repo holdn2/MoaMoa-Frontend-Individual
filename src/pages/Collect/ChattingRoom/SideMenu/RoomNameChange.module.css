@@ -1,0 +1,56 @@
+.PageWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.ChangeNameConfirm {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  color: #2b2b2b;
+  text-align: center;
+  /* sb/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f8f8f8;
+  overflow: auto;
+  align-items: center;
+  padding-bottom: 80px;
+}
+.InputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  margin-top: 24px;
+  width: 335px;
+  height: 67px;
+  border-radius: 12px;
+  background: #f1f1f1;
+}
+.InputArea {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.AbleLength {
+  position: absolute;
+  right: 12px;
+  bottom: 6px;
+  color: #454545;
+  text-align: center;
+  /* rg/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
