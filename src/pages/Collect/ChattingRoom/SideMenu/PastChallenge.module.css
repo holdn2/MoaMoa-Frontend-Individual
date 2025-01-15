@@ -1,0 +1,28 @@
+.PageWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #fafafa;
+  overflow: auto;
+  padding-bottom: 30px;
+  align-items: center;
+}
+.ChallengeContainer {
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+  width: 335px;
+  border-radius: 12px;
+  background: #f1f1f1;
+  margin-top: 20px;
+}
+.ChallengeResultImg {
+  width: 68px;
+  height: 60px;
+}
