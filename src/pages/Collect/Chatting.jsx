@@ -35,7 +35,7 @@ const Chatting = () => {
             </div>
           ))}
           <img
-            onClick={() => console.log("채팅 만들기")}
+            onClick={() => navigate("/makeroom")}
             src="../src/assets/Btn/chatPlusBtn.svg"
             alt="채팅 만들기 버튼"
             style={{ position: "fixed", right: "20px", bottom: "80px" }}
@@ -51,7 +51,7 @@ const Chatting = () => {
           <span
             className={styles.NormalText}
             style={{ borderBottom: "1px solid #919191" }}
-            onClick={() => console.log("채팅 만들러 가기")}
+            onClick={() => navigate("/makeroom")}
           >
             채팅방 만들러 가기
           </span>
