@@ -14,7 +14,7 @@ const dummyData = [
     people: 127,
     public: true,
     category: "taxi",
-    isJoined: false,
+    isJoined: true,
   },
   {
     challengeName: "배달 음식 NO!! 챌린지",
@@ -57,7 +57,11 @@ const AboutChallenge = () => {
         setFiltered={setFiltered}
         allData={dummyData}
       />
-      {isClicked === 0 ? <PublicChallenge /> : <FriendChallenge />}
+      {isClicked === 0 ? (
+        <PublicChallenge allData={dummyData} />
+      ) : (
+        <FriendChallenge />
+      )}
     </div>
   );
 };

@@ -1,11 +1,11 @@
 .wrapper {
   display: flex;
+  box-sizing: border-box;
+  padding: 20px;
   flex-direction: column;
-  flex: 1;
+  width: 100%;
   background-color: #f8f8f8;
   overflow: auto;
-  align-items: center;
-  margin-top: 21px;
 }
 
 .btnWrapper {
