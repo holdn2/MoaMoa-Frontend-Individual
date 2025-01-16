@@ -6,6 +6,7 @@ import styles from "./AboutChallenge.module.css";
 
 const dummyData = [
   {
+    id: 1,
     challengeName: "1주일 5만원으로 살아남기",
     challengeInfo: "이제는 돈을 아껴야 할 때! 소비부터 같이 줄여봐요",
     startDate: "2024.11.15",
@@ -17,6 +18,7 @@ const dummyData = [
     isJoined: true,
   },
   {
+    id: 2,
     challengeName: "배달 음식 NO!! 챌린지",
     challengeInfo: "이제는 돈을 아껴야 할 때! 소비부터 같이 줄여봐요",
     startDate: "2024.11.01",

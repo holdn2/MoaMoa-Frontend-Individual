@@ -3,9 +3,9 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  height: auto;
   background-color: #f8f8f8;
   margin-top: 26px;
-  overflow: hidden;
 }
 
 h3 {

@@ -3,6 +3,7 @@ import arrowRight from "../../../assets/Navigation/arrowRight.svg";
 import date from "../../../assets/Content/date.svg";
 import people from "../../../assets/Content/people.svg";
 import styles from "./PublicChallenge.module.css";
+import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
 
 const PublicChallenge = ({ allData }) => {
   const joinChallenge = allData.filter((data) => data.isJoined == true);
@@ -17,7 +18,7 @@ const PublicChallenge = ({ allData }) => {
       </div>
       <div className={styles.joinChallengeWrapper}>
         {joinChallenge.map((item) => (
-          <div className={styles.joinChallenge}>
+          <div key={item.id} className={styles.joinChallenge}>
             <p className={styles.joinChallengeName}>{item.challengeName}</p>
             <p className={styles.joinChallengeDeadline}>성공까지 </p>
             <p className={styles.joinChallengeInfo}>
@@ -32,6 +33,11 @@ const PublicChallenge = ({ allData }) => {
         ))}
       </div>
       <h3>이런 챌린지는 어떠세요?</h3>
+      <div>
+        {allData.map((item) => (
+          <ChallengeCard key={item.id} allData={item} />
+        ))}
+      </div>
     </div>
   );
 };

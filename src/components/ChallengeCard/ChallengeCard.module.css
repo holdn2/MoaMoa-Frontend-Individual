@@ -1,0 +1,85 @@
+.wrapper {
+  display: flex;
+  box-sizing: border-box;
+  height: 325px;
+  padding: 0px 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+  border-radius: 12px;
+  background: var(--Grey-70, #f1f1f1);
+}
+
+.public {
+  display: flex;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 22px;
+  background: #fff;
+}
+.public span {
+  color: var(--Primary-500main, #00befc);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.contentWrapper {
+  text-align: center;
+  font-family: Pretendard;
+}
+.challengeName {
+  color: var(--Grey-800, #2b2b2b);
+  font-size: 24px;
+  font-weight: 700;
+}
+.challengeDesc {
+  color: var(--Grey-700, #454545);
+  font-size: 20px;
+  font-weight: 600;
+}
+.challengeInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: var(--Grey-700, #454545);
+  font-size: 16px;
+  font-weight: 600;
+}
+.challengeInfo .coin {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 2px;
+}
+.people {
+  color: var(--Grey-600, #5e5e5e);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.deadline {
+  display: flex;
+  padding: 12px 33px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 7px;
+  background: var(--Grey-30, #fafafa);
+}
+.deadline span {
+  color: var(--Primary-700, #007094);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
