@@ -4,6 +4,8 @@
   padding: 20px;
   flex-direction: column;
   width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
   background-color: #f8f8f8;
   overflow: auto;
 }

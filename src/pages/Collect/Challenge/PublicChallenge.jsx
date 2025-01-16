@@ -2,6 +2,7 @@ import React from "react";
 import arrowRight from "../../../assets/Navigation/arrowRight.svg";
 import date from "../../../assets/Content/date.svg";
 import people from "../../../assets/Content/people.svg";
+import arrowDown from "../../../assets/Navigation/arrowDown.svg";
 import styles from "./PublicChallenge.module.css";
 import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
 
@@ -33,7 +34,13 @@ const PublicChallenge = ({ allData }) => {
         ))}
       </div>
       <h3>이런 챌린지는 어떠세요?</h3>
-      <div>
+      <div className={styles.dropDown}>
+        <button>
+          <span>인기순</span>
+          <img src={arrowDown} alt="정렬 버튼 아이콘" />
+        </button>
+      </div>
+      <div className={styles.publicChallengeWrapper}>
         {allData.map((item) => (
           <ChallengeCard key={item.id} allData={item} />
         ))}
