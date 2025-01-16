@@ -12,14 +12,6 @@ const RoomInviteFriend = () => {
   // 친구 검색
   const [filteredfriends, setFilteredfriends] = useState([]);
   const [isInputText, setIsInputText] = useState("");
-  const handleSearch = (e) => {
-    const searchText = e.target.value.toLowerCase(); // 검색어를 소문자로 변환
-    setIsInputText(searchText);
-    const filtering = friendData.filter(
-      (item) => item.userName.toLowerCase().includes(searchText) // 일부 일치 검색
-    );
-    setFilteredfriends(filtering);
-  };
 
   return (
     <div className={styles.PageWrapper}>

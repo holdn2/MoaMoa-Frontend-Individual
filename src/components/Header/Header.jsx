@@ -96,6 +96,8 @@ const Header = ({ pageName, diagnosisStage, setDiagnosisStage }) => {
               </button>
             );
         }
+      case "채팅방 이름":
+        return <></>;
       default:
         return (
           // navigate(-1) : 클릭 시 바로 직전 페이지로 이동

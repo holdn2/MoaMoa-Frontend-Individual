@@ -1,0 +1,151 @@
+.PageWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.MainArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #fafafa;
+  overflow: auto;
+  padding-bottom: 30px;
+  align-items: center;
+}
+
+/* 대화상대 선택하기 페이지 */
+.ConfirmButton {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  color: #2b2b2b;
+  text-align: center;
+  /* sb/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.SelectedFriendWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 335px;
+  height: 50px;
+  gap: 10px;
+  overflow: auto;
+  margin-top: 34px;
+}
+/* Chrome, Safari, Edge용 스크롤바 숨김 */
+.SelectedFriendWrapper::-webkit-scrollbar {
+  display: none;
+}
+.SelectedFriendContainer {
+  display: inline-flex;
+  padding: 4px 5px 4px 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
+  background: #fff;
+  /* 넓이가 고정됨 */
+  flex-shrink: 0;
+}
+.SelectedFriendName {
+  color: #00befc;
+  text-align: center;
+  /* bd/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.FriendCnt {
+  width: 335px;
+  color: #092405;
+  /* sb/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 38px 0 16px 20px;
+}
+.AllFriends {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.EachFriendContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 9px 20px;
+  width: 335px;
+}
+.FriendContent {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+}
+.UsernameStyle {
+  color: #2b2b2b;
+  text-align: center;
+  /* sb/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+/* 채팅방 이름 페이지 */
+.GoBackArrow {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+}
+.InputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  margin-top: 24px;
+  width: 335px;
+  height: 67px;
+  border-radius: 12px;
+  background: #f1f1f1;
+}
+.InputArea {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #2b2b2b;
+  text-align: start;
+  /* sb/18px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.AbleLength {
+  position: absolute;
+  right: 12px;
+  bottom: 6px;
+  color: #454545;
+  text-align: center;
+  /* rg/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.ButtonContainer {
+  position: absolute;
+  bottom: 24px;
+}
