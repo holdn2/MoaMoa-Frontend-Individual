@@ -28,6 +28,15 @@ const DecoProfile = () => {
     setWantToPurchase(selectedOutline.type);
   };
 
+  // 보유 중인 테두리 중 사용할 것 클릭하는 로직
+  const handleOutlineUse = (useOutline) => {
+    const updatedOutlines = outlines.map((item) => ({
+      ...item,
+      use: item.id === useOutline.id,
+    }));
+    setOutlines(updatedOutlines);
+  };
+
   return (
     <div className={styles.DecoPageContainer}>
       <Header pageName={pageName} />
@@ -38,17 +47,25 @@ const DecoProfile = () => {
             <span className={styles.OutlineSectionText}>보유 중인 테두리</span>
             <div className={styles.OutlinesUserHaveContainer}>
               {userHaveOutline.map((item) => (
-                <button key={item.type} className={styles.EachOutlineContainer}>
+                <button
+                  key={item.type}
+                  className={styles.EachOutlineContainer}
+                  onClick={() => handleOutlineUse(item)}
+                >
                   <img
                     style={{ width: "124px", height: "124px" }}
                     src={item.outline}
                     alt={item.type}
                   />
-                  <img
-                    style={{ width: "21px", height: "21px" }}
-                    src="../src/assets/Decoration/purchased.svg"
-                    alt="보유 중인 테두리 체크"
-                  />
+                  {item.use ? (
+                    <img
+                      style={{ width: "21px", height: "21px" }}
+                      src="../src/assets/Decoration/purchased.svg"
+                      alt="사용 중인 테두리 체크"
+                    />
+                  ) : (
+                    <div style={{ width: "21px", height: "21px" }}></div>
+                  )}
                 </button>
               ))}
             </div>
@@ -63,16 +80,44 @@ const DecoProfile = () => {
                   onClick={() => handleSelectedOutline(item)}
                 >
                   <img
-                    style={{ width: "124px", height: "124px", marginTop: "" }}
+                    style={{ width: "124px", height: "124px" }}
                     src={item.outline}
                     alt={item.type}
                     className={styles.EachOutline}
                   />
-                  <img
-                    style={{ width: "56px", height: "28px" }}
-                    src={item.selected ? item.selectedPriceImg : item.priceImg}
-                    alt="테두리 가격"
-                  />
+                  {item.selected ? (
+                    <div className={styles.SelectedPriceContainer}>
+                      <span
+                        className={styles.PriceText}
+                        style={{ color: "#fff" }}
+                      >
+                        {item.price}
+                      </span>
+                      <img
+                        src="../src/assets/Content/coinWhite.svg"
+                        alt="선택함"
+                        style={{
+                          display: "flex",
+                          width: "24px",
+                          height: "24px",
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className={styles.PriceContainer}>
+                      <span className={styles.PriceText}>{item.price}</span>
+                      <img
+                        src="../src/assets/Content/coin3.svg"
+                        alt="선택안함"
+                        style={{
+                          display: "flex",
+                          width: "19px",
+                          height: "19px",
+                          marginTop: "-1px",
+                        }}
+                      />
+                    </div>
+                  )}
                 </button>
               ))}
             </div>
@@ -112,6 +157,7 @@ const outlineType = [
     price: 0,
     purchased: true,
     selected: false,
+    use: true,
   },
   {
     id: 2,
@@ -122,6 +168,7 @@ const outlineType = [
     selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
     purchased: false,
     selected: false,
+    use: false,
   },
   {
     id: 3,
@@ -132,6 +179,7 @@ const outlineType = [
     selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
     purchased: false,
     selected: false,
+    use: false,
   },
   {
     id: 4,
@@ -142,6 +190,7 @@ const outlineType = [
     selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
     purchased: false,
     selected: false,
+    use: false,
   },
   {
     id: 5,
@@ -152,6 +201,7 @@ const outlineType = [
     selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
     purchased: false,
     selected: false,
+    use: false,
   },
   {
     id: 6,
@@ -162,6 +212,7 @@ const outlineType = [
     selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
     purchased: false,
     selected: false,
+    use: false,
   },
   {
     id: 7,
@@ -172,6 +223,7 @@ const outlineType = [
     selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
     purchased: false,
     selected: false,
+    use: false,
   },
   {
     id: 8,
@@ -182,6 +234,7 @@ const outlineType = [
     selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
     purchased: false,
     selected: false,
+    use: false,
   },
   {
     id: 9,
@@ -192,6 +245,7 @@ const outlineType = [
     selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
     purchased: false,
     selected: false,
+    use: false,
   },
   {
     id: 10,
@@ -202,5 +256,6 @@ const outlineType = [
     selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
     purchased: false,
     selected: false,
+    use: false,
   },
 ];

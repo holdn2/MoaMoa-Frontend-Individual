@@ -20,6 +20,7 @@ const PurchaseModal = ({
   const outlineImg = wantToPurchaseOutline ? wantToPurchaseOutline.outline : "";
   const outlinePrice = wantToPurchaseOutline ? wantToPurchaseOutline.price : 0;
 
+  // 구매 로직
   const handlePurchase = () => {
     const purchaseOutline = outlines.map((item) => {
       if (!item.purchased && item.type === wantToPurchase) {
@@ -32,6 +33,22 @@ const PurchaseModal = ({
     setModalState(1);
     setIsModalOpen(false);
   };
+
+  const handlePurchaseAndUse = () => {
+    setOutlines((prevOutlines) =>
+      prevOutlines.map(
+        (item) =>
+          item.type === wantToPurchase
+            ? { ...item, purchased: true, use: true }
+            : { ...item, use: false } // 다른 테두리는 use: false
+      )
+    );
+    // 모달, state 초기화
+    setIsModalOpen(false);
+    setModalState(1);
+    setWantToPurchase("");
+  };
+
   const renderPurchaseModal = () => {
     switch (modalState) {
       case 1:
@@ -93,7 +110,7 @@ const PurchaseModal = ({
               <div
                 style={{ display: "flex", flexDirection: "row", gap: "12px" }}
               >
-                <div onClick={handlePurchase}>
+                <div onClick={handlePurchaseAndUse}>
                   <PrimaryButton size="sm">예</PrimaryButton>
                 </div>
                 <div onClick={handlePurchase}>
