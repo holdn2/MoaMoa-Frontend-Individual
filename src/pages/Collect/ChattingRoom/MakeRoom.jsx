@@ -25,6 +25,11 @@ const MakeRoom = () => {
         friend.id === id ? { ...friend, toInvite: !friend.toInvite } : friend
       )
     );
+    setFilteredfriends((prevFriends) =>
+      prevFriends.map((friend) =>
+        friend.id === id ? { ...friend, toInvite: !friend.toInvite } : friend
+      )
+    );
   };
 
   // 선택된 친구 배열 갱신
