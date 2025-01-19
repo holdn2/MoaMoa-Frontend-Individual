@@ -1,0 +1,78 @@
+.MyChattingContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 16px;
+}
+.DateText {
+  color: #474747;
+  text-align: center;
+  /* Caption/12px-md */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 18px */
+}
+.MyChatting,
+.OtherChatting {
+  /* 텍스트 줄바꿈 설정 */
+  max-width: 200px; /* 컨테이너 너비 제한 */
+  word-wrap: break-word; /* 단어가 길 경우 줄바꿈 */
+  word-break: break-word; /* 긴 단어 줄바꿈 */
+  white-space: normal; /* 기본 줄바꿈 동작 */
+}
+.MyChatting {
+  display: inline-flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px 0px 16px 16px;
+  background: #0096c7;
+  color: #fff;
+  text-align: start;
+  /* sb/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.OtherChattingContainer {
+  display: flex;
+  flex-direction: row;
+  /* align-items: flex-start; */
+  gap: 12px;
+}
+.NameChatWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.OtherNickname {
+  color: #2b2b2b;
+  /* bd/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.OtherChatting {
+  display: inline-flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 0px 16px 16px 16px;
+  background: #f1f1f1;
+  color: #2e2e2e;
+  text-align: start;
+  /* sb/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
