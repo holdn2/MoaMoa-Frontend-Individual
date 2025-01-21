@@ -3,33 +3,53 @@ import Header from "../../components/Header/Header";
 import styles from "./AddChallenge.module.css";
 import ChallengeCategory from "../../components/ChallengeCategory/ChallengeCategory";
 import SelectPeriod from "../../components/SelectPeriod/SelectPeriod";
+import PrimaryButton from "../../components/Button/PrimaryButton";
+import { useForm } from "react-hook-form";
 
 const AddChallenge = () => {
   const pageName = "챌린지 만들기";
-  const [people, setPeople] = useState(1);
+  const {
+    register,
+    watch,
+    setValue,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm({ defaultValues: { people: 1 } });
   const [challengeClicked, setChallengeClicked] = useState(0);
   const [visibility, setVisibility] = useState("public");
   const [checked, setChecked] = useState(false);
 
+  const people = watch("people", 1);
+  const disabled =
+    !watch("title") || !watch("content") || !watch("coin") || isSubmitting;
   return (
-    <div>
+    <form onSubmit={handleSubmit((data) => console(data))}>
       <Header pageName={pageName} />
       <div className={styles.wrapper}>
         <h1>챌린지 모집글을 작성해봐요!</h1>
         <div style={{ marginBottom: "16px" }} className={styles.inputContainer}>
           <p className={styles.inputTitle}>제목</p>
-          <textarea className={styles.inputTextTitle}></textarea>
+          <textarea
+            className={styles.inputTextTitle}
+            {...register("title")}
+          ></textarea>
         </div>
         <div className={styles.inputContainer}>
           <p className={styles.inputTitle}>글 내용</p>
-          <textarea className={styles.inputTextContent}></textarea>
+          <textarea
+            className={styles.inputTextContent}
+            {...register("content")}
+          ></textarea>
         </div>
         <div className={styles.inputContainer}>
           <p className={styles.inputTitle}>인원 수</p>
           <div className={styles.peopleBtnWrapper}>
             <button
+              type="button"
               className={styles.peopleDownBtn}
-              onClick={() => setPeople((prev) => Math.max(prev - 1, 1))}
+              onClick={() =>
+                setValue("people", Math.max(Number(people) - 1, 1))
+              }
             >
               -
             </button>
@@ -37,19 +57,17 @@ const AddChallenge = () => {
               <span>{people}</span>
             </div>
             <button
+              type="button"
               className={styles.peopleUpBtn}
-              onClick={() => setPeople((prev) => prev + 1)}
+              onClick={() => setValue("people", Number(people) + 1)}
             >
               +
             </button>
             명
+            <input type="hidden" {...register("people")} />
           </div>
           <label className={styles.peopleInfinity}>
-            <input
-              type="checkbox"
-              checked={checked}
-              onChange={(e) => setChecked(e.target.checked)}
-            />
+            <input type="checkbox" {...register("unlimitedPeople")} />
             제한 없음
           </label>
         </div>
@@ -57,7 +75,7 @@ const AddChallenge = () => {
         <div className={styles.inputContainer}>
           <p className={styles.inputTitle}>배틀 코인</p>
           <label className={styles.inputCoin}>
-            <input className={styles.inputTextCoin} />
+            <input className={styles.inputTextCoin} {...register("coin")} />
             코인
           </label>
         </div>
@@ -66,10 +84,9 @@ const AddChallenge = () => {
           <label className={styles.inputPublic}>
             <input
               type="radio"
-              name="visibility"
               value="public"
-              checked={visibility === "public"}
-              onChange={(e) => setVisibility(e.target.value)}
+              defaultChecked
+              {...register("visibility")}
             />
             <p>
               전체 공개
@@ -77,13 +94,7 @@ const AddChallenge = () => {
             </p>
           </label>
           <label className={styles.inputPublic}>
-            <input
-              type="radio"
-              name="visibility"
-              value="friend"
-              checked={visibility === "friend"}
-              onChange={(e) => setVisibility(e.target.value)}
-            />
+            <input type="radio" value="friend" {...register("visibility")} />
             <p>
               친구 공개
               <span>내 친구로 등록된 사용자에게만 공개됩니다</span>
@@ -95,7 +106,15 @@ const AddChallenge = () => {
           setChallengeClicked={setChallengeClicked}
         />
       </div>
-    </div>
+      <div className={styles.challengeBtn}>
+        <PrimaryButton
+          type="submit"
+          size="xl"
+          disabled={disabled}
+          children="챌린지 시작하기"
+        />
+      </div>
+    </form>
   );
 };
 
