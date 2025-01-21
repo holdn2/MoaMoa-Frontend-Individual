@@ -22,6 +22,7 @@ import RoomNameChange from "./pages/Collect/ChattingRoom/SideMenu/RoomNameChange
 import RoomInviteFriend from "./pages/Collect/ChattingRoom/SideMenu/RoomInviteFriend";
 import PastChallenge from "./pages/Collect/ChattingRoom/SideMenu/PastChallenge";
 import MakeRoom from "./pages/Collect/ChattingRoom/MakeRoom";
+import AddChallenge from "./pages/Collect/AddChallenge";
 
 function App() {
   const router = createBrowserRouter([
@@ -60,6 +61,10 @@ function App() {
         {
           path: "/collect",
           element: <Collect />,
+        },
+        {
+          path: "/challenge",
+          element: <AddChallenge />,
         },
         {
           path: "/makeroom",
