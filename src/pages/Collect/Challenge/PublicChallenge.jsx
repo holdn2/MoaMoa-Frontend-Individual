@@ -5,9 +5,13 @@ import people from "../../../assets/Content/people.svg";
 import arrowDown from "../../../assets/Navigation/arrowDown.svg";
 import styles from "./PublicChallenge.module.css";
 import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
+import chatPlusBtn from "../../../assets/Btn/chatPlusBtn.svg";
+import { useNavigate } from "react-router-dom";
 
 const PublicChallenge = ({ allData }) => {
   const joinChallenge = allData.filter((data) => data.isJoined == true);
+  const navigate = useNavigate();
+
   return (
     <div className={styles.wrapper}>
       <h3>현재 진행중인 챌린지</h3>
@@ -45,6 +49,12 @@ const PublicChallenge = ({ allData }) => {
           <ChallengeCard key={item.id} allData={item} />
         ))}
       </div>
+      <img
+        onClick={() => navigate("/challenge")}
+        src={chatPlusBtn}
+        alt="챌린지 만들기로 가는 버튼"
+        style={{ position: "fixed", right: "20px", bottom: "80px" }}
+      />
     </div>
   );
 };
