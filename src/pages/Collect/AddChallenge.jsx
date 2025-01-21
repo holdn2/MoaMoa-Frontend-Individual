@@ -16,8 +16,6 @@ const AddChallenge = () => {
     formState: { isSubmitting },
   } = useForm({ defaultValues: { people: 1 } });
   const [challengeClicked, setChallengeClicked] = useState(0);
-  const [visibility, setVisibility] = useState("public");
-  const [checked, setChecked] = useState(false);
 
   const people = watch("people", 1);
   const disabled =
