@@ -19,6 +19,33 @@ h3 {
   line-height: normal;
 }
 
+.joinChallengeWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 216px;
+  justify-content: center;
+  align-items: center;
+}
+.noJoinChallenge {
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 16px;
+}
+.noJoinChallengeLink {
+  color: var(--Grey-600, #5e5e5e);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .joinChallengeMore {
   display: flex;
   justify-content: flex-end;
@@ -41,7 +68,7 @@ h3 {
   height: 18px;
 }
 
-.joinChallengeWrapper {
+.joinChallengeContainer {
   display: flex;
   gap: 8px;
   width: 100%;
