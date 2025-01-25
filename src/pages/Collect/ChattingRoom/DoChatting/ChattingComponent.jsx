@@ -1,3 +1,4 @@
+// 각 채팅 텍스트 관련 컴포넌트
 import React from "react";
 import styles from "./ChattingComponent.module.css";
 

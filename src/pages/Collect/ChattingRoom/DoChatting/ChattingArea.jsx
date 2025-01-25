@@ -1,3 +1,4 @@
+// 채팅방 내의 전체 채팅을 렌더링하는 곳
 import React, { useState } from "react";
 import styles from "./ChattingArea.module.css";
 import ChattingComponent from "./ChattingComponent";
