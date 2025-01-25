@@ -3,6 +3,7 @@ import styles from "./ChattingRoom.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import ExitRoomModal from "./SideMenu/ExitRoomModal";
+import ChattingArea from "./DoChatting/ChattingArea";
 
 const ChattingRoom = () => {
   const navigate = useNavigate();
@@ -23,14 +24,14 @@ const ChattingRoom = () => {
   return (
     <>
       <div className={styles.ChatRoomPageContainer}>
-        <Header pageName={roomInfo[0].roomName} />
-        <img
-          src="../src/assets/Component1/category.svg"
-          alt="메뉴"
-          className={styles.RoomMenu}
-          onClick={toggleMenu}
-        />
-        <div className={styles.MainArea}>
+        <div className={styles.TopContentContainer}>
+          <Header pageName={roomInfo[0].roomName} />
+          <img
+            src="../src/assets/Component1/category.svg"
+            alt="메뉴"
+            className={styles.RoomMenu}
+            onClick={toggleMenu}
+          />
           {currentChallenge.length > 0 ? (
             <div
               className={styles.ChallengeInfoContainer}
@@ -82,6 +83,12 @@ const ChattingRoom = () => {
               />
             </div>
           )}
+        </div>
+
+        <div className={styles.MainArea}>
+          <div>
+            <ChattingArea />
+          </div>
         </div>
         <ExitRoomModal
           isModalOpen={isExitModalOpen}

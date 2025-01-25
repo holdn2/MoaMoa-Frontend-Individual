@@ -1,0 +1,95 @@
+.ChattingContainer {
+  position: relative;
+}
+.EachDateChatting {
+  display: flex;
+  flex-direction: column;
+  width: 335px;
+  align-items: center;
+  padding-top: 50px;
+}
+.EachDateChatting:first-child {
+  padding-top: 20px;
+}
+
+.DateContainer {
+  display: flex;
+  width: 149px;
+  margin-bottom: 20px;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  background: #00befc;
+  color: #fff;
+  text-align: center;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.ChattingWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 335px;
+  gap: 42px;
+}
+
+/* 입력창 */
+.InputWrapper {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 343px;
+  padding: 4px 12px 4px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  box-shadow: 0px -1px 1.6px 0px rgba(0, 0, 0, 0.09);
+}
+.InputTextContainer {
+  display: flex;
+  height: 21px;
+  padding: 8px;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+  border-radius: 8px;
+  background: #f4f4f4;
+  color: #2b2b2b;
+  text-align: start;
+  /* Body/14px-md */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  border: none;
+
+  /* 줄바꿈 관련 */
+  white-space: pre-wrap; /* 엔터 입력 및 자동 줄바꿈 모두 허용 */
+  overflow-wrap: break-word; /* 긴 단어가 넘치면 줄바꿈 */
+}
+.InputTextContainer::placeholder {
+  color: #7a7a7a;
+  text-align: start;
+  /* Body/14px-md */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+/* focus시 하이라이트 제거 */
+.InputTextContainer:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
+}

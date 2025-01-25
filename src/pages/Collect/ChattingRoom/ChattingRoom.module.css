@@ -3,6 +3,9 @@
   flex-direction: column;
   height: 100vh;
 }
+.TopContentContainer {
+  background-color: #fafafa;
+}
 .MainArea {
   display: flex;
   flex-direction: column;
@@ -12,6 +15,7 @@
   display: flex;
   align-items: center;
 }
+
 .RoomMenu {
   position: absolute;
   width: 24px;
@@ -20,7 +24,6 @@
   right: 24px;
 }
 .ChallengeInfoContainer {
-  position: fixed;
   margin-top: 13px;
   display: flex;
   flex-direction: row;
