@@ -21,7 +21,7 @@ const AddChallenge = () => {
   const disabled =
     !watch("title") || !watch("content") || !watch("coin") || isSubmitting;
   return (
-    <form onSubmit={handleSubmit((data) => console(data))}>
+    <form onSubmit={handleSubmit((data) => console.log(data))}>
       <Header pageName={pageName} />
       <div className={styles.wrapper}>
         <h1>챌린지 모집글을 작성해봐요!</h1>
@@ -103,14 +103,14 @@ const AddChallenge = () => {
           challengeClicked={challengeClicked}
           setChallengeClicked={setChallengeClicked}
         />
-      </div>
-      <div className={styles.challengeBtn}>
-        <PrimaryButton
-          type="submit"
-          size="xl"
-          disabled={disabled}
-          children="챌린지 시작하기"
-        />
+        <div className={styles.challengeBtn}>
+          <PrimaryButton
+            type="submit"
+            size="xl"
+            disabled={disabled}
+            children="챌린지 시작하기"
+          />
+        </div>
       </div>
     </form>
   );

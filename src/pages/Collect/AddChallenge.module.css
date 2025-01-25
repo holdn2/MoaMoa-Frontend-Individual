@@ -6,7 +6,7 @@
   width: 100%;
   height: auto;
   max-width: 375px;
-  padding: 30px 20px 135px 20px;
+  padding: 30px 20px 16px 20px;
   margin: 0 auto;
   background-color: #f8f8f8;
   position: relative;
@@ -20,6 +20,9 @@ h1 {
   font-weight: 700;
   line-height: normal;
   margin-bottom: 28px;
+}
+textarea {
+  all: unset;
 }
 
 .inputContainer {
@@ -45,7 +48,7 @@ h1 {
   border-radius: 12px;
   background: var(--Grey-70, #f1f1f1);
   color: var(--Grey-800, #2b2b2b);
-  text-align: center;
+  text-align: start;
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
@@ -60,7 +63,7 @@ h1 {
   border-radius: 12px;
   background: var(--Grey-70, #f1f1f1);
   color: var(--Grey-700, #454545);
-  text-align: center;
+  text-align: start;
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
@@ -71,11 +74,11 @@ h1 {
   width: 87px;
   height: 23px;
   flex-shrink: 0;
-  border-radius: 12px;
+  border-radius: 4px;
   background: var(--Grey-70, #f1f1f1);
   margin-right: 3px;
   color: var(--Grey-700, #454545);
-  text-align: end;
+  text-align: center;
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
@@ -222,8 +225,9 @@ h1 {
 
 .challengeBtn {
   display: flex;
+  margin-top: 77px;
   justify-content: center;
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
-  bottom: 16px;
+  /* bottom: 16px; */
 }
