@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import styles from "./InputConsumption.module.css";
 import Header from "../../components/Header/Header";
 import question from "../../assets/Content/question.svg";
-import Category from "./Category";
 import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import DescModal from "./DescModal";
 import { useNavigate } from "react-router-dom";
+import ChallengeCategory from "../../components/ChallengeCategory/ChallengeCategory";
 
 const InputConsumption = () => {
   const pageName = "나의 소비 입력하기";
@@ -19,14 +19,6 @@ const InputConsumption = () => {
     "생활비",
     "기여비",
     "기타",
-  ];
-  const challengeName = [
-    "택시비",
-    "배달음식",
-    "커피",
-    "충동구매",
-    "술자리",
-    "취미",
   ];
   const [isInputState, setIsInputState] = useState(false);
   const [categoryClicked, setCategoryClicked] = useState(0);
@@ -64,20 +56,10 @@ const InputConsumption = () => {
         {modalOpen && (
           <DescModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         )}
-        <div className={styles.categoryWrapper}>
-          <span>챌린지 카테고리</span>
-          <div className={styles.category}>
-            {challengeName.map((name, index) => (
-              <Category
-                key={name}
-                children={name}
-                checked={challengeClicked === index}
-                onClick={() => setChallengeClicked(index)}
-              />
-            ))}
-          </div>
-          <p>*중복 선택이 불가능합니다.</p>
-        </div>
+        <ChallengeCategory
+          challengeClicked={challengeClicked}
+          setChallengeClicked={setChallengeClicked}
+        />
         {/*input 부분*/}
         <div className={styles.inputWrapper}>
           <p>금액</p>

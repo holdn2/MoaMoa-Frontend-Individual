@@ -1,0 +1,153 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 375px;
+  margin: 0 auto;
+  background-color: #f8f8f8;
+  margin-top: 26px;
+}
+
+h3 {
+  color: var(--Grey-800, #2b2b2b);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.joinChallengeWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 216px;
+  justify-content: center;
+  align-items: center;
+}
+.noJoinChallenge {
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 16px;
+}
+.noJoinChallengeLink {
+  color: var(--Grey-600, #5e5e5e);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.joinChallengeMore {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 12.5px;
+}
+.joinChallengeMore p {
+  display: flex;
+  align-items: center;
+  color: var(--Grey-800, #2b2b2b);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.joinChallengeMore img {
+  width: 18px;
+  height: 18px;
+}
+
+.joinChallengeContainer {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-bottom: 38px;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+}
+.joinChallenge {
+  display: flex;
+  box-sizing: border-box;
+  padding: 16px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 16px;
+  background: var(--Grey-70, #f1f1f1);
+}
+.joinChallengeName {
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+.joinChallengeDeadline {
+  color: var(--Grey-600, #5e5e5e);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 19px;
+}
+.joinChallengeInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.dropDown {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+.dropDown button {
+  display: flex;
+  width: 74px;
+  padding: 2px 0;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--Grey-70, #f1f1f1);
+}
+.dropDown button span {
+  color: var(--Grey-800, #2b2b2b);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.publicChallengeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

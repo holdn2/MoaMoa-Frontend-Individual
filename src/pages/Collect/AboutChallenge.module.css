@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  box-sizing: border-box;
+  padding: 20px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  background-color: #f8f8f8;
+  overflow: auto;
+}
+
+.btnWrapper {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 8px;
+  align-items: center;
+  gap: 14px;
+  align-self: stretch;
+  border-radius: 12px;
+  background: var(--Grey-70, #f1f1f1);
+}
+.activeBtn {
+  display: flex;
+  box-sizing: border-box;
+  flex: 1;
+  padding: 6px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  background: var(--Primary-500main, #00befc);
+  /*버튼 폰트*/
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.inactiveBtn {
+  display: flex;
+  box-sizing: border-box;
+  flex: 1;
+  height: 33px;
+  padding: 6px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  background: var(--Grey-70, #f1f1f1);
+  color: var(--Grey-300, #ababab);
+  /*버튼 폰트*/
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
