@@ -13,21 +13,21 @@ const BottomBar = ({ pageName }) => {
     case "홈화면":
     case "레벨":
     case "알림 페이지":
-      collectImg = "../src/assets/Tab/getUnclicked.svg";
-      homeImg = "../src/assets/Tab/home.svg";
-      mypageImg = "../src/assets/Tab/myUnclicked.svg";
+      collectImg = "../../../src/assets/Tab/getUnclicked.svg";
+      homeImg = "../../../src/assets/Tab/home.svg";
+      mypageImg = "../../../src/assets/Tab/myUnclicked.svg";
       break;
     case "내 프로필":
     case "프로필 꾸미기":
     case "나의 기록":
-      collectImg = "../src/assets/Tab/getUnclicked.svg";
-      homeImg = "../src/assets/Tab/homeUnclicked.svg";
-      mypageImg = "../src/assets/Tab/my.svg";
+      collectImg = "../../../src/assets/Tab/getUnclicked.svg";
+      homeImg = "../../../src/assets/Tab/homeUnclicked.svg";
+      mypageImg = "../../../src/assets/Tab/my.svg";
       break;
     default:
-      collectImg = "../src/assets/Tab/get.svg";
-      homeImg = "../src/assets/Tab/homeUnclicked.svg";
-      mypageImg = "../src/assets/Tab/myUnclicked.svg";
+      collectImg = "../../../src/assets/Tab/get.svg";
+      homeImg = "../../../src/assets/Tab/homeUnclicked.svg";
+      mypageImg = "../../../src/assets/Tab/myUnclicked.svg";
       break;
   }
 

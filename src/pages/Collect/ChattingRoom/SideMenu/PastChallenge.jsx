@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import styles from "./PastChallenge.module.css";
 import Header from "../../../../components/Header/Header";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import BottomBar from "../../../../components/BottomBar/BottomBar";
 
 const PastChallenge = () => {
   const pageName = "지난챌린지";
   const params = useParams();
   // console.log("채팅방 ID : ", params.chatroomId);
+  const navigate = useNavigate();
 
   // 챌린지 검색
   const [isInputText, setIsInputText] = useState("");
@@ -25,7 +27,7 @@ const PastChallenge = () => {
         {isInputText ? (
           <>
             {filteredChallenge.map((item) => (
-              <div key={item.id} className={styles.ChallengeContainer}>
+              <button key={item.id} className={styles.ChallengeContainer}>
                 {item.isSuccess ? (
                   <img
                     src="../../src/assets/ChallengeResult/success.svg"
@@ -49,13 +51,22 @@ const PastChallenge = () => {
                   </div>
                 </div>
                 <span className={styles.PeopleText}>{item.people}명 참여</span>
-              </div>
+              </button>
             ))}
           </>
         ) : (
           <>
+            <div style={{ marginTop: "60px" }} />
             {pastChallengeData.map((item) => (
-              <div key={item.id} className={styles.ChallengeContainer}>
+              <button
+                key={item.id}
+                className={styles.ChallengeContainer}
+                onClick={() =>
+                  navigate(
+                    `/chatroom/${params.chatroomId}/pastchallenge/detailpastchallenge`
+                  )
+                }
+              >
                 {item.isSuccess ? (
                   <img
                     src="../../src/assets/ChallengeResult/success.svg"
@@ -79,11 +90,12 @@ const PastChallenge = () => {
                   </div>
                 </div>
                 <span className={styles.PeopleText}>{item.people}명 참여</span>
-              </div>
+              </button>
             ))}
           </>
         )}
       </div>
+      <BottomBar />
     </div>
   );
 };

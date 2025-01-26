@@ -21,6 +21,7 @@
   border-radius: 12px;
   background: #f1f1f1;
   margin-top: 20px;
+  padding-bottom: 20px;
 }
 .ChallengeResultImg {
   width: 68px;
@@ -78,4 +79,41 @@
   font-weight: 500;
   line-height: normal;
   margin-bottom: 20px;
+}
+.ProgressText {
+  color: #454545;
+  text-align: center;
+  /* sb/12px */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.WithChallengerWrapper {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+}
+.EachChallengerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 0.5px solid #dedede;
+}
+.ChallengerInfoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  width: 335px;
+}
+.ChallengerProgressContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
 }

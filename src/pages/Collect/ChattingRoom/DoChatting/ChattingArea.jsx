@@ -1,11 +1,23 @@
 // 채팅방 내의 전체 채팅을 렌더링하는 곳
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./ChattingArea.module.css";
 import ChattingComponent from "./ChattingComponent";
 
 const ChattingArea = () => {
   const [chatEx, setChatEx] = useState(chatData);
   const [message, setMessage] = useState("");
+  const userName = "아무개";
+
+  // useRef를 이용해 스크롤을 자동으로 맨 밑으로 이동하게 함.
+  const bottomRef = useRef(null);
+  // 초기 렌더링 시 가장 아래로 스크롤
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "auto" }); // 초기 렌더링에서는 부드럽지 않게 즉시 이동
+  }, []);
+  // 채팅이 추가될 때마다 스크롤을 가장 아래로 이동
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chatEx]);
 
   const handleSendMsg = () => {
     // 1) 먼저 공백만 있는 경우는 return
@@ -13,6 +25,7 @@ const ChattingArea = () => {
 
     setChatEx((prevChatEx) => {
       // 2) 두 번째 날짜(id: 2)를 찾아서 그 day의 chat 배열에만 새 메시지를 추가
+      // 날짜 id관련은 추후에 수정 필요
       return prevChatEx.map((day) => {
         if (day.id === 2) {
           // 새 메시지의 id는 기존 chat 배열의 마지막 id + 1
@@ -29,7 +42,7 @@ const ChattingArea = () => {
           // 새로 추가할 메시지 객체
           const newMessage = {
             id: newId,
-            nickname: "아무개",
+            nickname: { userName },
             profile: "People",
             img: "http://placehold.co/45",
             chatting: message, // 속성명 'chatting' (기존 데이터와 동일하게)
@@ -88,6 +101,8 @@ const ChattingArea = () => {
             </div>
           </div>
         ))}
+        {/* 스크롤 이동을 위한 Ref */}
+        <div ref={bottomRef} />
       </div>
       <div className={styles.InputWrapper}>
         <textarea

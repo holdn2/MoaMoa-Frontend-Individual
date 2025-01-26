@@ -23,6 +23,7 @@ import RoomInviteFriend from "./pages/Collect/ChattingRoom/SideMenu/RoomInviteFr
 import PastChallenge from "./pages/Collect/ChattingRoom/SideMenu/PastChallenge";
 import MakeRoom from "./pages/Collect/ChattingRoom/MakeRoom";
 import AddChallenge from "./pages/Collect/AddChallenge";
+import DetailPastChallenge from "./pages/Collect/ChattingRoom/SideMenu/DetailPastChallenge";
 
 function App() {
   const router = createBrowserRouter([
@@ -87,7 +88,16 @@ function App() {
             },
             {
               path: "/chatroom/:chatroomId/pastchallenge",
-              element: <PastChallenge />,
+              children: [
+                {
+                  index: true,
+                  element: <PastChallenge />,
+                },
+                {
+                  path: "/chatroom/:chatroomId/pastchallenge/detailpastchallenge",
+                  element: <DetailPastChallenge />,
+                },
+              ],
             },
           ],
         },
