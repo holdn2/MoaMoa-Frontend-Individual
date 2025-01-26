@@ -2,6 +2,8 @@ import Picker from "react-mobile-picker";
 import styles from "./PeriodPickerModal.module.css";
 
 const PeriodPicker = ({ pickerValue, setPickerValue }) => {
+  const date = new Date();
+
   const selections = {
     // (현재 연도-12년)부터 (현재 연도+11년)까지 배열 생성
     year: Array.from(
