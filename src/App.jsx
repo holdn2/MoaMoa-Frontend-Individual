@@ -24,6 +24,7 @@ import PastChallenge from "./pages/Collect/ChattingRoom/SideMenu/PastChallenge";
 import MakeRoom from "./pages/Collect/ChattingRoom/MakeRoom";
 import AddChallenge from "./pages/Collect/AddChallenge";
 import DetailPastChallenge from "./pages/Collect/ChattingRoom/SideMenu/DetailPastChallenge";
+import AddRoomChallenge from "./pages/Collect/ChattingRoom/SideMenu/AddRoomChallenge";
 
 function App() {
   const router = createBrowserRouter([
@@ -85,6 +86,10 @@ function App() {
             {
               path: "/chatroom/:chatroomId/roominvitefriend",
               element: <RoomInviteFriend />,
+            },
+            {
+              path: "/chatroom/:chatroomId/roomchallenge",
+              element: <AddRoomChallenge />,
             },
             {
               path: "/chatroom/:chatroomId/pastchallenge",

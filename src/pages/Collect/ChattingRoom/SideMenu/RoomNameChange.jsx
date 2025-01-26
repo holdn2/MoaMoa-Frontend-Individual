@@ -6,7 +6,7 @@ import Header from "../../../../components/Header/Header";
 const RoomNameChange = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const pageName = "채팅방 이름";
+  const pageName = "채팅방 이름 변경";
   //   console.log("채팅방 ID : ", params.chatroomId);
   const [newRoomName, setNewRoomName] = useState("");
 

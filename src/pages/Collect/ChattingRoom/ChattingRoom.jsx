@@ -21,6 +21,9 @@ const ChattingRoom = () => {
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
   const [exitRoom, setExitRoom] = useState(false); // 채팅방 나가기 상태
 
+  // 채팅방 내부 정보
+  const [chattingData, setChattingData] = useState([]);
+
   return (
     <>
       <div className={styles.ChatRoomPageContainer}>
@@ -130,7 +133,12 @@ const ChattingRoom = () => {
                 <img src="../src/assets/Action/invite.svg" alt="친구 초대" />
                 <span className={styles.MenuText}>친구 초대</span>
               </div>
-              <div className={styles.EachMenuContainer}>
+              <div
+                className={styles.EachMenuContainer}
+                onClick={() =>
+                  navigate(`/chatroom/${params.chatroomId}/roomchallenge`)
+                }
+              >
                 <img
                   src="../src/assets/Content/makeChallenge.svg"
                   alt="챌린지 만들기"
