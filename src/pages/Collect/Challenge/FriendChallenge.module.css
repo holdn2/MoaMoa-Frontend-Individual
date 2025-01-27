@@ -1,0 +1,53 @@
+.friendProfileWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 14px;
+  margin-top: 24px;
+}
+.friendDataInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.friendCount {
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  /* sb/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.friendMore {
+  display: flex;
+  align-items: center;
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  /* sb/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.friendMore img {
+  width: 18px;
+  height: 18px;
+}
+.friendProfileContainer {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-bottom: 32px;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+}
+.friendProfileContainer img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
