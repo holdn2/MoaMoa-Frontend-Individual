@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SelectPeriod.module.css";
 import PeriodPickerModal from "./PeriodPickerModal";
 
@@ -19,6 +19,13 @@ const SelectPeriod = () => {
     month: startValue.month,
     day: startValue.day,
   });
+  useEffect(() => {
+    setEndValue({
+      year: startValue.year,
+      month: startValue.month,
+      day: startValue.day,
+    });
+  }, [startValue]);
 
   return (
     <div className={styles.inputWrapper}>
