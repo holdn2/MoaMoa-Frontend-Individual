@@ -16,6 +16,38 @@ const dummyData = [
     public: true,
     category: "taxi",
     isJoined: true,
+    with: [
+      {
+        id: 1,
+        userName: "황금돼지될래",
+        userImg: "http://placehold.co/49",
+        percent: 40,
+      },
+      {
+        id: 2,
+        userName: "김모아모아",
+        userImg: "http://placehold.co/49",
+        percent: 80,
+      },
+      {
+        id: 3,
+        userName: "햎피그",
+        userImg: "http://placehold.co/49",
+        percent: 50,
+      },
+      {
+        id: 4,
+        userName: "도니도니",
+        userImg: "http://placehold.co/49",
+        percent: 70,
+      },
+      {
+        id: 5,
+        userName: "짱모아",
+        userImg: "http://placehold.co/49",
+        percent: 20,
+      },
+    ],
   },
   {
     id: 2,
@@ -28,6 +60,38 @@ const dummyData = [
     public: true,
     category: "delivery",
     isJoined: true,
+    with: [
+      {
+        id: 1,
+        userName: "황금돼지될래",
+        userImg: "http://placehold.co/49",
+        percent: 40,
+      },
+      {
+        id: 2,
+        userName: "김모아모아",
+        userImg: "http://placehold.co/49",
+        percent: 80,
+      },
+      {
+        id: 3,
+        userName: "햎피그",
+        userImg: "http://placehold.co/49",
+        percent: 50,
+      },
+      {
+        id: 4,
+        userName: "도니도니",
+        userImg: "http://placehold.co/49",
+        percent: 70,
+      },
+      {
+        id: 5,
+        userName: "짱모아",
+        userImg: "http://placehold.co/49",
+        percent: 20,
+      },
+    ],
   },
 ];
 

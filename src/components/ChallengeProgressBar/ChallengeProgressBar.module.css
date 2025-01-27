@@ -1,0 +1,49 @@
+.EachChallengerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 0.5px solid #dedede;
+}
+.ChallengerInfoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  width: 335px;
+}
+.ChallengerProgressContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.ProgressText {
+  color: #454545;
+  text-align: center;
+  /* sb/12px */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.ChallengeText {
+  color: #454545;
+  text-align: center;
+  margin: 0;
+  /* sb/20px */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  /* 텍스트 줄바꿈 설정 */
+  width: 200px; /* 컨테이너 너비 제한 */
+  word-wrap: break-word; /* 단어가 길 경우 줄바꿈 */
+  word-break: break-word; /* 긴 단어 줄바꿈 */
+  white-space: normal; /* 기본 줄바꿈 동작 */
+  margin-bottom: 16px;
+}

@@ -3,6 +3,7 @@ import styles from "./DetailPastChallenge.module.css";
 import Header from "../../../../components/Header/Header";
 import BottomBar from "../../../../components/BottomBar/BottomBar";
 import ProgressBar from "../../../../components/ProgressBar/ProgressBar";
+import ChallengeProgressBar from "../../../../components/ChallengeProgressBar/ChallengeProgressBar";
 
 const DetailPastChallenge = () => {
   const pageName = "챌린지";
@@ -65,27 +66,7 @@ const DetailPastChallenge = () => {
             함께한 챌린저
           </span>
           {challengeData.with.map((user) => (
-            <div key={user.id} className={styles.EachChallengerContainer}>
-              <div className={styles.ChallengerInfoContainer}>
-                <img
-                  src={user.userImg}
-                  alt="유저 프로필 사진"
-                  style={{ borderRadius: "50%" }}
-                />
-                <span
-                  className={styles.ChallengeTitle}
-                  style={{ fontSize: "18px", fontWeight: "600", margin: "0" }}
-                >
-                  {user.userName}
-                </span>
-              </div>
-              <div className={styles.ChallengerProgressContainer}>
-                <ProgressBar size="medium" currentProgress={user.percent} />
-                <span className={styles.ProgressText}>
-                  {user.percent}% 사용
-                </span>
-              </div>
-            </div>
+            <ChallengeProgressBar key={user.id} user={user} />
           ))}
         </div>
       </div>

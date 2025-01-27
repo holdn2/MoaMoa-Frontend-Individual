@@ -7,6 +7,7 @@ import styles from "./PublicChallenge.module.css";
 import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
 import chatPlusBtn from "../../../assets/Btn/chatPlusBtn.svg";
 import { Link, useNavigate } from "react-router-dom";
+import JoinChallenge from "./JoinChallenge";
 
 const PublicChallenge = ({ allData }) => {
   const joinChallenge = allData.filter((data) => data.isJoined == true);
@@ -28,19 +29,7 @@ const PublicChallenge = ({ allData }) => {
           </div>
           <div className={styles.joinChallengeContainer}>
             {joinChallenge.map((item) => (
-              <div key={item.id} className={styles.joinChallenge}>
-                <p className={styles.joinChallengeName}>{item.challengeName}</p>
-                <p className={styles.joinChallengeDeadline}>성공까지 </p>
-                <p className={styles.joinChallengeInfo}>
-                  <img src={date} alt="달력 아이콘" />
-                  {item.startDate}~{item.endDate}
-                </p>
-                <p className={styles.joinChallengeInfo}>
-                  <img src={people} alt="사람 모양 아이콘" />
-                  <span style={{ fontWeight: 600 }}>{item.people}명</span> 참여
-                  중
-                </p>
-              </div>
+              <JoinChallenge key={item.id} item={item} />
             ))}
           </div>
         </div>

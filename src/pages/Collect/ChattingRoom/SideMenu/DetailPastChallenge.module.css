@@ -95,25 +95,3 @@
   display: flex;
   flex-direction: column;
 }
-.EachChallengerContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-bottom: 0.5px solid #dedede;
-}
-.ChallengerInfoContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 12px;
-  width: 335px;
-}
-.ChallengerProgressContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
