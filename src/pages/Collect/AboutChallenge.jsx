@@ -16,6 +16,7 @@ const dummyData = [
     public: true,
     category: "taxi",
     isJoined: true,
+    percent: 50,
     with: [
       {
         id: 1,
@@ -60,6 +61,7 @@ const dummyData = [
     public: true,
     category: "delivery",
     isJoined: true,
+    percent: 70,
     with: [
       {
         id: 1,

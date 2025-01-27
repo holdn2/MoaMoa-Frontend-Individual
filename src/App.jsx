@@ -24,8 +24,9 @@ import PastChallenge from "./pages/Collect/ChattingRoom/SideMenu/PastChallenge";
 import MakeRoom from "./pages/Collect/ChattingRoom/MakeRoom";
 import AddChallenge from "./pages/Collect/AddChallenge";
 import DetailPastChallenge from "./pages/Collect/ChattingRoom/SideMenu/DetailPastChallenge";
-import ChallengeCardModal from "./pages/Collect/Challenge/ChallengeCardModal";
 import DetailChallenge from "./pages/Collect/Challenge/DetailChallenge";
+import ChallengeModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeModal";
+import ChallengeCardModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeCardModal";
 
 function App() {
   const router = createBrowserRouter([
@@ -74,8 +75,14 @@ function App() {
           element: <DetailChallenge />,
         },
         {
-          path: "/challengecard",
-          element: <ChallengeCardModal />,
+          path: "/challengemodal",
+          element: <ChallengeModal />,
+          children: [
+            {
+              path: "challengcard", // 자식 경로는 상대 경로 사용
+              element: <ChallengeCardModal />,
+            },
+          ],
         },
         {
           path: "/makeroom",

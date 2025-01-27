@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import coin from "../../assets/Content/coin3.svg";
 import styles from "./ChallengeCard.module.css";
+import { Link } from "react-router-dom";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
-const ChallengeCard = ({ allData, onClick }) => {
+const ChallengeCard = ({ allData, onClick, isDetailChallenge }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const endDate = new Date(allData.endDate);
   const successDate = endDate.getDate() - currentDate.getDate();
@@ -44,6 +46,17 @@ const ChallengeCard = ({ allData, onClick }) => {
           </span>
         </span>
       </div>
+      {isDetailChallenge && (
+        <>
+          <Link to={"/challenge"} className={styles.stopChallengeLink}>
+            챌린지 중단하기
+          </Link>
+          <div className={styles.progressBar}>
+            <ProgressBar size={short} currentProgress={allData.percent} />
+            <span>{allData.percent}% 사용</span>
+          </div>
+        </>
+      )}
     </div>
   );
 };

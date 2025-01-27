@@ -90,3 +90,24 @@
   font-weight: 700;
   line-height: normal;
 }
+
+.stopChallengeLink {
+  color: var(--Grey-600, #5e5e5e);
+  /* md/12px */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.progressBar span {
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  margin-left: 6px;
+  /* sb/12px */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

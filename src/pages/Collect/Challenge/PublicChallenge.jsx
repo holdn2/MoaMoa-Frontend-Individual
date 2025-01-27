@@ -113,7 +113,9 @@ const PublicChallenge = ({ allData }) => {
             key={item.id}
             allData={item}
             onClick={() =>
-              navigate("/challengecard", { state: { challenge: item } })
+              navigate("/challengemodal/challengcard", {
+                state: { challenge: item },
+              })
             }
           />
         ))}
