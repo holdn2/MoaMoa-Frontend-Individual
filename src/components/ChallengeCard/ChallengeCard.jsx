@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import coin from "../../assets/Content/coin3.svg";
 import styles from "./ChallengeCard.module.css";
 
 const ChallengeCard = ({ allData, onClick }) => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const endDate = new Date(allData.endDate);
+  const successDate = endDate.getDate() - currentDate.getDate();
+  const successTime = `${23 - currentDate.getHours()}:${
+    59 - currentDate.getMinutes()
+  }:${59 - currentDate.getSeconds()}`;
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className={styles.wrapper} onClick={onClick}>
       <div className={styles.public}>
@@ -25,7 +38,10 @@ const ChallengeCard = ({ allData, onClick }) => {
       </section>
       <div className={styles.deadline}>
         <span>
-          챌린지 성공까지 <span style={{ fontSize: "16px" }}>3일 02:49:50</span>
+          챌린지 성공까지{" "}
+          <span style={{ fontSize: "16px" }}>
+            {successDate}일 {successTime}
+          </span>
         </span>
       </div>
     </div>
