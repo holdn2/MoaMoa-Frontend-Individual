@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./FriendChallenge.module.css";
 import arrowRight from "../../../assets/Navigation/arrowRight.svg";
+import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
+import { Link } from "react-router-dom";
 
-const FriendChallenge = () => {
+const FriendChallenge = ({ friendChallenge }) => {
   return (
     <div>
       <div className={styles.friendProfileWrapper}>
@@ -21,6 +23,29 @@ const FriendChallenge = () => {
           ))}
         </div>
       </div>
+      {friendChallenge.length != 0 ? (
+        <>
+          <h3>현재 진행중인 챌린지</h3>
+          <div className={styles.friendChallengeWrapper}>
+            {friendChallenge.map((item) => (
+              <ChallengeCard
+                key={item.id}
+                allData={item}
+                isDetailChallenge={true}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className={styles.noJoinChallengeWrapper}>
+          <p className={styles.noJoinChallenge}>
+            친구들과 새로운 챌린지를 시작해보세요!
+          </p>
+          <Link to={"/challenge"} className={styles.noJoinChallengeLink}>
+            챌린지 만들러 가기
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
