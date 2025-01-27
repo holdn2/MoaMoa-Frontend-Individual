@@ -10,11 +10,7 @@ const ChallengeCardModal = () => {
   return (
     <>
       <ChallengeCard allData={challengeData} />
-      <button
-        type="button"
-        onClick={() => navigate(-1)}
-        className={styles.challengeCloseBtn}
-      >
+      <button type="button" onClick={() => navigate(-1)}>
         <img src={closeModal} alt="챌린지 참여 모달창을 닫는 버튼" />
       </button>
     </>

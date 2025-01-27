@@ -48,11 +48,19 @@ const ChallengeCard = ({ allData, onClick, isDetailChallenge }) => {
       </div>
       {isDetailChallenge && (
         <>
-          <Link to={"/challenge"} className={styles.stopChallengeLink}>
+          <Link
+            to={"/challengemodal/challengestopmodal"}
+            state={{
+              successDate: successDate,
+              coin: allData.coin,
+              name: allData.challengeName,
+            }}
+            className={styles.stopChallengeLink}
+          >
             챌린지 중단하기
           </Link>
           <div className={styles.progressBar}>
-            <ProgressBar size={short} currentProgress={allData.percent} />
+            <ProgressBar size="short" currentProgress={allData.percent} />
             <span>{allData.percent}% 사용</span>
           </div>
         </>

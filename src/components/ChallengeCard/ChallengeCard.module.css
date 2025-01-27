@@ -100,10 +100,14 @@
   font-weight: 500;
   line-height: normal;
 }
+.progressBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 .progressBar span {
   color: var(--Grey-700, #454545);
   text-align: center;
-  margin-left: 6px;
   /* sb/12px */
   font-family: Pretendard;
   font-size: 12px;

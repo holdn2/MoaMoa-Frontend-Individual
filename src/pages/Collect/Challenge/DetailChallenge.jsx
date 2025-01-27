@@ -16,7 +16,7 @@ const DetailChallenge = () => {
       <div className={styles.wrapper}>
         <section>
           <h3>현재 진행중인 챌린지</h3>
-          <ChallengeCard allData={selectedChallenge} />
+          <ChallengeCard allData={selectedChallenge} isDetailChallenge={true} />
         </section>
         <section>
           <h3>함께하는 챌린저</h3>

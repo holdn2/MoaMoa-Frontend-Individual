@@ -27,6 +27,7 @@ import DetailPastChallenge from "./pages/Collect/ChattingRoom/SideMenu/DetailPas
 import DetailChallenge from "./pages/Collect/Challenge/DetailChallenge";
 import ChallengeModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeModal";
 import ChallengeCardModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeCardModal";
+import ChallengeStopModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeStopModal";
 
 function App() {
   const router = createBrowserRouter([
@@ -81,6 +82,10 @@ function App() {
             {
               path: "challengcard", // 자식 경로는 상대 경로 사용
               element: <ChallengeCardModal />,
+            },
+            {
+              path: "/challengemodal/challengestopmodal",
+              element: <ChallengeStopModal />,
             },
           ],
         },
