@@ -8,6 +8,7 @@
   margin: 0 auto;
   background-color: #f8f8f8;
   margin-top: 26px;
+  overflow-x: hidden;
 }
 
 h3 {

@@ -2,9 +2,9 @@ import React from "react";
 import coin from "../../assets/Content/coin3.svg";
 import styles from "./ChallengeCard.module.css";
 
-const ChallengeCard = ({ allData }) => {
+const ChallengeCard = ({ allData, onClick }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} onClick={onClick}>
       <div className={styles.public}>
         <span>{allData.public ? "전체" : "친구"}</span>
       </div>

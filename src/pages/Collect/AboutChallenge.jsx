@@ -15,7 +15,7 @@ const dummyData = [
     people: 127,
     public: true,
     category: "taxi",
-    isJoined: false,
+    isJoined: true,
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const dummyData = [
     people: 4,
     public: true,
     category: "delivery",
-    isJoined: false,
+    isJoined: true,
   },
 ];
 

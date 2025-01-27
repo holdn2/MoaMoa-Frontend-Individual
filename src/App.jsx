@@ -24,6 +24,7 @@ import PastChallenge from "./pages/Collect/ChattingRoom/SideMenu/PastChallenge";
 import MakeRoom from "./pages/Collect/ChattingRoom/MakeRoom";
 import AddChallenge from "./pages/Collect/AddChallenge";
 import DetailPastChallenge from "./pages/Collect/ChattingRoom/SideMenu/DetailPastChallenge";
+import ChallengeCardModal from "./pages/Collect/Challenge/ChallengeCardModal";
 
 function App() {
   const router = createBrowserRouter([
@@ -66,6 +67,10 @@ function App() {
         {
           path: "/challenge",
           element: <AddChallenge />,
+        },
+        {
+          path: "/challengecard",
+          element: <ChallengeCardModal />,
         },
         {
           path: "/makeroom",

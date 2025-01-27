@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import arrowRight from "../../../assets/Navigation/arrowRight.svg";
 import date from "../../../assets/Content/date.svg";
 import people from "../../../assets/Content/people.svg";
@@ -66,7 +66,13 @@ const PublicChallenge = ({ allData }) => {
       </div>
       <div className={styles.publicChallengeWrapper}>
         {allData.map((item) => (
-          <ChallengeCard key={item.id} allData={item} />
+          <ChallengeCard
+            key={item.id}
+            allData={item}
+            onClick={() =>
+              navigate("/challengecard", { state: { challenge: item } })
+            }
+          />
         ))}
       </div>
       <img

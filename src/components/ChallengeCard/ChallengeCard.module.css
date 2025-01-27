@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   box-sizing: border-box;
+  width: 335px;
   height: 325px;
   padding: 0px 8px;
   flex-direction: column;
@@ -10,6 +11,7 @@
   align-self: stretch;
   border-radius: 12px;
   background: var(--Grey-70, #f1f1f1);
+  cursor: pointer;
 }
 
 .public {
