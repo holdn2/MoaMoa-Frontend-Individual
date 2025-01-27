@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./JoinChallenge.module.css";
+import date from "../../../assets/Content/date.svg";
+import people from "../../../assets/Content/people.svg";
 
-const JoinChallenge = ({ item }) => {
+const JoinChallenge = ({ item, onClick }) => {
   return (
-    <div key={item.id} className={styles.joinChallenge}>
+    <div onClick={onClick} className={styles.joinChallenge}>
       <p className={styles.joinChallengeName}>{item.challengeName}</p>
       <p className={styles.joinChallengeDeadline}>성공까지 </p>
       <p className={styles.joinChallengeInfo}>

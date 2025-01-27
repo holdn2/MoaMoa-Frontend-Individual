@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import arrowRight from "../../../assets/Navigation/arrowRight.svg";
-import date from "../../../assets/Content/date.svg";
-import people from "../../../assets/Content/people.svg";
 import arrowDown from "../../../assets/Navigation/arrowDown.svg";
 import styles from "./PublicChallenge.module.css";
 import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
@@ -29,7 +27,15 @@ const PublicChallenge = ({ allData }) => {
           </div>
           <div className={styles.joinChallengeContainer}>
             {joinChallenge.map((item) => (
-              <JoinChallenge key={item.id} item={item} />
+              <JoinChallenge
+                key={item.id}
+                item={item}
+                onClick={() =>
+                  navigate("/challenge/detail", {
+                    state: { selectedChallenge: item },
+                  })
+                }
+              />
             ))}
           </div>
         </div>

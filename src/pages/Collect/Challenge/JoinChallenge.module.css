@@ -6,6 +6,7 @@
   align-items: flex-start;
   border-radius: 16px;
   background: var(--Grey-70, #f1f1f1);
+  cursor: pointer;
 }
 .joinChallengeName {
   color: var(--Grey-700, #454545);

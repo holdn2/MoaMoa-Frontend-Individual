@@ -3,7 +3,12 @@ import React from "react";
 import styles from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ pageName, diagnosisStage, setDiagnosisStage }) => {
+const Header = ({
+  pageName,
+  diagnosisStage,
+  setDiagnosisStage,
+  collectBack,
+}) => {
   const navigate = useNavigate();
 
   const renderHeaderContent = () => {
@@ -23,7 +28,23 @@ const Header = ({ pageName, diagnosisStage, setDiagnosisStage }) => {
           </div>
         );
       case "모으기":
-        return <></>;
+        return (
+          <>
+            {collectBack ? (
+              <button
+                className={styles.GoBackButton}
+                onClick={() => navigate(-1)}
+              >
+                <img
+                  src="../../../src/assets/Navigation/arrowLeftBig.svg"
+                  alt="뒤로가기"
+                />
+              </button>
+            ) : (
+              <> </>
+            )}
+          </>
+        );
       case "내 프로필":
         return (
           <>
