@@ -27,7 +27,15 @@ const PastChallenge = () => {
         {isInputText ? (
           <>
             {filteredChallenge.map((item) => (
-              <button key={item.id} className={styles.ChallengeContainer}>
+              <button
+                key={item.id}
+                className={styles.ChallengeContainer}
+                onClick={() =>
+                  navigate(
+                    `/chatroom/${params.chatroomId}/pastchallenge/detailpastchallenge`
+                  )
+                }
+              >
                 {item.isSuccess ? (
                   <img
                     src="../../src/assets/ChallengeResult/success.svg"
