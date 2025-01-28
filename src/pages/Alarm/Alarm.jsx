@@ -130,7 +130,6 @@ const Alarm = () => {
           </div>
         ))}
       </div>
-      <BottomBar pageName={pageName} />
     </div>
   );
 };
