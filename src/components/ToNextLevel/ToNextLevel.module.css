@@ -1,4 +1,5 @@
 .NextLevelContainer {
+  position: relative;
   display: flex;
   width: 320px;
   padding: 8px;
@@ -6,11 +7,19 @@
   align-items: flex-start;
   margin-top: 26px;
   border-radius: 12px;
-  background: #f1f1f1;
+  background: #fafeff;
+  border: 2px solid #c7f1ff;
 }
 .LevelTextContainer {
   display: flex;
   flex-direction: column;
+}
+.ToLevelPage {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 3px;
+  right: 8px;
 }
 .CurrentLevelText {
   color: #007094;
@@ -20,6 +29,8 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin-top: 8px;
+  margin-bottom: 5px;
 }
 .ToLevelUpText {
   color: #454545;
@@ -34,6 +45,7 @@
 }
 .LevelProgressBarContainer {
   position: relative;
+  margin-top: 2px;
 }
 .LevelProgressBar {
   margin-bottom: 15px;

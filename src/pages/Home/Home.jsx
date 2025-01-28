@@ -57,7 +57,7 @@ const Home = () => {
         {/* 다음 레벨까지 */}
         <ToNextLevel />
         {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
-        {participatedChallenge.length ? <></> : <ProgressChallenge />}
+        {participatedChallenge.length ? <ProgressChallenge /> : <></>}
         <RecruitChallenge />
       </div>
       <BottomBar pageName={pageName} />
