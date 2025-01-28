@@ -9,6 +9,22 @@ const Level = () => {
     <div className={styles.LevelPageContainer}>
       <Header pageName={pageName} />
       <div className={styles.MainArea}>
+        <div className={styles.CheerUpContainer}>
+          <div className={styles.ContentWrapper}>
+            <span className={styles.CheerUpText}>
+              꼬질꼬질 먼지를 하나씩
+              <br />
+              닦다 보면, 어느새 반짝반짝
+              <br />
+              블루 먼지가 되어가요! 🧹✨
+            </span>
+            <img
+              style={{ width: "96px", marginLeft: "-10px" }}
+              src="../src/assets/DustLevel/Lv6.svg"
+              alt="레벨 6"
+            />
+          </div>
+        </div>
         <div className={styles.DustContainer}>
           <div className={styles.LevelContainer}>
             <img

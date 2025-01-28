@@ -15,10 +15,10 @@ const Header = ({ pageName, diagnosisStage, setDiagnosisStage }) => {
               <img src="../src/assets/Navigation/bell.svg" alt="알림" />
             </button>
             <button onClick={() => navigate("/level")}>
-              <img src="../src/assets/Content/pig.svg" alt="돼지" />
+              <img src="../src/assets/Content/dust.svg" alt="먼지" />
             </button>
             <button onClick={() => navigate("/mycoin")}>
-              <img src="../src/assets/Content/coin3.svg" alt="동전" />
+              <img src="../src/assets/Content/headerCoin.svg" alt="동전" />
             </button>
           </div>
         );
