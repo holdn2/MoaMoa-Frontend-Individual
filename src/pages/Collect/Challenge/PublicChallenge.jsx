@@ -1,16 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import arrowRight from "../../../assets/Navigation/arrowRight.svg";
-import date from "../../../assets/Content/date.svg";
-import people from "../../../assets/Content/people.svg";
+import arrowUp from "../../../assets/Navigation/arrowUp.svg";
 import arrowDown from "../../../assets/Navigation/arrowDown.svg";
 import styles from "./PublicChallenge.module.css";
 import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
 import chatPlusBtn from "../../../assets/Btn/chatPlusBtn.svg";
 import { Link, useNavigate } from "react-router-dom";
+import JoinChallenge from "./JoinChallenge";
 
 const PublicChallenge = ({ allData }) => {
-  const joinChallenge = allData.filter((data) => data.isJoined == true);
   const navigate = useNavigate();
+  const joinChallenge = allData.filter((data) => data.isJoined == true);
+  const [sortChallenge, setSortChallenge] = useState(allData);
+  const [isDropDown, setIsDropDown] = useState(false);
+  const sortType = [
+    "인기순",
+    "최신순",
+    "종료임박순",
+    "코인많은순",
+    "코인적은순",
+  ];
+  const [sortName, setSortName] = useState(sortType[0]);
+
+  const handleSortChallenge = (name) => {
+    setSortName(name);
+    const compare = (a, b) => {
+      let date1, date2;
+      switch (name) {
+        case "인기순":
+          return b.people - a.people;
+        case "최신순":
+          date1 = new Date(a.startDate);
+          date2 = new Date(b.startDate);
+          return date1 > date2 ? 1 : -1;
+        case "종료임박순":
+          date1 = new Date(a.endDate);
+          date2 = new Date(b.endDate);
+          return date1 > date2 ? 1 : -1;
+        case "코인많은순":
+          return b.coin - a.coin;
+        case "코인적은순":
+          return a.coin - b.coin;
+        default:
+          break;
+      }
+    };
+    setSortChallenge([...allData].sort(compare));
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -28,19 +64,15 @@ const PublicChallenge = ({ allData }) => {
           </div>
           <div className={styles.joinChallengeContainer}>
             {joinChallenge.map((item) => (
-              <div key={item.id} className={styles.joinChallenge}>
-                <p className={styles.joinChallengeName}>{item.challengeName}</p>
-                <p className={styles.joinChallengeDeadline}>성공까지 </p>
-                <p className={styles.joinChallengeInfo}>
-                  <img src={date} alt="달력 아이콘" />
-                  {item.startDate}~{item.endDate}
-                </p>
-                <p className={styles.joinChallengeInfo}>
-                  <img src={people} alt="사람 모양 아이콘" />
-                  <span style={{ fontWeight: 600 }}>{item.people}명</span> 참여
-                  중
-                </p>
-              </div>
+              <JoinChallenge
+                key={item.id}
+                item={item}
+                onClick={() =>
+                  navigate("/challenge/detail", {
+                    state: { selectedChallenge: item },
+                  })
+                }
+              />
             ))}
           </div>
         </div>
@@ -59,14 +91,33 @@ const PublicChallenge = ({ allData }) => {
 
       <h3>이런 챌린지는 어떠세요?</h3>
       <div className={styles.dropDown}>
-        <button>
-          <span>인기순</span>
-          <img src={arrowDown} alt="정렬 버튼 아이콘" />
+        <button type="button" onClick={() => setIsDropDown(!isDropDown)}>
+          <p>{sortName}</p>
+          <img src={isDropDown ? arrowUp : arrowDown} alt="정렬 버튼 아이콘" />
+          {isDropDown && (
+            <ul>
+              {sortType
+                .filter((name) => name !== sortName)
+                .map((name) => (
+                  <li key={name} onClick={() => handleSortChallenge(name)}>
+                    {name}
+                  </li>
+                ))}
+            </ul>
+          )}
         </button>
       </div>
       <div className={styles.publicChallengeWrapper}>
-        {allData.map((item) => (
-          <ChallengeCard key={item.id} allData={item} />
+        {sortChallenge.map((item) => (
+          <ChallengeCard
+            key={item.id}
+            allData={item}
+            onClick={() =>
+              navigate("/challengemodal/challengcard", {
+                state: { challenge: item },
+              })
+            }
+          />
         ))}
       </div>
       <img

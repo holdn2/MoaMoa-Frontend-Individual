@@ -1,0 +1,96 @@
+.friendProfileWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 14px;
+  margin-top: 24px;
+}
+.friendDataInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.friendCount {
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  /* sb/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.friendMore {
+  display: flex;
+  align-items: center;
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  /* sb/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.friendMore img {
+  width: 18px;
+  height: 18px;
+}
+.friendProfileContainer {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-bottom: 32px;
+  box-sizing: border-box;
+  padding-bottom: 10px;
+}
+.friendProfileContainer img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+h3 {
+  color: var(--Grey-800, #2b2b2b);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 16px;
+}
+.friendChallengeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.noJoinChallengeWrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 111px;
+}
+.noJoinChallenge {
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 16px;
+}
+.noJoinChallengeLink {
+  color: var(--Grey-600, #5e5e5e);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

@@ -1,8 +1,7 @@
 .wrapper {
   display: flex;
-  box-sizing: border-box;
-  height: 325px;
-  padding: 0px 8px;
+  width: 319px;
+  padding: 12px 8px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -10,10 +9,13 @@
   align-self: stretch;
   border-radius: 12px;
   background: var(--Grey-70, #f1f1f1);
+  cursor: pointer;
+  flex-wrap: nowrap;
 }
 
 .public {
   display: flex;
+  box-sizing: border-box;
   padding: 4px 12px;
   justify-content: center;
   align-items: center;
@@ -36,16 +38,19 @@
   font-family: Pretendard;
 }
 .challengeName {
+  padding: 0;
   color: var(--Grey-800, #2b2b2b);
   font-size: 24px;
   font-weight: 700;
 }
 .challengeDesc {
+  padding: 0;
   color: var(--Grey-700, #454545);
   font-size: 20px;
   font-weight: 600;
 }
 .challengeInfo {
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,6 +66,7 @@
   gap: 2px;
 }
 .people {
+  padding: 0;
   color: var(--Grey-600, #5e5e5e);
   font-size: 14px;
   font-weight: 500;
@@ -68,6 +74,7 @@
 
 .deadline {
   display: flex;
+  box-sizing: border-box;
   padding: 12px 33px;
   flex-direction: column;
   align-items: flex-start;
@@ -81,5 +88,30 @@
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
+  line-height: normal;
+}
+
+.stopChallengeLink {
+  color: var(--Grey-600, #5e5e5e);
+  /* md/12px */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.progressBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.progressBar span {
+  color: var(--Grey-700, #454545);
+  text-align: center;
+  /* sb/12px */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
   line-height: normal;
 }
