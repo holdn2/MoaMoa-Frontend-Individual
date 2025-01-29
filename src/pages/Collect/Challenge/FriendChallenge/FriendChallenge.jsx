@@ -20,7 +20,17 @@ const FriendChallenge = ({ friendChallenge }) => {
           <span className={styles.friendCount}>
             친구 <span style={{ fontWeight: 700 }}>{friendData.length}</span>명
           </span>
-          <span className={styles.friendMore}>
+          <span
+            className={styles.friendMore}
+            onClick={() =>
+              navigate("/friendlist", {
+                state: {
+                  withChallengeFriend: withChallengeFriend,
+                  friendData: friendData,
+                },
+              })
+            }
+          >
             전체보기
             <img src={arrowRight} alt="현재 유저와 친구인 친구목록 확인 버튼" />
           </span>

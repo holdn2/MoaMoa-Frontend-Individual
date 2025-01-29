@@ -31,7 +31,7 @@ import ChallengeCardModal from "./pages/Collect/Challenge/ChallengeModal/Challen
 import ChallengeStopModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeStopModal";
 
 import AddRoomChallenge from "./pages/Collect/ChattingRoom/SideMenu/AddRoomChallenge";
-
+import FriendList from "./pages/Collect/Challenge/FriendChallenge/FriendList";
 
 function App() {
   const router = createBrowserRouter([
@@ -78,6 +78,10 @@ function App() {
         {
           path: "/challenge/detail",
           element: <DetailChallenge />,
+        },
+        {
+          path: "/friendlist",
+          element: <FriendList />,
         },
         {
           path: "/challengemodal",
