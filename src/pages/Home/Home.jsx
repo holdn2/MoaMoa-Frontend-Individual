@@ -19,7 +19,7 @@ const Home = () => {
   // 이 전에 시작했는지 여부에 따라 보이는 화면이 달라짐
   const [consumption, setConsumption] = useState(1);
   // 참여중인 챌린지가 있을 경우 혹은 없을 경우
-  const participatedChallenge = null;
+  const participatedChallenge = [];
   // 로그인 시 모달창 팝업.
   // zustand(전역상태관리)를 이용해서 로그인 시에만 해당 팝업이 뜨게 구현!(제대로 된 공부가 필요한 부분)
   const { hasLogin, setHasLogin } = useModalStore();
@@ -57,11 +57,8 @@ const Home = () => {
         {/* 다음 레벨까지 */}
         <ToNextLevel />
         {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
-        {participatedChallenge === null ? (
-          <RecruitChallenge />
-        ) : (
-          <ProgressChallenge />
-        )}
+        {participatedChallenge.length ? <></> : <ProgressChallenge />}
+        <RecruitChallenge />
       </div>
       <BottomBar pageName={pageName} />
       <AttendanceModal
