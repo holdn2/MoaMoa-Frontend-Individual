@@ -7,6 +7,7 @@ import chatPlusBtn from "../../../../assets/Btn/chatPlusBtn.svg";
 import { Link, useNavigate } from "react-router-dom";
 import JoinChallenge from "./JoinChallenge";
 import ChallengeCard from "../../../../components/ChallengeCard/ChallengeCard";
+import SearchBar from "../../../../components/SearchBar/SearchBar";
 
 const PublicChallenge = ({ allData }) => {
   const navigate = useNavigate();
@@ -49,84 +50,100 @@ const PublicChallenge = ({ allData }) => {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <h3>현재 진행중인 챌린지</h3>
-      {joinChallenge.length != 0 ? (
-        <div className={styles.joinChallengeWrapper}>
-          <div className={styles.joinChallengeMore}>
-            <p>
-              더보기
-              <img
-                src={arrowRight}
-                alt="현재 진행중인 챌린지 더보기로 가는 버튼"
-              />
-            </p>
-          </div>
-          <div className={styles.joinChallengeContainer}>
-            {joinChallenge.map((item) => (
-              <JoinChallenge
-                key={item.id}
-                item={item}
-                onClick={() =>
-                  navigate("/challenge/detail", {
-                    state: { selectedChallenge: item },
-                  })
-                }
-              />
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className={styles.joinChallengeWrapper}>
-          <p className={styles.noJoinChallenge}>
-            현재 진행중인 챌린지가 없어요
-            <br />
-            직접 챌린지를 만들고 시작해보세요!
-          </p>
-          <Link to={"/challenge"} className={styles.noJoinChallengeLink}>
-            챌린지 만들러 가기
-          </Link>
-        </div>
-      )}
-
-      <h3>이런 챌린지는 어떠세요?</h3>
-      <div className={styles.dropDown}>
-        <button type="button" onClick={() => setIsDropDown(!isDropDown)}>
-          <p>{sortName}</p>
-          <img src={isDropDown ? arrowUp : arrowDown} alt="정렬 버튼 아이콘" />
-          {isDropDown && (
-            <ul>
-              {sortType
-                .filter((name) => name !== sortName)
-                .map((name) => (
-                  <li key={name} onClick={() => handleSortChallenge(name)}>
-                    {name}
-                  </li>
-                ))}
-            </ul>
-          )}
-        </button>
-      </div>
-      <div className={styles.publicChallengeWrapper}>
-        {sortChallenge.map((item) => (
-          <ChallengeCard
-            key={item.id}
-            allData={item}
-            onClick={() =>
-              navigate("/challengemodal/challengcard", {
-                state: { challenge: item },
-              })
-            }
-          />
-        ))}
-      </div>
-      <img
-        onClick={() => navigate("/challenge")}
-        src={chatPlusBtn}
-        alt="챌린지 만들기로 가는 버튼"
-        style={{ position: "fixed", right: "20px", bottom: "80px" }}
+    <>
+      <SearchBar
+        onClick={() =>
+          navigate("/friendsearch", {
+            state: {
+              userData: userData,
+              friendArray: friendArray,
+              withChallengeFriend: withChallengeFriend,
+            },
+          })
+        }
       />
-    </div>
+      <div className={styles.wrapper}>
+        <h3>현재 진행중인 챌린지</h3>
+        {joinChallenge.length != 0 ? (
+          <div className={styles.joinChallengeWrapper}>
+            <div className={styles.joinChallengeMore}>
+              <p>
+                더보기
+                <img
+                  src={arrowRight}
+                  alt="현재 진행중인 챌린지 더보기로 가는 버튼"
+                />
+              </p>
+            </div>
+            <div className={styles.joinChallengeContainer}>
+              {joinChallenge.map((item) => (
+                <JoinChallenge
+                  key={item.id}
+                  item={item}
+                  onClick={() =>
+                    navigate("/challenge/detail", {
+                      state: { selectedChallenge: item },
+                    })
+                  }
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className={styles.joinChallengeWrapper}>
+            <p className={styles.noJoinChallenge}>
+              현재 진행중인 챌린지가 없어요
+              <br />
+              직접 챌린지를 만들고 시작해보세요!
+            </p>
+            <Link to={"/challenge"} className={styles.noJoinChallengeLink}>
+              챌린지 만들러 가기
+            </Link>
+          </div>
+        )}
+
+        <h3>이런 챌린지는 어떠세요?</h3>
+        <div className={styles.dropDown}>
+          <button type="button" onClick={() => setIsDropDown(!isDropDown)}>
+            <p>{sortName}</p>
+            <img
+              src={isDropDown ? arrowUp : arrowDown}
+              alt="정렬 버튼 아이콘"
+            />
+            {isDropDown && (
+              <ul>
+                {sortType
+                  .filter((name) => name !== sortName)
+                  .map((name) => (
+                    <li key={name} onClick={() => handleSortChallenge(name)}>
+                      {name}
+                    </li>
+                  ))}
+              </ul>
+            )}
+          </button>
+        </div>
+        <div className={styles.publicChallengeWrapper}>
+          {sortChallenge.map((item) => (
+            <ChallengeCard
+              key={item.id}
+              allData={item}
+              onClick={() =>
+                navigate("/challengemodal/challengcard", {
+                  state: { challenge: item },
+                })
+              }
+            />
+          ))}
+        </div>
+        <img
+          onClick={() => navigate("/challenge")}
+          src={chatPlusBtn}
+          alt="챌린지 만들기로 가는 버튼"
+          style={{ position: "fixed", right: "20px", bottom: "80px" }}
+        />
+      </div>
+    </>
   );
 };
 

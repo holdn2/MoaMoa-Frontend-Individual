@@ -3,6 +3,7 @@ import styles from "./FriendChallenge.module.css";
 import arrowRight from "../../../../assets/Navigation/arrowRight.svg";
 import { Link, useNavigate } from "react-router-dom";
 import ChallengeCard from "../../../../components/ChallengeCard/ChallengeCard";
+import SearchBar from "../../../../components/SearchBar/SearchBar";
 
 const FriendChallenge = ({ friendChallenge }) => {
   const navigate = useNavigate();
@@ -16,6 +17,18 @@ const FriendChallenge = ({ friendChallenge }) => {
 
   return (
     <div>
+      <SearchBar
+        isText={true}
+        onClick={() =>
+          navigate("/friendsearch", {
+            state: {
+              userData: userData,
+              friendArray: friendArray,
+              withChallengeFriend: withChallengeFriend,
+            },
+          })
+        }
+      />
       <div className={styles.friendProfileWrapper}>
         <div className={styles.friendDataInfo}>
           <span className={styles.friendCount}>
@@ -91,7 +104,7 @@ const userData = [
   },
   {
     id: 2,
-    userName: "금나와라",
+    userName: "금나와라", // 친구 X
     img: "http://placehold.co/49",
     toInvite: false,
     friend: false,
@@ -112,7 +125,7 @@ const userData = [
   },
   {
     id: 5,
-    userName: "모아모아짱",
+    userName: "모아모아짱", // 친구 X
     img: "http://placehold.co/49",
     toInvite: false,
     friend: false,

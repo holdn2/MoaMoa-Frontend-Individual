@@ -189,8 +189,6 @@ const dummyData = [
 
 const AboutChallenge = () => {
   const [isClicked, setIsClicked] = useState(0);
-  const [isInputText, setIsInputText] = useState(false);
-  const [filtered, setFiltered] = useState([]);
   const friendChallenge = dummyData.filter((data) => data.public == false);
 
   return (
@@ -211,11 +209,6 @@ const AboutChallenge = () => {
           친구
         </button>
       </nav>
-      <SearchBar
-        setIsInputText={setIsInputText}
-        setFiltered={setFiltered}
-        allData={dummyData}
-      />
       {isClicked === 0 ? (
         <PublicChallenge allData={dummyData} />
       ) : (
