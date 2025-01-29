@@ -18,10 +18,10 @@ const Level = () => {
               <br />
               닦다 보면, 어느새 반짝반짝
               <br />
-              블루 먼지가 되어가요! 🧹✨
+              블루 먼지가 되어가요!🧹
             </span>
             <img
-              style={{ width: "96px", marginLeft: "-10px" }}
+              style={{ width: "96px" }}
               src="../src/assets/DustLevel/Lv6.svg"
               alt="레벨 6"
             />
