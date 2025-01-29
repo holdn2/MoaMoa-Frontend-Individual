@@ -53,11 +53,9 @@ const PublicChallenge = ({ allData }) => {
     <>
       <SearchBar
         onClick={() =>
-          navigate("/friendsearch", {
+          navigate("/challengesearch", {
             state: {
-              userData: userData,
-              friendArray: friendArray,
-              withChallengeFriend: withChallengeFriend,
+              allData: allData,
             },
           })
         }

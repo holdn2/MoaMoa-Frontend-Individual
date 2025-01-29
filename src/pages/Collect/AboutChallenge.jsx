@@ -189,6 +189,7 @@ const dummyData = [
 
 const AboutChallenge = () => {
   const [isClicked, setIsClicked] = useState(0);
+  const publicChallenge = dummyData.filter((data) => data.public == true);
   const friendChallenge = dummyData.filter((data) => data.public == false);
 
   return (
@@ -210,7 +211,7 @@ const AboutChallenge = () => {
         </button>
       </nav>
       {isClicked === 0 ? (
-        <PublicChallenge allData={dummyData} />
+        <PublicChallenge allData={publicChallenge} />
       ) : (
         <FriendChallenge friendChallenge={friendChallenge} />
       )}

@@ -2,8 +2,12 @@ import React from "react";
 import Category from "./Category";
 import styles from "./ChallengeCategory.module.css";
 
-const ChallengeCategory = ({ challengeClicked, setChallengeClicked }) => {
-  const challengeName = [
+const ChallengeCategory = ({
+  challengeClicked,
+  setChallengeClicked,
+  isSearch,
+}) => {
+  const challengeArr = [
     "택시비",
     "배달음식",
     "커피",
@@ -11,16 +15,24 @@ const ChallengeCategory = ({ challengeClicked, setChallengeClicked }) => {
     "술자리",
     "취미",
   ];
+  const challnegeName = [
+    "taxi",
+    "delivery",
+    "coffee",
+    "impulseBuy",
+    "alcohol",
+    "hobby",
+  ];
   return (
     <div className={styles.categoryWrapper}>
-      <span>챌린지 카테고리</span>
+      <span>{isSearch ? "추천 카테고리 " : "챌린지 카테고리"}</span>
       <div className={styles.category}>
-        {challengeName.map((name, index) => (
+        {challengeArr.map((name, index) => (
           <Category
             key={name}
             children={name}
-            checked={challengeClicked === index}
-            onClick={() => setChallengeClicked(index)}
+            checked={challengeClicked === challnegeName[index]}
+            onClick={() => setChallengeClicked(challnegeName[index])}
           />
         ))}
       </div>

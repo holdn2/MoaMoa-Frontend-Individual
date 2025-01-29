@@ -10,13 +10,17 @@ const SearchBar = ({
   setFiltered,
   allData,
   isText,
+  isChallenge,
   onClick,
 }) => {
   const handleSearch = (e) => {
     const searchText = e.target.value.toLowerCase(); // 검색어를 소문자로 변환
     setIsInputText(searchText);
     const filtering = allData.filter(
-      (item) => item.userName.toLowerCase().includes(searchText) // 일부 일치 검색
+      (item) =>
+        (isChallenge ? item.challengeName : item.userName)
+          .toLowerCase()
+          .includes(searchText) // 일부 일치 검색
     );
     setFiltered(filtering);
   };
