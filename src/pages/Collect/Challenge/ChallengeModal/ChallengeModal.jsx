@@ -8,10 +8,8 @@ const ChallengeModal = () => {
   const pageName = "모으기";
   return (
     <>
-      <div className={styles.backWrapper}>
-        <Header pageName={pageName} collectBack={true} />
-        <BottomBar pageName={pageName} />
-      </div>
+      <Header pageName={pageName} collectBack={true} />
+      <BottomBar pageName={pageName} />
       <div className={styles.modalOverlay}>
         <div className={styles.modalWrapper}>
           <Outlet /> {/*자식 컴포넌트가 렌더링될 위치*/}

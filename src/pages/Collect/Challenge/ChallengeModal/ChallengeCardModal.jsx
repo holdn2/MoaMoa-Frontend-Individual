@@ -9,7 +9,7 @@ const ChallengeCardModal = () => {
   const challengeData = location.state?.challenge;
   return (
     <>
-      <ChallengeCard allData={challengeData} />
+      <ChallengeCard allData={challengeData} isButton={true} />
       <button type="button" onClick={() => navigate(-1)}>
         <img src={closeModal} alt="챌린지 참여 모달창을 닫는 버튼" />
       </button>

@@ -3,8 +3,9 @@ import coin from "../../assets/Content/coin3.svg";
 import styles from "./ChallengeCard.module.css";
 import { Link } from "react-router-dom";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import PrimaryButton from "../Button/PrimaryButton";
 
-const ChallengeCard = ({ allData, onClick, isDetailChallenge }) => {
+const ChallengeCard = ({ allData, onClick, isDetailChallenge, isButton }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const endDate = new Date(allData.endDate);
   const successDate = endDate.getDate() - currentDate.getDate();
@@ -38,14 +39,22 @@ const ChallengeCard = ({ allData, onClick, isDetailChallenge }) => {
         </p>
         <p className={styles.people}>{allData.people}명 참여 중</p>
       </section>
-      <div className={styles.deadline}>
-        <span>
-          챌린지 성공까지{" "}
-          <span style={{ fontSize: "16px" }}>
-            {successDate}일 {successTime}
+      {isButton ? (
+        <PrimaryButton
+          size="challengeCard"
+          children="챌린지 참여하기"
+          type="button"
+        />
+      ) : (
+        <div className={styles.deadline}>
+          <span>
+            챌린지 성공까지{" "}
+            <span style={{ fontSize: "16px" }}>
+              {successDate}일 {successTime}
+            </span>
           </span>
-        </span>
-      </div>
+        </div>
+      )}
       {isDetailChallenge && (
         <>
           <Link
