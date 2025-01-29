@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./FriendList.module.css";
 import FreindListBar from "../../FreindListBar";
 import { useLocation } from "react-router-dom";
@@ -9,17 +9,25 @@ const FriendList = () => {
   const pageName = "친구 목록";
   const location = useLocation();
   const { withChallengeFriend, friendData } = location.state;
+  const [isInputText, setIsInputText] = useState("");
+  const [filtered, setFiltered] = useState([]);
+
   return (
     <>
       <Header pageName={pageName} />
       <div className={styles.wrapper}>
-        <SearchBar />
+        <SearchBar
+          setIsInputText={setIsInputText}
+          setFiltered={setFiltered}
+          allData={friendData}
+        />
         <span className={styles.friendCount}>
           친구 <span style={{ fontWeight: 700 }}>{friendData.length}</span>명
         </span>
         <div className={styles.friendListContainer}>
-          {friendData.map((item) => (
+          {(isInputText.length > 0 ? filtered : friendData).map((item) => (
             <FreindListBar
+              key={item.id}
               friendName={item.userName}
               friendImg={item.img}
               isWithFriend={withChallengeFriend.includes(item.userName)}
