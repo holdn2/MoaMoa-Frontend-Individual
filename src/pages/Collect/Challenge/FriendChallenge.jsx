@@ -2,9 +2,17 @@ import React from "react";
 import styles from "./FriendChallenge.module.css";
 import arrowRight from "../../../assets/Navigation/arrowRight.svg";
 import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const FriendChallenge = ({ friendChallenge }) => {
+  const navigate = useNavigate();
+  const challengeFriendArray = friendChallenge.flatMap(
+    (data) => data.with || []
+  );
+  const withChallengeFriend = [
+    ...new Set(challengeFriendArray.map((friend) => friend.userName)),
+  ];
+
   return (
     <div>
       <div className={styles.friendProfileWrapper}>
@@ -19,7 +27,12 @@ const FriendChallenge = ({ friendChallenge }) => {
         </div>
         <div className={styles.friendProfileContainer}>
           {friendData.map((item) => (
-            <img src={item.img} alt="친구 프로필" />
+            <div key={item.id} className={styles.friendProfile}>
+              <img src={item.img} alt="친구 프로필" />
+              {withChallengeFriend.includes(item.userName) && (
+                <div className={styles.withFriendProfile}>챌린지</div>
+              )}
+            </div>
           ))}
         </div>
       </div>
@@ -32,6 +45,11 @@ const FriendChallenge = ({ friendChallenge }) => {
                 key={item.id}
                 allData={item}
                 isDetailChallenge={true}
+                onClick={() =>
+                  navigate("/challenge/detail", {
+                    state: { selectedChallenge: item },
+                  })
+                }
               />
             ))}
           </div>

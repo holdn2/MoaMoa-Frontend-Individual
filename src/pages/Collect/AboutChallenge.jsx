@@ -103,7 +103,7 @@ const dummyData = [
     endDate: "2024-11-22",
     coin: 300,
     people: 127,
-    public: true,
+    public: false,
     category: "taxi",
     isJoined: true,
     percent: 50,
@@ -128,9 +128,9 @@ const dummyData = [
       },
       {
         id: 4,
-        userName: "도니도니",
-        userImg: "http://placehold.co/49",
-        percent: 70,
+        userName: "피그핑",
+        img: "http://placehold.co/49",
+        toInvite: false,
       },
       {
         id: 5,
@@ -148,16 +148,16 @@ const dummyData = [
     endDate: "2024-11-08",
     coin: 500,
     people: 4,
-    public: true,
+    public: false,
     category: "delivery",
     isJoined: true,
     percent: 70,
     with: [
       {
         id: 1,
-        userName: "황금돼지될래",
-        userImg: "http://placehold.co/49",
-        percent: 40,
+        userName: "럭키머니",
+        img: "http://placehold.co/49",
+        toInvite: false,
       },
       {
         id: 2,
