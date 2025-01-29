@@ -61,9 +61,10 @@ const PrimaryButton = ({
   type = "button",
   size = "xl",
   disabled,
+  onClick,
 }) => {
   return (
-    <StyledButton type={type} size={size} disabled={disabled}>
+    <StyledButton type={type} size={size} disabled={disabled} onClick={onClick}>
       {children}
     </StyledButton>
   );

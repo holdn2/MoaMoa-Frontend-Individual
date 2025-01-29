@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import coin from "../../assets/Content/coin3.svg";
 import styles from "./ChallengeCard.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import PrimaryButton from "../Button/PrimaryButton";
 
 const ChallengeCard = ({ allData, onClick, isDetailChallenge, isButton }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const navigate = useNavigate();
   const endDate = new Date(allData.endDate);
   const successDate = endDate.getDate() - currentDate.getDate();
   const successTime = `${23 - currentDate.getHours()}:${
@@ -44,6 +45,16 @@ const ChallengeCard = ({ allData, onClick, isDetailChallenge, isButton }) => {
           size="challengeCard"
           children="챌린지 참여하기"
           type="button"
+          onClick={() =>
+            navigate("/challengemodal/challengemodalContent", {
+              state: {
+                successDate: successDate,
+                coin: allData.coin,
+                name: allData.challengeName,
+                type: "join",
+              },
+            })
+          }
         />
       ) : (
         <div className={styles.deadline}>
@@ -58,11 +69,12 @@ const ChallengeCard = ({ allData, onClick, isDetailChallenge, isButton }) => {
       {isDetailChallenge && (
         <>
           <Link
-            to={"/challengemodal/challengestopmodal"}
+            to={"/challengemodal/challengemodalContent"}
             state={{
               successDate: successDate,
               coin: allData.coin,
               name: allData.challengeName,
+              type: "stop",
             }}
             className={styles.stopChallengeLink}
           >
