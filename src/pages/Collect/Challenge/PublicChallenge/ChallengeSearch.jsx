@@ -13,35 +13,37 @@ const ChallengeSearch = () => {
   const [challengeClicked, setChallengeClicked] = useState("");
   const location = useLocation();
   const allData = location.state?.allData || [];
-  console.log(filtered);
   return (
     <>
       <Header pageName={pageName} />
       <div className={styles.wrapper}>
-        <SearchBar
-          setIsInputText={setIsInputText}
-          setFiltered={setFiltered}
-          allData={allData}
-          isChallenge={true}
-          className={styles.searchBar}
-        />
-        {isInputText.length === 0 && (
-          <>
-            <ChallengeCategory
-              challengeClicked={challengeClicked}
-              setChallengeClicked={setChallengeClicked}
-              isSearch={true}
-            />
-          </>
-        )}
+        <div className={styles.topWrapper}>
+          <SearchBar
+            setIsInputText={setIsInputText}
+            setFiltered={setFiltered}
+            allData={allData}
+            isChallenge={true}
+            className={styles.searchBar}
+          />
+          {isInputText.length === 0 && (
+            <>
+              <ChallengeCategory
+                challengeClicked={challengeClicked}
+                setChallengeClicked={setChallengeClicked}
+                isSearch={true}
+              />
+            </>
+          )}
+        </div>
         <div className={styles.publicChallengeWrapper}>
           {challengeClicked.length > 0 &&
+            isInputText.length === 0 &&
             allData
               .filter((data) => data.category === challengeClicked)
               .map((item) => <ChallengeCard key={item.id} allData={item} />)}
           {isInputText.length > 0 && (
             <>
-              <p>
+              <p className={styles.searchCallengeInfo}>
                 <span>“{isInputText}”</span> 과 연관된 챌린지에요!
               </p>
               {filtered.map((item) => (
