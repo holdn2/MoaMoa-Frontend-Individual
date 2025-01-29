@@ -11,8 +11,9 @@ import SearchBar from "../../../../components/SearchBar/SearchBar";
 
 const PublicChallenge = ({ allData }) => {
   const navigate = useNavigate();
+  const noJoinChallenge = allData.filter((data) => data.isJoined == false);
   const joinChallenge = allData.filter((data) => data.isJoined == true);
-  const [sortChallenge, setSortChallenge] = useState(allData);
+  const [sortChallenge, setSortChallenge] = useState(noJoinChallenge);
   const [isDropDown, setIsDropDown] = useState(false);
   const sortType = [
     "인기순",
@@ -46,7 +47,7 @@ const PublicChallenge = ({ allData }) => {
           break;
       }
     };
-    setSortChallenge([...allData].sort(compare));
+    setSortChallenge([...noJoinChallenge].sort(compare));
   };
 
   return (
