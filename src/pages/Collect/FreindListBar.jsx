@@ -46,15 +46,32 @@ const WithFriendMark = styled.div`
   font-weight: 500;
   line-height: normal;
 `;
+const NotFriendMark = styled.button`
+  display: flex;
+  padding: 6px 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--Grey-100, #dedede);
+  color: var(--Grey-600, #5e5e5e);
+  text-align: center;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
 
-const FreindListBar = ({ friendName, friendImg, isWithFriend }) => {
+const FreindListBar = ({ userName, userImg, isNotFriend, isWithFriend }) => {
   return (
     <ListWrapper>
       <FriendInfo>
-        <img src={friendImg} alt="친구 프로필" />
-        <span>{friendName}</span>
+        <img src={userImg} alt="친구 프로필" />
+        <span>{userName}</span>
       </FriendInfo>
       {isWithFriend && <WithFriendMark>챌린지</WithFriendMark>}
+      {isNotFriend && <NotFriendMark>친구추가</NotFriendMark>}
     </ListWrapper>
   );
 };

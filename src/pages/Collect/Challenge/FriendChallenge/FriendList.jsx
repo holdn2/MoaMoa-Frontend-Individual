@@ -28,8 +28,8 @@ const FriendList = () => {
           {(isInputText.length > 0 ? filtered : friendData).map((item) => (
             <FreindListBar
               key={item.id}
-              friendName={item.userName}
-              friendImg={item.img}
+              userName={item.userName}
+              userImg={item.img}
               isWithFriend={withChallengeFriend.includes(item.userName)}
             />
           ))}

@@ -155,9 +155,9 @@ const dummyData = [
     with: [
       {
         id: 1,
-        userName: "럭키머니",
-        img: "http://placehold.co/49",
-        toInvite: false,
+        userName: "황금돼지될래",
+        userImg: "http://placehold.co/49",
+        percent: 40,
       },
       {
         id: 2,
