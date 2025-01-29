@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ChattingRoom.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import ExitRoomModal from "./SideMenu/ExitRoomModal";
 import ChattingArea from "./DoChatting/ChattingArea";
+import AcceptChallengeModal from "./AcceptChallengeModal";
 
 const ChattingRoom = () => {
   const navigate = useNavigate();
@@ -17,9 +18,18 @@ const ChattingRoom = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  // 챌린지 관련 정보 상태
+  const [challengeData, setChallengeData] = useState(currentChallenge);
+
+  useEffect(() => {
+    console.log(challengeData);
+  }, [challengeData]);
+
   // 채팅방 나가기 관련 모달상태
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
   const [exitRoom, setExitRoom] = useState(false); // 채팅방 나가기 상태
+  // 챌린지 수락 관련 모달상태
+  const [isChallengeModalOpen, setIsChallengeModalOpen] = useState(false);
 
   return (
     <>
@@ -32,28 +42,35 @@ const ChattingRoom = () => {
             className={styles.RoomMenu}
             onClick={toggleMenu}
           />
-          {currentChallenge.length > 0 ? (
+          {challengeData ? (
             <div
               className={styles.ChallengeInfoContainer}
-              onClick={() => console.log("챌린지 보러가기")}
-              style={{ background: "#fff" }}
+              onClick={() => {
+                if (challengeData.isAccept) {
+                  console.log(
+                    "챌린지 보러가기. 챌린지 부분 완료되면 이후 추가 예정"
+                  );
+                } else {
+                  setIsChallengeModalOpen(true);
+                }
+              }}
             >
               <div className={styles.ChallengeTextContainer}>
                 <span className={styles.ChallengeTitle}>
-                  {currentChallenge[0].title}
+                  {challengeData.title}
                 </span>
                 <div style={{ display: "flex", gap: "14px" }}>
                   <span className={styles.ChallengeText}>
-                    {currentChallenge[0].coin}코인
+                    {challengeData.coin}코인
                   </span>
                   <span className={styles.ChallengeText}>
-                    {currentChallenge[0].date}
+                    {challengeData.date}
                   </span>
                   <span
                     className={styles.ChallengeText}
                     style={{ color: "#848484" }}
                   >
-                    {currentChallenge[0].people}명
+                    {challengeData.people}명
                   </span>
                 </div>
               </div>
@@ -66,7 +83,9 @@ const ChattingRoom = () => {
           ) : (
             <div
               className={styles.ChallengeInfoContainer}
-              onClick={() => console.log("챌린지 만들기")}
+              onClick={() =>
+                navigate(`/chatroom/${params.chatroomId}/roomchallenge`)
+              }
             >
               <div className={styles.ChallengeTextContainer}>
                 <span className={styles.ChallengeTitle}>
@@ -84,7 +103,12 @@ const ChattingRoom = () => {
             </div>
           )}
         </div>
-
+        <AcceptChallengeModal
+          isModalOpen={isChallengeModalOpen}
+          setIsModalOpen={setIsChallengeModalOpen}
+          challengeData={challengeData}
+          setChallengeData={setChallengeData}
+        />
         <div className={styles.MainArea}>
           <div>
             <ChattingArea />
@@ -130,7 +154,12 @@ const ChattingRoom = () => {
                 <img src="../src/assets/Action/invite.svg" alt="친구 초대" />
                 <span className={styles.MenuText}>친구 초대</span>
               </div>
-              <div className={styles.EachMenuContainer}>
+              <div
+                className={styles.EachMenuContainer}
+                onClick={() =>
+                  navigate(`/chatroom/${params.chatroomId}/roomchallenge`)
+                }
+              >
                 <img
                   src="../src/assets/Content/makeChallenge.svg"
                   alt="챌린지 만들기"
@@ -220,12 +249,11 @@ const chatData = [
   },
 ];
 
-const currentChallenge = [
-  {
-    id: "asdf",
-    title: "1주일에 5만원으로 살아남기",
-    coin: 500,
-    date: "11/10 (수)",
-    people: 4,
-  },
-];
+const currentChallenge = {
+  id: "asdf",
+  title: "1주일에 5만원으로 살아남기",
+  coin: 500,
+  date: "11/10 (수)",
+  people: 4,
+  isAccept: false,
+};
