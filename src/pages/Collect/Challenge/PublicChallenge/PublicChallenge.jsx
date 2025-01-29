@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import arrowRight from "../../../assets/Navigation/arrowRight.svg";
-import arrowUp from "../../../assets/Navigation/arrowUp.svg";
-import arrowDown from "../../../assets/Navigation/arrowDown.svg";
+import React, { useState } from "react";
+import arrowRight from "../../../../assets/Navigation/arrowRight.svg";
+import arrowUp from "../../../../assets/Navigation/arrowUp.svg";
+import arrowDown from "../../../../assets/Navigation/arrowDown.svg";
 import styles from "./PublicChallenge.module.css";
-import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
-import chatPlusBtn from "../../../assets/Btn/chatPlusBtn.svg";
+import chatPlusBtn from "../../../../assets/Btn/chatPlusBtn.svg";
 import { Link, useNavigate } from "react-router-dom";
 import JoinChallenge from "./JoinChallenge";
+import ChallengeCard from "../../../../components/ChallengeCard/ChallengeCard";
 
 const PublicChallenge = ({ allData }) => {
   const navigate = useNavigate();

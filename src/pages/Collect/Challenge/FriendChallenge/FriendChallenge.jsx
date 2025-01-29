@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./FriendChallenge.module.css";
-import arrowRight from "../../../assets/Navigation/arrowRight.svg";
-import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
+import arrowRight from "../../../../assets/Navigation/arrowRight.svg";
 import { Link, useNavigate } from "react-router-dom";
+import ChallengeCard from "../../../../components/ChallengeCard/ChallengeCard";
 
 const FriendChallenge = ({ friendChallenge }) => {
   const navigate = useNavigate();

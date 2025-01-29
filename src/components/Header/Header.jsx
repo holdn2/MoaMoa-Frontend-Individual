@@ -77,6 +77,29 @@ const Header = ({
             </button>
           </>
         );
+      case "친구 목록":
+        return (
+          <>
+            <button
+              className={styles.GoBackButton}
+              onClick={() => navigate(-1)}
+            >
+              <img
+                src="../src/assets/Navigation/arrowLeftBig.svg"
+                alt="뒤로가기"
+              />
+            </button>
+            <button
+              className={styles.GoSettingButton}
+              onClick={() => navigate("/setting")}
+            >
+              <img
+                src="../src/assets/Navigation/plus.svg"
+                alt="친구 추가 페이지로 가는 버튼"
+              />
+            </button>
+          </>
+        );
       case "과소비 진단하기":
         switch (diagnosisStage) {
           case 0:

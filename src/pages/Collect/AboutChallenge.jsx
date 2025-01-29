@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import PublicChallenge from "./Challenge/PublicChallenge";
-import FriendChallenge from "./Challenge/FriendChallenge";
+import PublicChallenge from "./Challenge/PublicChallenge/PublicChallenge";
+import FriendChallenge from "./Challenge/FriendChallenge/FriendChallenge";
 import styles from "./AboutChallenge.module.css";
 
 const dummyData = [

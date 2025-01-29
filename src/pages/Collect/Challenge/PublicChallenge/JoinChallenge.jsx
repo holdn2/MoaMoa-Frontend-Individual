@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./JoinChallenge.module.css";
-import date from "../../../assets/Content/date.svg";
-import people from "../../../assets/Content/people.svg";
+import date from "../../../../assets/Content/date.svg";
+import people from "../../../../assets/Content/people.svg";
 
 const JoinChallenge = ({ item, onClick }) => {
   return (
