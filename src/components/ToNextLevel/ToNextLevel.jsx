@@ -5,7 +5,8 @@ const ToNextLevel = () => {
   const navigate = useNavigate();
   const currentLevel = 0;
   const nextLevel = 1;
-  const toLevelUpCoin = 100;
+  const toLevelUpCoin = 200;
+  const currentCoin = 100;
 
   return (
     <div className={styles.NextLevelContainer}>
@@ -30,7 +31,9 @@ const ToNextLevel = () => {
         </span>
         <span className={styles.ToLevelUpText}>
           다음 레벨까지{" "}
-          <span style={{ fontWeight: "600" }}>{toLevelUpCoin}코인</span>{" "}
+          <span style={{ fontWeight: "600" }}>
+            {toLevelUpCoin - currentCoin}코인
+          </span>{" "}
           남았어요
         </span>
       </div>
