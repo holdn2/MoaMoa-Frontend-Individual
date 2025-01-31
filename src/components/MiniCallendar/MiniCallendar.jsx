@@ -3,46 +3,67 @@ import styles from "./MiniCallendar.module.css";
 
 const MiniCallendar = () => {
   const navigate = useNavigate();
-  const month = 11;
-  const week = ["월", "화", "수", "목", "금", "토", "일"];
-  const day = [1, 2, 3, 4, 5, 6, 7];
+  const week = [
+    {
+      day: "월",
+      attendance: false,
+    },
+    {
+      day: "화",
+      attendance: true,
+    },
+    {
+      day: "수",
+      attendance: false,
+    },
+    {
+      day: "목",
+      attendance: true,
+    },
+    {
+      day: "금",
+      attendance: true,
+    },
+    {
+      day: "토",
+      attendance: false,
+    },
+    {
+      day: "일",
+      attendance: false,
+    },
+  ];
 
   return (
     <div className={styles.CallendarContainer}>
-      <button
-        className={styles.MonthContainer}
-        onClick={() => {
-          navigate("/callendar");
-        }}
+      <div
+        className={styles.ToDetailPage}
+        onClick={() => navigate("/callendar")}
       >
-        <span className={styles.Month}>{month}월</span>
+        <span className={styles.ToDetailText}>더보기</span>
         <img
-          src="../src/assets/Navigation/polygon.svg"
-          alt="작은 arrowDown(polygon)"
+          src="../src/assets/Navigation/arrowRightSmall.svg"
+          alt="레벨 자세히 보기"
         />
-      </button>
-      <button
-        className={styles.WeekContainer}
-        onClick={() => {
-          navigate("/callendar");
-        }}
-      >
-        <div className={styles.WeekTextContainer}>
-          {week.map((item) => (
-            <div key={item} className={styles.WeekText}>
-              {item}
-            </div>
-          ))}
-        </div>
-        <div className={styles.Line} />
-        <div className={styles.DayTextContainer}>
-          {day.map((item) => (
-            <div key={item} className={styles.DayText}>
-              {item}
-            </div>
-          ))}
-        </div>
-      </button>
+      </div>
+      <span className={styles.AttendanceTitle}>출석체크</span>
+      <div className={styles.Line} />
+      <div className={styles.DayContainer}>
+        {week.map((item) =>
+          item.attendance ? (
+            <img
+              key={item.day}
+              src="../src/assets/Content/attendanceCheck.svg"
+              alt="출석"
+              style={{ width: "24px", margin: "0 5px" }}
+            />
+          ) : (
+            <span key={item.day} className={styles.DayText}>
+              {item.day}
+            </span>
+          )
+        )}
+      </div>
     </div>
   );
 };
