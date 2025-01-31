@@ -28,10 +28,12 @@ import DetailPastChallenge from "./pages/Collect/ChattingRoom/SideMenu/DetailPas
 import DetailChallenge from "./pages/Collect/Challenge/DetailChallenge";
 import ChallengeModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeModal";
 import ChallengeCardModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeCardModal";
-import ChallengeStopModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeStopModal";
 
 import AddRoomChallenge from "./pages/Collect/ChattingRoom/SideMenu/AddRoomChallenge";
-
+import FriendList from "./pages/Collect/Challenge/FriendChallenge/FriendList";
+import FriendSearch from "./pages/Collect/Challenge/FriendChallenge/FriendSearch";
+import ChallengeSearch from "./pages/Collect/Challenge/PublicChallenge/ChallengeSearch";
+import ChallengeModalContent from "./pages/Collect/Challenge/ChallengeModal/ChallengeModalContent";
 
 function App() {
   const router = createBrowserRouter([
@@ -76,8 +78,20 @@ function App() {
           element: <AddChallenge />,
         },
         {
+          path: "/challengesearch",
+          element: <ChallengeSearch />,
+        },
+        {
           path: "/challenge/detail",
           element: <DetailChallenge />,
+        },
+        {
+          path: "/friendlist",
+          element: <FriendList />,
+        },
+        {
+          path: "/friendsearch",
+          element: <FriendSearch />,
         },
         {
           path: "/challengemodal",
@@ -88,8 +102,8 @@ function App() {
               element: <ChallengeCardModal />,
             },
             {
-              path: "/challengemodal/challengestopmodal",
-              element: <ChallengeStopModal />,
+              path: "/challengemodal/challengemodalContent",
+              element: <ChallengeModalContent />,
             },
           ],
         },

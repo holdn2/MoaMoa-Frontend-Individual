@@ -19,12 +19,12 @@
   line-height: normal;
 }
 .SearchInput::placeholder {
-  color: #bebebe;
+  color: var(--Grey-800, #2b2b2b);
   text-align: start;
-  /* sb/14px */
+  /* md/14px */
   font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
 }

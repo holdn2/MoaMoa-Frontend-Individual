@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: calc(100vh - 48px);
+  max-width: 375px;
+  margin: 0 auto;
+  background: var(--Grey-30, #fafafa);
+  padding: 24px 20px;
+}
+.friendListContainer {
+  width: 100%;
+  margin-top: 28px;
+}
