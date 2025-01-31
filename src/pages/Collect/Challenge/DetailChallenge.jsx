@@ -11,7 +11,7 @@ const DetailChallenge = () => {
   const selectedChallenge = location.state?.selectedChallenge;
 
   return (
-    <>
+    <div className={styles.DetailPage}>
       <Header pageName={pageName} collectBack={true} />
       <div className={styles.wrapper}>
         <section>
@@ -25,7 +25,7 @@ const DetailChallenge = () => {
           ))}
         </section>
       </div>
-    </>
+    </div>
   );
 };
 

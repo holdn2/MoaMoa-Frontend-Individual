@@ -8,6 +8,7 @@ import PrimaryButton from "../../components/Button/PrimaryButton";
 import DescModal from "./DescModal";
 import { useNavigate } from "react-router-dom";
 import ChallengeCategory from "../../components/ChallengeCategory/ChallengeCategory";
+import Category from "../../components/ChallengeCategory/Category";
 
 const InputConsumption = () => {
   const pageName = "나의 소비 입력하기";
