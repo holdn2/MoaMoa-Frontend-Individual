@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
+import bell from "../../assets/Navigation/bell.svg";
 
 const Header = ({
   pageName,
@@ -17,7 +18,7 @@ const Header = ({
         return (
           <div className={styles.HeaderButtonContainer}>
             <button onClick={() => navigate("/alarm")}>
-              <img src="../src/assets/Navigation/bell.svg" alt="알림" />
+              <img src={bell} alt="알림" />
             </button>
             <button onClick={() => navigate("/level")}>
               <img src="../src/assets/Content/dust.svg" alt="먼지" />
