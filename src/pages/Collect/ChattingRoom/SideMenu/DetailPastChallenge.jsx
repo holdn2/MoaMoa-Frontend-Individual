@@ -4,6 +4,9 @@ import Header from "../../../../components/Header/Header";
 import BottomBar from "../../../../components/BottomBar/BottomBar";
 import ProgressBar from "../../../../components/ProgressBar/ProgressBar";
 import ChallengeProgressBar from "../../../../components/ChallengeProgressBar/ChallengeProgressBar";
+import success from "../../../src/assets/ChallengeResult/success.svg";
+import fail from "../../../src/assets/ChallengeResult/fail.svg";
+import coin3 from "../../../src/assets/Content/coin3.svg";
 
 const DetailPastChallenge = () => {
   const pageName = "챌린지";
@@ -15,16 +18,12 @@ const DetailPastChallenge = () => {
         <div className={styles.ChallengeContainer}>
           {challengeData.isSuccess ? (
             <img
-              src="../../../src/assets/ChallengeResult/success.svg"
+              src={success}
               alt="성공"
               className={styles.ChallengeResultImg}
             />
           ) : (
-            <img
-              src="../../../src/assets/ChallengeResult/fail.svg"
-              alt="실패"
-              className={styles.ChallengeResultImg}
-            />
+            <img src={fail} alt="실패" className={styles.ChallengeResultImg} />
           )}
           <span className={styles.ChallengeTitle}>
             {challengeData.userName}
@@ -33,7 +32,7 @@ const DetailPastChallenge = () => {
           <div className={styles.DateCoinWrapper}>
             <span>{challengeData.date}</span> <span>|</span>
             <div style={{ display: "flex", gap: "2px" }}>
-              <img src="../../../src/assets/Content/coin3.svg" alt="코인" />
+              <img src={coin3} alt="코인" />
               <span>{challengeData.coin}</span>
             </div>
           </div>

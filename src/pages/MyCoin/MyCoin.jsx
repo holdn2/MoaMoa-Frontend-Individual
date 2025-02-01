@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./MyCoin.module.css";
 import Header from "../../components/Header/Header";
+import coinYellow from "../src/assets/Content/coinYellow.svg";
+import dustSunglassCoin from "../src/assets/CharacterImgs/dustSunglassCoin.svg";
 
 const earnedHistoryData = [
   {
@@ -61,7 +63,7 @@ const MyCoin = () => {
             <div className={styles.ImgCoinText}>
               <img
                 style={{ width: "24px", height: "24px" }}
-                src="../src/assets/Content/coinYellow.svg"
+                src={coinYellow}
                 alt="코인이미지"
               />
               <span className={styles.MyCoin}>{myCoin}</span>
@@ -83,7 +85,7 @@ const MyCoin = () => {
             </div>
             <img
               style={{ width: "115px", height: "114px" }}
-              src="../src/assets/CharacterImgs/dustSunglassCoin.svg"
+              src={dustSunglassCoin}
               alt="선글라스,코인 먼지"
             />
           </div>

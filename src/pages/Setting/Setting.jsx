@@ -4,6 +4,9 @@ import Header from "../../components/Header/Header";
 import SecondaryButton from "../../components/Button/SecondaryButton";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SettingModal from "./SettingModal";
+import link from "../src/assets/Navigation/link.svg";
+import selectedButton from "../src/assets/SelectButton/selectedButton.svg";
+import unSelectedButton from "../src/assets/SelectButton/unSelectedButton.svg";
 
 const Setting = () => {
   const pageName = "설정";
@@ -21,11 +24,7 @@ const Setting = () => {
           <span className={styles.Title}>친구 초대</span>
           <button className={styles.ContentContainer}>
             <span className={styles.ContentText}>친구 초대하기</span>
-            <img
-              src="../src/assets/Navigation/link.svg"
-              alt="링크 복사"
-              className={styles.Imgs}
-            />
+            <img src={link} alt="링크 복사" className={styles.Imgs} />
           </button>
         </div>
         <div className={styles.ServiceSettingContainer}>
@@ -34,15 +33,9 @@ const Setting = () => {
             <span className={styles.ContentText}>알림</span>
             <button className={styles.Imgs} onClick={() => setAlarm(!alarm)}>
               {alarm ? (
-                <img
-                  src="../src/assets/SelectButton/selectedButton.svg"
-                  alt="알림 여부 버튼"
-                />
+                <img src={selectedButton} alt="알림 여부 버튼" />
               ) : (
-                <img
-                  src="../src/assets/SelectButton/unSelectedButton.svg"
-                  alt="알림 여부 버튼"
-                />
+                <img src={unSelectedButton} alt="알림 여부 버튼" />
               )}
             </button>
           </div>
@@ -53,15 +46,9 @@ const Setting = () => {
               onClick={() => setMarketingAgree(!marketingAgree)}
             >
               {marketingAgree ? (
-                <img
-                  src="../src/assets/SelectButton/selectedButton.svg"
-                  alt="동의 버튼"
-                />
+                <img src={selectedButton} alt="동의 버튼" />
               ) : (
-                <img
-                  src="../src/assets/SelectButton/unSelectedButton.svg"
-                  alt="동의 버튼"
-                />
+                <img src={unSelectedButton} alt="동의 버튼" />
               )}
             </button>
           </div>

@@ -3,6 +3,7 @@
 import styles from "./StartConsComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import dustCrown from "../src/assets/CharacterImgs/dustCrown.svg";
 
 const StartConsComponent = () => {
   const navigate = useNavigate();
@@ -14,11 +15,7 @@ const StartConsComponent = () => {
           <br />
           돈을 모아봐요 !
         </span>
-        <img
-          src="../src/assets/CharacterImgs/dustCrown.svg"
-          alt="왕관 먼지"
-          className={styles.ImgContainer}
-        />
+        <img src={dustCrown} alt="왕관 먼지" className={styles.ImgContainer} />
       </div>
       <div
         className={styles.ButtonContainer}

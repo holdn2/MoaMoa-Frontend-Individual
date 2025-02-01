@@ -4,7 +4,7 @@ import PrimaryButton from "../Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import ToNextLevel from "../ToNextLevel/ToNextLevel";
 import ProgressCircle from "../ProgressCircle/ProgressCircle";
-
+import dustCrown from "../src/assets/CharacterImgs/dustCrown.svg";
 
 const InputConsComponent = () => {
   const navigate = useNavigate();
@@ -22,11 +22,7 @@ const InputConsComponent = () => {
           <br />
           {stateMsg}
         </span>
-        <img
-          className={styles.ImgContainer}
-          src="../src/assets/CharacterImgs/dustCrown.svg"
-          alt="왕관 먼지"
-        />
+        <img className={styles.ImgContainer} src={dustCrown} alt="왕관 먼지" />
       </div>
       <div className={styles.InputConsContainer}>
         <div className={styles.CurrentConsContainer}>

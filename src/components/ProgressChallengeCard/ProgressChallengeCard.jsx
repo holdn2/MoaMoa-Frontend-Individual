@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./ProgressChallengeCard.module.css";
 import { useNavigate } from "react-router-dom";
+import arrowRight from "../src/assets/Navigation/arrowRight.svg";
 
 const ProgressChallengeCard = ({ challengeContent, currentProgress }) => {
   const navigate = useNavigate();
@@ -27,11 +28,7 @@ const ProgressChallengeCard = ({ challengeContent, currentProgress }) => {
           })
         }
       >
-        <img
-          src="../src/assets/Navigation/arrowRight.svg"
-          alt="오른쪽 화살표"
-          className={styles.ArrowImg}
-        />
+        <img src={arrowRight} alt="오른쪽 화살표" className={styles.ArrowImg} />
       </button>
     </div>
   );

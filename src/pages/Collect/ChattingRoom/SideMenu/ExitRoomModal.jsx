@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import PrimaryButton from "../../../../components/Button/PrimaryButton";
 import SecondaryButton from "../../../../components/Button/SecondaryButton";
 import { useNavigate } from "react-router-dom";
+import dustSad from "../src/assets/CharacterImgs/dustSad.svg";
 
 const ExitRoomModal = ({ isModalOpen, setIsModalOpen, setExitRoom }) => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const ExitRoomModal = ({ isModalOpen, setIsModalOpen, setExitRoom }) => {
       className={styles.ExitModalContainer}
       overlayClassName={styles.Overlay}
     >
-      <img src="../src/assets/CharacterImgs/dustSad.svg" alt="슬픈 먼지" />
+      <img src={dustSad} alt="슬픈 먼지" />
       <div className={styles.ContentContainer}>
         <span className={styles.BoldText}>채팅방을 나가시겠어요?</span>
         <span className={styles.NormalText}>

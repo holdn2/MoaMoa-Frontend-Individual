@@ -5,6 +5,10 @@ import SearchBar from "../../../components/SearchBar/SearchBar";
 import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../components/Button/PrimaryButton";
 import MakeRoomModal from "./MakeRoomModal";
+import blueCancle from "../src/assets/Content/blueCancle.svg";
+import check from "../../src/assets/SelectButton/check.svg";
+import uncheck from "../../src/assets/SelectButton/uncheck.svg";
+import arrowLeftBig from "../src/assets/Navigation/arrowLeftBig.svg";
 
 const MakeRoom = () => {
   const navigate = useNavigate();
@@ -87,10 +91,7 @@ const MakeRoom = () => {
                       <span className={styles.SelectedFriendName}>
                         {item.userName}
                       </span>
-                      <img
-                        src="../src/assets/Content/blueCancle.svg"
-                        alt="선택 취소"
-                      />
+                      <img src={blueCancle} alt="선택 취소" />
                     </div>
                   ))}
                 </div>
@@ -131,13 +132,13 @@ const MakeRoom = () => {
                         </div>
                         {item.toInvite ? (
                           <img
-                            src="../../src/assets/SelectButton/check.svg"
+                            src={check}
                             alt="선택됨"
                             style={{ width: "20px", height: "20px" }}
                           />
                         ) : (
                           <img
-                            src="../../src/assets/SelectButton/uncheck.svg"
+                            src={uncheck}
                             alt="선택안됨"
                             style={{ width: "20px", height: "20px" }}
                           />
@@ -172,13 +173,13 @@ const MakeRoom = () => {
                         </div>
                         {item.toInvite ? (
                           <img
-                            src="../../src/assets/SelectButton/check.svg"
+                            src={check}
                             alt="선택됨"
                             style={{ width: "20px", height: "20px" }}
                           />
                         ) : (
                           <img
-                            src="../../src/assets/SelectButton/uncheck.svg"
+                            src={uncheck}
                             alt="선택안됨"
                             style={{ width: "20px", height: "20px" }}
                           />
@@ -196,7 +197,7 @@ const MakeRoom = () => {
           <>
             <Header pageName="채팅방 이름" />
             <img
-              src="../src/assets/Navigation/arrowLeftBig.svg"
+              src={arrowLeftBig}
               alt="뒤로가기"
               className={styles.GoBackArrow}
               onClick={() => setInviteStep(0)}

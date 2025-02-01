@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import styles from "./Callendar.module.css";
+import dustLv6 from "../src/assets/DustLevel/Lv6.svg";
+import arrowLeft from "../src/assets/Navigation/arrowLeft.svg";
+import arrowRight from "../src/assets/Navigation/arrowRight.svg";
+import attendanceCheck from "../src/assets/Content/attendanceCheck.svg";
 
 const attendanceData = [
   "2024-12-23",
@@ -105,18 +109,14 @@ const Callendar = () => {
               <br />
               보상이 있어요 (멘트 수정)
             </span>
-            <img
-              style={{ width: "96px" }}
-              src="../src/assets/DustLevel/Lv6.svg"
-              alt="레벨 6"
-            />
+            <img style={{ width: "96px" }} src={dustLv6} alt="레벨 6" />
           </div>
         </div>
         <div className={styles.CalendarContainer}>
           <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
             <img
               style={{ width: "22px" }}
-              src="../src/assets/Navigation/arrowLeft.svg"
+              src={arrowLeft}
               alt="이전 달"
               onClick={() => handleMonth("-")}
             />
@@ -128,7 +128,7 @@ const Callendar = () => {
             </span>
             <img
               style={{ width: "22px" }}
-              src="../src/assets/Navigation/arrowRight.svg"
+              src={arrowRight}
               alt="이전 달"
               onClick={() => handleMonth("+")}
             />
@@ -150,7 +150,7 @@ const Callendar = () => {
                   <div key={idx}>
                     {isChecked ? (
                       <img
-                        src="../src/assets/Content/attendanceCheck.svg"
+                        src={attendanceCheck}
                         alt="출석 체크"
                         className={styles.CheckImg}
                       />

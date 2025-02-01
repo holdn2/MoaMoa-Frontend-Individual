@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from "./Alarm.module.css";
 import Header from "../../components/Header/Header";
-import BottomBar from "../../components/BottomBar/BottomBar";
-
+import coin3 from "../src/assets/Content/coin3.svg";
+import acceptButton from "../src/assets/AcceptButton/acceptButton.svg";
+import refuseButton from "../src/assets/AcceptButton/refuseButton.svg";
 const dummyData = [
   {
     date: "2024.11.22",
@@ -71,7 +72,7 @@ const Alarm = () => {
       case "coin":
         return (
           <div className={styles.EachAlarmContainer}>
-            <img src="../src/assets/Content/coin3.svg" alt="코인 알람" />
+            <img src={coin3} alt="코인 알람" />
             <span className={styles.ContentText}>{content}</span>
           </div>
         );
@@ -81,16 +82,10 @@ const Alarm = () => {
             <img src="../src/assets/Tab/getBlack.svg" alt="챌린지 알람" />
             <span className={styles.ContentText}>{content}</span>
             <button onClick={() => console.log("수락")}>
-              <img
-                src="../src/assets/AcceptButton/acceptButton.svg"
-                alt="수락 버튼"
-              />
+              <img src={acceptButton} alt="수락 버튼" />
             </button>
             <button onClick={() => console.log("거절")}>
-              <img
-                src="../src/assets/AcceptButton/refuseButton.svg"
-                alt="거절 버튼"
-              />
+              <img src={refuseButton} alt="거절 버튼" />
             </button>
           </div>
         );
@@ -100,16 +95,10 @@ const Alarm = () => {
             <img src="../src/assets/Action/invite.svg" alt="친구 초대 알람" />
             <span className={styles.ContentText}>{content}</span>
             <button onClick={() => console.log("수락")}>
-              <img
-                src="../src/assets/AcceptButton/acceptButton.svg"
-                alt="수락 버튼"
-              />
+              <img src={acceptButton} alt="수락 버튼" />
             </button>
             <button onClick={() => console.log("거절")}>
-              <img
-                src="../src/assets/AcceptButton/refuseButton.svg"
-                alt="거절 버튼"
-              />
+              <img src={refuseButton} alt="거절 버튼" />
             </button>
           </div>
         );

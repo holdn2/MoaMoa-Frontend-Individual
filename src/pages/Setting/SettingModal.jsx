@@ -4,6 +4,9 @@ import styles from "./SettingModal.module.css";
 import Modal from "react-modal";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SecondaryButton from "../../components/Button/SecondaryButton";
+import dustSweat from "../src/assets/CharacterImgs/dustSweat.svg";
+import dustSad from "../src/assets/CharacterImgs/dustSad.svg";
+import dustHappy from "../src/assets/CharacterImgs/dustHappy.svg";
 
 const SettingModal = ({
   isModalOpen,
@@ -47,7 +50,7 @@ const SettingModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/CharacterImgs/dustSweat.svg"
+              src={dustSweat}
               alt="땀나는 먼지"
               className={styles.SweatDustImg}
             />
@@ -87,11 +90,7 @@ const SettingModal = ({
             className={styles.UnsubChoiceContentContainer}
             overlayClassName={styles.Overlay}
           >
-            <img
-              src="../src/assets/CharacterImgs/dustSad.svg"
-              alt="슬픈 먼지"
-              className={styles.SadDustImg}
-            />
+            <img src={dustSad} alt="슬픈 먼지" className={styles.SadDustImg} />
             <div className={styles.UnsubChoiceContent}>
               <span className={styles.ConfirmText}>그동안 즐거웠어요 !</span>
               <span className={styles.ConfirmInfoText}>
@@ -112,7 +111,7 @@ const SettingModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/CharacterImgs/dustHappy.svg"
+              src={dustHappy}
               alt="행복한 먼지"
               className={styles.HappyDustImg}
             />

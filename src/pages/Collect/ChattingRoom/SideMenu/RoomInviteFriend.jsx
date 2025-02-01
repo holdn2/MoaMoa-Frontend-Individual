@@ -3,6 +3,9 @@ import styles from "./RoomInviteFriend.module.css";
 import Header from "../../../../components/Header/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
+import blueCancle from "../../src/assets/Content/blueCancle.svg";
+import check from "../../src/assets/SelectButton/check.svg";
+import uncheck from "../../src/assets/SelectButton/uncheck.svg";
 
 const RoomInviteFriend = () => {
   const pageName = "친구 초대";
@@ -66,10 +69,7 @@ const RoomInviteFriend = () => {
                 <span className={styles.SelectedFriendName}>
                   {item.userName}
                 </span>
-                <img
-                  src="../../src/assets/Content/blueCancle.svg"
-                  alt="선택 취소"
-                />
+                <img src={blueCancle} alt="선택 취소" />
               </div>
             ))}
           </div>
@@ -110,13 +110,13 @@ const RoomInviteFriend = () => {
                   </div>
                   {item.toInvite ? (
                     <img
-                      src="../../src/assets/SelectButton/check.svg"
+                      src={check}
                       alt="선택됨"
                       style={{ width: "20px", height: "20px" }}
                     />
                   ) : (
                     <img
-                      src="../../src/assets/SelectButton/uncheck.svg"
+                      src={uncheck}
                       alt="선택안됨"
                       style={{ width: "20px", height: "20px" }}
                     />
@@ -149,13 +149,13 @@ const RoomInviteFriend = () => {
                   </div>
                   {item.toInvite ? (
                     <img
-                      src="../../src/assets/SelectButton/check.svg"
+                      src={check}
                       alt="선택됨"
                       style={{ width: "20px", height: "20px" }}
                     />
                   ) : (
                     <img
-                      src="../../src/assets/SelectButton/uncheck.svg"
+                      src={uncheck}
                       alt="선택안됨"
                       style={{ width: "20px", height: "20px" }}
                     />

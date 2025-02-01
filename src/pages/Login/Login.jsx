@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import visible from "../src/assets/Content/visible.svg";
+import emailOK from "../src/assets/Content/emailOK.svg";
+import emailCheck from "../src/assets/Content/emailCheck.svg";
+import dustSunglassCoin from "../src/assets/CharacterImgs/dustSunglassCoin.svg";
 
 const exEmail = "asdf@naver.com";
 const exAuthCode = "ASDF1234";
@@ -75,7 +79,7 @@ const Login = () => {
               <img
                 className={styles.VisiblePw}
                 onClick={() => setVisiblePw(!visiblePw)}
-                src="../src/assets/Content/visible.svg"
+                src={visible}
                 alt="비밀번호 보이기"
               />
               {visiblePw ? (
@@ -142,13 +146,13 @@ const Login = () => {
                 {isValidEmail ? (
                   <img
                     className={styles.EmailCheckImg}
-                    src="../src/assets/Content/emailOK.svg"
+                    src={emailOK}
                     alt="이메일 확인"
                   />
                 ) : (
                   <img
                     className={styles.EmailCheckImg}
-                    src="../src/assets/Content/emailCheck.svg"
+                    src={emailCheck}
                     alt="이메일 확인"
                   />
                 )}
@@ -256,7 +260,7 @@ const Login = () => {
               <img
                 className={styles.VisiblePw}
                 onClick={() => setVisiblePw(!visiblePw)}
-                src="../src/assets/Content/visible.svg"
+                src={visible}
                 alt="비밀번호 보이기"
               />
               {visiblePw ? (
@@ -326,7 +330,7 @@ const Login = () => {
               </span>
             </div>
             <img
-              src="../src/assets/CharacterImgs/dustSunglassCoin.svg"
+              src={dustSunglassCoin}
               alt="환영하는 먼지"
               style={{ width: "222px", height: "198px", marginTop: "101px" }}
             />
@@ -353,7 +357,7 @@ const Login = () => {
               </span>
             </div>
             <img
-              src="../src/assets/CharacterImgs/dustSunglassCoin.svg"
+              src={dustSunglassCoin}
               alt="환영하는 먼지"
               style={{ width: "222px", height: "198px", marginTop: "101px" }}
             />

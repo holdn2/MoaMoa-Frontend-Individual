@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./ToNextLevel.module.css";
+import arrowRightSmall from "../src/assets/Navigation/arrowRightSmall.svg";
+import dustLv1 from "../src/assets/DustLevel/Lv1.svg";
 
 const ToNextLevel = () => {
   const navigate = useNavigate();
@@ -18,10 +20,7 @@ const ToNextLevel = () => {
           >
             더보기
           </span>
-          <img
-            src="../src/assets/Navigation/arrowRightSmall.svg"
-            alt="레벨 자세히 보기"
-          />
+          <img src={arrowRightSmall} alt="레벨 자세히 보기" />
         </div>
         <span className={styles.CurrentLevelText}>
           나의 레벨:{" "}
@@ -43,7 +42,7 @@ const ToNextLevel = () => {
           <span className={styles.NextLevelText}>Lv.{nextLevel}</span>
           <img
             style={{ width: "41px", height: "43px" }}
-            src="../src/assets/DustLevel/Lv1.svg"
+            src={dustLv1}
             alt="다음 레벨 먼지"
           />
         </div>

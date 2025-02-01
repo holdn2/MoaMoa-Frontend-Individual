@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./MiniCallendar.module.css";
+import arrowRightSmall from "../src/assets/Navigation/arrowRightSmall.svg";
+import attendanceCheck from "../src/assets/Content/attendanceCheck.svg";
 
 const MiniCallendar = () => {
   const navigate = useNavigate();
@@ -41,10 +43,7 @@ const MiniCallendar = () => {
         onClick={() => navigate("/callendar")}
       >
         <span className={styles.ToDetailText}>더보기</span>
-        <img
-          src="../src/assets/Navigation/arrowRightSmall.svg"
-          alt="레벨 자세히 보기"
-        />
+        <img src={arrowRightSmall} alt="레벨 자세히 보기" />
       </div>
       <span className={styles.AttendanceTitle}>출석체크</span>
       <div className={styles.Line} />
@@ -53,7 +52,7 @@ const MiniCallendar = () => {
           item.attendance ? (
             <img
               key={item.day}
-              src="../src/assets/Content/attendanceCheck.svg"
+              src={attendanceCheck}
               alt="출석"
               style={{ width: "24px", margin: "0 5px" }}
             />
