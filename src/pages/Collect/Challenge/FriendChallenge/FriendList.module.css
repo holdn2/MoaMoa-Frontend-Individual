@@ -1,5 +1,12 @@
-.wrapper {
+.FriendListPage {
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.wrapper {
+  overflow: auto;
+  display: flex;
+  flex: 1;
   box-sizing: border-box;
   flex-direction: column;
   align-items: flex-start;

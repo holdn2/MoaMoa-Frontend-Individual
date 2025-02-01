@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
 
 const RoomInviteFriend = () => {
-  const pageName = "친구 목록";
+  const pageName = "친구 초대";
   const params = useParams();
   //   console.log("채팅방 ID : ", params.chatroomId);
   const navigate = useNavigate();

@@ -13,7 +13,7 @@ const FriendList = () => {
   const [filtered, setFiltered] = useState([]);
 
   return (
-    <>
+    <div className={styles.FriendListPage}>
       <Header pageName={pageName} />
       <div className={styles.wrapper}>
         <SearchBar
@@ -35,7 +35,7 @@ const FriendList = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
