@@ -12,9 +12,17 @@ import AttendanceModal from "./AttendanceModal";
 import useModalStore from "../../store/useModalStore";
 import ToDiagnosisComponent from "../../components/ToDiagnosisComponent/ToDiagnosisComponent";
 import ToNextLevel from "../../components/ToNextLevel/ToNextLevel";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const pageName = "홈화면";
+  const navigate = useNavigate();
+  const [isLogined, setIsLogined] = useState(false);
+
+  if (!isLogined) {
+    navigate("/join");
+  }
+
   // 여기다가 소비 시작했는지, 이미 시작했으면 정보 저장.
   // 이 전에 시작했는지 여부에 따라 보이는 화면이 달라짐
   const [consumption, setConsumption] = useState(2);
