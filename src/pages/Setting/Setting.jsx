@@ -8,6 +8,8 @@ import link from "../../assets/Navigation/link.svg";
 import selectedButton from "../../assets/SelectButton/selectedButton.svg";
 import unSelectedButton from "../../assets/SelectButton/unSelectedButton.svg";
 
+// "http://placehold.co/45"
+
 const Setting = () => {
   const pageName = "설정";
   const version = "5.8.25";
@@ -24,7 +26,11 @@ const Setting = () => {
           <span className={styles.Title}>친구 초대</span>
           <button className={styles.ContentContainer}>
             <span className={styles.ContentText}>친구 초대하기</span>
-            <img src={link} alt="링크 복사" className={styles.Imgs} />
+            <img
+              src="http://placehold.co/45"
+              alt="링크 복사"
+              className={styles.Imgs}
+            />
           </button>
         </div>
         <div className={styles.ServiceSettingContainer}>
@@ -33,9 +39,9 @@ const Setting = () => {
             <span className={styles.ContentText}>알림</span>
             <button className={styles.Imgs} onClick={() => setAlarm(!alarm)}>
               {alarm ? (
-                <img src={selectedButton} alt="알림 여부 버튼" />
+                <img src="http://placehold.co/45" alt="알림 여부 버튼" />
               ) : (
-                <img src={unSelectedButton} alt="알림 여부 버튼" />
+                <img src="http://placehold.co/45" alt="알림 여부 버튼" />
               )}
             </button>
           </div>
@@ -46,9 +52,9 @@ const Setting = () => {
               onClick={() => setMarketingAgree(!marketingAgree)}
             >
               {marketingAgree ? (
-                <img src={selectedButton} alt="동의 버튼" />
+                <img src="http://placehold.co/45" alt="동의 버튼" />
               ) : (
-                <img src={unSelectedButton} alt="동의 버튼" />
+                <img src="http://placehold.co/45" alt="동의 버튼" />
               )}
             </button>
           </div>
