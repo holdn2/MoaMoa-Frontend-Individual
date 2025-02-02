@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styles from "./AcceptChallengeModal.module.css";
 import Modal from "react-modal";
 import PrimaryButton from "../../../components/Button/PrimaryButton";
-import coin3 from "../src/assets/Content/coin3.svg";
-import closeBig from "../src/assets/Navigation/closeBig.svg";
-import dustCrownMoney from "../src/assets/CharacterImgs/dustCrownMoney.svg";
+import coin3 from "../../assets/Content/coin3.svg";
+import closeBig from "../../assets/Navigation/closeBig.svg";
+import dustCrownMoney from "../../assets/CharacterImgs/dustCrownMoney.svg";
 
 const AcceptChallengeModal = ({
   isModalOpen,

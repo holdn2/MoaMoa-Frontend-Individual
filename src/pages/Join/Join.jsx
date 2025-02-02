@@ -2,7 +2,7 @@ import React, { Children, useState } from "react";
 import styles from "./Join.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-import dustSunglassCoin from "../src/assets/CharacterImgs/dustSunglassCoin.svg";
+import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
 
 const Join = () => {
   const [joinMethodState, setJoinMethodState] = useState(0);

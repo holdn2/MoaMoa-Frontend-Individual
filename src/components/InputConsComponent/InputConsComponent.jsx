@@ -5,9 +5,8 @@ import SecondaryButton from "../Button/SecondaryButton";
 import { useNavigate } from "react-router-dom";
 import ToNextLevel from "../ToNextLevel/ToNextLevel";
 import ProgressCircle from "../ProgressCircle/ProgressCircle";
-import dustCrown from "../src/assets/CharacterImgs/dustCrown.svg";
+import dustCrown from "../../assets/CharacterImgs/dustCrown.svg";
 import ProgressSemiCircle from "../ProgressSemiCircle/ProgressSemiCircle";
-
 
 const InputConsComponent = () => {
   const navigate = useNavigate();

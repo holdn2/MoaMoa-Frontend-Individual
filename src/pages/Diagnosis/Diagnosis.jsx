@@ -6,14 +6,14 @@ import PrimaryButton from "../../components/Button/PrimaryButton";
 import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import SelectButtonContainer from "./SelectButtonContainer";
 import { useNavigate } from "react-router-dom";
-import dustQuestion from "../src/assets/CharacterImgs/dustQuestion.svg";
-import firstStage from "../src/assets/StageExpression/firstStage.svg";
-import secondStage from "../src/assets/StageExpression/secondStage.svg";
-import thirdStage from "../src/assets/StageExpression/thirdStage.svg";
-import forthStage from "../src/assets/StageExpression/forthStage.svg";
-import timeCircle from "../src/assets/StageExpression/timeCircle.svg";
-import dustSad from "../src/assets/CharacterImgs/dustSad.svg";
-import dustSunglass from "../src/assets/CharacterImgs/dustSunglass.svg";
+import dustQuestion from "../../assets/CharacterImgs/dustQuestion.svg";
+import firstStage from "../../assets/StageExpression/firstStage.svg";
+import secondStage from "../../assets/StageExpression/secondStage.svg";
+import thirdStage from "../../assets/StageExpression/thirdStage.svg";
+import forthStage from "../../assets/StageExpression/forthStage.svg";
+import timeCircle from "../../assets/StageExpression/timeCircle.svg";
+import dustSad from "../../assets/CharacterImgs/dustSad.svg";
+import dustSunglass from "../../assets/CharacterImgs/dustSunglass.svg";
 
 const Diagnosis = () => {
   const pageName = "과소비 진단하기";

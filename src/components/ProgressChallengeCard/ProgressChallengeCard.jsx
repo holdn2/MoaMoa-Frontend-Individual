@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./ProgressChallengeCard.module.css";
 import { useNavigate } from "react-router-dom";
-import arrowRight from "../src/assets/Navigation/arrowRight.svg";
+import arrowRight from "../../assets/Navigation/arrowRight.svg";
 
 const ProgressChallengeCard = ({ challengeContent, currentProgress }) => {
   const navigate = useNavigate();

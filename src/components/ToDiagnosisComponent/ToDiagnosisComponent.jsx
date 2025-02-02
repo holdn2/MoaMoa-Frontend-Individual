@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./ToDiagnosisComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
-import dustCrown from "../src/assets/CharacterImgs/dustCrown.svg";
+import dustCrown from "../../assets/CharacterImgs/dustCrown.svg";
 
 const ToDiagnosisComponent = () => {
   const navigate = useNavigate();

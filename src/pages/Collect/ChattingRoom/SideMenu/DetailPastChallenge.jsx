@@ -4,9 +4,9 @@ import Header from "../../../../components/Header/Header";
 import BottomBar from "../../../../components/BottomBar/BottomBar";
 import ProgressBar from "../../../../components/ProgressBar/ProgressBar";
 import ChallengeProgressBar from "../../../../components/ChallengeProgressBar/ChallengeProgressBar";
-import success from "../../../src/assets/ChallengeResult/success.svg";
-import fail from "../../../src/assets/ChallengeResult/fail.svg";
-import coin3 from "../../../src/assets/Content/coin3.svg";
+import success from "../../../../assets/ChallengeResult/success.svg";
+import fail from "../../../../assets/ChallengeResult/fail.svg";
+import coin3 from "../../../../assets/Content/coin3.svg";
 
 const DetailPastChallenge = () => {
   const pageName = "챌린지";

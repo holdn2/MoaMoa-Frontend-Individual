@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./ProfileToPageComponent.module.css";
 import { useNavigate } from "react-router-dom";
-import recent from "../src/assets/Content/recent.svg";
-import arrowRightSmall from "../src/assets/Navigation/arrowRightSmall.svg";
-import checkBold from "../src/assets/Content/checkBold.svg";
+import recent from "../../assets/Content/recent.svg";
+import arrowRightSmall from "../../assets/Navigation/arrowRightSmall.svg";
+import checkBold from "../../assets/Content/checkBold.svg";
 
 const ProfileToPageComponent = ({ dstName }) => {
   const navigate = useNavigate();

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import styles from "./Level.module.css";
 import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
-import dustLv0 from "../src/assets/DustLevel/Lv0.svg";
-import dustLv1 from "../src/assets/DustLevel/Lv1.svg";
-import dustLv2 from "../src/assets/DustLevel/Lv2.svg";
-import dustLv3 from "../src/assets/DustLevel/Lv3.svg";
-import dustLv4 from "../src/assets/DustLevel/Lv4.svg";
-import dustLv5 from "../src/assets/DustLevel/Lv5.svg";
-import dustLv6 from "http://placehold.co/49";
+import dustLv0 from "../../assets/DustLevel/Lv0.svg";
+import dustLv1 from "../../assets/DustLevel/Lv1.svg";
+import dustLv2 from "../../assets/DustLevel/Lv2.svg";
+import dustLv3 from "../../assets/DustLevel/Lv3.svg";
+import dustLv4 from "../../assets/DustLevel/Lv4.svg";
+import dustLv5 from "../../assets/DustLevel/Lv5.svg";
+import dustLv6 from "../../assets/DustLevel/Lv6.svg";
 
 const Level = () => {
   const pageName = "레벨";

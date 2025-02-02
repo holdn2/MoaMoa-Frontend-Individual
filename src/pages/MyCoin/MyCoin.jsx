@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./MyCoin.module.css";
 import Header from "../../components/Header/Header";
-import coinYellow from "../src/assets/Content/coinYellow.svg";
-import dustSunglassCoin from "../src/assets/CharacterImgs/dustSunglassCoin.svg";
+import coinYellow from "../../assets/Content/coinYellow.svg";
+import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
 
 const earnedHistoryData = [
   {

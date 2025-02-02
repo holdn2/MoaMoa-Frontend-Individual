@@ -8,23 +8,23 @@ const ProgressSemiCircle = ({ percentage }) => {
   useEffect(() => {
     if (percentage < 20) {
       setProgressImg(
-        "../src/assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
+        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
       );
     } else if (percentage < 50) {
       setProgressImg(
-        "../src/assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
+        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
       );
     } else if (percentage < 80) {
       setProgressImg(
-        "../src/assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
+        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
       );
     } else if (percentage < 90) {
       setProgressImg(
-        "../src/assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
+        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
       );
     } else {
       setProgressImg(
-        "../src/assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
+        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
       );
     }
   }, [percentage]); // `percentage`가 변경될 때만 실행됨

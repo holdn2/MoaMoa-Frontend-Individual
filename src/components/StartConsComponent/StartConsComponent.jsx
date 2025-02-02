@@ -3,7 +3,7 @@
 import styles from "./StartConsComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-import dustCrown from "../src/assets/CharacterImgs/dustCrown.svg";
+import dustCrown from "../../assets/CharacterImgs/dustCrown.svg";
 
 const StartConsComponent = () => {
   const navigate = useNavigate();

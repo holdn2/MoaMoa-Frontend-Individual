@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./ToNextLevel.module.css";
-import arrowRightSmall from "../src/assets/Navigation/arrowRightSmall.svg";
-import dustLv1 from "../src/assets/DustLevel/Lv1.svg";
+import arrowRightSmall from "../../assets/Navigation/arrowRightSmall.svg";
+import dustLv1 from "../../assets/DustLevel/Lv1.svg";
 
 const ToNextLevel = () => {
   const navigate = useNavigate();

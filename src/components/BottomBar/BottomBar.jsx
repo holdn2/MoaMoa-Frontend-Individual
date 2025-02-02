@@ -2,12 +2,12 @@
 import React from "react";
 import styles from "./BottomBar.module.css";
 import { useNavigate } from "react-router-dom";
-import getUnclicked from "../../../src/assets/Tab/getUnclicked.svg";
-import home from "../../../src/assets/Tab/home.svg";
-import myUnclicked from "../../../src/assets/Tab/myUnclicked.svg";
-import homeUnclicked from "../../../src/assets/Tab/homeUnclicked.svg";
-import my from "../../../src/assets/Tab/my.svg";
-import get from "../../../src/assets/Tab/get.svg";
+import getUnclicked from "../../../../assets/Tab/getUnclicked.svg";
+import home from "../../../../assets/Tab/home.svg";
+import myUnclicked from "../../../../assets/Tab/myUnclicked.svg";
+import homeUnclicked from "../../../../assets/Tab/homeUnclicked.svg";
+import my from "../../../../assets/Tab/my.svg";
+import get from "../../../../assets/Tab/get.svg";
 
 const BottomBar = ({ pageName }) => {
   const navigate = useNavigate();

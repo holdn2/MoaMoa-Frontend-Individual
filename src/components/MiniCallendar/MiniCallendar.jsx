@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./MiniCallendar.module.css";
-import arrowRightSmall from "../src/assets/Navigation/arrowRightSmall.svg";
-import attendanceCheck from "../src/assets/Content/attendanceCheck.svg";
+import arrowRightSmall from "../../assets/Navigation/arrowRightSmall.svg";
+import attendanceCheck from "../../assets/Content/attendanceCheck.svg";
 
 const MiniCallendar = () => {
   const navigate = useNavigate();

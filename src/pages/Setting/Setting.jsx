@@ -4,9 +4,9 @@ import Header from "../../components/Header/Header";
 import SecondaryButton from "../../components/Button/SecondaryButton";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SettingModal from "./SettingModal";
-import link from "../src/assets/Navigation/link.svg";
-import selectedButton from "../src/assets/SelectButton/selectedButton.svg";
-import unSelectedButton from "../src/assets/SelectButton/unSelectedButton.svg";
+import link from "../../assets/Navigation/link.svg";
+import selectedButton from "../../assets/SelectButton/selectedButton.svg";
+import unSelectedButton from "../../assets/SelectButton/unSelectedButton.svg";
 
 const Setting = () => {
   const pageName = "설정";

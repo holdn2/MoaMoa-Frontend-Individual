@@ -3,8 +3,8 @@ import styles from "./MakeRoomModal.module.css";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import PrimaryButton from "../../../components/Button/PrimaryButton";
-import dustHappy from "../src/assets/CharacterImgs/dustHappy.svg";
-import closeModal from "../src/assets/Navigation/closeModal.svg";
+import dustHappy from "../../assets/CharacterImgs/dustHappy.svg";
+import closeModal from "../../assets/Navigation/closeModal.svg";
 
 const MakeRoomModal = ({ isModalOpen, newRoomName, selectedFriends }) => {
   const navigate = useNavigate();

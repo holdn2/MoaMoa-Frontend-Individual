@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import styles from "./Callendar.module.css";
-import dustLv6 from "../src/assets/DustLevel/Lv6.svg";
-import arrowLeft from "../src/assets/Navigation/arrowLeft.svg";
-import arrowRight from "../src/assets/Navigation/arrowRight.svg";
-import attendanceCheck from "../src/assets/Content/attendanceCheck.svg";
+import dustLv6 from "../../assets/DustLevel/Lv6.svg";
+import arrowLeft from "../../assets/Navigation/arrowLeft.svg";
+import arrowRight from "../../assets/Navigation/arrowRight.svg";
+import attendanceCheck from "../../assets/Content/attendanceCheck.svg";
 
 const attendanceData = [
   "2024-12-23",

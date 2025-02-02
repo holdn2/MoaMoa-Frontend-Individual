@@ -6,7 +6,7 @@ import PrimaryButton from "../../components/Button/PrimaryButton";
 import SelectPeriod from "./SelectPeriod";
 import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import { useNavigate } from "react-router-dom";
-import dustSunglass from "../src/assets/CharacterImgs/dustSunglass.svg";
+import dustSunglass from "../../assets/CharacterImgs/dustSunglass.svg";
 
 const StartConsumption = () => {
   const pageName = "나의 소비 시작하기";

@@ -3,15 +3,15 @@ import styles from "./JoinProcess.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SecondaryButton from "../../components/Button/SecondaryButton";
 import { useNavigate } from "react-router-dom";
-import firstStage from "../src/assets/ThreeStages/firstStage.svg";
-import secondStage from "../src/assets/ThreeStages/secondStage.svg";
-import visible from "../src/assets/Content/visible.svg";
-import thirdStage from "../src/assets/ThreeStages/thirdStage.svg";
-import emailOK from "../src/assets/Content/emailOK.svg";
-import emailCheck from "../src/assets/Content/emailCheck.svg";
-import completeStage from "../src/assets/ThreeStages/completeStage.svg";
-import dustSunglassCoin from "../src/assets/CharacterImgs/dustSunglassCoin.svg";
-import dustCrown from "../src/assets/CharacterImgs/dustCrown.svg";
+import firstStage from "../../assets/ThreeStages/firstStage.svg";
+import secondStage from "../../assets/ThreeStages/secondStage.svg";
+import visible from "../../assets/Content/visible.svg";
+import thirdStage from "../../assets/ThreeStages/thirdStage.svg";
+import emailOK from "../../assets/Content/emailOK.svg";
+import emailCheck from "../../assets/Content/emailCheck.svg";
+import completeStage from "../../assets/ThreeStages/completeStage.svg";
+import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
+import dustCrown from "../../assets/CharacterImgs/dustCrown.svg";
 
 // input에 value를 명시해주면 다음으로 넘어가도 안남아있음.
 

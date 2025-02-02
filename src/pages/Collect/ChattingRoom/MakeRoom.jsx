@@ -5,10 +5,10 @@ import SearchBar from "../../../components/SearchBar/SearchBar";
 import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../components/Button/PrimaryButton";
 import MakeRoomModal from "./MakeRoomModal";
-import blueCancle from "../src/assets/Content/blueCancle.svg";
-import check from "../../src/assets/SelectButton/check.svg";
-import uncheck from "../../src/assets/SelectButton/uncheck.svg";
-import arrowLeftBig from "../src/assets/Navigation/arrowLeftBig.svg";
+import blueCancle from "../../assets/Content/blueCancle.svg";
+import check from "../../../assets/SelectButton/check.svg";
+import uncheck from "../../../assets/SelectButton/uncheck.svg";
+import arrowLeftBig from "../../assets/Navigation/arrowLeftBig.svg";
 
 const MakeRoom = () => {
   const navigate = useNavigate();

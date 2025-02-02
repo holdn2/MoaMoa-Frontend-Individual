@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styles from "./Alarm.module.css";
 import Header from "../../components/Header/Header";
-import coin3 from "../src/assets/Content/coin3.svg";
-import acceptButton from "../src/assets/AcceptButton/acceptButton.svg";
-import refuseButton from "../src/assets/AcceptButton/refuseButton.svg";
+import coin3 from "../../assets/Content/coin3.svg";
+import acceptButton from "../../assets/AcceptButton/acceptButton.svg";
+import refuseButton from "../../assets/AcceptButton/refuseButton.svg";
 const dummyData = [
   {
     date: "2024.11.22",
@@ -79,7 +79,7 @@ const Alarm = () => {
       case "challenge":
         return (
           <div className={styles.EachAlarmContainer}>
-            <img src="../src/assets/Tab/getBlack.svg" alt="챌린지 알람" />
+            <img src="../../assets/Tab/getBlack.svg" alt="챌린지 알람" />
             <span className={styles.ContentText}>{content}</span>
             <button onClick={() => console.log("수락")}>
               <img src={acceptButton} alt="수락 버튼" />
@@ -92,7 +92,7 @@ const Alarm = () => {
       case "friends":
         return (
           <div className={styles.EachAlarmContainer}>
-            <img src="../src/assets/Action/invite.svg" alt="친구 초대 알람" />
+            <img src="../../assets/Action/invite.svg" alt="친구 초대 알람" />
             <span className={styles.ContentText}>{content}</span>
             <button onClick={() => console.log("수락")}>
               <img src={acceptButton} alt="수락 버튼" />

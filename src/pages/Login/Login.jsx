@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-import visible from "../src/assets/Content/visible.svg";
-import emailOK from "../src/assets/Content/emailOK.svg";
-import emailCheck from "../src/assets/Content/emailCheck.svg";
-import dustSunglassCoin from "../src/assets/CharacterImgs/dustSunglassCoin.svg";
+import visible from "../../assets/Content/visible.svg";
+import emailOK from "../../assets/Content/emailOK.svg";
+import emailCheck from "../../assets/Content/emailCheck.svg";
+import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
 
 const exEmail = "asdf@naver.com";
 const exAuthCode = "ASDF1234";

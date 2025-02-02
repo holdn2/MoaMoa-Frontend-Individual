@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Chatting.module.css";
 import { useNavigate } from "react-router-dom";
-import chatPlusBtn from "../src/assets/Btn/chatPlusBtn.svg";
+import chatPlusBtn from "../../assets/Btn/chatPlusBtn.svg";
 
 const Chatting = () => {
   const navigate = useNavigate();

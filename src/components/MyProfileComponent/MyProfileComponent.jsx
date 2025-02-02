@@ -3,8 +3,8 @@ import styles from "./MyProfileComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import NicknameChangeModal from "../NicknameChangeModal/NicknameChangeModal";
-import DustLevel from "../src/assets/DustLevel/Lv0.svg";
-import modify from "../src/assets/Component1/modify.svg";
+import DustLevel from "../../assets/DustLevel/Lv0.svg";
+import modify from "../../assets/Component1/modify.svg";
 
 const MyProfileComponent = () => {
   const navigate = useNavigate();

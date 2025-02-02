@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import styles from "./AttendanceModal.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
-import dustHappy from "../src/assets/CharacterImgs/dustHappy.svg";
+import dustHappy from "../../assets/CharacterImgs/dustHappy.svg";
 
 const AttendanceModal = ({
   isModalOpen,

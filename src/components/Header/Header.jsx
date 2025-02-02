@@ -2,14 +2,13 @@
 import React from "react";
 import styles from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
-import bell from "../src/assets/Navigation/bell.svg";
-import dust from "../src/assets/Content/dust.svg";
-import headerCoin from "../src/assets/Content/headerCoin.svg";
-import arrowLeftBig from "../../../src/assets/Navigation/arrowLeftBig.svg";
-import setting from "../src/assets/Navigation/setting.svg";
-import plus from "../src/assets/Navigation/plus.svg";
-import closeBig from "../src/assets/Navigation/closeBig.svg";
-
+import bell from "../../assets/Navigation/bell.svg";
+import dust from "../../assets/Content/dust.svg";
+import headerCoin from "../../assets/Content/headerCoin.svg";
+import arrowLeftBig from "../../../../assets/Navigation/arrowLeftBig.svg";
+import setting from "../../assets/Navigation/setting.svg";
+import plus from "../../assets/Navigation/plus.svg";
+import closeBig from "../../assets/Navigation/closeBig.svg";
 
 const Header = ({
   pageName,

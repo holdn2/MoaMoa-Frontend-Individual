@@ -4,9 +4,9 @@ import styles from "./SettingModal.module.css";
 import Modal from "react-modal";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SecondaryButton from "../../components/Button/SecondaryButton";
-import dustSweat from "../src/assets/CharacterImgs/dustSweat.svg";
-import dustSad from "../src/assets/CharacterImgs/dustSad.svg";
-import dustHappy from "../src/assets/CharacterImgs/dustHappy.svg";
+import dustSweat from "../../assets/CharacterImgs/dustSweat.svg";
+import dustSad from "../../assets/CharacterImgs/dustSad.svg";
+import dustHappy from "../../assets/CharacterImgs/dustHappy.svg";
 
 const SettingModal = ({
   isModalOpen,

@@ -3,8 +3,8 @@ import React from "react";
 import styles from "./RecruitChallengeCard.module.css";
 import ChallengeCard from "../ChallengeCard/ChallengeCard";
 import { useNavigate } from "react-router-dom";
-import people from "../src/assets/Content/people.svg";
-import arrowRight from "../src/assets/Navigation/arrowRight.svg";
+import people from "../../assets/Content/people.svg";
+import arrowRight from "../../assets/Navigation/arrowRight.svg";
 
 const RecruitChallengeCard = ({
   challengeContent,
