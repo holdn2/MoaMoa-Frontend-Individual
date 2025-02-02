@@ -46,9 +46,9 @@ const Setting = () => {
               onClick={() => setMarketingAgree(!marketingAgree)}
             >
               {marketingAgree ? (
-                <img src="http://placehold.co/45" alt="동의 버튼" />
+                <img src={selectedButton} alt="동의 버튼" />
               ) : (
-                <img src="http://placehold.co/45" alt="동의 버튼" />
+                <img src={unSelectedButton} alt="동의 버튼" />
               )}
             </button>
           </div>
