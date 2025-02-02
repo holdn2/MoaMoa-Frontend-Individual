@@ -8,7 +8,7 @@ import dustLv2 from "../src/assets/DustLevel/Lv2.svg";
 import dustLv3 from "../src/assets/DustLevel/Lv3.svg";
 import dustLv4 from "../src/assets/DustLevel/Lv4.svg";
 import dustLv5 from "../src/assets/DustLevel/Lv5.svg";
-import dustLv6 from "../src/assets/DustLevel/Lv6.svg";
+import dustLv6 from "http://placehold.co/49";
 
 const Level = () => {
   const pageName = "레벨";
