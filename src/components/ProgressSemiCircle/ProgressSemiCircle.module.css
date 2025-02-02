@@ -1,0 +1,16 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.PercentText {
+  margin-top: -25px;
+  color: #00232e;
+  text-align: center;
+  /* bd/22px */
+  font-family: Pretendard;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

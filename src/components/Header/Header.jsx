@@ -10,6 +10,7 @@ import setting from "../src/assets/Navigation/setting.svg";
 import plus from "../src/assets/Navigation/plus.svg";
 import closeBig from "../src/assets/Navigation/closeBig.svg";
 
+
 const Header = ({
   pageName,
   diagnosisStage,
