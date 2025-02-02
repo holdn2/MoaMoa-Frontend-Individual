@@ -3,9 +3,9 @@ import styles from "./RoomInviteFriend.module.css";
 import Header from "../../../../components/Header/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
-import blueCancle from "../../../assets/Content/blueCancle.svg";
-import check from "../../../assets/SelectButton/check.svg";
-import uncheck from "../../../assets/SelectButton/uncheck.svg";
+import blueCancle from "../../../../assets/Content/blueCancle.svg";
+import check from "../../../../assets/SelectButton/check.svg";
+import uncheck from "../../../../assets/SelectButton/uncheck.svg";
 
 const RoomInviteFriend = () => {
   const pageName = "친구 초대";

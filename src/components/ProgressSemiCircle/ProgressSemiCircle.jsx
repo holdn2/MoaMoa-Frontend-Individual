@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./ProgressSemiCircle.module.css";
+import semiCircle85 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg";
 
 const ProgressSemiCircle = ({ percentage }) => {
   const [progressImg, setProgressImg] = useState("");
@@ -7,25 +8,15 @@ const ProgressSemiCircle = ({ percentage }) => {
   // 퍼센트에 따라 다른 상태바 이미지 필요할듯
   useEffect(() => {
     if (percentage < 20) {
-      setProgressImg(
-        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
-      );
+      setProgressImg(semiCircle85);
     } else if (percentage < 50) {
-      setProgressImg(
-        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
-      );
+      setProgressImg(semiCircle85);
     } else if (percentage < 80) {
-      setProgressImg(
-        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
-      );
+      setProgressImg(semiCircle85);
     } else if (percentage < 90) {
-      setProgressImg(
-        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
-      );
+      setProgressImg(semiCircle85);
     } else {
-      setProgressImg(
-        "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg"
-      );
+      setProgressImg(semiCircle85);
     }
   }, [percentage]); // `percentage`가 변경될 때만 실행됨
 

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import bell from "../../assets/Navigation/bell.svg";
 import dust from "../../assets/Content/dust.svg";
 import headerCoin from "../../assets/Content/headerCoin.svg";
-import arrowLeftBig from "../../../../assets/Navigation/arrowLeftBig.svg";
+import arrowLeftBig from "../../assets/Navigation/arrowLeftBig.svg";
 import setting from "../../assets/Navigation/setting.svg";
 import plus from "../../assets/Navigation/plus.svg";
 import closeBig from "../../assets/Navigation/closeBig.svg";

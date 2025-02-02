@@ -70,41 +70,41 @@ const currentCoin = 150;
 const dustLevel = [
   {
     lv: 0,
-    img: { dustLv0 },
+    img: dustLv0,
   },
   {
     lv: 1,
-    img: { dustLv1 },
+    img: dustLv1,
     needCoin: 200,
     currentPercent: 100 - (100 * (200 - currentCoin)) / 200,
   },
   {
     lv: 2,
-    img: { dustLv2 },
+    img: dustLv2,
     needCoin: 500,
     currentPercent: 100 - (100 * (500 - currentCoin)) / 500,
   },
   {
     lv: 3,
-    img: { dustLv3 },
+    img: dustLv3,
     needCoin: 1000,
     currentPercent: 100 - (100 * (1000 - currentCoin)) / 1000,
   },
   {
     lv: 4,
-    img: { dustLv4 },
+    img: dustLv4,
     needCoin: 1700,
     currentPercent: 100 - (100 * (1700 - currentCoin)) / 1700,
   },
   {
     lv: 5,
-    img: { dustLv5 },
+    img: dustLv5,
     needCoin: 2600,
     currentPercent: 100 - (100 * (2600 - currentCoin)) / 2600,
   },
   {
     lv: 6,
-    img: { dustLv6 },
+    img: dustLv6,
     needCoin: 3600,
     currentPercent: 100 - (100 * (3600 - currentCoin)) / 3600,
   },

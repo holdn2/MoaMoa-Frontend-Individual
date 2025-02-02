@@ -4,9 +4,9 @@ import Header from "../../../../components/Header/Header";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
 import { useNavigate, useParams } from "react-router-dom";
 import BottomBar from "../../../../components/BottomBar/BottomBar";
-import success from "../../../assets/ChallengeResult/success.svg";
-import fail from "../../../assets/ChallengeResult/fail.svg";
-import coin3 from "../../../assets/Content/coin3.svg";
+import success from "../../../../assets/ChallengeResult/success.svg";
+import fail from "../../../../assets/ChallengeResult/fail.svg";
+import coin3 from "../../../../assets/Content/coin3.svg";
 
 const PastChallenge = () => {
   const pageName = "지난챌린지";

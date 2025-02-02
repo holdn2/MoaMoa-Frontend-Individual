@@ -5,14 +5,14 @@ import Header from "../../../components/Header/Header";
 import ExitRoomModal from "./SideMenu/ExitRoomModal";
 import ChattingArea from "./DoChatting/ChattingArea";
 import AcceptChallengeModal from "./AcceptChallengeModal";
-import category from "../../assets/Component1/category.svg";
-import arrowRight from "../../assets/Navigation/arrowRight.svg";
-import closeBig from "../../assets/Navigation/closeBig.svg";
-import editRoomName from "../../assets/Content/editRoomName.svg";
-import invite from "../../assets/Action/invite.svg";
-import makeChallenge from "../../assets/Content/makeChallenge.svg";
-import pastChallenge from "../../assets/Content/pastChallenge.svg";
-import exit from "../../assets/Action/exit.svg";
+import category from "../../../assets/Component1/category.svg";
+import arrowRight from "../../../assets/Navigation/arrowRight.svg";
+import closeBig from "../../../assets/Navigation/closeBig.svg";
+import editRoomName from "../../../assets/Content/editRoomName.svg";
+import invite from "../../../assets/Action/invite.svg";
+import makeChallenge from "../../../assets/Content/makeChallenge.svg";
+import pastChallenge from "../../../assets/Content/pastChallenge.svg";
+import exit from "../../../assets/Action/exit.svg";
 
 const ChattingRoom = () => {
   const navigate = useNavigate();

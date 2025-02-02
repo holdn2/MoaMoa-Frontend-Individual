@@ -24,7 +24,10 @@ const AddRoomChallenge = () => {
   const disabled =
     !watch("title") || !watch("content") || !watch("coin") || isSubmitting;
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form
+      className={styles.AddRoomChallengePage}
+      onSubmit={handleSubmit((data) => console.log(data))}
+    >
       <Header pageName={pageName} />
       <div className={styles.wrapper}>
         <h1>챌린지 모집글을 작성해봐요!</h1>

@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import PrimaryButton from "../../../../components/Button/PrimaryButton";
 import SecondaryButton from "../../../../components/Button/SecondaryButton";
 import { useNavigate } from "react-router-dom";
-import dustSad from "../../assets/CharacterImgs/dustSad.svg";
+import dustSad from "../../../../assets/CharacterImgs/dustSad.svg";
 
 const ExitRoomModal = ({ isModalOpen, setIsModalOpen, setExitRoom }) => {
   const navigate = useNavigate();

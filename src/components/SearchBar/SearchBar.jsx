@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SearchBar.module.css";
-import search from "../../../assets/Action/search.svg";
+import search from "../../assets/Action/search.svg";
 
 // setIsInput : 입력창에 입력했는지 여부
 // setFiltered : 입력한 것과 전체 데이터 비교 후 일치하는 배열

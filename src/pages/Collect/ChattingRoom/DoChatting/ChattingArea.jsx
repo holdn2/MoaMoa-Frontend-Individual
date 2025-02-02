@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./ChattingArea.module.css";
 import ChattingComponent from "./ChattingComponent";
-import sendMessage from "../../../assets/Action/sendMessage.svg";
+import sendMessage from "../../../../assets/Action/sendMessage.svg";
 
 const ChattingArea = () => {
   const [chatEx, setChatEx] = useState(chatData);

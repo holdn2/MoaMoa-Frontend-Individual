@@ -8,7 +8,7 @@ import modify from "../../assets/Component1/modify.svg";
 
 const MyProfileComponent = () => {
   const navigate = useNavigate();
-  const dustImg = { DustLevel };
+  const dustImg = DustLevel;
   const currentCoin = 100;
   const necessaryCoin = 200;
   const userLv = "Lv.0";
@@ -25,7 +25,7 @@ const MyProfileComponent = () => {
   return (
     <div className={styles.MyProfileContainer}>
       <div className={styles.DustNameContainer}>
-        <img src={dustImg} alt="흙돼지" className={styles.DustImg} />
+        <img src={dustImg} alt="먼지" className={styles.DustImg} />
         <button className={styles.NicknameContainer} onClick={openModal}>
           <div className={styles.ForFixContainer}>
             <span className={styles.FixText}>내 닉네임</span>
