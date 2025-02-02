@@ -4,6 +4,9 @@ import Header from "../../../../components/Header/Header";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
 import { useNavigate, useParams } from "react-router-dom";
 import BottomBar from "../../../../components/BottomBar/BottomBar";
+import success from "../../src/assets/ChallengeResult/success.svg";
+import fail from "../../src/assets/ChallengeResult/fail.svg";
+import coin3 from "../../src/assets/Content/coin3.svg";
 
 const PastChallenge = () => {
   const pageName = "지난챌린지";
@@ -38,13 +41,13 @@ const PastChallenge = () => {
               >
                 {item.isSuccess ? (
                   <img
-                    src="../../src/assets/ChallengeResult/success.svg"
+                    src={success}
                     alt="성공"
                     className={styles.ChallengeResultImg}
                   />
                 ) : (
                   <img
-                    src="../../src/assets/ChallengeResult/fail.svg"
+                    src={fail}
                     alt="실패"
                     className={styles.ChallengeResultImg}
                   />
@@ -54,7 +57,7 @@ const PastChallenge = () => {
                 <div className={styles.DateCoinWrapper}>
                   <span>{item.date}</span> <span>|</span>
                   <div style={{ display: "flex", gap: "2px" }}>
-                    <img src="../../src/assets/Content/coin3.svg" alt="코인" />
+                    <img src={coin3} alt="코인" />
                     <span>{item.coin}</span>
                   </div>
                 </div>
@@ -77,13 +80,13 @@ const PastChallenge = () => {
               >
                 {item.isSuccess ? (
                   <img
-                    src="../../src/assets/ChallengeResult/success.svg"
+                    src={success}
                     alt="성공"
                     className={styles.ChallengeResultImg}
                   />
                 ) : (
                   <img
-                    src="../../src/assets/ChallengeResult/fail.svg"
+                    src={fail}
                     alt="실패"
                     className={styles.ChallengeResultImg}
                   />
@@ -93,7 +96,7 @@ const PastChallenge = () => {
                 <div className={styles.DateCoinWrapper}>
                   <span>{item.date}</span> <span>|</span>
                   <div style={{ display: "flex", gap: "2px" }}>
-                    <img src="../../src/assets/Content/coin3.svg" alt="코인" />
+                    <img src={coin3} alt="코인" />
                     <span>{item.coin}</span>
                   </div>
                 </div>

@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "./ProfileToPageComponent.module.css";
 import { useNavigate } from "react-router-dom";
+import recent from "../src/assets/Content/recent.svg";
+import arrowRightSmall from "../src/assets/Navigation/arrowRightSmall.svg";
+import checkBold from "../src/assets/Content/checkBold.svg";
 
 const ProfileToPageComponent = ({ dstName }) => {
   const navigate = useNavigate();
@@ -11,34 +14,18 @@ const ProfileToPageComponent = ({ dstName }) => {
           className={styles.ProfileToPageComponentContainer}
           onClick={() => navigate("/myrecord")}
         >
-          <img
-            src="../src/assets/Content/recent.svg"
-            alt="시계"
-            className={styles.ContentImg}
-          />
+          <img src={recent} alt="시계" className={styles.ContentImg} />
           <span className={styles.ProfileToPageComponentText}>{dstName}</span>
-          <img
-            src="../src/assets/Navigation/arrowRightSmall.svg"
-            alt="화살표"
-            className={styles.ArrowImg}
-          />
+          <img src={arrowRightSmall} alt="화살표" className={styles.ArrowImg} />
         </button>
       ) : (
         <button
           className={styles.ProfileToPageComponentContainer}
           onClick={() => navigate("/diagnosis")}
         >
-          <img
-            src="../src/assets/Content/checkBold.svg"
-            alt="체크"
-            className={styles.ContentImg}
-          />
+          <img src={checkBold} alt="체크" className={styles.ContentImg} />
           <span className={styles.ProfileToPageComponentText}>{dstName}</span>
-          <img
-            src="../src/assets/Navigation/arrowRightSmall.svg"
-            alt="화살표"
-            className={styles.ArrowImg}
-          />
+          <img src={arrowRightSmall} alt="화살표" className={styles.ArrowImg} />
         </button>
       )}
     </>

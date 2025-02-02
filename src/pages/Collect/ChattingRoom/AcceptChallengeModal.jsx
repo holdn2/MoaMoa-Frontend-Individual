@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styles from "./AcceptChallengeModal.module.css";
 import Modal from "react-modal";
 import PrimaryButton from "../../../components/Button/PrimaryButton";
+import coin3 from "../src/assets/Content/coin3.svg";
+import closeBig from "../src/assets/Navigation/closeBig.svg";
+import dustCrownMoney from "../src/assets/CharacterImgs/dustCrownMoney.svg";
 
 const AcceptChallengeModal = ({
   isModalOpen,
@@ -65,7 +68,7 @@ const AcceptChallengeModal = ({
                   >
                     <img
                       style={{ width: "18px", height: "18px", padding: "3px" }}
-                      src="../src/assets/Content/coin3.svg"
+                      src={coin3}
                       alt="코인"
                     />
                     <span style={{ fontSize: "14px" }}>
@@ -92,10 +95,7 @@ const AcceptChallengeModal = ({
               className={styles.CloseModal}
               onClick={() => setIsModalOpen(false)}
             >
-              <img
-                src="../src/assets/Navigation/closeBig.svg"
-                alt="모달창 닫기"
-              />
+              <img src={closeBig} alt="모달창 닫기" />
             </div>
           </Modal>
         );
@@ -107,7 +107,7 @@ const AcceptChallengeModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/CharacterImgs/dustCrownMoney.svg"
+              src={dustCrownMoney}
               alt="왕관 먼지"
               style={{ width: "112px" }}
             />

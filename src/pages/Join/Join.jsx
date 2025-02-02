@@ -2,6 +2,7 @@ import React, { Children, useState } from "react";
 import styles from "./Join.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import dustSunglassCoin from "../src/assets/CharacterImgs/dustSunglassCoin.svg";
 
 const Join = () => {
   const [joinMethodState, setJoinMethodState] = useState(0);
@@ -73,7 +74,7 @@ const Join = () => {
             }}
           >
             <img
-              src="../src/assets/CharacterImgs/dustSunglassCoin.svg"
+              src={dustSunglassCoin}
               alt="시작 이미지"
               style={{ width: "270px", height: "230px", marginTop: "60px" }}
             />

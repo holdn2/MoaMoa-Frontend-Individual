@@ -3,6 +3,8 @@ import styles from "./MakeRoomModal.module.css";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import PrimaryButton from "../../../components/Button/PrimaryButton";
+import dustHappy from "../src/assets/CharacterImgs/dustHappy.svg";
+import closeModal from "../src/assets/Navigation/closeModal.svg";
 
 const MakeRoomModal = ({ isModalOpen, newRoomName, selectedFriends }) => {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const MakeRoomModal = ({ isModalOpen, newRoomName, selectedFriends }) => {
       className={styles.ContentWraper}
       overlayClassName={styles.Overlay}
     >
-      <img src="../src/assets/CharacterImgs/dustHappy.svg" alt="행복한 먼지" />
+      <img src={dustHappy} alt="행복한 먼지" />
       <div className={styles.MakeRoomContainer}>
         <span className={styles.BoldText}>
           [{newRoomName}] 채팅방 생성 완료!
@@ -29,11 +31,7 @@ const MakeRoomModal = ({ isModalOpen, newRoomName, selectedFriends }) => {
           <PrimaryButton size="lg">채팅방으로 이동하기</PrimaryButton>
         </div>
       </div>
-      <img
-        onClick={() => navigate(-1)}
-        src="../src/assets/Navigation/closeModal.svg"
-        alt="모달창 닫기"
-      />
+      <img onClick={() => navigate(-1)} src={closeModal} alt="모달창 닫기" />
     </Modal>
   );
 };

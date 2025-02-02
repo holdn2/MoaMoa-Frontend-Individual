@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Chatting.module.css";
 import { useNavigate } from "react-router-dom";
+import chatPlusBtn from "../src/assets/Btn/chatPlusBtn.svg";
 
 const Chatting = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Chatting = () => {
           ))}
           <img
             onClick={() => navigate("/makeroom")}
-            src="../src/assets/Btn/chatPlusBtn.svg"
+            src={chatPlusBtn}
             alt="채팅 만들기 버튼"
             style={{ position: "fixed", right: "20px", bottom: "80px" }}
           />

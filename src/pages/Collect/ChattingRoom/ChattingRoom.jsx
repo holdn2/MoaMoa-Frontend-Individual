@@ -5,6 +5,14 @@ import Header from "../../../components/Header/Header";
 import ExitRoomModal from "./SideMenu/ExitRoomModal";
 import ChattingArea from "./DoChatting/ChattingArea";
 import AcceptChallengeModal from "./AcceptChallengeModal";
+import category from "../src/assets/Component1/category.svg";
+import arrowRight from "../src/assets/Navigation/arrowRight.svg";
+import closeBig from "../src/assets/Navigation/closeBig.svg";
+import editRoomName from "../src/assets/Content/editRoomName.svg";
+import invite from "../src/assets/Action/invite.svg";
+import makeChallenge from "../src/assets/Content/makeChallenge.svg";
+import pastChallenge from "../src/assets/Content/pastChallenge.svg";
+import exit from "../src/assets/Action/exit.svg";
 
 const ChattingRoom = () => {
   const navigate = useNavigate();
@@ -37,7 +45,7 @@ const ChattingRoom = () => {
         <div className={styles.TopContentContainer}>
           <Header pageName={roomInfo[0].roomName} />
           <img
-            src="../src/assets/Component1/category.svg"
+            src={category}
             alt="메뉴"
             className={styles.RoomMenu}
             onClick={toggleMenu}
@@ -76,7 +84,7 @@ const ChattingRoom = () => {
               </div>
               <img
                 className={styles.ToChallengeArrow}
-                src="../src/assets/Navigation/arrowRight.svg"
+                src={arrowRight}
                 alt="챌린지 보러가기"
               />
             </div>
@@ -97,7 +105,7 @@ const ChattingRoom = () => {
               </div>
               <img
                 className={styles.ToChallengeArrow}
-                src="../src/assets/Navigation/arrowRight.svg"
+                src={arrowRight}
                 alt="챌린지 만들러가기"
               />
             </div>
@@ -127,7 +135,7 @@ const ChattingRoom = () => {
             onClick={(e) => e.stopPropagation()} // 사이드 메뉴 클릭 시에는 상위요소로 이벤트 전파 방지
           >
             <img
-              src="../src/assets/Navigation/closeBig.svg"
+              src={closeBig}
               alt="메뉴 닫기"
               onClick={toggleMenu}
               style={{ marginTop: "49px", marginLeft: "24px" }}
@@ -139,10 +147,7 @@ const ChattingRoom = () => {
                   navigate(`/chatroom/${params.chatroomId}/roomnamechange`)
                 }
               >
-                <img
-                  src="../src/assets/Content/editRoomName.svg"
-                  alt="채팅방 이름 변경"
-                />
+                <img src={editRoomName} alt="채팅방 이름 변경" />
                 <span className={styles.MenuText}>채팅방 이름 변경</span>
               </div>
               <div
@@ -151,7 +156,7 @@ const ChattingRoom = () => {
                   navigate(`/chatroom/${params.chatroomId}/roominvitefriend`)
                 }
               >
-                <img src="../src/assets/Action/invite.svg" alt="친구 초대" />
+                <img src={invite} alt="친구 초대" />
                 <span className={styles.MenuText}>친구 초대</span>
               </div>
               <div
@@ -160,10 +165,7 @@ const ChattingRoom = () => {
                   navigate(`/chatroom/${params.chatroomId}/roomchallenge`)
                 }
               >
-                <img
-                  src="../src/assets/Content/makeChallenge.svg"
-                  alt="챌린지 만들기"
-                />
+                <img src={makeChallenge} alt="챌린지 만들기" />
                 <span className={styles.MenuText}>챌린지 만들기</span>
               </div>
               <div
@@ -172,10 +174,7 @@ const ChattingRoom = () => {
                   navigate(`/chatroom/${params.chatroomId}/pastchallenge`)
                 }
               >
-                <img
-                  src="../src/assets/Content/pastChallenge.svg"
-                  alt="지난 챌린지"
-                />
+                <img src={pastChallenge} alt="지난 챌린지" />
                 <span className={styles.MenuText}>지난 챌린지</span>
               </div>
             </div>
@@ -184,7 +183,7 @@ const ChattingRoom = () => {
               style={{ marginTop: "230px" }}
               onClick={() => setIsExitModalOpen(true)}
             >
-              <img src="../src/assets/Action/exit.svg" alt="채팅방 나가기" />
+              <img src={exit} alt="채팅방 나가기" />
               <span
                 className={styles.MenuText}
                 style={{ fontSize: "20px", fontWeight: "600" }}

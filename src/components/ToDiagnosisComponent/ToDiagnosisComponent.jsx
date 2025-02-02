@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./ToDiagnosisComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
+import dustCrown from "../src/assets/CharacterImgs/dustCrown.svg";
 
 const ToDiagnosisComponent = () => {
   const navigate = useNavigate();
@@ -16,11 +17,7 @@ const ToDiagnosisComponent = () => {
           <br />
           과소비 진단이 필요해요!
         </span>
-        <img
-          src="../src/assets/CharacterImgs/dustCrown.svg"
-          alt="왕관 먼지"
-          className={styles.ImgContainer}
-        />
+        <img src={dustCrown} alt="왕관 먼지" className={styles.ImgContainer} />
       </div>
       <div
         className={styles.ButtonContainer}

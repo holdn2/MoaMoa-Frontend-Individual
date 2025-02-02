@@ -6,6 +6,7 @@ import PrimaryButton from "../../components/Button/PrimaryButton";
 import SelectPeriod from "./SelectPeriod";
 import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import { useNavigate } from "react-router-dom";
+import dustSunglass from "../src/assets/CharacterImgs/dustSunglass.svg";
 
 const StartConsumption = () => {
   const pageName = "나의 소비 시작하기";
@@ -79,7 +80,7 @@ const StartConsumption = () => {
               </p>
             </div>
             <img
-              src="../src/assets/CharacterImgs/dustSunglass.svg"
+              src={dustSunglass}
               alt="먼지 이미지"
               style={{ marginTop: "40px" }}
             />

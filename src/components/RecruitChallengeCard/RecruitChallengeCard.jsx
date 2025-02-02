@@ -3,6 +3,8 @@ import React from "react";
 import styles from "./RecruitChallengeCard.module.css";
 import ChallengeCard from "../ChallengeCard/ChallengeCard";
 import { useNavigate } from "react-router-dom";
+import people from "../src/assets/Content/people.svg";
+import arrowRight from "../src/assets/Navigation/arrowRight.svg";
 
 const RecruitChallengeCard = ({
   challengeContent,
@@ -18,7 +20,7 @@ const RecruitChallengeCard = ({
         <div className={styles.DayPeopleText}>
           <span className={styles.DayText}>D-{recruitDday}</span>
           <img
-            src="../src/assets/Content/people.svg"
+            src={people}
             alt="사람들 이모티콘"
             className={styles.PeopleImg}
           />
@@ -33,11 +35,7 @@ const RecruitChallengeCard = ({
           });
         }}
       >
-        <img
-          src="../src/assets/Navigation/arrowRight.svg"
-          alt="오른쪽 화살표"
-          className={styles.ArrowImg}
-        />
+        <img src={arrowRight} alt="오른쪽 화살표" className={styles.ArrowImg} />
       </button>
     </div>
   );

@@ -2,7 +2,14 @@
 import React from "react";
 import styles from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
-import bell from "../../assets/Navigation/bell.svg";
+import bell from "../src/assets/Navigation/bell.svg";
+import dust from "../src/assets/Content/dust.svg";
+import headerCoin from "../src/assets/Content/headerCoin.svg";
+import arrowLeftBig from "../../../src/assets/Navigation/arrowLeftBig.svg";
+import setting from "../src/assets/Navigation/setting.svg";
+import plus from "../src/assets/Navigation/plus.svg";
+import closeBig from "../src/assets/Navigation/closeBig.svg";
+
 
 const Header = ({
   pageName,
@@ -21,10 +28,10 @@ const Header = ({
               <img src={bell} alt="알림" />
             </button>
             <button onClick={() => navigate("/level")}>
-              <img src="../src/assets/Content/dust.svg" alt="먼지" />
+              <img src={dust} alt="먼지" />
             </button>
             <button onClick={() => navigate("/mycoin")}>
-              <img src="../src/assets/Content/headerCoin.svg" alt="동전" />
+              <img src={headerCoin} alt="동전" />
             </button>
           </div>
         );
@@ -36,10 +43,7 @@ const Header = ({
                 className={styles.GoBackButton}
                 onClick={() => navigate(-1)}
               >
-                <img
-                  src="../../../src/assets/Navigation/arrowLeftBig.svg"
-                  alt="뒤로가기"
-                />
+                <img src={arrowLeftBig} alt="뒤로가기" />
               </button>
             ) : (
               <> </>
@@ -53,7 +57,7 @@ const Header = ({
               className={styles.GoSettingButton}
               onClick={() => navigate("/setting")}
             >
-              <img src="../src/assets/Navigation/setting.svg" alt="설정으로" />
+              <img src={setting} alt="설정으로" />
             </button>
           </>
         );
@@ -65,16 +69,13 @@ const Header = ({
               className={styles.GoBackButton}
               onClick={() => navigate(-1)}
             >
-              <img
-                src="../src/assets/Navigation/arrowLeftBig.svg"
-                alt="뒤로가기"
-              />
+              <img src={arrowLeftBig} alt="뒤로가기" />
             </button>
             <button
               className={styles.GoSettingButton}
               onClick={() => navigate("/setting")}
             >
-              <img src="../src/assets/Navigation/setting.svg" alt="설정으로" />
+              <img src={setting} alt="설정으로" />
             </button>
           </>
         );
@@ -85,19 +86,13 @@ const Header = ({
               className={styles.GoBackButton}
               onClick={() => navigate(-1)}
             >
-              <img
-                src="../src/assets/Navigation/arrowLeftBig.svg"
-                alt="뒤로가기"
-              />
+              <img src={arrowLeftBig} alt="뒤로가기" />
             </button>
             <button
               className={styles.GoSettingButton}
               onClick={() => navigate("/setting")}
             >
-              <img
-                src="../src/assets/Navigation/plus.svg"
-                alt="친구 추가 페이지로 가는 버튼"
-              />
+              <img src={plus} alt="친구 추가 페이지로 가는 버튼" />
             </button>
           </>
         );
@@ -109,10 +104,7 @@ const Header = ({
                 className={styles.GoBackButton}
                 onClick={() => navigate(-1)}
               >
-                <img
-                  src="../src/assets/Navigation/closeBig.svg"
-                  alt="뒤로가기"
-                />
+                <img src={closeBig} alt="뒤로가기" />
               </button>
             );
           case 8:
@@ -122,10 +114,7 @@ const Header = ({
                 className={styles.GoBackButton}
                 onClick={() => setDiagnosisStage(diagnosisStage - 2)}
               >
-                <img
-                  src="../src/assets/Navigation/arrowLeftBig.svg"
-                  alt="뒤로가기"
-                />
+                <img src={arrowLeftBig} alt="뒤로가기" />
               </button>
             );
           default:
@@ -134,10 +123,7 @@ const Header = ({
                 className={styles.GoBackButton}
                 onClick={() => setDiagnosisStage(diagnosisStage - 1)}
               >
-                <img
-                  src="../src/assets/Navigation/arrowLeftBig.svg"
-                  alt="뒤로가기"
-                />
+                <img src={arrowLeftBig} alt="뒤로가기" />
               </button>
             );
         }
@@ -146,10 +132,7 @@ const Header = ({
         return (
           // navigate(-1) : 클릭 시 바로 직전 페이지로 이동
           <button className={styles.GoBackButton} onClick={() => navigate(-1)}>
-            <img
-              src="../../../src/assets/Navigation/arrowLeftBig.svg"
-              alt="뒤로가기"
-            />
+            <img src={arrowLeftBig} alt="뒤로가기" />
           </button>
         );
     }

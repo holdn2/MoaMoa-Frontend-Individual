@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import styles from "./AttendanceModal.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
+import dustHappy from "../src/assets/CharacterImgs/dustHappy.svg";
 
 const AttendanceModal = ({
   isModalOpen,
@@ -39,8 +40,8 @@ const AttendanceModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/CharacterImgs/dustHappy.svg"
-              alt="행복 돼지"
+              src={dustHappy}
+              alt="행복 먼지"
               className={styles.HappyDustImg}
             />
             <div className={styles.AttendanceContent}>
@@ -62,8 +63,8 @@ const AttendanceModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src="../src/assets/CharacterImgs/dustHappy.svg"
-              alt="행복 돼지"
+              src={dustHappy}
+              alt="행복 먼지"
               className={styles.HappyDustImg}
             />
             <div className={styles.LevelUpContent}>

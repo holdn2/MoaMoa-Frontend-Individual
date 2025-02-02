@@ -3,10 +3,12 @@ import styles from "./MyProfileComponent.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import NicknameChangeModal from "../NicknameChangeModal/NicknameChangeModal";
+import DustLevel from "../src/assets/DustLevel/Lv0.svg";
+import modify from "../src/assets/Component1/modify.svg";
 
 const MyProfileComponent = () => {
   const navigate = useNavigate();
-  const dustImg = "../src/assets/DustLevel/Lv0.svg";
+  const dustImg = { DustLevel };
   const currentCoin = 100;
   const necessaryCoin = 200;
   const userLv = "Lv.0";
@@ -27,11 +29,7 @@ const MyProfileComponent = () => {
         <button className={styles.NicknameContainer} onClick={openModal}>
           <div className={styles.ForFixContainer}>
             <span className={styles.FixText}>내 닉네임</span>
-            <img
-              src="../src/assets/Component1/modify.svg"
-              alt="수정"
-              className={styles.FixImg}
-            />
+            <img src={modify} alt="수정" className={styles.FixImg} />
           </div>
           <span className={styles.Username}>{userName}</span>
         </button>

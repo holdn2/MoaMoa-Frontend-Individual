@@ -3,6 +3,15 @@ import styles from "./JoinProcess.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SecondaryButton from "../../components/Button/SecondaryButton";
 import { useNavigate } from "react-router-dom";
+import firstStage from "../src/assets/ThreeStages/firstStage.svg";
+import secondStage from "../src/assets/ThreeStages/secondStage.svg";
+import visible from "../src/assets/Content/visible.svg";
+import thirdStage from "../src/assets/ThreeStages/thirdStage.svg";
+import emailOK from "../src/assets/Content/emailOK.svg";
+import emailCheck from "../src/assets/Content/emailCheck.svg";
+import completeStage from "../src/assets/ThreeStages/completeStage.svg";
+import dustSunglassCoin from "../src/assets/CharacterImgs/dustSunglassCoin.svg";
+import dustCrown from "../src/assets/CharacterImgs/dustCrown.svg";
 
 // input에 value를 명시해주면 다음으로 넘어가도 안남아있음.
 
@@ -127,7 +136,7 @@ const JoinProcess = () => {
             <div className={styles.StageInfoWrapper}>
               <div className={styles.InfoTextContainer}>
                 <img
-                  src="../src/assets/ThreeStages/firstStage.svg"
+                  src={firstStage}
                   alt="첫번째 단계"
                   style={{ width: "130px", height: "20px" }}
                 />
@@ -176,7 +185,7 @@ const JoinProcess = () => {
             <div className={styles.StageInfoWrapper}>
               <div className={styles.InfoTextContainer}>
                 <img
-                  src="../src/assets/ThreeStages/secondStage.svg"
+                  src={secondStage}
                   alt="두번째 단계"
                   style={{ width: "130px", height: "20px" }}
                 />
@@ -195,7 +204,7 @@ const JoinProcess = () => {
               <img
                 className={styles.VisiblePw}
                 onClick={() => setVisiblePw(!visiblePw)}
-                src="../src/assets/Content/visible.svg"
+                src={visible}
                 alt="비밀번호 보이기/숨기기"
               />
               {visiblePw ? (
@@ -279,7 +288,7 @@ const JoinProcess = () => {
             <div className={styles.StageInfoWrapper}>
               <div className={styles.InfoTextContainer}>
                 <img
-                  src="../src/assets/ThreeStages/thirdStage.svg"
+                  src={thirdStage}
                   alt="세번째 단계"
                   style={{
                     width: "130px",
@@ -302,13 +311,13 @@ const JoinProcess = () => {
               {authCodeState ? (
                 <img
                   className={styles.VisiblePw}
-                  src="../src/assets/Content/emailOK.svg"
+                  src={emailOK}
                   alt="이메일 인증 여부"
                 />
               ) : (
                 <img
                   className={styles.VisiblePw}
-                  src="../src/assets/Content/emailCheck.svg"
+                  src={emailCheck}
                   alt="이메일 인증 여부"
                 />
               )}
@@ -370,7 +379,7 @@ const JoinProcess = () => {
             <div className={styles.StageInfoWrapper}>
               <div className={styles.InfoTextContainer}>
                 <img
-                  src="../src/assets/ThreeStages/completeStage.svg"
+                  src={completeStage}
                   alt="4번째 단계"
                   style={{
                     width: "130px",
@@ -387,7 +396,7 @@ const JoinProcess = () => {
                 </span>
               </div>
               <img
-                src="../src/assets/CharacterImgs/dustSunglassCoin.svg"
+                src={dustSunglassCoin}
                 alt="환영하는 먼지"
                 style={{ width: "250px", height: "223px", marginTop: "101px" }}
               />
@@ -414,7 +423,7 @@ const JoinProcess = () => {
                 </span>
               </div>
               <img
-                src="../src/assets/CharacterImgs/dustCrown.svg"
+                src={dustCrown}
                 alt="환영하는 먼지"
                 style={{ width: "210px", height: "227px", marginTop: "40px" }}
               />

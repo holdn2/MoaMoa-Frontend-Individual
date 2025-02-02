@@ -6,6 +6,14 @@ import PrimaryButton from "../../components/Button/PrimaryButton";
 import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import SelectButtonContainer from "./SelectButtonContainer";
 import { useNavigate } from "react-router-dom";
+import dustQuestion from "../src/assets/CharacterImgs/dustQuestion.svg";
+import firstStage from "../src/assets/StageExpression/firstStage.svg";
+import secondStage from "../src/assets/StageExpression/secondStage.svg";
+import thirdStage from "../src/assets/StageExpression/thirdStage.svg";
+import forthStage from "../src/assets/StageExpression/forthStage.svg";
+import timeCircle from "../src/assets/StageExpression/timeCircle.svg";
+import dustSad from "../src/assets/CharacterImgs/dustSad.svg";
+import dustSunglass from "../src/assets/CharacterImgs/dustSunglass.svg";
 
 const Diagnosis = () => {
   const pageName = "과소비 진단하기";
@@ -101,7 +109,7 @@ const Diagnosis = () => {
               </div>
               <img
                 className={styles.DustImg}
-                src="../src/assets/CharacterImgs/dustQuestion.svg"
+                src={dustQuestion}
                 alt="캐릭터 물음표"
               />
             </div>
@@ -119,7 +127,7 @@ const Diagnosis = () => {
             <div className={styles.StartContentContainer}>
               <img
                 className={styles.StageImg}
-                src="../src/assets/StageExpression/firstStage.svg"
+                src={firstStage}
                 alt="첫 번째 단계"
               />
               <div className={styles.TextContainer}>
@@ -161,7 +169,7 @@ const Diagnosis = () => {
             <div className={styles.StartContentContainer}>
               <img
                 className={styles.StageImg}
-                src="../src/assets/StageExpression/secondStage.svg"
+                src={secondStage}
                 alt="두 번째 단계"
               />
               <div className={styles.TextContainer}>
@@ -196,7 +204,7 @@ const Diagnosis = () => {
             <div className={styles.StartContentContainer}>
               <img
                 className={styles.StageImg}
-                src="../src/assets/StageExpression/thirdStage.svg"
+                src={thirdStage}
                 alt="세 번째 단계"
               />
               <div className={styles.TextContainer}>
@@ -233,7 +241,7 @@ const Diagnosis = () => {
             <div className={styles.StartContentContainer}>
               <img
                 className={styles.StageImg}
-                src="../src/assets/StageExpression/forthStage.svg"
+                src={forthStage}
                 alt="네 번째 단계"
               />
               <div className={styles.TextContainer}>
@@ -267,7 +275,7 @@ const Diagnosis = () => {
             <div className={styles.StartContentContainer}>
               <img
                 className={styles.StageImg}
-                src="../src/assets/StageExpression/completeStage.svg"
+                src={forthStage}
                 alt="네 번째 단계"
               />
               <div className={styles.TextContainer}>
@@ -281,7 +289,7 @@ const Diagnosis = () => {
               </div>
               <img
                 className={styles.TimeCircle}
-                src="../src/assets/StageExpression/timeCircle.svg"
+                src={timeCircle}
                 alt="시간 돌아가는 중"
               />
             </div>
@@ -293,10 +301,7 @@ const Diagnosis = () => {
             <div className={styles.ResultDiagnoseContainer}>
               <div className={styles.ResultContentContainer}>
                 <span className={styles.ResultTitle}>진단 완료 !</span>
-                <img
-                  src="../src/assets/CharacterImgs/dustSad.svg"
-                  alt="슬픈 먼지"
-                />
+                <img src={dustSad} alt="슬픈 먼지" />
                 <span className={styles.ResultText}>
                   모아모아 030님은
                   <br />
@@ -318,10 +323,7 @@ const Diagnosis = () => {
             <div className={styles.ResultDiagnoseContainer}>
               <div className={styles.ResultContentContainer}>
                 <span className={styles.ResultTitle}>진단 완료 !</span>
-                <img
-                  src="../src/assets/CharacterImgs/dustSunglass.svg"
-                  alt="행복한 먼지"
-                />
+                <img src={dustSunglass} alt="행복한 먼지" />
                 <span className={styles.ResultText}>
                   모아모아 030님은
                   <br />

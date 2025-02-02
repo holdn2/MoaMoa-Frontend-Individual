@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./ChattingArea.module.css";
 import ChattingComponent from "./ChattingComponent";
+import sendMessage from "../../src/assets/Action/sendMessage.svg";
 
 const ChattingArea = () => {
   const [chatEx, setChatEx] = useState(chatData);
@@ -117,11 +118,7 @@ const ChattingArea = () => {
             setMessage(newMsg);
           }}
         />
-        <img
-          src="../../src/assets/Action/sendMessage.svg"
-          alt="메세지 보내기"
-          onClick={handleSendMsg}
-        />
+        <img src={sendMessage} alt="메세지 보내기" onClick={handleSendMsg} />
       </div>
     </div>
   );

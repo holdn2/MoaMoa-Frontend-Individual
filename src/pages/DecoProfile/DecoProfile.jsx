@@ -4,6 +4,23 @@ import styles from "./DecoProfile.module.css";
 import Header from "../../components/Header/Header";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import PurchaseModal from "./PurchaseModal";
+import purchased from "../src/assets/Decoration/purchased.svg";
+import coinWhite from "../src/assets/Content/coinWhite.svg";
+import coin3 from "../src/assets/Content/coin3.svg";
+import defaultOutline from "../src/assets/Decoration/Outlines/defaultOutline.svg";
+import blueOutline from "../src/assets/Decoration/Outlines/blueOutline.svg";
+import yellowOutline from "../src/assets/Decoration/Outlines/yellowOutline.svg";
+import pinkOutline from "../src/assets/Decoration/Outlines/pinkOutline.svg";
+import littleStarOutline from "../src/assets/Decoration/Outlines/littleStarOutline.svg";
+import cloverOutline from "../src/assets/Decoration/Outlines/cloverOutline.svg";
+import heartOutline from "../src/assets/Decoration/Outlines/heartOutline.svg";
+import sunglassOutline from "../src/assets/Decoration/Outlines/sunglassOutline.svg";
+import manyStarOutline from "../src/assets/Decoration/Outlines/manyStarOutline.svg";
+import bubbleOutline from "../src/assets/Decoration/Outlines/bubbleOutline.svg";
+import tenCoin from "../src/assets/Decoration/Cost/tenCoin.svg";
+import selectedThirtyCoin from "../src/assets/Decoration/Cost/selectedThirtyCoin.svg";
+import twentyCoin from "../src/assets/Decoration/Cost/twentyCoin.svg";
+import thirtyCoin from "../src/assets/Decoration/Cost/thirtyCoin.svg";
 
 const DecoProfile = () => {
   const pageName = "프로필 꾸미기";
@@ -60,7 +77,7 @@ const DecoProfile = () => {
                   {item.use ? (
                     <img
                       style={{ width: "21px", height: "21px" }}
-                      src="../src/assets/Decoration/purchased.svg"
+                      src={purchased}
                       alt="사용 중인 테두리 체크"
                     />
                   ) : (
@@ -94,7 +111,7 @@ const DecoProfile = () => {
                         {item.price}
                       </span>
                       <img
-                        src="../src/assets/Content/coinWhite.svg"
+                        src={coinWhite}
                         alt="선택함"
                         style={{
                           display: "flex",
@@ -107,7 +124,7 @@ const DecoProfile = () => {
                     <div className={styles.PriceContainer}>
                       <span className={styles.PriceText}>{item.price}</span>
                       <img
-                        src="../src/assets/Content/coin3.svg"
+                        src={coin3}
                         alt="선택안함"
                         style={{
                           display: "flex",
@@ -153,7 +170,7 @@ const outlineType = [
   {
     id: 1,
     type: "default",
-    outline: "../src/assets/Decoration/Outlines/defaultOutline.svg",
+    outline: { defaultOutline },
     price: 0,
     purchased: true,
     selected: false,
@@ -162,10 +179,10 @@ const outlineType = [
   {
     id: 2,
     type: "blue",
-    outline: "../src/assets/Decoration/Outlines/blueOutline.svg",
+    outline: { blueOutline },
     price: 10,
-    priceImg: "../src/assets/Decoration/Cost/tenCoin.svg",
-    selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
+    priceImg: { tenCoin },
+    selectedPriceImg: { selectedThirtyCoin },
     purchased: false,
     selected: false,
     use: false,
@@ -173,10 +190,10 @@ const outlineType = [
   {
     id: 3,
     type: "yellow",
-    outline: "../src/assets/Decoration/Outlines/yellowOutline.svg",
+    outline: { yellowOutline },
     price: 10,
-    priceImg: "../src/assets/Decoration/Cost/tenCoin.svg",
-    selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
+    priceImg: { tenCoin },
+    selectedPriceImg: { selectedThirtyCoin },
     purchased: false,
     selected: false,
     use: false,
@@ -184,10 +201,10 @@ const outlineType = [
   {
     id: 4,
     type: "pink",
-    outline: "../src/assets/Decoration/Outlines/pinkOutline.svg",
+    outline: { pinkOutline },
     price: 10,
-    priceImg: "../src/assets/Decoration/Cost/tenCoin.svg",
-    selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
+    priceImg: { tenCoin },
+    selectedPriceImg: { selectedThirtyCoin },
     purchased: false,
     selected: false,
     use: false,
@@ -195,10 +212,10 @@ const outlineType = [
   {
     id: 5,
     type: "littleStar",
-    outline: "../src/assets/Decoration/Outlines/littleStarOutline.svg",
+    outline: { littleStarOutline },
     price: 20,
-    priceImg: "../src/assets/Decoration/Cost/twentyCoin.svg",
-    selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
+    priceImg: { twentyCoin },
+    selectedPriceImg: { selectedThirtyCoin },
     purchased: false,
     selected: false,
     use: false,
@@ -206,10 +223,10 @@ const outlineType = [
   {
     id: 6,
     type: "clover",
-    outline: "../src/assets/Decoration/Outlines/cloverOutline.svg",
+    outline: { cloverOutline },
     price: 20,
-    priceImg: "../src/assets/Decoration/Cost/twentyCoin.svg",
-    selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
+    priceImg: { twentyCoin },
+    selectedPriceImg: { selectedThirtyCoin },
     purchased: false,
     selected: false,
     use: false,
@@ -217,10 +234,10 @@ const outlineType = [
   {
     id: 7,
     type: "heart",
-    outline: "../src/assets/Decoration/Outlines/heartOutline.svg",
+    outline: { heartOutline },
     price: 20,
-    priceImg: "../src/assets/Decoration/Cost/twentyCoin.svg",
-    selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
+    priceImg: { twentyCoin },
+    selectedPriceImg: { selectedThirtyCoin },
     purchased: false,
     selected: false,
     use: false,
@@ -228,10 +245,10 @@ const outlineType = [
   {
     id: 8,
     type: "sunglass",
-    outline: "../src/assets/Decoration/Outlines/sunglassOutline.svg",
+    outline: { sunglassOutline },
     price: 30,
-    priceImg: "../src/assets/Decoration/Cost/thirtyCoin.svg",
-    selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
+    priceImg: { thirtyCoin },
+    selectedPriceImg: { selectedThirtyCoin },
     purchased: false,
     selected: false,
     use: false,
@@ -239,10 +256,10 @@ const outlineType = [
   {
     id: 9,
     type: "manyStar",
-    outline: "../src/assets/Decoration/Outlines/manyStarOutline.svg",
+    outline: { manyStarOutline },
     price: 30,
-    priceImg: "../src/assets/Decoration/Cost/thirtyCoin.svg",
-    selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
+    priceImg: { thirtyCoin },
+    selectedPriceImg: { selectedThirtyCoin },
     purchased: false,
     selected: false,
     use: false,
@@ -250,10 +267,10 @@ const outlineType = [
   {
     id: 10,
     type: "bubble",
-    outline: "../src/assets/Decoration/Outlines/bubbleOutline.svg",
+    outline: { bubbleOutline },
     price: 30,
-    priceImg: "../src/assets/Decoration/Cost/thirtyCoin.svg",
-    selectedPriceImg: "../src/assets/Decoration/Cost/selectedThirtyCoin.svg",
+    priceImg: { thirtyCoin },
+    selectedPriceImg: { selectedThirtyCoin },
     purchased: false,
     selected: false,
     use: false,
