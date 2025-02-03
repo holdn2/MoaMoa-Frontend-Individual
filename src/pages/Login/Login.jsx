@@ -6,47 +6,35 @@ import visible from "../../assets/Content/visible.svg";
 import emailOK from "../../assets/Content/emailOK.svg";
 import emailCheck from "../../assets/Content/emailCheck.svg";
 import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
+import PwChangeModal from "./PwChangeModal";
 
-const exEmail = "asdf@naver.com";
-const exAuthCode = "ASDF1234";
+// 닉네임 받아오기
+const nickname = "모아모아짱";
 
 // setState는 비동기적으로 동작하므로 즉시 반영하려면 이벤트값을 바로 이용해야함.
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [loginStep, setLoginStep] = useState(0);
-  const [inputNickname, setInputNickname] = useState("");
-  const [inputPw, setInputPw] = useState("");
-  const [visiblePw, setVisiblePw] = useState(false);
-  // 서버에 결과 요청 후 맞으면 isCorrect가 true가 되게
+  // 서버에 결과 요청 후 맞으면 isCorrect가 true가 되게. 로그인 정보가 맞는지.
   const [isCorrect, setIsCorrect] = useState(true);
 
-  // 유효한 이메일인지 여부
-  const [isValidEmail, setISValidEmail] = useState(false);
+  const navigate = useNavigate();
 
-  // 일치하는 인증번호인지 여부
-  const [isCorrectAuthCode, setIsCorrectAuthCode] = useState(false);
-  const [currenAuthCode, setCurrentAuthCode] = useState("");
+  const [loginStep, setLoginStep] = useState(0);
+  // 이메일 상태
+  const [email, setEmail] = useState("");
+  // 인증코드 전송 모달 상태. modalState가 2일 때는 인증이 완료된 상태임.
+  const [modalState, setModalState] = useState(0);
+
+  const [inputPw, setInputPw] = useState("");
+  const [visiblePw, setVisiblePw] = useState(false);
 
   // 새로운 비밀번호와 재확인
   const [newPw, setNewPw] = useState("");
   const [newPwCheck, setNewPwCheck] = useState("");
 
-  // 그 유저의 이메일이 맞는지 확인하는 로직 필요.
-  const checkEmail = (e) => {
-    const inputText = e.target.value;
-    setISValidEmail(inputText === exEmail);
-  };
-
-  const checkAuthCode = (e) => {
-    const inputAuthCode = e.target.value;
-    setIsCorrectAuthCode(inputAuthCode === exAuthCode);
-    setCurrentAuthCode(inputAuthCode);
-  };
-
-  // 2초 후 홈화면으로 가기
+  // 로그인 한 뒤 2초 후 홈화면으로 가기
   useEffect(() => {
-    if (loginStep === 5) {
+    if (loginStep === 4) {
       const timer = setTimeout(() => {
         navigate("/");
       }, 2000);
@@ -62,16 +50,17 @@ const Login = () => {
             <div className={styles.WelcomeTextContainer}>
               <span className={styles.WelcomeText}>반가워요!</span>
               <span className={styles.NormalText}>
-                닉네임과 비밀번호를 입력해 주세요
+                가입한 이메일 주소와 비밀번호를 입력해 주세요
               </span>
             </div>
             <div className={styles.InputWrapper} style={{ marginTop: "79px" }}>
-              <span className={styles.InputTitle}>닉네임</span>
+              <span className={styles.InputTitle}>이메일 주소</span>
               <input
                 className={styles.InputContainer}
                 type="text"
-                value={inputNickname}
-                onChange={(e) => setInputNickname(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="abcd1234@example.com"
               />
             </div>
             <div className={styles.InputWrapper} style={{ marginTop: "20px" }}>
@@ -96,7 +85,14 @@ const Login = () => {
                 />
               )}
             </div>
-            <div className={styles.ToFindPwContainer}>
+            <div className={styles.LinkTextContainer}>
+              <span
+                className={styles.ToJoinPage}
+                onClick={() => navigate("/join")}
+                style={{ marginBottom: "20px" }}
+              >
+                회원가입 하기
+              </span>
               <span className={styles.NormalText}>비밀번호를 잊으셨나요?</span>
               <span className={styles.ToFindPw} onClick={() => setLoginStep(1)}>
                 비밀번호 찾기
@@ -107,7 +103,7 @@ const Login = () => {
               className={styles.ButtonContainer}
               onClick={() => {
                 if (isCorrect) {
-                  setLoginStep(5), console.log(inputNickname, inputPw);
+                  setLoginStep(4), console.log(nickname, inputPw);
                 }
               }}
             >
@@ -119,31 +115,30 @@ const Login = () => {
         return (
           <>
             <div className={styles.LoginProcessTextContainer}>
-              <span className={styles.LoginProcessText}>비밀번호 찾기</span>
+              <span
+                className={styles.LoginProcessText}
+                style={{ marginTop: "50px" }}
+              >
+                비밀번호 찾기
+              </span>
               <span
                 className={styles.NormalText}
                 style={{ fontWeight: "500px" }}
               >
-                닉네임과 이메일을 입력해 주세요
+                가입 시 사용한
+                <br />
+                이메일을 입력해주세요
               </span>
             </div>
             <div className={styles.InputWrapper} style={{ marginTop: "60px" }}>
-              <span className={styles.InputTitle}>닉네임</span>
-              <input
-                className={styles.InputContainer}
-                type="text"
-                value={inputNickname}
-                onChange={(e) => setInputNickname(e.target.value)}
-                style={{ color: "#2b2b2b" }}
-              />
               <div className={styles.EmailInputContainer}>
                 <span
                   className={styles.InputTitle}
                   style={{ marginTop: "18px" }}
                 >
-                  이메일
+                  이메일 주소
                 </span>
-                {isValidEmail ? (
+                {modalState === 2 ? (
                   <img
                     className={styles.EmailCheckImg}
                     src={emailOK}
@@ -156,11 +151,14 @@ const Login = () => {
                     alt="이메일 확인"
                   />
                 )}
-
                 <input
+                  value={email}
                   className={styles.InputContainer}
                   type="text"
-                  onChange={checkEmail}
+                  onChange={(e) => {
+                    const inputEmail = e.target.value;
+                    setEmail(inputEmail);
+                  }}
                   style={{ color: "#2b2b2b" }}
                   placeholder="abcd1234@example.com"
                 />
@@ -168,82 +166,16 @@ const Login = () => {
             </div>
             <div
               className={styles.ButtonContainer}
-              onClick={() => {
-                setLoginStep(2);
-              }}
+              onClick={() => setModalState(1)}
               style={{
-                pointerEvents: !isValidEmail ? "none" : "auto",
+                pointerEvents: !email ? "none" : "auto",
               }}
             >
-              <PrimaryButton disabled={!isValidEmail}>
-                인증코드 받기
-              </PrimaryButton>
+              <PrimaryButton disabled={!email}>인증코드 받기</PrimaryButton>
             </div>
           </>
         );
       case 2:
-        return (
-          <>
-            <div className={styles.LoginProcessTextContainer}>
-              <span className={styles.LoginProcessText}>비밀번호 찾기</span>
-              <span
-                className={styles.NormalText}
-                style={{ fontWeight: "500px" }}
-              >
-                이메일로 전송된 인증코드를 입력해 주세요
-              </span>
-            </div>
-            <div className={styles.InputWrapper} style={{ marginTop: "78px" }}>
-              <span className={styles.InputTitle}>인증코드</span>
-              <input
-                className={styles.InputContainer}
-                type="text"
-                value={currenAuthCode}
-                onChange={checkAuthCode}
-                style={{ color: "#2b2b2b" }}
-              />
-              {currenAuthCode ? (
-                isCorrectAuthCode ? (
-                  <span
-                    className={styles.InputTitle}
-                    style={{ color: "#00A413" }}
-                  >
-                    일치하는 인증코드에요
-                  </span>
-                ) : (
-                  <span
-                    className={styles.InputTitle}
-                    style={{ color: "#FF5B5B" }}
-                  >
-                    일치하지 않는 인증코드에요
-                  </span>
-                )
-              ) : (
-                <></>
-              )}
-            </div>
-            {isCorrectAuthCode ? (
-              <div
-                className={styles.ButtonContainer}
-                onClick={() => {
-                  setLoginStep(3);
-                }}
-              >
-                <PrimaryButton>확인</PrimaryButton>
-              </div>
-            ) : (
-              <div
-                className={styles.ButtonContainer}
-                onClick={() => {
-                  // 인증코드 재전송 로직
-                }}
-              >
-                <PrimaryButton>인증코드 재전송</PrimaryButton>
-              </div>
-            )}
-          </>
-        );
-      case 3:
         return (
           <>
             <div className={styles.LoginProcessTextContainer}>
@@ -305,7 +237,7 @@ const Login = () => {
             <div
               className={styles.ButtonContainer}
               onClick={() => {
-                setLoginStep(4);
+                setLoginStep(3);
               }}
               style={{
                 pointerEvents: newPw && newPw === newPwCheck ? "auto" : "none",
@@ -317,7 +249,7 @@ const Login = () => {
             </div>
           </>
         );
-      case 4:
+      case 3:
         return (
           <>
             <div className={styles.LoginProcessTextContainer}>
@@ -337,21 +269,29 @@ const Login = () => {
             <div
               className={styles.ButtonContainer}
               onClick={() => {
-                setLoginStep(5);
+                console.log(
+                  "닉네임 : ",
+                  nickname,
+                  ", 이메일 : ",
+                  email,
+                  ", 비밀번호 : ",
+                  newPw
+                );
+                setLoginStep(4);
               }}
             >
               <PrimaryButton>로그인하기</PrimaryButton>
             </div>
           </>
         );
-      case 5:
+      case 4:
         return (
           <>
             <div className={styles.LoginProcessTextContainer}>
               <span className={styles.LoginProcessText}>로그인 완료!</span>
               <span className={styles.WelcomeUserText}>
                 <span style={{ color: "#454545", fontSize: "22px" }}>
-                  {inputNickname}
+                  {nickname}
                 </span>{" "}
                 님 환영해요!
               </span>
@@ -377,6 +317,12 @@ const Login = () => {
       }}
     >
       {renderLogin()}
+      <PwChangeModal
+        modalState={modalState}
+        setModalState={setModalState}
+        setLoginStep={setLoginStep}
+        email={email}
+      />
     </div>
   );
 };

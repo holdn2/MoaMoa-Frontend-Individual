@@ -84,13 +84,14 @@
   top: 46px;
   right: 15px;
 }
-.ToFindPwContainer {
+.LinkTextContainer {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-top: 150px;
+  margin-top: 100px;
   align-items: center;
 }
+.ToJoinPage,
 .ToFindPw {
   color: #787878;
   /* md/14px */

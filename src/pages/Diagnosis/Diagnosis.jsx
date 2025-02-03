@@ -360,7 +360,7 @@ const Diagnosis = () => {
             </div>
             <div
               className={styles.ButtonContainer}
-              onClick={() => navigate(-1)}
+              onClick={() => navigate("/")}
             >
               <PrimaryButton>확인</PrimaryButton>
             </div>
@@ -386,7 +386,7 @@ const Diagnosis = () => {
             </div>
             <div
               className={styles.ButtonContainer}
-              onClick={() => navigate(-1)}
+              onClick={() => navigate("/")}
             >
               <PrimaryButton>확인</PrimaryButton>
             </div>

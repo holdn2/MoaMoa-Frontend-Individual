@@ -2,106 +2,106 @@ import React, { Children, useState } from "react";
 import styles from "./Join.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
+import emailOK from "../../assets/Content/emailOK.svg";
+import emailCheck from "../../assets/Content/emailCheck.svg";
+import JoinModal from "./JoinModal";
 
 const Join = () => {
   const [joinMethodState, setJoinMethodState] = useState(0);
   const navigate = useNavigate();
+  // 이메일을 입력한 상태
+  const [email, setEmail] = useState("");
+  // 인증코드 전송 모달 상태. modalState가 2일 때는 인증이 완료된 상태임.
+  const [modalState, setModalState] = useState(0);
 
   const renderJoinContent = () => {
     switch (joinMethodState) {
       case 0:
         return (
-          <div className={styles.ButtonWrapper}>
-            <div onClick={() => setJoinMethodState(1)}>
-              <PrimaryButton>간편하기 시작하기</PrimaryButton>
-            </div>
-            <div className={styles.BorderLineWrapper}>
-              <div
-                style={{
-                  width: "137px",
-                  height: "0.5px",
-                  background: "#787878",
+          <>
+            <div className={styles.InputWrapper}>
+              <span className={styles.InputTitle}>이메일</span>
+              {modalState === 2 ? (
+                <img
+                  className={styles.AuthImg}
+                  src={emailOK}
+                  alt="이메일 인증 여부"
+                />
+              ) : (
+                <img
+                  className={styles.AuthImg}
+                  src={emailCheck}
+                  alt="이메일 인증 여부"
+                />
+              )}
+
+              <input
+                value={email}
+                className={styles.InputContainer}
+                type="text"
+                onChange={(e) => {
+                  const newEmail = e.target.value;
+                  setEmail(newEmail);
                 }}
-              />
-              <span className={styles.OrText}>또는</span>
-              <div
-                style={{
-                  width: "137px",
-                  height: "0.5px",
-                  background: "#787878",
-                }}
+                placeholder="abcd1234@example.com"
               />
             </div>
-            <button
-              className={styles.JoinMethodContainer}
-              style={{ background: "#FFE134" }}
-              onClick={() => setJoinMethodState(2)}
-            >
-              카카오로 시작하기
-            </button>
-            <button
-              className={styles.JoinMethodContainer}
-              style={{ background: "#00C63B" }}
-              onClick={() => setJoinMethodState(3)}
-            >
-              네이버로 시작하기
-            </button>
-            <button
-              className={styles.JoinMethodContainer}
-              style={{ border: "1px solid  #787878 " }}
-              onClick={() => setJoinMethodState(4)}
-            >
-              Google로 시작하기
-            </button>
-            <button
-              className={styles.JoinMethodContainer}
-              style={{ background: "#000", color: "#fff" }}
-              onClick={() => setJoinMethodState(5)}
-            >
-              Apple로 시작하기
-            </button>
-          </div>
+            <div className={styles.ButtonWrapper}>
+              <div
+                onClick={() => setModalState(1)}
+                style={{ pointerEvents: email ? "auto" : "none" }}
+              >
+                <PrimaryButton disabled={!email}>
+                  인증링크 전송하기
+                </PrimaryButton>
+              </div>
+              <div className={styles.BorderLineWrapper}>
+                <div
+                  style={{
+                    width: "137px",
+                    height: "0.5px",
+                    background: "#787878",
+                  }}
+                />
+                <span className={styles.OrText}>또는</span>
+                <div
+                  style={{
+                    width: "137px",
+                    height: "0.5px",
+                    background: "#787878",
+                  }}
+                />
+              </div>
+              <button
+                className={styles.JoinMethodContainer}
+                style={{ background: "#00C63B", color: "#fff" }}
+                onClick={() => setJoinMethodState(1)}
+              >
+                네이버로 시작하기
+              </button>
+              <button
+                className={styles.JoinMethodContainer}
+                style={{ border: "1px solid  #787878 " }}
+                onClick={() => setJoinMethodState(2)}
+              >
+                Google로 시작하기
+              </button>
+            </div>
+          </>
         );
       case 1:
-        return (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "100px",
-              alignItems: "center",
-            }}
-          >
-            <img
-              src={dustSunglassCoin}
-              alt="시작 이미지"
-              style={{ width: "270px", height: "230px", marginTop: "60px" }}
-            />
-            <div onClick={() => navigate("/join/joinprocess")}>
-              <PrimaryButton>간편하기 시작하기</PrimaryButton>
-            </div>
-          </div>
-        );
-
       case 2:
-      case 3:
-      case 4:
-      case 5:
         return (
-          <div
-            style={{
-              marginTop: "50px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "8px",
-            }}
-          >
+          <div className={styles.ToLoginContainer}>
             <span>현재 준비중입니다.</span>
             <button
               onClick={() => setJoinMethodState(0)}
-              style={{ borderBottom: "1px solid" }}
+              style={{
+                color: "#787878",
+                fontSize: "14px",
+                fontWeight: "500",
+                borderBottom: "1px solid #787878",
+              }}
             >
               다시 돌아가기
             </button>
@@ -118,7 +118,7 @@ const Join = () => {
           <span
             style={{ fontSize: "16px", color: "#5e5e5e", marginTop: "24px" }}
           >
-            30초면 회원가입이 가능해요
+            이메일로 회원가입이 가능해요
           </span>
         </div>
       </div>
@@ -137,6 +137,11 @@ const Join = () => {
           로그인 하기
         </button>
       </div>
+      <JoinModal
+        modalState={modalState}
+        setModalState={setModalState}
+        email={email}
+      />
     </div>
   );
 };
