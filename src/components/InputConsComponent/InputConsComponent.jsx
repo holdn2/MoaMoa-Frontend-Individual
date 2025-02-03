@@ -1,21 +1,24 @@
 // 현재 소비 금액 등을 알려주고 나의 소비 입력하기로 이동하는 컴포넌트
 import styles from "./InputConsComponent.module.css";
-import PrimaryButton from "../Button/PrimaryButton";
 import SecondaryButton from "../Button/SecondaryButton";
 import { useNavigate } from "react-router-dom";
-import ToNextLevel from "../ToNextLevel/ToNextLevel";
-import ProgressCircle from "../ProgressCircle/ProgressCircle";
 import dustCrown from "../../assets/CharacterImgs/dustCrown.svg";
 import ProgressSemiCircle from "../ProgressSemiCircle/ProgressSemiCircle";
+import { useEffect, useState } from "react";
 
 const InputConsComponent = () => {
   const navigate = useNavigate();
 
   const userName = "모아모아짱";
   const stateMsg = "거의 다 왔어요!";
-  const restCost = 30000;
-  const totalCost = 270000;
-  const progressPercent = 85;
+  const restCost = 15000;
+  const totalCost = 195000;
+  const [progressPercent, setProgressPercent] = useState(
+    parseInt((100 * totalCost) / (totalCost + restCost))
+  );
+  useEffect(() => {
+    parseInt((100 * totalCost) / (totalCost + restCost));
+  }, [totalCost]);
   return (
     <div className={styles.InputContainer}>
       <div className={styles.TxtImgContainer}>

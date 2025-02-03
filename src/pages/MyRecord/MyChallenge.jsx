@@ -73,7 +73,7 @@ const MyChallenge = () => {
           <span>코인</span>
         </div>
       </section>
-      <MyChallengeBar children="내 챌린지 성공 확률은?" />
+      <MyChallengeBar children="내 챌린지 성공 확률은?" isConsumption={false} />
       <section className={styles.challengeRecordWrapper}>
         <p>내 챌린지 기록은 ?</p>
         <div className={styles.challengeRecord}>

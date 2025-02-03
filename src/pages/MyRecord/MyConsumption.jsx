@@ -66,7 +66,7 @@ const MyConsumption = () => {
   return (
     <div className={styles.wrapper}>
       {/*현재 진행중인 챌린지 */}
-      <MyChallengeBar children="현재 진행중인 챌린지" />
+      <MyChallengeBar children="현재 진행중인 챌린지" isConsumption={true} />
       <div className={styles.chartWrapper}>
         <div className={styles.chartTitleWrapper}>
           <span>나의 소비 변화는 ?</span>

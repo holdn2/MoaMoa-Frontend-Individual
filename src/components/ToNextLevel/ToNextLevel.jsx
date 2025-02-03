@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./ToNextLevel.module.css";
 import arrowRightSmall from "../../assets/Navigation/arrowRightSmall.svg";
 import dustLv1 from "../../assets/DustLevel/Lv1.svg";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 const ToNextLevel = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const ToNextLevel = () => {
   const nextLevel = 1;
   const toLevelUpCoin = 200;
   const currentCoin = 100;
+  const currentPercent = 50;
 
   return (
     <div className={styles.NextLevelContainer}>
@@ -37,7 +39,7 @@ const ToNextLevel = () => {
         </span>
       </div>
       <div className={styles.LevelProgressBarContainer}>
-        <div className={styles.LevelProgressBar} />
+        <ProgressBar size="homeLevel" currentProgress={currentPercent} />
         <div className={styles.NextLevelDust}>
           <span className={styles.NextLevelText}>Lv.{nextLevel}</span>
           <img

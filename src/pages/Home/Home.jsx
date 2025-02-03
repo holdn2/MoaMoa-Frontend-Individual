@@ -17,7 +17,8 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const pageName = "홈화면";
   const navigate = useNavigate();
-  const [isLogined, setIsLogined] = useState(false);
+  // 로그인이 되어있는 상태인지
+  const [isLogined, setIsLogined] = useState(true);
 
   if (!isLogined) {
     navigate("/join");
