@@ -66,6 +66,55 @@
   /* margin: auto를 이용하여 버튼 자체를 부모 컨테이너에서 가운데로 배치 */
   margin: auto;
 }
+.InputWrapper {
+  position: relative;
+  width: 335px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 59px;
+}
+.AuthImg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 46px;
+  right: 15px;
+}
+.InputTitle {
+  color: #454545;
+  /* md/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.InputContainer {
+  width: 335px;
+  height: 60px;
+  border-radius: 16px;
+  background: #f1f1f1;
+  text-align: start;
+  color: #2b2b2b;
+  /* md/16px */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.InputContainer::placeholder {
+  color: #919191;
+  /* md/16px */
+  text-align: start;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 .ToLoginContainer {
   display: flex;
   flex-direction: column;
