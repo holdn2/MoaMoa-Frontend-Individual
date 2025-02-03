@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ProgressCircle from "../../components/ProgressCircle/ProgressCircle";
+import PrimaryButton from "../../components/Button/PrimaryButton";
+import ProgressSemiCircle from "../../components/ProgressSemiCircle/ProgressSemiCircle";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,16 +21,14 @@ const ContentWrapper = styled.div`
   box-sizing: border-box;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
-  gap: 5px;
-  height: 307px;
+  padding: 24px 16px;
+  gap: 10px;
   flex-shrink: 0;
   border-radius: 12px;
   background: var(--Grey-70, #f1f1f1);
 `;
 
 const Desc = styled.p`
-  padding: 10px;
   align-self: stretch;
   color: var(--Grey-800, #2b2b2b);
   text-align: center;
@@ -44,30 +43,32 @@ const SubDesc = styled.p`
   font-family: Pretendard;
   font-size: 20px;
   font-weight: 600;
+  margin-top: 5px;
 `;
 
 const CircleWrapper = styled.div`
-  width: 210px;
-  height: 199px;
+  width: 250px;
+  height: 125px;
 `;
 
-const MyChallengeBar = ({ children }) => {
+const MyChallengeBar = ({ children, isConsumption }) => {
   const progressPercent = 90;
   return (
     <Wrapper>
       <Title>{children}</Title>
       <ContentWrapper>
         <CircleWrapper>
-          <ProgressCircle
-            progressPercent={progressPercent}
-            width="210px"
-            height="199px"
-            fontSize="32px"
-            fontWeight="800"
-          />
+          <ProgressSemiCircle percentage={progressPercent} />
         </CircleWrapper>
         <SubDesc>상위 nn%</SubDesc>
         <Desc>전체 20회 중 18회 성공 !</Desc>
+        {isConsumption ? (
+          <div style={{ marginTop: "36px" }}>
+            <PrimaryButton size="lg">나의 소비 기록 확인하기</PrimaryButton>
+          </div>
+        ) : (
+          <></>
+        )}
       </ContentWrapper>
     </Wrapper>
   );

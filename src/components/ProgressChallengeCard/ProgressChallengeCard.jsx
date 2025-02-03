@@ -3,17 +3,17 @@ import React from "react";
 import styles from "./ProgressChallengeCard.module.css";
 import { useNavigate } from "react-router-dom";
 import arrowRight from "../../assets/Navigation/arrowRight.svg";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 const ProgressChallengeCard = ({ challengeContent, currentProgress }) => {
   const navigate = useNavigate();
+  const currentPercent = (100 * currentProgress) / 7;
   return (
     <div className={styles.ProgressCardContainer}>
       <div className={styles.CardTextContainer}>
         <span className={styles.ChallengeTitle}>{challengeContent}</span>
         <div className={styles.ProgressContainer}>
-          <div className={styles.TotalProgressBar}>
-            <div className={styles.CurrentProgressBar} />
-          </div>
+          <ProgressBar size="challengeCard" currentProgress={currentPercent} />
           <span className={styles.CurrentProgressText}>
             {currentProgress}/7
           </span>

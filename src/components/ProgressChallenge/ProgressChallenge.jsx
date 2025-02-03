@@ -7,17 +7,17 @@ const dummyData = [
   {
     id: 1,
     challengeContent: "일주일 5만원 챌린지",
-    currentProgress: 4,
+    currentProgress: 5,
   },
   {
     id: 2,
     challengeContent: "모집 중인 챌린지",
-    currentProgress: 4,
+    currentProgress: 3,
   },
   {
     id: 3,
     challengeContent: "예시 데이터",
-    currentProgress: 4,
+    currentProgress: 2,
   },
 ];
 

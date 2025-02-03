@@ -1,24 +1,30 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import styles from "./ProgressSemiCircle.module.css";
+import semiCircle5 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle5.svg";
+import semiCircle10 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle10.svg";
+import semiCircle15 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle15.svg";
+import semiCircle35 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle35.svg";
+import semiCircle45 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle45.svg";
+import semiCircle50 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle50.svg";
+import semiCircle65 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle65.svg";
+import semiCircle75 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle75.svg";
 import semiCircle85 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle85.svg";
+import semiCircle95 from "../../assets/ProgressBar/ProgressSemiCircle/progressSemiCircle95.svg";
 
 const ProgressSemiCircle = ({ percentage }) => {
-  const [progressImg, setProgressImg] = useState("");
-
-  // 퍼센트에 따라 다른 상태바 이미지 필요할듯
-  useEffect(() => {
-    if (percentage < 20) {
-      setProgressImg(semiCircle85);
-    } else if (percentage < 50) {
-      setProgressImg(semiCircle85);
-    } else if (percentage < 80) {
-      setProgressImg(semiCircle85);
-    } else if (percentage < 90) {
-      setProgressImg(semiCircle85);
-    } else {
-      setProgressImg(semiCircle85);
-    }
-  }, [percentage]); // `percentage`가 변경될 때만 실행됨
+  // useMemo를 사용하여 불필요한 리렌더링 방지.
+  const progressImg = useMemo(() => {
+    if (percentage < 10) return semiCircle5;
+    if (percentage < 15) return semiCircle10;
+    if (percentage < 35) return semiCircle15;
+    if (percentage < 45) return semiCircle35;
+    if (percentage < 50) return semiCircle45;
+    if (percentage < 65) return semiCircle50;
+    if (percentage < 75) return semiCircle65;
+    if (percentage < 85) return semiCircle75;
+    if (percentage < 95) return semiCircle85;
+    return semiCircle95;
+  }, [percentage]);
 
   return (
     <div className={styles.Wrapper}>
