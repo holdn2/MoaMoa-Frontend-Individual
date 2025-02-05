@@ -30,7 +30,7 @@ const ChattingRoom = () => {
   const [challengeData, setChallengeData] = useState(currentChallenge);
 
   useEffect(() => {
-    console.log(challengeData);
+    // console.log(challengeData);
   }, [challengeData]);
 
   // 채팅방 나가기 관련 모달상태
@@ -119,7 +119,7 @@ const ChattingRoom = () => {
         />
         <div className={styles.MainArea}>
           <div>
-            <ChattingArea />
+            <ChattingArea roomId={Number(params.chatroomId)} />
           </div>
         </div>
         <ExitRoomModal

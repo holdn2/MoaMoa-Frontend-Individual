@@ -3,11 +3,67 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./ChattingArea.module.css";
 import ChattingComponent from "./ChattingComponent";
 import sendMessage from "../../../../assets/Action/sendMessage.svg";
+import axios from "axios";
 
-const ChattingArea = () => {
+const ChattingArea = ({ roomId }) => {
+  const [chattings, setChattings] = useState([]);
+  // ✅ axios로 서버에서 채팅 데이터 가져오는 함수
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `https://moamoa.store/chat/rooms/${roomId}/messages`
+      );
+      const groupedData = groupChatsByDate(response.data.result);
+      setChattings(groupedData); // 채팅 데이터 상태 업데이트
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  // 날짜별로 데이터 그룹화
+  const groupChatsByDate = (chatArray) => {
+    const grouped = {};
+    chatArray.forEach((chat) => {
+      const date = new Date(chat.createdAt);
+      const formattedDate = date.toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        weekday: "long",
+      });
+      const time = date.toLocaleTimeString("ko-KR", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+      if (!grouped[formattedDate]) {
+        grouped[formattedDate] = {
+          id: Object.keys(grouped).length + 1,
+          date: formattedDate,
+          chat: [],
+        };
+      }
+      grouped[formattedDate].chat.push({
+        id: chat.chatId,
+        nickname: chat.userName,
+        profile: "People",
+        img: "http://placehold.co/45",
+        chatting: chat.content,
+        time: time,
+        isMe: chat.userName === userName,
+      });
+    });
+
+    return Object.values(grouped);
+  };
+  // ✅ 컴포넌트가 처음 렌더링될 때 한 번만 실행
+  useEffect(() => {
+    fetchData();
+  }, [roomId]); // roomId가 변경될 때 다시 실행
+
   const [chatEx, setChatEx] = useState(chatData);
   const [message, setMessage] = useState("");
   const userName = "아무개";
+  console.log("채팅방 ID : ", roomId);
 
   // useRef를 이용해 스크롤을 자동으로 맨 밑으로 이동하게 함.
   const bottomRef = useRef(null);
@@ -85,18 +141,18 @@ const ChattingArea = () => {
   return (
     <div className={styles.ChattingArea}>
       <div style={{ paddingBottom: "80px" }}>
-        {chatEx.map((item) => (
-          <div className={styles.EachDateChatting} key={item.date}>
+        {chattings.map((item) => (
+          <div className={styles.EachDateChatting} key={item.id}>
             <div className={styles.DateContainer}>{item.date}</div>
             <div className={styles.ChattingWrapper}>
               {item.chat.map((chat) => (
                 <ChattingComponent
                   key={chat.id}
                   nickname={chat.nickname}
-                  profileImg={chat.img}
+                  profileImg="http://placehold.co/45"
                   chatting={chat.chatting}
                   chatTime={chat.time}
-                  isMe={chat.isMe}
+                  isMe={chat.userName === userName}
                 />
               ))}
             </div>
