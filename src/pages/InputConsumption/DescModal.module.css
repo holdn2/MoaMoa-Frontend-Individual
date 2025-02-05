@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  gap: 7px;
 }
 .contentWrapper {
   width: 335px;
@@ -17,9 +17,6 @@
   flex-shrink: 0;
   border-radius: 16px;
   background: #f1f1f1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .descWrapper {
   width: 290px;
@@ -36,15 +33,18 @@
   font-size: 18px;
   font-weight: 700;
   list-style-type: disc;
-  height: 33px;
+  text-align: start;
+  padding: 6.5px;
 }
-.subTitle {
+.subDesc {
   color: #2b2b2b;
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 600;
   list-style-type: none;
-  height: 33px;
+  text-align: start;
+  padding: 6.5px;
+  white-space: pre-line;
 }
 .example {
   color: #5e5e5e;
@@ -52,7 +52,8 @@
   font-size: 14px;
   font-weight: 500;
   list-style-type: none;
-  height: 33px;
+  text-align: start;
+  padding: 6.5px;
 }
 
 .closeModal {
@@ -62,4 +63,13 @@
   gap: 8px;
   border-radius: 50px;
   background: #dbdbdb;
+}
+
+ul {
+  display: block;
+  position: static;
+  width: auto;
+  background: none;
+  box-shadow: none;
+  padding: 0;
 }
