@@ -80,7 +80,7 @@ const MyChallenge = () => {
           {dummyData.map((item) => (
             <MyChallengeRecord
               key={item.id}
-              challengeTitle={item.challengeTitle}
+              Title={item.challengeTitle}
               startDate={item.startDate}
               endDate={item.endDate}
               coin={item.coin}

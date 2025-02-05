@@ -1,35 +1,32 @@
 import React from "react";
 import styles from "./MyChallengeRecord.module.css";
-import coinYellow from "../../assets/Content/coinYellow.svg";
-import success from "../../assets/ChallengeResult/success.svg";
-import fail from "../../assets/ChallengeResult/fail.svg";
+import coinNavy from "../../assets/Content/coinNavy.svg";
+import graySuccess from "../../assets/ChallengeResult/graySuccess.svg";
+import grayFail from "../../assets/ChallengeResult/grayFail.svg";
 
 const MyChallengeRecord = ({
-  challengeTitle,
+  Title,
   startDate,
   endDate,
   coin,
   isSuccessed,
 }) => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.leftWrapper}>
-        <p>{challengeTitle}</p>
+    <div className={isSuccessed ? styles.successWrapper : styles.failWrapper}>
+      <img src={isSuccessed ? graySuccess : grayFail} />
+      <div className={styles.rightWrapper}>
+        <p>{Title}</p>
         <div className={styles.challengeInfo}>
           <span className={styles.date}>
             {startDate}~{endDate}
           </span>
-          <span
-            className={styles.coin}
-            style={{ color: isSuccessed ? "#00BEFC" : "#FF3B30" }}
-          >
-            <img src={coinYellow} alt="챌린지 코인 아이콘" />
+          <span className={styles.coin}>
+            <img src={coinNavy} alt="챌린지 코인 아이콘" />
             {isSuccessed ? "+" : "-"}
             {coin}
           </span>
         </div>
       </div>
-      <img src={isSuccessed ? success : fail} />
     </div>
   );
 };
