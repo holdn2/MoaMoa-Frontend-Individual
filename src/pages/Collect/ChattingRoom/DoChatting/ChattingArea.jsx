@@ -28,7 +28,62 @@ const ChattingArea = ({ roomId }) => {
   // 웹소켓이 연결된 이후에만 메시지를 보낼 수 있는 것을 관리하는 상태
   const [canSend, setCanSend] = useState(false);
 
-  // SockJS + Stomp 클라이언트 생성
+  // axios로 서버에서 채팅 데이터 가져오는 함수
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `https://moamoa.store/chat/rooms/${roomId}/messages`
+      );
+      const groupedData = groupChatsByDate(response.data.result);
+      setChattings(groupedData); // 채팅 데이터 상태 업데이트
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  // 불러온 채팅내역 날짜별로 데이터 그룹화하는 함수
+  const groupChatsByDate = (chatArray) => {
+    const grouped = {};
+    chatArray.forEach((chat) => {
+      const date = new Date(chat.createdAt);
+      const formattedDate = date.toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        weekday: "long",
+      });
+      const time = date.toLocaleTimeString("ko-KR", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+      if (!grouped[formattedDate]) {
+        grouped[formattedDate] = {
+          id: Object.keys(grouped).length + 1,
+          date: formattedDate,
+          chat: [],
+        };
+      }
+      grouped[formattedDate].chat.push({
+        id: chat.chatId,
+        nickname: chat.userName,
+        profile: "People",
+        img: "http://placehold.co/45",
+        chatting: chat.content,
+        time: time,
+        isMe: chat.userId === userId,
+      });
+    });
+
+    return Object.values(grouped).sort(
+      (a, b) => new Date(a.date) - new Date(b.date)
+    );
+  };
+  // 컴포넌트가 처음 렌더링될 때 한 번만 실행.
+  useEffect(() => {
+    fetchData();
+  }, [roomId]); // roomId가 변경될 때(채팅방을 들어갈 때) 다시 실행
+
+  // SockJS + Stomp 클라이언트 생성. 실시간 채팅을 위한 구현
   useEffect(() => {
     const socket = new SockJS(SERVER_URL);
     const client = new Client({
@@ -105,61 +160,6 @@ const ChattingArea = ({ roomId }) => {
       setCanSend(false);
     };
   }, [roomId]);
-
-  // ✅ axios로 서버에서 채팅 데이터 가져오는 함수
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `https://moamoa.store/chat/rooms/${roomId}/messages`
-      );
-      const groupedData = groupChatsByDate(response.data.result);
-      setChattings(groupedData); // 채팅 데이터 상태 업데이트
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-  // 불러온 채팅내역 날짜별로 데이터 그룹화하는 함수
-  const groupChatsByDate = (chatArray) => {
-    const grouped = {};
-    chatArray.forEach((chat) => {
-      const date = new Date(chat.createdAt);
-      const formattedDate = date.toLocaleDateString("ko-KR", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        weekday: "long",
-      });
-      const time = date.toLocaleTimeString("ko-KR", {
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
-      });
-      if (!grouped[formattedDate]) {
-        grouped[formattedDate] = {
-          id: Object.keys(grouped).length + 1,
-          date: formattedDate,
-          chat: [],
-        };
-      }
-      grouped[formattedDate].chat.push({
-        id: chat.chatId,
-        nickname: chat.userName,
-        profile: "People",
-        img: "http://placehold.co/45",
-        chatting: chat.content,
-        time: time,
-        isMe: chat.userId === userId,
-      });
-    });
-
-    return Object.values(grouped).sort(
-      (a, b) => new Date(a.date) - new Date(b.date)
-    );
-  };
-  // 컴포넌트가 처음 렌더링될 때 한 번만 실행.
-  useEffect(() => {
-    fetchData();
-  }, [roomId]); // roomId가 변경될 때(채팅방을 들어갈 때) 다시 실행
 
   // useRef를 이용해 스크롤을 자동으로 맨 밑으로 이동하게 함.
   const bottomRef = useRef(null);
