@@ -15,7 +15,7 @@ import ToNextLevel from "../../components/ToNextLevel/ToNextLevel";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const pageName = "연습용";
+  const pageName = "홈화면";
   const navigate = useNavigate();
   // 로그인이 되어있는 상태인지
   const [isLogined, setIsLogined] = useState(true);
