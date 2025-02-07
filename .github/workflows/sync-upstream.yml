@@ -1,0 +1,37 @@
+name: Sync Upstream Changes
+
+on:
+  schedule:
+    - cron: "0 * * * *" # 매 정각에 실행 (원하는 주기로 수정 가능)
+  workflow_dispatch: # GitHub Actions 페이지에서 수동 실행 가능하도록 설정
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # 전체 히스토리 가져오기
+
+      - name: Set up Git configuration
+        run: |
+          git config user.name holdn2   # 본인의 GitHub 사용자명으로 변경
+          git config user.email yoocy01@gmail.com  # 본인의 이메일 주소로 변경
+
+      - name: Add upstream remote
+        run: |
+          # upstream이 이미 존재하면 에러를 무시
+          git remote add upstream https://github.com/KUIT-MoaMoa/MoaMoa-Frontend.git || echo "upstream already exists"
+          git fetch upstream
+
+      - name: Merge upstream changes into main
+        run: |
+          git checkout main
+          # upstream의 main 브랜치 변경사항 병합 (충돌이 발생하면 실패)
+          git merge upstream/main --no-edit
+
+      - name: Push changes to origin
+        run: |
+          git push origin main
