@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import ProgressSemiCircle from "../../components/ProgressSemiCircle/ProgressSemiCircle";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -53,6 +54,7 @@ const CircleWrapper = styled.div`
 
 const MyChallengeBar = ({ children, isConsumption }) => {
   const progressPercent = 90;
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <Title>{children}</Title>
@@ -64,7 +66,12 @@ const MyChallengeBar = ({ children, isConsumption }) => {
         <Desc>전체 20회 중 18회 성공 !</Desc>
         {isConsumption ? (
           <div style={{ marginTop: "36px" }}>
-            <PrimaryButton size="lg">나의 소비 기록 확인하기</PrimaryButton>
+            <PrimaryButton
+              size="lg"
+              onClick={() => navigate("/myrecord/showchallenge")}
+            >
+              나의 소비 기록 확인하기
+            </PrimaryButton>
           </div>
         ) : (
           <></>
