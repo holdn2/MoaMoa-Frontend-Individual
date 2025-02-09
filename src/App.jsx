@@ -34,6 +34,7 @@ import FriendList from "./pages/Collect/Challenge/FriendChallenge/FriendList";
 import FriendSearch from "./pages/Collect/Challenge/FriendChallenge/FriendSearch";
 import ChallengeSearch from "./pages/Collect/Challenge/PublicChallenge/ChallengeSearch";
 import ChallengeModalContent from "./pages/Collect/Challenge/ChallengeModal/ChallengeModalContent";
+import ShowMyChallenge from "./pages/MyRecord/ShowMyChallenge";
 
 function App() {
   const router = createBrowserRouter([
@@ -152,6 +153,10 @@ function App() {
         {
           path: "/myrecord",
           element: <MyRecord />,
+        },
+        {
+          path: "/myrecord/showchallenge",
+          element: <ShowMyChallenge />,
         },
         {
           path: "/setting",
