@@ -58,14 +58,23 @@ const Chatting = () => {
               />
               <div className={styles.ChatTextWrapper}>
                 <span className={styles.ChatRoomTitle}>{item.title}</span>
-                <span className={styles.RecentChat}>
-                  {item.recentChat.content}
-                </span>
+                {item.recentChat ? (
+                  <span className={styles.RecentChat}>
+                    {item.recentChat.content}
+                  </span>
+                ) : (
+                  <></>
+                )}
               </div>
               <div className={styles.TimeUnreadWrapper}>
-                <div className={styles.RecentChatTime}>
-                  {formatChatTime(item.recentChat.createdAt)}
-                </div>
+                {item.recentChat ? (
+                  <div className={styles.RecentChatTime}>
+                    {formatChatTime(item.recentChat.createdAt)}
+                  </div>
+                ) : (
+                  <></>
+                )}
+
                 {item.unreadCnt ? (
                   <div className={styles.UnreadChatCnt}>+{item.unreadCnt}</div>
                 ) : (
