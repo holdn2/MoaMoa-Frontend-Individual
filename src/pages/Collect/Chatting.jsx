@@ -1,11 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Chatting.module.css";
 import { useNavigate } from "react-router-dom";
 import chatPlusBtn from "../../assets/Btn/chatPlusBtn.svg";
+import { fetchChatRoomData } from "../../apis/chatroom";
+
+const userId = 1;
 
 const Chatting = () => {
   const navigate = useNavigate();
-  const [modalState, setModalState] = useState(false);
+  const [chatData, setChatData] = useState([]);
+
+  useEffect(() => {
+    fetchChatRoomData(userId, setChatData);
+  }, []);
+
+  const formatChatTime = (createdAt) => {
+    const createdDate = new Date(createdAt);
+    const now = new Date();
+    const diffInMs = now - createdDate;
+    const diffInHours = diffInMs / (1000 * 60 * 60);
+    const diffInDays = Math.floor(diffInHours / 24);
+
+    if (diffInHours < 24) {
+      return createdDate.toLocaleTimeString("ko-KR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+    } else if (diffInDays === 1) {
+      return "1일전";
+    } else {
+      return `${diffInDays}일전`;
+    }
+  };
+
   return (
     <div className={styles.TotalChatContainer}>
       {chatData.length > 0 ? (
@@ -14,7 +42,14 @@ const Chatting = () => {
             <div
               key={item.id}
               className={styles.EachChatContainer}
-              onClick={() => navigate(`/chatroom/${item.id}`)}
+              onClick={() => {
+                const selectedChatroom = chatData.find(
+                  (chat) => chat.id === item.id
+                );
+                navigate(`/chatroom/${item.id}`, {
+                  state: { chatData: selectedChatroom },
+                });
+              }}
             >
               <img
                 src="http://placehold.co/45"
@@ -22,11 +57,15 @@ const Chatting = () => {
                 style={{ borderRadius: "50%" }}
               />
               <div className={styles.ChatTextWrapper}>
-                <span className={styles.ChatRoomTitle}>{item.roomName}</span>
-                <span className={styles.RecentChat}>{item.recentChat}</span>
+                <span className={styles.ChatRoomTitle}>{item.title}</span>
+                <span className={styles.RecentChat}>
+                  {item.recentChat.content}
+                </span>
               </div>
               <div className={styles.TimeUnreadWrapper}>
-                <div className={styles.RecentChatTime}>{item.recentTime}</div>
+                <div className={styles.RecentChatTime}>
+                  {formatChatTime(item.recentChat.createdAt)}
+                </div>
                 {item.unreadCnt ? (
                   <div className={styles.UnreadChatCnt}>+{item.unreadCnt}</div>
                 ) : (
@@ -63,48 +102,3 @@ const Chatting = () => {
 };
 
 export default Chatting;
-
-const chatData = [
-  {
-    id: 1,
-    roomName: "절약특공대",
-    recentChat: "안녕하세요~~~화이팅합시다!!!",
-    recentTime: "19:20",
-    unreadCnt: 3,
-  },
-  {
-    id: 2,
-    roomName: "모아모아짱",
-    recentChat: "모아모아 화이팅..!",
-    recentTime: "19:02",
-    unreadCnt: 17,
-  },
-  {
-    id: 3,
-    roomName: "프론트엔드",
-    recentChat: "생각보다 어렵네요ㅠㅠㅠ",
-    recentTime: "17:50",
-    unreadCnt: 0,
-  },
-  {
-    id: 4,
-    roomName: "절약특공대",
-    recentChat: "안녕하세요~~~화이팅합시다!!!",
-    recentTime: "2일전",
-    unreadCnt: 3,
-  },
-  {
-    id: 5,
-    roomName: "절약특공대",
-    recentChat: "안녕하세요~~~화이팅합시다!!!",
-    recentTime: "3일전",
-    unreadCnt: 0,
-  },
-  {
-    id: 6,
-    roomName: "절약특공대",
-    recentChat: "안녕하세요~~~화이팅합시다!!!",
-    recentTime: "37일전",
-    unreadCnt: 0,
-  },
-];

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ChattingRoom.module.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import ExitRoomModal from "./SideMenu/ExitRoomModal";
 import ChattingArea from "./DoChatting/ChattingArea";
@@ -16,11 +16,8 @@ import exit from "../../../assets/Action/exit.svg";
 
 const ChattingRoom = () => {
   const navigate = useNavigate();
-  const params = useParams();
-  //   console.log("채팅방 ID : ", params.chatroomId);
-  const roomInfo = chatData.filter(
-    (item) => item.id === Number(params.chatroomId)
-  );
+  const location = useLocation();
+  const [roomInfo, setRoomInfo] = useState(location.state?.chatData);
   // 사이드 메뉴 열기 및 닫기 관련
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
@@ -43,7 +40,7 @@ const ChattingRoom = () => {
     <>
       <div className={styles.ChatRoomPageContainer}>
         <div className={styles.TopContentContainer}>
-          <Header pageName={roomInfo[0].roomName} />
+          <Header pageName={roomInfo.title} />
           <img
             src={category}
             alt="메뉴"
@@ -91,9 +88,7 @@ const ChattingRoom = () => {
           ) : (
             <div
               className={styles.ChallengeInfoContainer}
-              onClick={() =>
-                navigate(`/chatroom/${params.chatroomId}/roomchallenge`)
-              }
+              onClick={() => navigate(`/chatroom/${roomInfo.id}/roomchallenge`)}
             >
               <div className={styles.ChallengeTextContainer}>
                 <span className={styles.ChallengeTitle}>
@@ -119,7 +114,7 @@ const ChattingRoom = () => {
         />
         <div className={styles.MainArea}>
           <div>
-            <ChattingArea roomId={Number(params.chatroomId)} />
+            <ChattingArea roomId={roomInfo.id} />
           </div>
         </div>
         <ExitRoomModal
@@ -144,7 +139,7 @@ const ChattingRoom = () => {
               <div
                 className={styles.EachMenuContainer}
                 onClick={() =>
-                  navigate(`/chatroom/${params.chatroomId}/roomnamechange`)
+                  navigate(`/chatroom/${roomInfo.id}/roomnamechange`)
                 }
               >
                 <img src={editRoomName} alt="채팅방 이름 변경" />
@@ -153,7 +148,7 @@ const ChattingRoom = () => {
               <div
                 className={styles.EachMenuContainer}
                 onClick={() =>
-                  navigate(`/chatroom/${params.chatroomId}/roominvitefriend`)
+                  navigate(`/chatroom/${roomInfo.id}/roominvitefriend`)
                 }
               >
                 <img src={invite} alt="친구 초대" />
@@ -162,7 +157,7 @@ const ChattingRoom = () => {
               <div
                 className={styles.EachMenuContainer}
                 onClick={() =>
-                  navigate(`/chatroom/${params.chatroomId}/roomchallenge`)
+                  navigate(`/chatroom/${roomInfo.id}/roomchallenge`)
                 }
               >
                 <img src={makeChallenge} alt="챌린지 만들기" />
@@ -171,7 +166,7 @@ const ChattingRoom = () => {
               <div
                 className={styles.EachMenuContainer}
                 onClick={() =>
-                  navigate(`/chatroom/${params.chatroomId}/pastchallenge`)
+                  navigate(`/chatroom/${roomInfo.id}/pastchallenge`)
                 }
               >
                 <img src={pastChallenge} alt="지난 챌린지" />
@@ -202,51 +197,6 @@ const ChattingRoom = () => {
 };
 
 export default ChattingRoom;
-
-const chatData = [
-  {
-    id: 1,
-    roomName: "절약특공대",
-    recentChat: "안녕하세요~~~화이팅합시다!!!",
-    recentTime: "19:20",
-    unreadCnt: 3,
-  },
-  {
-    id: 2,
-    roomName: "모아모아짱",
-    recentChat: "모아모아 화이팅..!",
-    recentTime: "19:02",
-    unreadCnt: 17,
-  },
-  {
-    id: 3,
-    roomName: "프론트엔드",
-    recentChat: "생각보다 어렵네요ㅠㅠㅠ",
-    recentTime: "17:50",
-    unreadCnt: 0,
-  },
-  {
-    id: 4,
-    roomName: "절약특공대",
-    recentChat: "안녕하세요~~~화이팅합시다!!!",
-    recentTime: "2일전",
-    unreadCnt: 3,
-  },
-  {
-    id: 5,
-    roomName: "절약특공대",
-    recentChat: "안녕하세요~~~화이팅합시다!!!",
-    recentTime: "3일전",
-    unreadCnt: 0,
-  },
-  {
-    id: 6,
-    roomName: "절약특공대",
-    recentChat: "안녕하세요~~~화이팅합시다!!!",
-    recentTime: "37일전",
-    unreadCnt: 0,
-  },
-];
 
 const currentChallenge = {
   id: "asdf",
