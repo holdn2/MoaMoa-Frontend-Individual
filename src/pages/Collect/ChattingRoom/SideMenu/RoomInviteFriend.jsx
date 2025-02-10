@@ -6,11 +6,15 @@ import SearchBar from "../../../../components/SearchBar/SearchBar";
 import blueCancle from "../../../../assets/Content/blueCancle.svg";
 import check from "../../../../assets/SelectButton/check.svg";
 import uncheck from "../../../../assets/SelectButton/uncheck.svg";
+import { inviteFriend } from "../../../../apis/chatroom";
+
+// 유저의 id
+const userId = 1;
 
 const RoomInviteFriend = () => {
   const pageName = "친구 초대";
   const params = useParams();
-  //   console.log("채팅방 ID : ", params.chatroomId);
+  console.log("채팅방 ID : ", params.chatroomId);
   const navigate = useNavigate();
 
   // 상태로 friendData 관리
@@ -41,18 +45,29 @@ const RoomInviteFriend = () => {
     setSelectedFriends(select);
   }, [friends]);
 
+  // 선택된 친구 초대하는 로직
+  const handleInviteFriends = async () => {
+    console.log("초대할 친구 : ", selectedFriends);
+    // 선택된 친구들의 ID 배열 생성
+    const friendsIds = selectedFriends.map((friend) => friend.id);
+    console.log("초대할 친구 IDs: ", friendsIds);
+
+    inviteFriend(Number(params.chatroomId), friendsIds)
+      .then((result) => {
+        console.log("초대 결과: ", result); // 서버 응답 확인
+        navigate(-1);
+      })
+      .catch((error) => {
+        console.error("초대 실패: ", error);
+      });
+  };
+
   return (
     <div className={styles.PageWrapper}>
       <Header pageName={pageName} />
       {selectedFriends.length ? (
-        <span
-          className={styles.ConfirmButton}
-          onClick={() => {
-            console.log("초대할 친구 : ", selectedFriends);
-            navigate(-1);
-          }}
-        >
-          완료
+        <span className={styles.ConfirmButton} onClick={handleInviteFriends}>
+          초대
         </span>
       ) : (
         <></>
@@ -175,12 +190,12 @@ export default RoomInviteFriend;
 const friendData = [
   {
     id: 1,
-    userName: "럭키머니",
+    userName: "절약왕",
     img: "",
   },
   {
     id: 2,
-    userName: "금나와라",
+    userName: "도전왕",
     img: "",
   },
   {
