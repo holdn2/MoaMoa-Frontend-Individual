@@ -34,7 +34,7 @@
   font-weight: 700;
   list-style-type: disc;
   text-align: start;
-  padding: 6.5px;
+  padding: 8px;
 }
 .subDesc {
   color: #2b2b2b;
@@ -43,7 +43,7 @@
   font-weight: 600;
   list-style-type: none;
   text-align: start;
-  padding: 6.5px;
+  padding: 8px;
   white-space: pre-line;
 }
 .example {
@@ -53,23 +53,13 @@
   font-weight: 500;
   list-style-type: none;
   text-align: start;
-  padding: 6.5px;
+  padding: 8px;
 }
 
 .closeModal {
   display: flex;
   padding: 6px;
   align-items: center;
-  gap: 8px;
   border-radius: 50px;
   background: #dbdbdb;
-}
-
-ul {
-  display: block;
-  position: static;
-  width: auto;
-  background: none;
-  box-shadow: none;
-  padding: 0;
 }
