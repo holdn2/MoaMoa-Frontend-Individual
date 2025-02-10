@@ -5,9 +5,20 @@ import PrimaryButton from "../../../../components/Button/PrimaryButton";
 import SecondaryButton from "../../../../components/Button/SecondaryButton";
 import { useNavigate } from "react-router-dom";
 import dustSad from "../../../../assets/CharacterImgs/dustSad.svg";
+import { deleteChatRoom } from "../../../../apis/chatroom";
 
-const ExitRoomModal = ({ isModalOpen, setIsModalOpen, setExitRoom }) => {
+// 유저의 id
+const userId = 1;
+
+const ExitRoomModal = ({ isModalOpen, setIsModalOpen, roomId }) => {
   const navigate = useNavigate();
+  // 채팅방 나가기 관리
+  const handleExitRoom = () => {
+    deleteChatRoom(roomId, userId);
+    setIsModalOpen(false);
+    console.log("채팅방을 나갔습니다");
+    navigate("/collect");
+  };
   return (
     <Modal
       isOpen={isModalOpen}
@@ -28,15 +39,7 @@ const ExitRoomModal = ({ isModalOpen, setIsModalOpen, setExitRoom }) => {
             marginTop: "14px",
           }}
         >
-          <div
-            onClick={() => {
-              // 채팅방 나가는 로직 추가해야함.
-              setExitRoom(true);
-              setIsModalOpen(false);
-              console.log("채팅방을 나갔습니다");
-              navigate(-1);
-            }}
-          >
+          <div onClick={handleExitRoom}>
             <PrimaryButton size="sm">네</PrimaryButton>
           </div>
           <div onClick={() => setIsModalOpen(false)}>

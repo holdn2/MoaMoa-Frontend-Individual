@@ -37,7 +37,7 @@ const Chatting = () => {
   return (
     <div className={styles.TotalChatContainer}>
       {chatData.length > 0 ? (
-        <>
+        <div style={{ paddingBottom: "40px" }}>
           {chatData.map((item) => (
             <div
               key={item.id}
@@ -89,7 +89,7 @@ const Chatting = () => {
             alt="채팅 만들기 버튼"
             style={{ position: "fixed", right: "20px", bottom: "80px" }}
           />
-        </>
+        </div>
       ) : (
         <div className={styles.NoChatRoomContainer}>
           <span className={styles.BoldText}>

@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import styles from "./MakeRoom.module.css";
 import Header from "../../../components/Header/Header";
 import SearchBar from "../../../components/SearchBar/SearchBar";
-import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../components/Button/PrimaryButton";
 import MakeRoomModal from "./MakeRoomModal";
 import blueCancle from "../../../assets/Content/blueCancle.svg";
 import check from "../../../assets/SelectButton/check.svg";
 import uncheck from "../../../assets/SelectButton/uncheck.svg";
 import arrowLeftBig from "../../../assets/Navigation/arrowLeftBig.svg";
+import { makeChatRoom } from "../../../apis/chatroom";
 
 const MakeRoom = () => {
-  const navigate = useNavigate();
   const [inviteStep, setInviteStep] = useState(0);
+  const [newRoomInfo, setNewRoomInfo] = useState({});
+
+  // 친구목록 서버에서 받아오는 로직 필요함.
 
   // 상태로 friendData 관리
   const [friends, setFriends] = useState(friendData);
@@ -57,10 +59,20 @@ const MakeRoom = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // 채팅방 생성 완료하여 서버에 전달하는 함수
-  const completeMakeRoom = () => {
+  const completeMakeRoom = async () => {
     console.log("채팅방 이름 : ", newRoomName);
     console.log("초대한 친구 => ", selectedFriends);
-    setIsModalOpen(true);
+    // 선택된 친구들의 ID 배열 생성
+    const friendsIds = selectedFriends.map((friend) => friend.id);
+
+    const createdRoomInfo = await makeChatRoom(newRoomName, friendsIds);
+    if (createdRoomInfo) {
+      setNewRoomInfo(createdRoomInfo); // 상태 업데이트
+      console.log("생성된 채팅방 정보: ", createdRoomInfo);
+      setIsModalOpen(true); // 모달 열기
+    } else {
+      console.error("채팅방 생성 실패");
+    }
   };
 
   const renderInviteStep = () => {
@@ -238,6 +250,7 @@ const MakeRoom = () => {
         isModalOpen={isModalOpen}
         newRoomName={newRoomName}
         selectedFriends={selectedFriends}
+        newRoomInfo={newRoomInfo}
       />
     </div>
   );
@@ -248,91 +261,13 @@ export default MakeRoom;
 const friendData = [
   {
     id: 1,
-    userName: "럭키머니",
+    userName: "절약왕",
     img: "",
     toInvite: false,
   },
   {
     id: 2,
-    userName: "금나와라",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 3,
-    userName: "골든피기",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 4,
-    userName: "피그핑",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 5,
-    userName: "모아모아짱",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 6,
-    userName: "럭키머니",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 7,
-    userName: "럭키머니",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 8,
-    userName: "럭키머니",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 9,
-    userName: "럭키머니",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 10,
-    userName: "럭키머니",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 11,
-    userName: "럭키머니",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 12,
-    userName: "럭키머니",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 13,
-    userName: "럭키머니",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 14,
-    userName: "럭키머니",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 15,
-    userName: "럭키머니",
+    userName: "도전왕",
     img: "",
     toInvite: false,
   },

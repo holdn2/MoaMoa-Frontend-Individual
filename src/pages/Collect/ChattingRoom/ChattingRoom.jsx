@@ -32,7 +32,6 @@ const ChattingRoom = () => {
 
   // 채팅방 나가기 관련 모달상태
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
-  const [exitRoom, setExitRoom] = useState(false); // 채팅방 나가기 상태
   // 챌린지 수락 관련 모달상태
   const [isChallengeModalOpen, setIsChallengeModalOpen] = useState(false);
 
@@ -120,7 +119,7 @@ const ChattingRoom = () => {
         <ExitRoomModal
           isModalOpen={isExitModalOpen}
           setIsModalOpen={setIsExitModalOpen}
-          setExitRoom={setExitRoom}
+          roomId={roomInfo.id}
         />
       </div>
       {isMenuOpen ? (
@@ -139,7 +138,9 @@ const ChattingRoom = () => {
               <div
                 className={styles.EachMenuContainer}
                 onClick={() =>
-                  navigate(`/chatroom/${roomInfo.id}/roomnamechange`)
+                  navigate(`/chatroom/${roomInfo.id}/roomnamechange`, {
+                    state: { userGroupId: roomInfo.id },
+                  })
                 }
               >
                 <img src={editRoomName} alt="채팅방 이름 변경" />

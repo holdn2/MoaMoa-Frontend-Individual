@@ -6,7 +6,12 @@ import PrimaryButton from "../../../components/Button/PrimaryButton";
 import dustHappy from "../../../assets/CharacterImgs/dustHappy.svg";
 import closeModal from "../../../assets/Navigation/closeModal.svg";
 
-const MakeRoomModal = ({ isModalOpen, newRoomName, selectedFriends }) => {
+const MakeRoomModal = ({
+  isModalOpen,
+  newRoomName,
+  selectedFriends,
+  newRoomInfo,
+}) => {
   const navigate = useNavigate();
   const userName = "모아모아짱";
   const goToRoom = () => {
@@ -27,7 +32,13 @@ const MakeRoomModal = ({ isModalOpen, newRoomName, selectedFriends }) => {
         <span className={styles.NormalText}>
           {userName}님 외 {selectedFriends.length}명
         </span>
-        <div onClick={goToRoom}>
+        <div
+          onClick={() =>
+            navigate(`/chatroom/${newRoomInfo.id}`, {
+              state: { chatData: newRoomInfo },
+            })
+          }
+        >
           <PrimaryButton size="lg">채팅방으로 이동하기</PrimaryButton>
         </div>
       </div>
