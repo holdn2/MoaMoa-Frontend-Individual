@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import chatPlusBtn from "../../assets/Btn/chatPlusBtn.svg";
 import { fetchChatRoomData } from "../../apis/chatroom";
 
-const userId = 2;
+const userId = 1;
 
 const Chatting = () => {
   const navigate = useNavigate();
