@@ -12,26 +12,26 @@ const PurchaseModal = ({
   itemId,
   itemImage,
   itemPrice,
-  setHavePurchased,
+  fetchDecoItems,
 }) => {
   const [modalState, setModalState] = useState(0);
 
   // 구매 로직
-  const handlePurchase = (itemId) => {
-    // purchaseDecoItem(itemId);
+  const handlePurchase = async (itemId) => {
+    await purchaseDecoItem(itemId);
     console.log(itemId, " 구매완료");
-    setHavePurchased((prev) => prev + 1);
     setModalState(0);
     setIsModalOpen(false);
+    fetchDecoItems(); // 구매 완료 후 즉시 반영되도록 함수 호출
   };
 
-  const handlePurchaseAndUse = (itemId) => {
-    // purchaseDecoItem(itemId);
+  const handlePurchaseAndUse = async (itemId) => {
+    await purchaseDecoItem(itemId);
     // 구매한 아이템 바로 적용하는 로직 필요
     console.log(itemId, " 구매완료 및 바로 적용");
-    setHavePurchased((prev) => prev + 1);
     setModalState(0);
     setIsModalOpen(false);
+    fetchDecoItems(); // 구매 완료 후 즉시 반영되도록 함수 호출
   };
 
   const renderPurchaseModal = () => {

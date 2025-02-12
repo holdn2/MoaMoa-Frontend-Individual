@@ -18,6 +18,14 @@ const MyProfileComponent = () => {
     getUserInfo(setUserInfo);
   }, []);
 
+  // 닉네임 변경 시 즉시 반영되도록
+  const handleNicknameChange = (newNickname) => {
+    setUserInfo((prevInfo) => ({
+      ...prevInfo,
+      nickname: newNickname,
+    }));
+  };
+
   // 다음 레벨로 갈 때 필요한 코인
   const [needCoin, setNeedCoin] = useState(0);
   const [levelPercent, setLevelPercent] = useState(0);
@@ -90,14 +98,14 @@ const MyProfileComponent = () => {
       </div>
 
       {/* 닉네임 변경 api 필요 */}
-      {/* {isModalOpen && (
+      {isModalOpen && (
         <NicknameChangeModal
-          userName={userName}
-          dustImg={dustImg}
+          userName={userInfo.nickname}
+          dustImg={userInfo.dustImage}
           onClose={closeModal}
-          setUserName={setUserName}
+          onNicknameChange={handleNicknameChange}
         />
-      )} */}
+      )}
     </div>
   );
 };

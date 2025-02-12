@@ -32,11 +32,14 @@ const DecoProfile = () => {
   const [profileItems, setProfileItems] = useState([]);
   // 서버에서 가져온 아이템들 중 구매한 아이템 배열
   const [boughtItems, setBoughtItem] = useState([]);
-  // 구매했으면 다시 렌더링되도록 상태 설정
-  const [havePurchased, setHavePurchased] = useState(0);
-  useEffect(() => {
+
+  // 아이템 구매 시 즉시 반영되도록 설정.
+  const fetchDecoItems = () => {
     getDecoItemInfo(setProfileItems, setBoughtItem);
-  }, [havePurchased]);
+  };
+  useEffect(() => {
+    fetchDecoItems();
+  }, []);
 
   // 구매하기 위해 선택한 테두리. 0일 때는 아무것도 클릭 x 인 상황. pricetag 색깔 변경을 위한 것.
   const [wantToPurchaseId, setWantToPurchaseId] = useState(0);
@@ -173,7 +176,7 @@ const DecoProfile = () => {
           itemId={wantToPurchaseItem.itemId}
           itemImage={wantToPurchaseItem.imageUrl}
           itemPrice={wantToPurchaseItem.price}
-          setHavePurchased={setHavePurchased}
+          fetchDecoItems={fetchDecoItems}
         />
       ) : (
         <></>
