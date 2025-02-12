@@ -1,5 +1,5 @@
 // 프로필 꾸미기 페이지. 테두리 적용 관련 내용은 구현 안함.
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./DecoProfile.module.css";
 import Header from "../../components/Header/Header";
 import PrimaryButton from "../../components/Button/PrimaryButton";
@@ -21,37 +21,46 @@ import tenCoin from "../../assets/Decoration/Cost/tenCoin.svg";
 import selectedThirtyCoin from "../../assets/Decoration/Cost/selectedThirtyCoin.svg";
 import twentyCoin from "../../assets/Decoration/Cost/twentyCoin.svg";
 import thirtyCoin from "../../assets/Decoration/Cost/thirtyCoin.svg";
+import { getDecoItemInfo } from "../../apis/decoProfile";
 
 const DecoProfile = () => {
   const pageName = "프로필 꾸미기";
-  // 상태값 변경 가능하도록
-  const [outlines, setOutlines] = useState(outlineType);
-  // 보유 중인 테두리
-  const userHaveOutline = outlines.filter((item) => item.purchased);
-  // 구매하지 않은 테두리
-  const canPurchaseOutline = outlines.filter((item) => !item.purchased);
-  // 구매하기 위해 선택한 테두리
-  const [wantToPurchase, setWantToPurchase] = useState("");
-  // 모달창 상태
+  // 구매 모달창 상태
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 클릭했을 때 클릭한 테두리의 가격이 칠해진 것처럼 보이게 구현
-  const handleSelectedOutline = (selectedOutline) => {
-    const updatedOutlines = outlines.map((item) => ({
-      ...item,
-      selected: item.type === selectedOutline.type,
-    }));
-    setOutlines(updatedOutlines);
-    setWantToPurchase(selectedOutline.type);
-  };
+  // 서버에서 가져온 아이템들 중 구매하지 않은 아이템 배열
+  const [profileItems, setProfileItems] = useState([]);
+  // 서버에서 가져온 아이템들 중 구매한 아이템 배열
+  const [boughtItems, setBoughtItem] = useState([]);
+  useEffect(() => {
+    getDecoItemInfo(setProfileItems, setBoughtItem);
+  }, []);
 
-  // 보유 중인 테두리 중 사용할 것 클릭하는 로직
+  // 구매하기 위해 선택한 테두리. 0일 때는 아무것도 클릭 x 인 상황. pricetag 색깔 변경을 위한 것.
+  const [wantToPurchaseId, setWantToPurchaseId] = useState(0);
+  const handleClickPurchase = (id) => {
+    if (wantToPurchaseId === 0 || wantToPurchaseId !== id) {
+      setWantToPurchaseId(id);
+    } else {
+      setWantToPurchaseId(0);
+    }
+  };
+  // 구매하려는 아이템 정보
+  const [wantToPurchaseItem, setWantToPurchaseItem] = useState({});
+  useEffect(() => {
+    const buyItem = profileItems.filter(
+      (item) => item.itemId === wantToPurchaseId
+    );
+    setWantToPurchaseItem(buyItem[0]);
+  }, [wantToPurchaseId]);
+
+  // 보유 중인 테두리 중 사용할 것 클릭하는 로직. 수정 필요
   const handleOutlineUse = (useOutline) => {
-    const updatedOutlines = outlines.map((item) => ({
-      ...item,
-      use: item.id === useOutline.id,
-    }));
-    setOutlines(updatedOutlines);
+    // const updatedOutlines = outlines.map((item) => ({
+    //   ...item,
+    //   use: item.id === useOutline.id,
+    // }));
+    // setOutlines(updatedOutlines);
   };
 
   return (
@@ -63,18 +72,19 @@ const DecoProfile = () => {
           <div className={styles.OutlineSectionContainer}>
             <span className={styles.OutlineSectionText}>보유 중인 테두리</span>
             <div className={styles.OutlinesUserHaveContainer}>
-              {userHaveOutline.map((item) => (
+              {boughtItems.map((item) => (
                 <button
-                  key={item.type}
+                  key={item.itemId}
                   className={styles.EachOutlineContainer}
                   onClick={() => handleOutlineUse(item)}
                 >
                   <img
                     style={{ width: "124px", height: "124px" }}
-                    src={item.outline}
+                    src={item.imageUrl}
                     alt={item.type}
                   />
-                  {item.use ? (
+                  {/* 추후 아이템 사용여부 추가 */}
+                  {/* {item.use ? (
                     <img
                       style={{ width: "21px", height: "21px" }}
                       src={purchased}
@@ -82,7 +92,7 @@ const DecoProfile = () => {
                     />
                   ) : (
                     <div style={{ width: "21px", height: "21px" }}></div>
-                  )}
+                  )} */}
                 </button>
               ))}
             </div>
@@ -90,19 +100,19 @@ const DecoProfile = () => {
           <div className={styles.OutlineSectionContainer}>
             <span className={styles.OutlineSectionText}>테두리 구매하기</span>
             <div className={styles.OutlinesPurchaseContainer}>
-              {canPurchaseOutline.map((item) => (
+              {profileItems.map((item) => (
                 <button
-                  key={item.type}
+                  key={item.itemId}
                   className={styles.EachOutlinesPurchaseContainer}
-                  onClick={() => handleSelectedOutline(item)}
+                  onClick={() => handleClickPurchase(item.itemId)}
                 >
                   <img
                     style={{ width: "124px", height: "124px" }}
-                    src={item.outline}
+                    src={item.imageUrl}
                     alt={item.type}
                     className={styles.EachOutline}
                   />
-                  {item.selected ? (
+                  {item.itemId === wantToPurchaseId ? (
                     <div className={styles.SelectedPriceContainer}>
                       <span
                         className={styles.PriceText}
@@ -144,135 +154,29 @@ const DecoProfile = () => {
       <div
         className={styles.PurchaseButton}
         onClick={() => {
-          if (wantToPurchase) {
+          if (wantToPurchaseId !== 0) {
             setIsModalOpen(true);
           }
         }}
       >
-        <PrimaryButton>구매하기</PrimaryButton>
+        <PrimaryButton disabled={wantToPurchaseId === 0}>
+          구매하기
+        </PrimaryButton>
       </div>
       {/* 모달창을 띄워서 구매 확인 */}
-      <PurchaseModal
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-        outlines={outlines}
-        wantToPurchase={wantToPurchase}
-        setOutlines={setOutlines}
-        setWantToPurchase={setWantToPurchase}
-      />
+      {wantToPurchaseItem ? (
+        <PurchaseModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          itemId={wantToPurchaseItem.itemId}
+          itemImage={wantToPurchaseItem.imageUrl}
+          itemPrice={wantToPurchaseItem.price}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
 
 export default DecoProfile;
-
-const outlineType = [
-  {
-    id: 1,
-    type: "default",
-    outline: defaultOutline,
-    price: 0,
-    purchased: true,
-    selected: false,
-    use: true,
-  },
-  {
-    id: 2,
-    type: "blue",
-    outline: blueOutline,
-    price: 10,
-    priceImg: tenCoin,
-    selectedPriceImg: selectedThirtyCoin,
-    purchased: false,
-    selected: false,
-    use: false,
-  },
-  {
-    id: 3,
-    type: "yellow",
-    outline: yellowOutline,
-    price: 10,
-    priceImg: tenCoin,
-    selectedPriceImg: selectedThirtyCoin,
-    purchased: false,
-    selected: false,
-    use: false,
-  },
-  {
-    id: 4,
-    type: "pink",
-    outline: pinkOutline,
-    price: 10,
-    priceImg: tenCoin,
-    selectedPriceImg: selectedThirtyCoin,
-    purchased: false,
-    selected: false,
-    use: false,
-  },
-  {
-    id: 5,
-    type: "littleStar",
-    outline: littleStarOutline,
-    price: 20,
-    priceImg: twentyCoin,
-    selectedPriceImg: selectedThirtyCoin,
-    purchased: false,
-    selected: false,
-    use: false,
-  },
-  {
-    id: 6,
-    type: "clover",
-    outline: cloverOutline,
-    price: 20,
-    priceImg: twentyCoin,
-    selectedPriceImg: selectedThirtyCoin,
-    purchased: false,
-    selected: false,
-    use: false,
-  },
-  {
-    id: 7,
-    type: "heart",
-    outline: heartOutline,
-    price: 20,
-    priceImg: twentyCoin,
-    selectedPriceImg: selectedThirtyCoin,
-    purchased: false,
-    selected: false,
-    use: false,
-  },
-  {
-    id: 8,
-    type: "sunglass",
-    outline: sunglassOutline,
-    price: 30,
-    priceImg: thirtyCoin,
-    selectedPriceImg: selectedThirtyCoin,
-    purchased: false,
-    selected: false,
-    use: false,
-  },
-  {
-    id: 9,
-    type: "manyStar",
-    outline: manyStarOutline,
-    price: 30,
-    priceImg: thirtyCoin,
-    selectedPriceImg: selectedThirtyCoin,
-    purchased: false,
-    selected: false,
-    use: false,
-  },
-  {
-    id: 10,
-    type: "bubble",
-    outline: bubbleOutline,
-    price: 30,
-    priceImg: thirtyCoin,
-    selectedPriceImg: selectedThirtyCoin,
-    purchased: false,
-    selected: false,
-    use: false,
-  },
-];

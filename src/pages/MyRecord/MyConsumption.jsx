@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MyConsumption.module.css";
 import question from "../../assets/Content/question.svg";
 import DescModal from "../InputConsumption/DescModal";
@@ -6,6 +6,7 @@ import MyChallengeBar from "./MyChallengeBar";
 import MyConsumptionChart from "./MyConsumptionChart";
 import descChat from "../../assets/Icon/descChat.svg";
 import line from "../../assets/Icon/line.svg";
+import { getMyChallengeReport } from "../../apis/myReport";
 
 const dummyData = [
   {
@@ -63,10 +64,29 @@ const MyConsumption = () => {
   const btnContent = ["1주", "2주", "1개월", "6개월", "1년"];
   let totalPrice = dummyData.reduce((acc, cur) => acc + cur.price, 0);
 
+  const [challengeData, setChallengeData] = useState({
+    totalEarned: 0,
+    successRate: 0,
+    top: 0,
+    totalTries: 0,
+    totalSucceed: 0,
+    challengeRecords: [], // 초기값을 빈 배열로 설정
+  });
+  useEffect(() => {
+    getMyChallengeReport(setChallengeData);
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       {/*나의 소비 성공 확률은? */}
-      <MyChallengeBar children="나의 소비 성공 확률은?" isConsumption={true} />
+      <MyChallengeBar
+        children="나의 소비 성공 확률은?"
+        isConsumption={true}
+        successRate={challengeData.successRate * 100}
+        top={challengeData.top}
+        totalTries={challengeData.totalTries}
+        totalSucceed={challengeData.totalSucceed}
+      />
       <div className={styles.chartWrapper}>
         <div className={styles.chartTitleWrapper}>
           <span>나의 소비 변화는 ?</span>

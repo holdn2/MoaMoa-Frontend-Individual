@@ -4,54 +4,36 @@ import Modal from "react-modal";
 import styles from "./PurchaseModal.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SecondaryButton from "../../components/Button/SecondaryButton";
+import { purchaseDecoItem } from "../../apis/decoProfile";
 
 const PurchaseModal = ({
   isModalOpen,
   setIsModalOpen,
-  outlines,
-  wantToPurchase,
-  setOutlines,
-  setWantToPurchase,
+  itemId,
+  itemImage,
+  itemPrice,
 }) => {
-  const [modalState, setModalState] = useState(1);
-  const wantToPurchaseOutline = outlines.find(
-    (item) => item.type === wantToPurchase
-  );
-  const outlineImg = wantToPurchaseOutline ? wantToPurchaseOutline.outline : "";
-  const outlinePrice = wantToPurchaseOutline ? wantToPurchaseOutline.price : 0;
+  const [modalState, setModalState] = useState(0);
 
   // 구매 로직
-  const handlePurchase = () => {
-    const purchaseOutline = outlines.map((item) => {
-      if (!item.purchased && item.type === wantToPurchase) {
-        return { ...item, purchased: true }; // 선택한 테두리 구매
-      }
-      return item; // 나머지는 그대로 유지
-    });
-    setOutlines(purchaseOutline);
-    setWantToPurchase("");
-    setModalState(1);
+  const handlePurchase = (itemId) => {
+    // purchaseDecoItem(itemId);
+    console.log(itemId, " 구매완료");
+    setModalState(0);
     setIsModalOpen(false);
   };
 
-  const handlePurchaseAndUse = () => {
-    setOutlines((prevOutlines) =>
-      prevOutlines.map(
-        (item) =>
-          item.type === wantToPurchase
-            ? { ...item, purchased: true, use: true }
-            : { ...item, use: false } // 다른 테두리는 use: false
-      )
-    );
-    // 모달, state 초기화
+  const handlePurchaseAndUse = (itemId) => {
+    // purchaseDecoItem(itemId);
+    // 구매한 아이템 바로 적용하는 로직 필요
+    console.log(itemId, " 구매완료 및 바로 적용");
+    setModalState(0);
     setIsModalOpen(false);
-    setModalState(1);
-    setWantToPurchase("");
   };
 
   const renderPurchaseModal = () => {
     switch (modalState) {
-      case 1:
+      case 0:
         return (
           <Modal
             isOpen={isModalOpen}
@@ -59,26 +41,26 @@ const PurchaseModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src={outlineImg}
+              src={itemImage}
               alt="구매할 테두리"
               style={{ width: "257px", height: "257px" }}
             />
             <div className={styles.PurchaseContent}>
               <span className={styles.PurchaseTitle}>프레임 구매</span>
               <span className={styles.PurchaseText}>
-                {outlinePrice}코인을 사용하여
+                {itemPrice}코인을 사용하여
                 <br />
                 프레임을 구매하시겠습니까?
               </span>
               <div
                 style={{ display: "flex", flexDirection: "row", gap: "12px" }}
               >
-                <div onClick={() => setModalState(2)}>
+                <div onClick={() => setModalState(1)}>
                   <PrimaryButton size="sm">예</PrimaryButton>
                 </div>
                 <div
                   onClick={() => {
-                    setModalState(1);
+                    setModalState(0);
                     setIsModalOpen(false);
                   }}
                 >
@@ -88,7 +70,7 @@ const PurchaseModal = ({
             </div>
           </Modal>
         );
-      case 2:
+      case 1:
         return (
           <Modal
             isOpen={isModalOpen}
@@ -96,7 +78,7 @@ const PurchaseModal = ({
             overlayClassName={styles.Overlay}
           >
             <img
-              src={outlineImg}
+              src={itemImage}
               alt="구매할 테두리"
               style={{ width: "257px", height: "257px" }}
             />
@@ -110,10 +92,10 @@ const PurchaseModal = ({
               <div
                 style={{ display: "flex", flexDirection: "row", gap: "12px" }}
               >
-                <div onClick={handlePurchaseAndUse}>
+                <div onClick={() => handlePurchaseAndUse(itemId)}>
                   <PrimaryButton size="sm">예</PrimaryButton>
                 </div>
-                <div onClick={handlePurchase}>
+                <div onClick={() => handlePurchase(itemId)}>
                   <SecondaryButton size="sm">아니요</SecondaryButton>
                 </div>
               </div>
