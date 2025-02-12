@@ -12,6 +12,7 @@ const PurchaseModal = ({
   itemId,
   itemImage,
   itemPrice,
+  setHavePurchased,
 }) => {
   const [modalState, setModalState] = useState(0);
 
@@ -19,6 +20,7 @@ const PurchaseModal = ({
   const handlePurchase = (itemId) => {
     // purchaseDecoItem(itemId);
     console.log(itemId, " 구매완료");
+    setHavePurchased((prev) => prev + 1);
     setModalState(0);
     setIsModalOpen(false);
   };
@@ -27,6 +29,7 @@ const PurchaseModal = ({
     // purchaseDecoItem(itemId);
     // 구매한 아이템 바로 적용하는 로직 필요
     console.log(itemId, " 구매완료 및 바로 적용");
+    setHavePurchased((prev) => prev + 1);
     setModalState(0);
     setIsModalOpen(false);
   };
