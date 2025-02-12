@@ -103,56 +103,64 @@ const DecoProfile = () => {
             </div>
           </div>
           <div className={styles.OutlineSectionContainer}>
-            <span className={styles.OutlineSectionText}>테두리 구매하기</span>
-            <div className={styles.OutlinesPurchaseContainer}>
-              {profileItems.map((item) => (
-                <button
-                  key={item.itemId}
-                  className={styles.EachOutlinesPurchaseContainer}
-                  onClick={() => handleClickPurchase(item.itemId)}
-                >
-                  <img
-                    style={{ width: "124px", height: "124px" }}
-                    src={item.imageUrl}
-                    alt={item.type}
-                    className={styles.EachOutline}
-                  />
-                  {item.itemId === wantToPurchaseId ? (
-                    <div className={styles.SelectedPriceContainer}>
-                      <span
-                        className={styles.PriceText}
-                        style={{ color: "#fff" }}
-                      >
-                        {item.price}
-                      </span>
+            {profileItems.length > 0 ? (
+              <>
+                <span className={styles.OutlineSectionText}>
+                  테두리 구매하기
+                </span>
+                <div className={styles.OutlinesPurchaseContainer}>
+                  {profileItems.map((item) => (
+                    <button
+                      key={item.itemId}
+                      className={styles.EachOutlinesPurchaseContainer}
+                      onClick={() => handleClickPurchase(item.itemId)}
+                    >
                       <img
-                        src={coinWhite}
-                        alt="선택함"
-                        style={{
-                          display: "flex",
-                          width: "24px",
-                          height: "24px",
-                        }}
+                        style={{ width: "124px", height: "124px" }}
+                        src={item.imageUrl}
+                        alt={item.type}
+                        className={styles.EachOutline}
                       />
-                    </div>
-                  ) : (
-                    <div className={styles.PriceContainer}>
-                      <span className={styles.PriceText}>{item.price}</span>
-                      <img
-                        src={coin3}
-                        alt="선택안함"
-                        style={{
-                          display: "flex",
-                          width: "19px",
-                          height: "19px",
-                          marginTop: "-1px",
-                        }}
-                      />
-                    </div>
-                  )}
-                </button>
-              ))}
-            </div>
+                      {item.itemId === wantToPurchaseId ? (
+                        <div className={styles.SelectedPriceContainer}>
+                          <span
+                            className={styles.PriceText}
+                            style={{ color: "#fff" }}
+                          >
+                            {item.price}
+                          </span>
+                          <img
+                            src={coinWhite}
+                            alt="선택함"
+                            style={{
+                              display: "flex",
+                              width: "24px",
+                              height: "24px",
+                            }}
+                          />
+                        </div>
+                      ) : (
+                        <div className={styles.PriceContainer}>
+                          <span className={styles.PriceText}>{item.price}</span>
+                          <img
+                            src={coin3}
+                            alt="선택안함"
+                            style={{
+                              display: "flex",
+                              width: "19px",
+                              height: "19px",
+                              marginTop: "-1px",
+                            }}
+                          />
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>

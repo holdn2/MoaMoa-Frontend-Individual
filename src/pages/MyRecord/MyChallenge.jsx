@@ -39,7 +39,7 @@ const MyChallenge = () => {
         <p>내 챌린지 기록은 ?</p>
         <div className={styles.challengeRecord}>
           {challengeData.challengeRecords.map((item) => (
-            <MyChallengeRecord item={item} />
+            <MyChallengeRecord key={item.challengeId} item={item} />
           ))}
         </div>
       </section>
