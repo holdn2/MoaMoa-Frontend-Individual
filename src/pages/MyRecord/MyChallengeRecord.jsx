@@ -11,16 +11,14 @@ const MyChallengeRecord = ({ item, isConsData }) => {
   let endDate = new Date(item.endDate);
   endDate = `${endDate.getMonth() + 1}.${endDate.getDate()}`;
   return (
-    <div
-      className={item.isSuccessed ? styles.successWrapper : styles.failWrapper}
-    >
-      <img src={item.isSuccessed ? graySuccess : grayFail} />
+    <div className={item.succeed ? styles.successWrapper : styles.failWrapper}>
+      <img src={item.succeed ? graySuccess : grayFail} />
       <div className={styles.rightWrapper}>
         <p>{item.title}</p>
         {isConsData && (
           <p className={styles.consData}>
-            <span className={styles.cons}>사용 {item.cons}</span>
-            <span className={styles.target}> / 목표 {item.target}</span>
+            <span className={styles.cons}>사용 {item.totalSpent}</span>
+            <span className={styles.target}> / 목표 {item.targetAmount}</span>
           </p>
         )}
         <div className={styles.challengeInfo}>
@@ -30,8 +28,8 @@ const MyChallengeRecord = ({ item, isConsData }) => {
           </span>
           <span className={styles.coin}>
             <img src={coinNavy} alt="챌린지 코인 아이콘" />
-            {item.isSuccessed ? "+" : "-"}
-            {item.coin}
+            {item.succeed ? "+" : "-"}
+            {isConsData ? item.prize : item.transaction}
           </span>
         </div>
       </div>
