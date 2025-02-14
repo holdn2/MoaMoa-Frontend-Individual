@@ -17,8 +17,8 @@ const MyChallengeRecord = ({ item, isConsData }) => {
         <p>{item.title}</p>
         {isConsData && (
           <p className={styles.consData}>
-            <span className={styles.cons}>사용 {item.cons}</span>
-            <span className={styles.target}> / 목표 {item.target}</span>
+            <span className={styles.cons}>사용 {item.totalSpent}</span>
+            <span className={styles.target}> / 목표 {item.targetAmount}</span>
           </p>
         )}
         <div className={styles.challengeInfo}>
@@ -29,7 +29,7 @@ const MyChallengeRecord = ({ item, isConsData }) => {
           <span className={styles.coin}>
             <img src={coinNavy} alt="챌린지 코인 아이콘" />
             {item.succeed ? "+" : "-"}
-            {item.transaction}
+            {isConsData ? item.prize : item.transaction}
           </span>
         </div>
       </div>
