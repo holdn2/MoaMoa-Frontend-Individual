@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import arrowRight from "../../../../assets/Navigation/arrowRight.svg";
 import styles from "./PublicChallenge.module.css";
 import chatPlusBtn from "../../../../assets/Btn/chatPlusBtn.svg";
@@ -7,19 +7,25 @@ import JoinChallenge from "./JoinChallenge";
 import ChallengeCard from "../../../../components/ChallengeCard/ChallengeCard";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
 import Dropdown from "../../../../components/Dropdown/Dropdown";
+import { getRecommendChallenge } from "../../../../apis/challenge/getChallenge";
+
+const userId = 1;
 
 const PublicChallenge = ({ allData }) => {
   const navigate = useNavigate();
   const noJoinChallenge = allData.filter((data) => data.isJoined == false);
   const joinChallenge = allData.filter((data) => data.isJoined == true);
   const [sortChallenge, setSortChallenge] = useState(noJoinChallenge);
-  const sortType = [
-    "인기순",
-    "최신순",
-    "종료임박순",
-    "코인많은순",
-    "코인적은순",
-  ];
+
+  // 챌린지 추천 상태
+  const [recommendChallenges, setRecommendChallenges] = useState([]);
+
+  // 정렬 type 관련
+  const typeName = ["인기순", "최신순", "종료임박순", "코인순"];
+  const [sortType, setSortType] = useState("POPULARITY");
+  useEffect(() => {
+    getRecommendChallenge(sortType, setRecommendChallenges);
+  }, [sortType]);
 
   return (
     <>
@@ -73,13 +79,9 @@ const PublicChallenge = ({ allData }) => {
         )}
 
         <h3>이런 챌린지는 어떠세요?</h3>
-        <Dropdown
-          sortArr={sortChallenge}
-          setSortArr={setSortChallenge}
-          sortType={sortType}
-        />
+        <Dropdown typeName={typeName} setSortType={setSortType} />
         <div className={styles.publicChallengeWrapper}>
-          {sortChallenge.map((item) => (
+          {recommendChallenges.map((item) => (
             <ChallengeCard
               key={item.id}
               allData={item}
