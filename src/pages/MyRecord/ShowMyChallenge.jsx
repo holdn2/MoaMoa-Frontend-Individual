@@ -35,8 +35,8 @@ const ShowMyChallenge = () => {
       </div>
       <div className={styles.wrapper}>
         <div className={styles.challengeRecordWrapper}>
-          {sortChallenge.map((item) => (
-            <MyChallengeRecord key={item.id} item={item} isConsData={true} />
+          {sortChallenge.map((item, index) => (
+            <MyChallengeRecord key={index} item={item} isConsData={true} />
           ))}
         </div>
         {modalOpen && (
