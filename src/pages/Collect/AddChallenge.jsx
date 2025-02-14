@@ -16,6 +16,8 @@ const AddChallenge = () => {
     formState: { isSubmitting },
   } = useForm({ defaultValues: { people: 1 } });
   const [challengeClicked, setChallengeClicked] = useState(0);
+  const [peopleChecked, setPeopleChecked] = useState(false);
+  const [moneyChecked, setMoneyChecked] = useState(false);
 
   const people = watch("people", 1);
   const disabled =
@@ -51,6 +53,7 @@ const AddChallenge = () => {
               onClick={() =>
                 setValue("people", Math.max(Number(people) - 1, 1))
               }
+              disabled={peopleChecked}
             >
               -
             </button>
@@ -61,6 +64,7 @@ const AddChallenge = () => {
               type="button"
               className={styles.peopleUpBtn}
               onClick={() => setValue("people", Number(people) + 1)}
+              disabled={peopleChecked}
             >
               +
             </button>
@@ -68,15 +72,43 @@ const AddChallenge = () => {
             <input type="hidden" {...register("people")} />
           </div>
           <label className={styles.peopleInfinity}>
-            <input type="checkbox" {...register("unlimitedPeople")} />
+            <input
+              type="checkbox"
+              {...register("unlimitedPeople")}
+              onChange={(e) => setPeopleChecked(e.target.checked)}
+            />
             제한 없음
           </label>
         </div>
         <SelectPeriod />
         <div className={styles.inputContainer}>
+          <p className={styles.inputTitle}>챌린지 목표 금액</p>
+          <label className={styles.inputShort}>
+            <input
+              className={styles.inputTextShort}
+              type="number"
+              {...register("targetMoney")}
+              disabled={moneyChecked}
+            />
+            원
+          </label>
+          <label className={styles.peopleInfinity}>
+            <input
+              type="checkbox"
+              {...register("unlimitedTarget")}
+              onChange={(e) => setMoneyChecked(e.target.checked)}
+            />
+            해당 없음
+          </label>
+        </div>
+        <div className={styles.inputContainer}>
           <p className={styles.inputTitle}>배틀 코인</p>
-          <label className={styles.inputCoin}>
-            <input className={styles.inputTextCoin} {...register("coin")} />
+          <label className={styles.inputShort}>
+            <input
+              type="number"
+              className={styles.inputTextShort}
+              {...register("coin")}
+            />
             코인
           </label>
         </div>

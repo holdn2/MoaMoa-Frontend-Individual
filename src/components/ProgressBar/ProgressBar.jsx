@@ -3,6 +3,7 @@ import styled from "styled-components";
 const sizeStyles = {
   short: { width: 234, height: 12, backColor: "#DEDEDE" },
   medium: { width: 274, height: 8, backColor: "#DEDEDE" },
+  large: { width: 293, height: 12, backColor: "#fff" },
   level: { width: 203, height: 12, backColor: "#fff" },
   homeLevel: {
     width: 312,
@@ -39,8 +40,8 @@ const StyledCurrentProgressBar = styled.div`
 `;
 
 const ProgressBar = ({ size, currentProgress }) => {
-  const totalWidth = sizeStyles[size].width ?? 274;
-  const totalHeight = sizeStyles[size].height ?? 274;
+  const totalWidth = sizeStyles[size].width;
+  const totalHeight = sizeStyles[size].height;
   const currentPercentWidth = (totalWidth * currentProgress) / 100; // 현재 진행 퍼센트를 픽셀로 변환
   const backColor = sizeStyles[size].backColor ?? "#fff";
 
