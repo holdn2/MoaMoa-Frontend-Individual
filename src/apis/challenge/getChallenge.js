@@ -22,9 +22,9 @@ export const getRecommendChallenge = async (
   }
 };
 
-// 챌린지 조회(친구). 모집상태
-export const getRecommendFriendChallenge = async (
-  setRecommendFriendChallenges
+// 현재 진행 중인 챌린지 조회(친구).
+export const getInProgressFriendChallenge = async (
+  setInProgressFriendChallenge
 ) => {
   try {
     const response = await axios.get(
@@ -36,7 +36,7 @@ export const getRecommendFriendChallenge = async (
         },
       }
     );
-    setRecommendFriendChallenges(response.data.result);
+    setInProgressFriendChallenge(response.data.result);
   } catch (error) {
     console.error("Error fetching get recommend friend challenge data:", error);
   }
@@ -79,6 +79,27 @@ export const getOngoingChallengeDetialInfo = async (
     setUsedRate(response.data.result.userProgress.usedRate);
     setOtherMembers(response.data.result.otherMembersProgress);
     console.log(response.data.result.userProgress.usedRate);
+  } catch (error) {
+    console.error("Error fetching get recommend friend challenge data:", error);
+  }
+};
+
+// 카테고리 클릭 시 검색 결과 챌린지 조회 api
+export const getCategoryChallenge = async (
+  challengeClicked,
+  setCategoryChallenges
+) => {
+  try {
+    const response = await axios.get(
+      `https://moamoa.store/challenges/search/category?category=${challengeClicked}`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
+    );
+    setCategoryChallenges(response.data.result);
   } catch (error) {
     console.error("Error fetching get recommend friend challenge data:", error);
   }

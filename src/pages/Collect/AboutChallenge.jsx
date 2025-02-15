@@ -300,7 +300,7 @@ const AboutChallenge = () => {
         </button>
       </nav>
       {isClicked === 0 ? (
-        <PublicChallenge allData={publicChallenge} />
+        <PublicChallenge />
       ) : (
         <FriendChallenge friendChallenge={friendChallenge} />
       )}

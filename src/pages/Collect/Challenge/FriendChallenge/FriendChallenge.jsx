@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./FriendChallenge.module.css";
 import arrowRight from "../../../../assets/Navigation/arrowRight.svg";
 import { Link, useNavigate } from "react-router-dom";
 import ChallengeCard from "../../../../components/ChallengeCard/ChallengeCard";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
+import { getInProgressFriendChallenge } from "../../../../apis/challenge/getChallenge";
 
 const FriendChallenge = ({ friendChallenge }) => {
   const navigate = useNavigate();
+  const [inProgressFriendChallenge, setInProgressFriendChallenge] = useState(
+    []
+  );
+  useState(() => {
+    getInProgressFriendChallenge(setInProgressFriendChallenge);
+  }, []);
   const challengeFriendArray = friendChallenge.flatMap(
     (data) => data.with || []
   );
@@ -60,15 +67,16 @@ const FriendChallenge = ({ friendChallenge }) => {
           ))}
         </div>
       </div>
-      {friendChallenge.length != 0 ? (
+      {inProgressFriendChallenge.length != 0 ? (
         <>
           <h3>현재 진행중인 챌린지</h3>
           <div className={styles.friendChallengeWrapper}>
-            {friendChallenge.map((item) => (
+            {inProgressFriendChallenge.map((item, index) => (
               <ChallengeCard
-                key={item.id}
+                key={index}
                 allData={item}
-                isDetailChallenge={true}
+                isPublic={false}
+                isDetailChallenge={false}
                 onClick={() =>
                   navigate("/challenge/detail", {
                     state: { selectedChallenge: item },

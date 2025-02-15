@@ -15,13 +15,13 @@ const ChallengeCategory = ({
     "술자리",
     "취미",
   ];
-  const challnegeName = [
-    "taxi",
-    "delivery",
-    "coffee",
-    "impulseBuy",
-    "alcohol",
-    "hobby",
+  const challengeName = [
+    "TAXI",
+    "DELIVERY_FOOD",
+    "COFFEE",
+    "IMPULSE_BUY",
+    "DRINKING",
+    "HOBBY",
   ];
   return (
     <div className={styles.categoryWrapper}>
@@ -31,8 +31,15 @@ const ChallengeCategory = ({
           <Category
             key={name}
             children={name}
-            checked={challengeClicked === challnegeName[index]}
-            onClick={() => setChallengeClicked(challnegeName[index])}
+            checked={challengeClicked === challengeName[index]}
+            onClick={() => {
+              // 같은 카테고리 클릭하면 해제
+              setChallengeClicked(
+                challengeClicked === challengeName[index]
+                  ? ""
+                  : challengeName[index]
+              );
+            }}
           />
         ))}
       </div>

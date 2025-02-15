@@ -10,14 +10,11 @@ import Dropdown from "../../../../components/Dropdown/Dropdown";
 import {
   getOngoingChallenge,
   getRecommendChallenge,
-  getRecommendFriendChallenge,
+  // getRecommendFriendChallenge,
 } from "../../../../apis/challenge/getChallenge";
 
-const userId = 1;
-
-const PublicChallenge = ({ allData }) => {
+const PublicChallenge = () => {
   const navigate = useNavigate();
-  const joinChallenge = allData.filter((data) => data.isJoined == true);
 
   // 현재 진행중인 챌린지 상태
   const [ongoingChallenge, setOngoingChallenge] = useState([]);
@@ -34,7 +31,7 @@ const PublicChallenge = ({ allData }) => {
   useEffect(() => {
     getOngoingChallenge(setOngoingChallenge);
     getRecommendChallenge(sortType, setRecommendChallenges);
-    getRecommendFriendChallenge(setRecommendFriendChallenges);
+    // getRecommendFriendChallenge(setRecommendFriendChallenges);
   }, [sortType]);
 
   return (
@@ -43,7 +40,7 @@ const PublicChallenge = ({ allData }) => {
         onClick={() =>
           navigate("/challengesearch", {
             state: {
-              allData: allData,
+              allData: recommendChallenges,
             },
           })
         }
@@ -105,7 +102,7 @@ const PublicChallenge = ({ allData }) => {
             />
           ))}
         </div>
-        <h3 style={{ marginTop: "40px" }}>친구와 함께 해봐요!</h3>
+        {/* <h3 style={{ marginTop: "40px" }}>친구와 함께 해봐요!</h3>
         <div className={styles.publicChallengeWrapper}>
           {recommendFriendChallenges.map((item, index) => (
             <ChallengeCard
@@ -120,7 +117,7 @@ const PublicChallenge = ({ allData }) => {
               }
             />
           ))}
-        </div>
+        </div> */}
         <img
           onClick={() => navigate("/challenge")}
           src={chatPlusBtn}
