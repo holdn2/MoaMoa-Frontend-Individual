@@ -4,8 +4,9 @@ import PeriodPickerModal from "./PeriodPickerModal";
 
 const date = new Date();
 const currentYear = date.getFullYear();
-const currentMonth = date.getMonth() + 1;
-const currentDay = date.getDate();
+const currentMonth = String(date.getMonth() + 1).padStart(2, "0");
+const currentDay = String(date.getDate()).padStart(2, "0");
+const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
 
 const SelectPeriod = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -26,6 +27,12 @@ const SelectPeriod = () => {
       day: startValue.day,
     });
   }, [startValue]);
+  const startFormatDate = new Date(
+    `${startValue.year}-${startValue.month}-${startValue.day}`
+  );
+  const endFormatDate = new Date(
+    `${endValue.year}-${endValue.month}-${endValue.day}`
+  );
 
   return (
     <div className={styles.inputWrapper}>
@@ -36,8 +43,9 @@ const SelectPeriod = () => {
         onClick={() => setModalOpen(true)}
       >
         <span>
-          {startValue.year}.{startValue.month}.{startValue.day} (월) ~{" "}
-          {endValue.year}.{endValue.month}.{endValue.day} (일)
+          {startValue.year}.{startValue.month}.{startValue.day} (
+          {weekDays[startFormatDate.getDay()]}) ~ {endValue.year}.
+          {endValue.month}.{endValue.day} ({weekDays[endFormatDate.getDay()]})
         </span>
       </button>
       {modalOpen && (
