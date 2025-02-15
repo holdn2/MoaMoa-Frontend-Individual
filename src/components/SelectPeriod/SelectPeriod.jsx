@@ -23,6 +23,9 @@ const SelectPeriod = ({ setStartFormatDate, setEndFormatDate }) => {
 
   const startFormatDate = `${startValue.year}-${startValue.month}-${startValue.day}`;
   const endFormatDate = `${endValue.year}-${endValue.month}-${endValue.day}`;
+  const period =
+    (new Date(endFormatDate) - new Date(startFormatDate)) /
+    (1000 * 60 * 60 * 24);
 
   useEffect(() => {
     setStartFormatDate(startFormatDate);
@@ -37,10 +40,11 @@ const SelectPeriod = ({ setStartFormatDate, setEndFormatDate }) => {
         className={styles.dayButton}
         onClick={() => setModalOpen(true)}
       >
-        <span>
+        <span className={styles.date}>
           {startFormatDate} ({weekDays[new Date(startFormatDate).getDay()]}) ~{" "}
           {endFormatDate} ({weekDays[new Date(endFormatDate).getDay()]})
         </span>
+        <span className={styles.period}>{period}일 간</span>
       </button>
       {modalOpen && (
         <PeriodPickerModal
