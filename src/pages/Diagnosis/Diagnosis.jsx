@@ -10,6 +10,7 @@ import dustQuestion from "../../assets/CharacterImgs/dustQuestion.svg";
 import firstStage from "../../assets/StageExpression/firstStage.svg";
 import secondStage from "../../assets/StageExpression/secondStage.svg";
 import thirdStage from "../../assets/StageExpression/thirdStage.svg";
+import completeStage from "../../assets/StageExpression/completeStage.svg";
 import forthStage from "../../assets/StageExpression/forthStage.svg";
 import timeCircle from "../../assets/StageExpression/timeCircle.svg";
 import dustSad from "../../assets/CharacterImgs/dustSad.svg";
@@ -37,49 +38,43 @@ const Diagnosis = () => {
   const [isOverconsumption, setIsOverconsumption] = useState(false);
   // user가 입력한 내용을 바탕으로 과소비 진단 시 필요한 값들
   const [incomeCost, setIncomeCost] = useState(0); // 소득액
-  const [consumeCost, setConsumeCost] = useState(0); // 소비액
   const [savingCost, setSavingCost] = useState(0); // 저축액
   // 연령대 별 버튼 선택 여부 및 어떤 연령 선택했는지
   const [selectedAge, setSelectedAge] = useState(0);
   // 평균 소비, 적정 소비 알려주기
   const [averageConsumption, setAverageConsumption] = useState(0);
-  const [goodConsumption, setGoodConsumption] = useState(0);
 
-  // 5단계에서 2초 후 6단계 혹은 7단계로 자동 전환
+  // 4단계에서 2초 후 5단계 혹은 6단계로 자동 전환
   useEffect(() => {
-    if (diagnosisStage === 5) {
+    if (diagnosisStage === 4) {
       const timer = setTimeout(() => {
         const calculateResult = (incomeCost - savingCost) / incomeCost;
         console.log(
-          `소득액: ${incomeCost} 소비액: ${consumeCost} 저축액: ${savingCost} 연령대: ${selectedAge} 과소비 지수: ${calculateResult}`
+          `소득액: ${incomeCost} 저축액: ${savingCost} 연령대: ${selectedAge} 과소비 지수: ${calculateResult}`
         );
         switch (selectedAge) {
           case 1:
             calculateResult >= 0.5
-              ? (setGoodConsumption(70000), setDiagnosisStage(6))
-              : (setAverageConsumption(120000), setDiagnosisStage(7));
+              ? (setAverageConsumption(120000), setDiagnosisStage(5))
+              : (setAverageConsumption(120000), setDiagnosisStage(6));
             break;
           case 2:
             calculateResult >= 0.7
-              ? (setGoodConsumption(100000), setDiagnosisStage(6))
-              : (setAverageConsumption(150000), setDiagnosisStage(7));
+              ? (setAverageConsumption(150000), setDiagnosisStage(5))
+              : (setAverageConsumption(150000), setDiagnosisStage(6));
             break;
 
           case 3:
             calculateResult >= 0.8
-              ? (setGoodConsumption(120000), setDiagnosisStage(6))
-              : (setAverageConsumption(170000), setDiagnosisStage(7));
+              ? (setAverageConsumption(170000), setDiagnosisStage(5))
+              : (setAverageConsumption(170000), setDiagnosisStage(6));
             break;
 
           case 4:
             calculateResult >= 0.9
-              ? (setGoodConsumption(150000), setDiagnosisStage(6))
-              : (setAverageConsumption(200000), setDiagnosisStage(7));
+              ? (setAverageConsumption(200000), setDiagnosisStage(5))
+              : (setAverageConsumption(200000), setDiagnosisStage(6));
             break;
-        }
-
-        if (isOverconsumption) {
-        } else {
         }
       }, 2000); // 2초 후 실행
 
@@ -174,41 +169,6 @@ const Diagnosis = () => {
               />
               <div className={styles.TextContainer}>
                 <span className={styles.TextBold}>
-                  지난 달 소비액을
-                  <br />
-                  입력해주세요
-                </span>
-              </div>
-              <div className={styles.InputWrapper}>
-                <MoneyInput
-                  children="지난 달 소비액 입력하기"
-                  isInputState={isInputState}
-                  setIsInputState={setIsInputState}
-                  setValue={setConsumeCost}
-                  reset={resetInput}
-                />
-              </div>
-            </div>
-            <div
-              className={styles.ButtonContainer}
-              onClick={handleNextStep}
-              style={{ pointerEvents: isInputState ? "auto" : "none" }}
-            >
-              <PrimaryButton disabled={!isInputState}>다음</PrimaryButton>
-            </div>
-          </div>
-        );
-      case 3:
-        return (
-          <div className={styles.MainArea}>
-            <div className={styles.StartContentContainer}>
-              <img
-                className={styles.StageImg}
-                src={thirdStage}
-                alt="세 번째 단계"
-              />
-              <div className={styles.TextContainer}>
-                <span className={styles.TextBold}>
                   월 평균 저축액을
                   <br />
                   입력해주세요
@@ -227,7 +187,7 @@ const Diagnosis = () => {
             <div
               className={styles.ButtonContainer}
               onClick={() => {
-                setDiagnosisStage(4);
+                setDiagnosisStage(3);
               }}
               style={{ pointerEvents: isInputState ? "auto" : "none" }}
             >
@@ -235,14 +195,14 @@ const Diagnosis = () => {
             </div>
           </div>
         );
-      case 4:
+      case 3:
         return (
           <div className={styles.MainArea}>
             <div className={styles.StartContentContainer}>
               <img
                 className={styles.StageImg}
-                src={forthStage}
-                alt="네 번째 단계"
+                src={thirdStage}
+                alt="세 번째 단계"
               />
               <div className={styles.TextContainer}>
                 <span className={styles.TextBold}>
@@ -261,7 +221,7 @@ const Diagnosis = () => {
             <div
               className={styles.ButtonContainer}
               onClick={() => {
-                setDiagnosisStage(5);
+                setDiagnosisStage(4);
               }}
               style={{ pointerEvents: selectedAge ? "auto" : "none" }}
             >
@@ -269,14 +229,14 @@ const Diagnosis = () => {
             </div>
           </div>
         );
-      case 5:
+      case 4:
         return (
           <div className={styles.MainArea}>
             <div className={styles.StartContentContainer}>
               <img
                 className={styles.StageImg}
-                src={forthStage}
-                alt="네 번째 단계"
+                src={completeStage}
+                alt="완료 단계"
               />
               <div className={styles.TextContainer}>
                 <span className={styles.TextBold}>
@@ -295,7 +255,7 @@ const Diagnosis = () => {
             </div>
           </div>
         );
-      case 6:
+      case 5:
         return (
           <div className={styles.MainArea}>
             <div className={styles.ResultDiagnoseContainer}>
@@ -310,14 +270,14 @@ const Diagnosis = () => {
               </div>
               <div
                 className={styles.ButtonContainer}
-                onClick={() => setDiagnosisStage(8)}
+                onClick={() => setDiagnosisStage(7)}
               >
                 <PrimaryButton>다음</PrimaryButton>
               </div>
             </div>
           </div>
         );
-      case 7:
+      case 6:
         return (
           <div className={styles.MainArea}>
             <div className={styles.ResultDiagnoseContainer}>
@@ -332,41 +292,14 @@ const Diagnosis = () => {
               </div>
               <div
                 className={styles.ButtonContainer}
-                onClick={() => setDiagnosisStage(9)}
+                onClick={() => setDiagnosisStage(7)}
               >
                 <PrimaryButton>다음</PrimaryButton>
               </div>
             </div>
           </div>
         );
-
-      case 8:
-        return (
-          <div className={styles.MainArea}>
-            <div className={styles.StartContentContainer}>
-              <div className={styles.TextContainer}>
-                <span className={styles.TextBold}>
-                  {userName}님의
-                  <br />
-                  적정 소비 금액은?
-                </span>
-              </div>
-            </div>
-            <div className={styles.AverageContainer}>
-              <span className={styles.CostContainer}>
-                주 {goodConsumption.toLocaleString()}
-              </span>
-              <span className={styles.WonText}>원</span>
-            </div>
-            <div
-              className={styles.ButtonContainer}
-              onClick={() => navigate("/")}
-            >
-              <PrimaryButton>확인</PrimaryButton>
-            </div>
-          </div>
-        );
-      case 9:
+      case 7:
         return (
           <div className={styles.MainArea}>
             <div className={styles.StartContentContainer}>

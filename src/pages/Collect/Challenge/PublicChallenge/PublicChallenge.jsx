@@ -7,24 +7,34 @@ import JoinChallenge from "./JoinChallenge";
 import ChallengeCard from "../../../../components/ChallengeCard/ChallengeCard";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
 import Dropdown from "../../../../components/Dropdown/Dropdown";
-import { getRecommendChallenge } from "../../../../apis/challenge/getChallenge";
+import {
+  getOngoingChallenge,
+  getRecommendChallenge,
+  getRecommendFriendChallenge,
+} from "../../../../apis/challenge/getChallenge";
 
 const userId = 1;
 
 const PublicChallenge = ({ allData }) => {
   const navigate = useNavigate();
-  const noJoinChallenge = allData.filter((data) => data.isJoined == false);
   const joinChallenge = allData.filter((data) => data.isJoined == true);
-  const [sortChallenge, setSortChallenge] = useState(noJoinChallenge);
 
-  // 챌린지 추천 상태
+  // 현재 진행중인 챌린지 상태
+  const [ongoingChallenge, setOngoingChallenge] = useState([]);
+  // 챌린지(공개) 추천 상태
   const [recommendChallenges, setRecommendChallenges] = useState([]);
+  // 챌린지(친구) 추천 상태
+  const [recommendFriendChallenges, setRecommendFriendChallenges] = useState(
+    []
+  );
 
   // 정렬 type 관련
   const typeName = ["인기순", "최신순", "종료임박순", "코인순"];
   const [sortType, setSortType] = useState("POPULARITY");
   useEffect(() => {
+    getOngoingChallenge(setOngoingChallenge);
     getRecommendChallenge(sortType, setRecommendChallenges);
+    getRecommendFriendChallenge(setRecommendFriendChallenges);
   }, [sortType]);
 
   return (
@@ -40,7 +50,7 @@ const PublicChallenge = ({ allData }) => {
       />
       <div className={styles.wrapper}>
         <h3>현재 진행중인 챌린지</h3>
-        {joinChallenge.length != 0 ? (
+        {ongoingChallenge.length != 0 ? (
           <div className={styles.joinChallengeWrapper}>
             <div className={styles.joinChallengeMore}>
               <p>
@@ -52,9 +62,9 @@ const PublicChallenge = ({ allData }) => {
               </p>
             </div>
             <div className={styles.joinChallengeContainer}>
-              {joinChallenge.map((item) => (
+              {ongoingChallenge.map((item, index) => (
                 <JoinChallenge
-                  key={item.id}
+                  key={index}
                   item={item}
                   onClick={() =>
                     navigate("/challenge/detail", {
@@ -81,9 +91,27 @@ const PublicChallenge = ({ allData }) => {
         <h3>이런 챌린지는 어떠세요?</h3>
         <Dropdown typeName={typeName} setSortType={setSortType} />
         <div className={styles.publicChallengeWrapper}>
-          {recommendChallenges.map((item) => (
+          {recommendChallenges.map((item, index) => (
             <ChallengeCard
-              key={item.id}
+              key={index}
+              isPublic={true}
+              isRecruit={true}
+              allData={item}
+              onClick={() =>
+                navigate("/challengemodal/challengcard", {
+                  state: { challenge: item },
+                })
+              }
+            />
+          ))}
+        </div>
+        <h3 style={{ marginTop: "40px" }}>친구와 함께 해봐요!</h3>
+        <div className={styles.publicChallengeWrapper}>
+          {recommendFriendChallenges.map((item, index) => (
+            <ChallengeCard
+              key={index}
+              isPublic={false}
+              isRecruit={true}
               allData={item}
               onClick={() =>
                 navigate("/challengemodal/challengcard", {

@@ -1,27 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./DetailChallenge.module.css";
 import Header from "../../../components/Header/Header";
 import { useLocation } from "react-router-dom";
 import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
 import ChallengeProgressBar from "../../../components/ChallengeProgressBar/ChallengeProgressBar";
+import { getOngoingChallengeDetialInfo } from "../../../apis/challenge/getChallenge";
+
+// 이부분은 서버쪽에서 추가해줘야 할 듯
+const challengeId = 2;
 
 const DetailChallenge = () => {
   const pageName = "모으기";
+  // 사용자의 챌린지 진행정도
+  const [usedRate, setUsedRate] = useState(0);
+  // 다른 멤버 정보
+  const [otherMembers, setOtherMembers] = useState([]);
+  useEffect(() => {
+    getOngoingChallengeDetialInfo(challengeId, setUsedRate, setOtherMembers);
+  }, []);
   const location = useLocation();
   const selectedChallenge = location.state?.selectedChallenge;
 
   return (
     <div className={styles.DetailPage}>
       <Header pageName={pageName} collectBack={true} />
+
       <div className={styles.wrapper}>
         <section>
           <h3>현재 진행중인 챌린지</h3>
-          <ChallengeCard allData={selectedChallenge} isDetailChallenge={true} />
+          <ChallengeCard
+            allData={selectedChallenge}
+            isDetailChallenge={true}
+            usedRate={usedRate}
+          />
         </section>
         <section>
           <h3>함께하는 챌린저</h3>
-          {selectedChallenge.with.map((user) => (
-            <ChallengeProgressBar key={user.id} user={user} />
+          {otherMembers.map((user, index) => (
+            <ChallengeProgressBar key={index} user={user} />
           ))}
         </section>
       </div>
