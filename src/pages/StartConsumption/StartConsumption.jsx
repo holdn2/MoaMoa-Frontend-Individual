@@ -1,5 +1,5 @@
 // 나의 소비 시작하기 페이지 구현 예정
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import styles from "./StartConsumption.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
@@ -7,20 +7,30 @@ import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import { useNavigate } from "react-router-dom";
 import dustSunglass from "../../assets/CharacterImgs/dustSunglass.svg";
 import SelectPeriod from "../../components/SelectPeriod/SelectPeriod";
+import {
+  getRecentTargetPrice,
+  postConsStart,
+} from "../../apis/consumptionStart";
 
 const StartConsumption = () => {
   const pageName = "나의 소비 시작하기";
-  const [modalOpen, setModalOpen] = useState(false);
   const [isInputState, setIsInputState] = useState(false);
-  const navigate = useNavigate();
   const [isCompleteInput, setIsCompleteInput] = useState(false);
-  // 목표 금액
+  const [startFormatDate, setStartFormatDate] = useState(null);
+  const [endFormatDate, setEndFormatDate] = useState(null);
   const [targetAmount, setTargetAmount] = useState(0);
-
-  const handleStartComsumption = () => {
-    // 입력한 데이터 전송 로직 추가 예정
+  const [recentTarget, setRecentTarget] = useState(0);
+  const prize =
+    ((new Date(startFormatDate) - new Date(endFormatDate)) /
+      (1000 * 60 * 60 * 24)) *
+    10;
+  const navigate = useNavigate();
+  useEffect(() => {
+    getRecentTargetPrice(setRecentTarget);
+  }, []);
+  const handleStartConsumption = () => {
     setIsCompleteInput(true);
-    console.log(targetAmount);
+    postConsStart(prize, startFormatDate, endFormatDate, targetAmount);
   };
 
   return (
@@ -31,13 +41,17 @@ const StartConsumption = () => {
           <div className={styles.contentWrapper}>
             <div className={styles.descWrapper}>
               <h3>나의 소비 시작</h3>
-              <p>일주일동안 사용하실 금액을 입력해주세요 !</p>
+              <p>소비 기간 동안 사용하실 금액을 입력해주세요 !</p>
               <p>
                 {/*span 부분 데이터 받아오기 */}
-                지난주에는 <span>10만원</span>을 사용했어요 !
+                지난 회차에는 <span>{recentTarget.recentTargetPrice}원</span>을
+                사용했어요 !
               </p>
             </div>
-            <SelectPeriod />
+            <SelectPeriod
+              setStartFormatDate={setStartFormatDate}
+              setEndFormatDate={setEndFormatDate}
+            />
             <div className={styles.inputWrapper}>
               <p>목표 금액</p>
               <MoneyInput
@@ -48,10 +62,9 @@ const StartConsumption = () => {
               />
             </div>
           </div>
-          {modalOpen && <SelectPeriod setModalOpen={setModalOpen} />}
           <div
             className={styles.buttonWrapper}
-            onClick={handleStartComsumption}
+            onClick={handleStartConsumption}
             style={{ pointerEvents: isInputState ? "auto" : "none" }}
           >
             <PrimaryButton type="button" size="xl" disabled={!isInputState}>
