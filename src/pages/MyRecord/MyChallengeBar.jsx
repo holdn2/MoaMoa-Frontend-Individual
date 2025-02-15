@@ -52,18 +52,26 @@ const CircleWrapper = styled.div`
   height: 125px;
 `;
 
-const MyChallengeBar = ({ children, isConsumption }) => {
-  const progressPercent = 90;
+const MyChallengeBar = ({
+  children,
+  isConsumption,
+  successRate,
+  top,
+  totalTries,
+  totalSucceed,
+}) => {
   const navigate = useNavigate();
   return (
     <Wrapper>
       <Title>{children}</Title>
       <ContentWrapper>
         <CircleWrapper>
-          <ProgressSemiCircle percentage={progressPercent} />
+          <ProgressSemiCircle percentage={successRate} />
         </CircleWrapper>
-        <SubDesc>상위 nn%</SubDesc>
-        <Desc>전체 20회 중 18회 성공 !</Desc>
+        <SubDesc>상위 {top}%</SubDesc>
+        <Desc>
+          전체 {totalTries}회 중 {totalSucceed}회 성공 !
+        </Desc>
         {isConsumption ? (
           <div style={{ marginTop: "36px" }}>
             <PrimaryButton

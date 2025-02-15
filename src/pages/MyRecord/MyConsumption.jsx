@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MyConsumption.module.css";
 import question from "../../assets/Content/question.svg";
 import DescModal from "../InputConsumption/DescModal";
@@ -6,67 +6,49 @@ import MyChallengeBar from "./MyChallengeBar";
 import MyConsumptionChart from "./MyConsumptionChart";
 import descChat from "../../assets/Icon/descChat.svg";
 import line from "../../assets/Icon/line.svg";
-
-const dummyData = [
-  {
-    category: "고정비",
-    price: 30000,
-  },
-  {
-    category: "꾸밈비",
-    price: 150000,
-  },
-  {
-    category: "활동비",
-    price: 150000,
-  },
-  {
-    category: "생활비",
-    price: 300000,
-  },
-  {
-    category: "기여비",
-    price: 200000,
-  },
-  {
-    category: "기타",
-    price: 30000,
-  },
-];
-
-const chartData = [
-  {
-    name: "11-1",
-    target: 150000,
-    cons: 130000,
-  },
-  {
-    name: "11-2",
-    target: 70000,
-    cons: 60000,
-  },
-  {
-    name: "11-3",
-    target: 100000,
-    cons: 80000,
-  },
-  {
-    name: "11-4",
-    target: 50000,
-    cons: 55000,
-  },
-];
+import { getMyConsumptionReport } from "../../apis/myReport";
 
 const MyConsumption = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(0);
   const btnContent = ["1주", "2주", "1개월", "6개월", "1년"];
-  let totalPrice = dummyData.reduce((acc, cur) => acc + cur.price, 0);
+
+  // 나의 소비 관련 api
+  const [chartData, setChartData] = useState([]);
+  const [consData, setConsData] = useState([]);
+  const [challengeData, setChallengeData] = useState({
+    totalEarned: 0,
+    successRate: 0,
+    top: 0,
+    totalTries: 0,
+    totalSucceed: 0,
+    challengeRecords: [],
+  });
+  useEffect(() => {
+    getMyConsumptionReport(setChallengeData, setChartData, setConsData);
+  }, []);
+
+  // 카테고리별 소비 데이터
+  const categoryCons = [
+    { title: "고정비", value: consData.fixed },
+    { title: "꾸밈비", value: consData.beauty },
+    { title: "활동비", value: consData.activity },
+    { title: "생활비", value: consData.living },
+    { title: "기여비", value: consData.celebration },
+    { title: "기타", value: consData.etc },
+  ];
 
   return (
     <div className={styles.wrapper}>
       {/*나의 소비 성공 확률은? */}
-      <MyChallengeBar children="나의 소비 성공 확률은?" isConsumption={true} />
+      <MyChallengeBar
+        children="나의 소비 성공 확률은?"
+        isConsumption={true}
+        successRate={challengeData.successRate * 100}
+        top={challengeData.top}
+        totalTries={challengeData.totalTries}
+        totalSucceed={challengeData.totalSucceed}
+      />
       <div className={styles.chartWrapper}>
         <div className={styles.chartTitleWrapper}>
           <span>나의 소비 변화는 ?</span>
@@ -115,15 +97,15 @@ const MyConsumption = () => {
           </div>
           <p className={styles.totalPrice}>
             <span>총</span>
-            <span style={{ fontSize: "32px" }}>{totalPrice}</span>
+            <span style={{ fontSize: "32px" }}>{consData.total}</span>
             <span>원</span>
           </p>
           <div className={styles.categoryCons}>
-            {dummyData.map((item) => (
-              <div key={item.category} className={styles.category}>
-                <div className={styles.categoryTitle}>{item.category}</div>
+            {categoryCons.map((category, index) => (
+              <div key={index} className={styles.category}>
+                <div className={styles.categoryTitle}>{category.title}</div>
                 <p className={styles.categoryPrice}>
-                  <span style={{ fontSize: "18px" }}>{item.price}</span> 원
+                  <span style={{ fontSize: "18px" }}>{category.value}</span> 원
                 </p>
               </div>
             ))}

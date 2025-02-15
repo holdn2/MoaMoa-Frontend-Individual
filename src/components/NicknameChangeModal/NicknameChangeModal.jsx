@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./NicknameChangeModal.module.css";
 import PrimaryButton from "../Button/PrimaryButton";
 import SecondaryButton from "../Button/SecondaryButton";
+import { checkAndChangeNickname } from "../../apis/mypage";
 
 const dummyData = [
   {
@@ -19,18 +20,23 @@ const dummyData = [
 ];
 
 // 닉네임 변경 모달 컴포넌트
-const NicknameChangeModal = ({ userName, dustImg, onClose, setUserName }) => {
+const NicknameChangeModal = ({
+  userName,
+  dustImg,
+  onClose,
+  onNicknameChange,
+}) => {
   const [newNickname, setNewNickname] = useState(userName);
   const [modalState, setModalState] = useState(1); //modal의 상태를 변경하면서 보이는 부분 다르게 하기
-  const checkNickname = () => {
-    // 이미 존재하는 닉네임인지 some 사용해서 확인(조건을 만족하는 요소 존재하는지 불리언으로 확인)
-    const nicknameExists = dummyData.some(
-      (value) => value.nickname === newNickname
-    );
-    if (nicknameExists) {
+  const [nicknameDuplicated, setNicknameDuplicated] = useState(false);
+  const changeNickname = () => {
+    // 닉네임 중복 체크해서 닉네임 변경하는 api
+    checkAndChangeNickname(newNickname, setNicknameDuplicated);
+    if (nicknameDuplicated) {
       setModalState(4);
     } else {
-      setModalState(2);
+      setModalState(3);
+      onNicknameChange(newNickname); // 닉네임 변경 시 바로 반영되도록 함
     }
   };
 
@@ -38,10 +44,7 @@ const NicknameChangeModal = ({ userName, dustImg, onClose, setUserName }) => {
     switch (modalState) {
       case 1:
         return (
-          <div
-            className={styles.ModalContent}
-            // 모달창 내부 클릭 시 모달 닫히지 않게
-          >
+          <div className={styles.ModalContent}>
             <img src={dustImg} alt="먼지" className={styles.ModalDustImg} />
             <input
               className={styles.InputNewNickname}
@@ -54,7 +57,7 @@ const NicknameChangeModal = ({ userName, dustImg, onClose, setUserName }) => {
                 <PrimaryButton size="lg">확인</PrimaryButton>
               </div>
             ) : (
-              <div onClick={checkNickname}>
+              <div onClick={() => setModalState(2)}>
                 <PrimaryButton size="lg">확인</PrimaryButton>
               </div>
             )}
@@ -74,12 +77,7 @@ const NicknameChangeModal = ({ userName, dustImg, onClose, setUserName }) => {
               변경됩니다.
             </span>
             <div className={styles.ConfirmButtonContainer}>
-              <div
-                onClick={() => {
-                  setUserName(newNickname);
-                  setModalState(3);
-                }}
-              >
+              <div onClick={changeNickname}>
                 <PrimaryButton size="sm">네</PrimaryButton>
               </div>
               <div onClick={onClose}>

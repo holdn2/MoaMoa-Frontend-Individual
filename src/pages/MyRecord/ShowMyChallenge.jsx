@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DescModal from "../InputConsumption/DescModal";
 import MyChallengeRecord from "./MyChallengeRecord";
 import styles from "./ShowMyChallenge.module.css";
 import question from "../../assets/Content/question.svg";
-import arrowUp from "../../assets/Navigation/arrowUp.svg";
-import arrowDown from "../../assets/Navigation/arrowDown.svg";
 import Header from "../../components/Header/Header";
 import Dropdown from "../../components/Dropdown/Dropdown";
+import { getMyConsumptionCheck } from "../../apis/myReport";
 
 const ShowMyChallenge = () => {
-  const [sortChallenge, setSortChallenge] = useState(dummyData);
-  const sortType = ["최신순", "오래된 순", "코인순"];
+  const [sortChallenge, setSortChallenge] = useState([]);
+  const typeName = ["최신순", "오래된 순", "코인순"];
+  const [sortType, setSortType] = useState("LATEST");
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    getMyConsumptionCheck(sortType, setSortChallenge);
+  }, [sortType]);
 
   return (
     <div className={styles.PageContainer}>
@@ -27,16 +31,12 @@ const ShowMyChallenge = () => {
         </div>
       </div>
       <div style={{ marginRight: "20px" }}>
-        <Dropdown
-          sortArr={sortChallenge}
-          setSortArr={setSortChallenge}
-          sortType={sortType}
-        />
+        <Dropdown typeName={typeName} setSortType={setSortType} />
       </div>
       <div className={styles.wrapper}>
         <div className={styles.challengeRecordWrapper}>
-          {sortChallenge.map((item) => (
-            <MyChallengeRecord key={item.id} item={item} isConsData={true} />
+          {sortChallenge.map((item, index) => (
+            <MyChallengeRecord key={index} item={item} isConsData={true} />
           ))}
         </div>
         {modalOpen && (
@@ -48,76 +48,3 @@ const ShowMyChallenge = () => {
 };
 
 export default ShowMyChallenge;
-
-const dummyData = [
-  {
-    id: 1,
-    title: "1회차",
-    cons: 60000,
-    target: 70000,
-    startDate: "2025-11-10",
-    endDate: "2025-11-18",
-    coin: 200,
-    isSuccessed: true,
-  },
-  {
-    id: 2,
-    title: "2회차",
-    cons: 100000,
-    target: 70000,
-    startDate: "2025-12-10",
-    endDate: "2025-12-18",
-    coin: 300,
-    isSuccessed: false,
-  },
-  {
-    id: 3,
-    title: "3회차",
-    cons: 50000,
-    target: 45000,
-    startDate: "2024-11-10",
-    endDate: "2024-11-18",
-    coin: 500,
-    isSuccessed: false,
-  },
-  {
-    id: 4,
-    title: "4회차",
-    cons: 60000,
-    target: 100000,
-    startDate: "2025-11-10",
-    endDate: "2025-11-18",
-    coin: 400,
-    isSuccessed: true,
-  },
-  {
-    id: 5,
-    title: "2회차",
-    cons: 100000,
-    target: 70000,
-    startDate: "2025-12-10",
-    endDate: "2025-12-18",
-    coin: 300,
-    isSuccessed: false,
-  },
-  {
-    id: 6,
-    title: "3회차",
-    cons: 50000,
-    target: 45000,
-    startDate: "2024-11-10",
-    endDate: "2024-11-18",
-    coin: 500,
-    isSuccessed: false,
-  },
-  {
-    id: 7,
-    title: "4회차",
-    cons: 60000,
-    target: 100000,
-    startDate: "2025-11-10",
-    endDate: "2025-11-18",
-    coin: 400,
-    isSuccessed: true,
-  },
-];

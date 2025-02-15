@@ -1,3 +1,4 @@
+// 채팅내역 및 실시간 채팅 관련 api
 import axios from "axios";
 import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";

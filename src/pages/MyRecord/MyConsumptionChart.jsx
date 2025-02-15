@@ -2,15 +2,15 @@ import React from "react";
 import { Bar, ComposedChart, Line, XAxis, YAxis } from "recharts";
 
 const MyConsumptionChart = ({ data }) => {
-  const minValue = Math.min(...data.map((item) => item.cons));
-  const maxValue = Math.max(...data.map((item) => item.cons));
+  const minValue = Math.min(...data.map((item) => item.totalSpent));
+  const maxValue = Math.max(...data.map((item) => item.totalSpent));
   const padding = (maxValue - minValue) * 0.1;
   const yAxisMax = maxValue + padding;
 
   // subText와 color를 함께 반환하는 함수로 수정
   const generateSubText = (item) => {
     if (!item) return { subText: "", color: "#0033FF" };
-    const subText = ((item.cons / item.target) * 100).toFixed(1);
+    const subText = ((item.totalSpent / item.targetAmount) * 100).toFixed(1);
     const color = subText > 100 ? "#FF0000" : "#0033FF";
     return { subText: `${subText}%`, color };
   };
@@ -19,7 +19,7 @@ const MyConsumptionChart = ({ data }) => {
     <div>
       <ComposedChart width={313} height={192} data={data}>
         <XAxis
-          dataKey="name" // x축에 들어갈 내용
+          dataKey="range" // x축에 들어갈 내용
           axisLine={false} // 축 선 제거
           tickLine={false} // 눈금 선 제거
           tick={{
@@ -55,12 +55,12 @@ const MyConsumptionChart = ({ data }) => {
         />
         <YAxis domain={[0, yAxisMax]} hide />
         <Bar
-          dataKey="target"
+          dataKey="targetAmount"
           barSize={41}
           fill="#61D8FF"
           radius={[12, 12, 0, 0]}
         />
-        <Line type="monotone" dataKey="cons" stroke="#005FA4" />
+        <Line type="monotone" dataKey="totalSpent" stroke="#005FA4" />
       </ComposedChart>
     </div>
   );
