@@ -11,7 +11,6 @@ import firstStage from "../../assets/StageExpression/firstStage.svg";
 import secondStage from "../../assets/StageExpression/secondStage.svg";
 import thirdStage from "../../assets/StageExpression/thirdStage.svg";
 import completeStage from "../../assets/StageExpression/completeStage.svg";
-import forthStage from "../../assets/StageExpression/forthStage.svg";
 import timeCircle from "../../assets/StageExpression/timeCircle.svg";
 import dustSad from "../../assets/CharacterImgs/dustSad.svg";
 import dustSunglass from "../../assets/CharacterImgs/dustSunglass.svg";
@@ -35,7 +34,7 @@ const Diagnosis = () => {
   // 닉네임
   const userName = "모아모아 030";
   // 계산결과 과소비하고 있는지
-  const [isOverconsumption, setIsOverconsumption] = useState(false);
+  // const [isOverconsumption, setIsOverconsumption] = useState(false);
   // user가 입력한 내용을 바탕으로 과소비 진단 시 필요한 값들
   const [incomeCost, setIncomeCost] = useState(0); // 소득액
   const [savingCost, setSavingCost] = useState(0); // 저축액
@@ -76,7 +75,7 @@ const Diagnosis = () => {
               : (setAverageConsumption(200000), setDiagnosisStage(6));
             break;
         }
-      }, 2000); // 2초 후 실행
+      }, 3000); // 2초 후 실행
 
       return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 정리
     }
