@@ -5,12 +5,12 @@ import styles from "./StartConsumption.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import MoneyInput from "../../components/MoneyInput/MoneyInput";
 import { useNavigate } from "react-router-dom";
-import dustSunglass from "../../assets/CharacterImgs/dustSunglass.svg";
 import SelectPeriod from "../../components/SelectPeriod/SelectPeriod";
 import {
   getRecentTargetPrice,
   postConsStart,
 } from "../../apis/consumptionStart";
+import FinishStartCons from "./FinishStartCons";
 
 const StartConsumption = () => {
   const pageName = "나의 소비 시작하기";
@@ -21,10 +21,9 @@ const StartConsumption = () => {
   const [targetAmount, setTargetAmount] = useState(0);
   const [recentTarget, setRecentTarget] = useState(0);
   const prize =
-    ((new Date(startFormatDate) - new Date(endFormatDate)) /
+    ((new Date(endFormatDate) - new Date(startFormatDate)) /
       (1000 * 60 * 60 * 24)) *
     10;
-  const navigate = useNavigate();
   useEffect(() => {
     getRecentTargetPrice(setRecentTarget);
   }, []);
@@ -52,6 +51,9 @@ const StartConsumption = () => {
               setStartFormatDate={setStartFormatDate}
               setEndFormatDate={setEndFormatDate}
             />
+            <p className={styles.selectPeriodInfo}>
+              *내가 원하는 시작일/종료일을 직접 선택해 보세요!
+            </p>
             <div className={styles.inputWrapper}>
               <p>목표 금액</p>
               <MoneyInput
@@ -73,40 +75,12 @@ const StartConsumption = () => {
           </div>
         </>
       ) : (
-        <>
-          <div className={styles.contentWrapper}>
-            <div className={styles.descWrapper}>
-              <h3>나의 소비 설정 완료 !</h3>
-              <p>
-                나의 소비 설정이 완료되었어요
-                <br />
-                이번에도 모아모아와 함께 열심히 절약해봐요 !!
-              </p>
-            </div>
-            <img
-              src={dustSunglass}
-              alt="먼지 이미지"
-              style={{ marginTop: "40px" }}
-            />
-            <div className={styles.GoalInfoContainer}>
-              {data.map((item) => (
-                <div key={item.id} className={styles.EachInfoContainer}>
-                  <span className={styles.InfoTitle}>{item.title}</span>
-                  <span className={styles.InfoText}>{item.content}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div
-            className={styles.buttonWrapper}
-            onClick={() => navigate("/")}
-            style={{ pointerEvents: isInputState ? "auto" : "none" }}
-          >
-            <PrimaryButton type="button" size="xl" disabled={!isInputState}>
-              나의 소비 시작하기
-            </PrimaryButton>
-          </div>
-        </>
+        <FinishStartCons
+          prize={prize}
+          startFormatDate={startFormatDate}
+          endFormatDate={endFormatDate}
+          targetAmount={targetAmount}
+        />
       )}
     </div>
   );
