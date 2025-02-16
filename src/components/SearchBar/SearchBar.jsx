@@ -19,7 +19,7 @@ const SearchBar = ({
     setIsInputText(searchText);
     const filtering = allData.filter(
       (item) =>
-        (isChallenge ? item.challengeName : item.userName)
+        (isChallenge ? item.challengeName || item.title : item.userName)
           .toLowerCase()
           .includes(searchText) // 일부 일치 검색
     );

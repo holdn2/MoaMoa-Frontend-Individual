@@ -167,7 +167,9 @@ const ChattingRoom = () => {
               <div
                 className={styles.EachMenuContainer}
                 onClick={() =>
-                  navigate(`/chatroom/${roomInfo.id}/pastchallenge`)
+                  navigate(`/chatroom/${roomInfo.id}/pastchallenge`, {
+                    state: { roomId: roomInfo.id },
+                  })
                 }
               >
                 <img src={pastChallenge} alt="지난 챌린지" />

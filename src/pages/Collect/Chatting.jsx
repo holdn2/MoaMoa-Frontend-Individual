@@ -38,9 +38,9 @@ const Chatting = () => {
     <div className={styles.TotalChatContainer}>
       {chatData.length > 0 ? (
         <div style={{ paddingBottom: "40px" }}>
-          {chatData.map((item) => (
+          {chatData.map((item, index) => (
             <div
-              key={item.id}
+              key={index}
               className={styles.EachChatContainer}
               onClick={() => {
                 const selectedChatroom = chatData.find(
