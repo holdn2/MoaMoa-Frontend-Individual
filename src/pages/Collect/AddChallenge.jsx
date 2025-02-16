@@ -7,10 +7,19 @@ import PrimaryButton from "../../components/Button/PrimaryButton";
 import { useForm } from "react-hook-form";
 import { addNewChallenge } from "../../apis/challenge/addChallenge";
 import { useNavigate } from "react-router-dom";
+import { getUserInfo } from "../../apis/mypage";
 
 const AddChallenge = () => {
   const pageName = "챌린지 만들기";
   const navigate = useNavigate();
+  // 보유코인 정보를 위한 유저정보 api가져오기
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    getUserInfo(setUserInfo);
+  }, []);
+  // 보유코인이 배틀코인보다 많은지
+  const [availableCoin, setAvailableCoin] = useState(false);
+
   const {
     register,
     watch,
@@ -31,14 +40,35 @@ const AddChallenge = () => {
       category: "",
     },
   });
+
+  // 배틀코인이 괜찮은지 검사
+  useEffect(() => {
+    console.log("유저코인:", userInfo.coin);
+    const userCoin = userInfo.coin || 0; // userInfo.coin이 undefined일 경우 대비
+    const battleCoin = Number(watch("coin")) || 0;
+    if (battleCoin > 0 && battleCoin <= userCoin) {
+      setAvailableCoin(true);
+    } else {
+      setAvailableCoin(false);
+    }
+  }, [watch("coin"), userInfo.coin]);
+
   const [challengeClicked, setChallengeClicked] = useState("");
   const [peopleChecked, setPeopleChecked] = useState(false);
   const [moneyChecked, setMoneyChecked] = useState(false);
 
   const people = watch("people", 1);
   const disabled =
-    !watch("title") || !watch("content") || !watch("coin") || isSubmitting;
+    !watch("title") ||
+    !watch("content") ||
+    !watch("coin") ||
+    isSubmitting ||
+    !availableCoin || // 배틀코인이 보유코인보다 많거나 0일때 비활성화
+    (watch("startDate") && new Date(watch("startDate")) <= new Date()); // 시작날짜가 현재와 같거나 이전일때 비활성화
 
+  useEffect(() => {
+    console.log("비활성화 상태:", disabled);
+  }, [disabled]);
   // 카테고리 클릭 시 적용되게 함.
   useEffect(() => {
     setValue("category", challengeClicked, {
@@ -141,8 +171,12 @@ const AddChallenge = () => {
         <SelectPeriod
           setStartFormatDate={setStartFormatDate}
           setEndFormatDate={setEndFormatDate}
+          isChallenge={true}
         />
-        <div className={styles.inputContainer}>
+        <span className={styles.warningText} style={{ marginTop: "5px" }}>
+          * 현재 시간 이후 부터 설정 가능합니다.
+        </span>
+        <div className={styles.inputContainer} style={{ marginTop: "20px" }}>
           <p className={styles.inputTitle}>챌린지 목표 금액</p>
           <label className={styles.inputShort}>
             <input
@@ -172,6 +206,9 @@ const AddChallenge = () => {
             />
             코인
           </label>
+          <span className={styles.warningText} style={{ marginTop: "-5px" }}>
+            * 0 보다 많고 보유 코인보다 적어야 합니다.
+          </span>
         </div>
         <div className={styles.inputContainer}>
           <p className={styles.inputTitle}>챌린지 공개</p>

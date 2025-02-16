@@ -8,7 +8,11 @@ const currentMonth = String(date.getMonth() + 1).padStart(2, "0");
 const currentDay = String(date.getDate()).padStart(2, "0");
 const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
 
-const SelectPeriod = ({ setStartFormatDate, setEndFormatDate }) => {
+const SelectPeriod = ({
+  setStartFormatDate,
+  setEndFormatDate,
+  isChallenge,
+}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [startValue, setStartValue] = useState({
     year: currentYear,
@@ -34,7 +38,7 @@ const SelectPeriod = ({ setStartFormatDate, setEndFormatDate }) => {
 
   return (
     <div className={styles.inputWrapper}>
-      <p>나의 소비 기간</p>
+      {isChallenge ? <p>챌린지 기간</p> : <p>나의 소비 기간</p>}
       <button
         type="button"
         className={styles.dayButton}
