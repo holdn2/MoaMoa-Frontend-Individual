@@ -4,6 +4,7 @@ import styles from "./ChallengeCard.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import PrimaryButton from "../Button/PrimaryButton";
+import { getUserInfo } from "../../apis/mypage";
 
 // 날짜 형식 맞추기
 const formatDate = (isoDate) => {
@@ -23,7 +24,6 @@ const formatDate2 = (isoDate) => {
 };
 
 const ChallengeCard = ({
-  isPublic,
   isRecruit,
   allData,
   onClick,
@@ -31,6 +31,12 @@ const ChallengeCard = ({
   isButton,
   usedRate,
 }) => {
+  // 보유 코인과 챌린지 참여에 필요한 코인 비교를 위해 회원정보 조회
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    getUserInfo(setUserInfo);
+  }, []);
+
   const [currentDate, setCurrentDate] = useState(new Date());
   const navigate = useNavigate();
   const startDatetest = formatDate(allData.startDate);
@@ -59,7 +65,7 @@ const ChallengeCard = ({
   return (
     <div className={styles.wrapper} onClick={onClick}>
       <div className={styles.public}>
-        <span>{isPublic ? "전체" : "친구"}</span>
+        <span>{allData.publicChallenge ? "전체" : "친구"}</span>
       </div>
       <section className={styles.contentWrapper}>
         <p className={styles.challengeName}>{allData.title}</p>
@@ -77,21 +83,31 @@ const ChallengeCard = ({
         <p className={styles.people}>{allData.participantCount}명 참여 중</p>
       </section>
       {isButton ? (
-        <PrimaryButton
-          size="challengeCard"
-          children="챌린지 참여하기"
-          type="button"
-          onClick={() =>
-            navigate("/challengemodal/challengemodalContent", {
-              state: {
-                successDate: successDate,
-                coin: allData.coin,
-                name: allData.challengeName,
-                type: "join",
-              },
-            })
-          }
-        />
+        allData.battleCoin > userInfo.coin ? (
+          <PrimaryButton
+            size="challengeCard"
+            children="보유코인 부족"
+            disabled={true}
+          />
+        ) : (
+          <PrimaryButton
+            size="challengeCard"
+            children="챌린지 참여하기"
+            type="button"
+            onClick={() =>
+              navigate("/challengemodal/challengemodalContent", {
+                state: {
+                  allData: allData,
+                  successDate: successDate,
+                  challengeId: allData.challengeId,
+                  coin: allData.coin,
+                  name: allData.challengeName,
+                  type: "join",
+                },
+              })
+            }
+          />
+        )
       ) : isRecruit ? (
         <div className={styles.deadline}>
           <span>
@@ -117,8 +133,9 @@ const ChallengeCard = ({
             to={"/challengemodal/challengemodalContent"}
             state={{
               successDate: successDate,
-              coin: allData.coin,
-              name: allData.challengeName,
+              challengeId: allData.challengeId,
+              coin: allData.battleCoin,
+              name: allData.title,
               type: "stop",
             }}
             className={styles.stopChallengeLink}

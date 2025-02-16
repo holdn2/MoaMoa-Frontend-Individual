@@ -61,7 +61,7 @@ export const getOngoingChallenge = async (setOngoingChallenge) => {
 };
 
 // 현재 진행중인 챌린지, 디테일하게 조회, 함께하는 챌린저 조회 api
-export const getOngoingChallengeDetialInfo = async (
+export const getOngoingChallengeDetailInfo = async (
   challengeId,
   setUsedRate,
   setOtherMembers

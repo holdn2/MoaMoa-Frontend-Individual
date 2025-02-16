@@ -10,7 +10,6 @@ import Dropdown from "../../../../components/Dropdown/Dropdown";
 import {
   getOngoingChallenge,
   getRecommendChallenge,
-  // getRecommendFriendChallenge,
 } from "../../../../apis/challenge/getChallenge";
 
 const PublicChallenge = () => {
@@ -20,10 +19,6 @@ const PublicChallenge = () => {
   const [ongoingChallenge, setOngoingChallenge] = useState([]);
   // 챌린지(공개) 추천 상태
   const [recommendChallenges, setRecommendChallenges] = useState([]);
-  // 챌린지(친구) 추천 상태
-  const [recommendFriendChallenges, setRecommendFriendChallenges] = useState(
-    []
-  );
 
   // 정렬 type 관련
   const typeName = ["인기순", "최신순", "종료임박순", "코인순"];
@@ -31,7 +26,6 @@ const PublicChallenge = () => {
   useEffect(() => {
     getOngoingChallenge(setOngoingChallenge);
     getRecommendChallenge(sortType, setRecommendChallenges);
-    // getRecommendFriendChallenge(setRecommendFriendChallenges);
   }, [sortType]);
 
   return (
@@ -74,50 +68,41 @@ const PublicChallenge = () => {
           </div>
         ) : (
           <div className={styles.joinChallengeWrapper}>
-            <p className={styles.noJoinChallenge}>
+            <p className={styles.noJoinChallenge} style={{ marginTop: "20px" }}>
               현재 진행중인 챌린지가 없어요
               <br />
               직접 챌린지를 만들고 시작해보세요!
             </p>
-            <Link to={"/challenge"} className={styles.noJoinChallengeLink}>
+            <Link
+              to={"/challenge"}
+              className={styles.noJoinChallengeLink}
+              style={{ marginBottom: "20px" }}
+            >
               챌린지 만들러 가기
             </Link>
           </div>
         )}
+        {recommendChallenges.length > 0 && (
+          <>
+            <h3>이런 챌린지는 어떠세요?</h3>
+            <Dropdown typeName={typeName} setSortType={setSortType} />
+            <div className={styles.publicChallengeWrapper}>
+              {recommendChallenges.map((item, index) => (
+                <ChallengeCard
+                  key={index}
+                  isRecruit={true}
+                  allData={item}
+                  onClick={() =>
+                    navigate("/challengemodal/challengcard", {
+                      state: { challenge: item },
+                    })
+                  }
+                />
+              ))}
+            </div>
+          </>
+        )}
 
-        <h3>이런 챌린지는 어떠세요?</h3>
-        <Dropdown typeName={typeName} setSortType={setSortType} />
-        <div className={styles.publicChallengeWrapper}>
-          {recommendChallenges.map((item, index) => (
-            <ChallengeCard
-              key={index}
-              isPublic={true}
-              isRecruit={true}
-              allData={item}
-              onClick={() =>
-                navigate("/challengemodal/challengcard", {
-                  state: { challenge: item },
-                })
-              }
-            />
-          ))}
-        </div>
-        {/* <h3 style={{ marginTop: "40px" }}>친구와 함께 해봐요!</h3>
-        <div className={styles.publicChallengeWrapper}>
-          {recommendFriendChallenges.map((item, index) => (
-            <ChallengeCard
-              key={index}
-              isPublic={false}
-              isRecruit={true}
-              allData={item}
-              onClick={() =>
-                navigate("/challengemodal/challengcard", {
-                  state: { challenge: item },
-                })
-              }
-            />
-          ))}
-        </div> */}
         <img
           onClick={() => navigate("/challenge")}
           src={chatPlusBtn}
