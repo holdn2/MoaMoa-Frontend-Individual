@@ -130,9 +130,9 @@ const Header = ({
       default:
         return (
           // navigate(-1) : 클릭 시 바로 직전 페이지로 이동
-          <button className={styles.GoBackButton} onClick={() => navigate(-1)}>
+          <div className={styles.GoBackButton} onClick={() => navigate(-1)}>
             <img src={arrowLeftBig} alt="뒤로가기" />
-          </button>
+          </div>
         );
     }
   };
