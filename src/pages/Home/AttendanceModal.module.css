@@ -11,10 +11,15 @@
 }
 .AttendanceContainer {
   display: flex;
+  width: 288px;
+  height: 313px;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 14px;
-  margin-bottom: 70px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: var(--Grey-70, #f1f1f1);
 }
 .AttendanceContainer:focus {
   outline: none;
@@ -26,14 +31,10 @@
 }
 .AttendanceContent {
   display: flex;
-  width: 335px;
-  height: 195px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 14px;
-  border-radius: 16px;
-  background: #f1f1f1;
 }
 .AttendanceTitle {
   color: #2b2b2b;
@@ -55,15 +56,5 @@
   font-weight: 600;
   line-height: normal;
   margin-bottom: 14px;
-}
-.LevelUpContent {
-  display: flex;
-  width: 335px;
-  height: 219px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  border-radius: 16px;
-  background: #f1f1f1;
+  margin: 0;
 }

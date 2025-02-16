@@ -1,6 +1,6 @@
 import React from "react";
 import { joinChallenge } from "../../../../apis/challenge/joinChallenge";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import dustCrownMoney from "../../../../assets/CharacterImgs/dustCrownMoney.svg";
 import PrimaryButton from "../../../../components/Button/PrimaryButton";
 import styles from "./ChallengeContentModal.module.css";
@@ -8,9 +8,12 @@ import styles from "./ChallengeContentModal.module.css";
 const ChallengeJoinModal = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { name, challengeId } = location.state;
+  const { challengeId, name } = location.state;
+  console.log(name, challengeId);
+  console.log(location.state); // 확인용 콘솔 출력
+
   return (
-    <div>
+    <div className={styles.modalWrapper}>
       <div className={styles.imgContainer}>
         <img src={dustCrownMoney} alt="왕관 쓴 먼지 캐릭터" />
       </div>
@@ -23,9 +26,14 @@ const ChallengeJoinModal = () => {
           navigate("/collect");
         }}
       >
-        <PrimaryButton type="button" size="lg">
-          챌린지로 이동하기
-        </PrimaryButton>
+        <Link
+          to={`/challenge/detail/${challengeId}`}
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <PrimaryButton type="button" size="lg">
+            챌린지로 이동하기
+          </PrimaryButton>
+        </Link>
       </div>
     </div>
   );

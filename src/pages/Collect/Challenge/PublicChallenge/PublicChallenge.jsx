@@ -46,16 +46,14 @@ const PublicChallenge = () => {
         {ongoingChallenge.length != 0 ? (
           <div className={styles.joinChallengeWrapper}>
             <div className={styles.joinChallengeContainer}>
-              {ongoingChallenge.map((item, index) => (
-                <JoinChallenge
-                  key={index}
-                  item={item}
-                  onClick={() =>
-                    navigate("/challenge/detail", {
-                      state: { selectedChallenge: item },
-                    })
-                  }
-                />
+              {ongoingChallenge.map((item) => (
+                <Link
+                  key={item.id}
+                  to={`/challenge/detail/${item.challengeId}`}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <JoinChallenge item={item} />
+                </Link>
               ))}
             </div>
           </div>
@@ -81,16 +79,14 @@ const PublicChallenge = () => {
 
             <div className={styles.joinChallengeWrapper}>
               <div className={styles.joinChallengeContainer}>
-                {waitForStartChallenge.map((item, index) => (
-                  <JoinChallenge
-                    key={index}
-                    item={item}
-                    onClick={() =>
-                      navigate("/challenge/detail", {
-                        state: { selectedChallenge: item },
-                      })
-                    }
-                  />
+                {waitForStartChallenge.map((item) => (
+                  <Link
+                    key={item.id}
+                    to={`/challenge/detail/${item.challengeId}`}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <JoinChallenge item={item} />
+                  </Link>
                 ))}
               </div>
             </div>
