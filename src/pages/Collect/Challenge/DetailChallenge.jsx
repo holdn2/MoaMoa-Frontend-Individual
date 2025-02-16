@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styles from "./DetailChallenge.module.css";
 import Header from "../../../components/Header/Header";
-import { useLocation } from "react-router-dom";
 import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
 import ChallengeProgressBar from "../../../components/ChallengeProgressBar/ChallengeProgressBar";
 import { getOngoingChallengeDetailInfo } from "../../../apis/challenge/getChallenge";
+import { useParams } from "react-router-dom";
 
 const DetailChallenge = () => {
   const pageName = "모으기";
-  const location = useLocation();
-  const selectedChallenge = location.state?.selectedChallenge;
+  const challengeId = useParams();
+
   // 사용자의 챌린지 진행정도
   const [usedRate, setUsedRate] = useState(0);
   // 다른 멤버 정보
   const [otherMembers, setOtherMembers] = useState([]);
   useEffect(() => {
-    getOngoingChallengeDetailInfo(
-      selectedChallenge.challengeId,
-      setUsedRate,
-      setOtherMembers
-    );
+    getOngoingChallengeDetailInfo(challengeId, setUsedRate, setOtherMembers);
   }, []);
 
   return (

@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import styles from "./AttendanceModal.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import dustHappy from "../../assets/CharacterImgs/dustHappy.svg";
+import dustSunglass from "../../assets/CharacterImgs/dustSunglass.svg";
 
 const AttendanceModal = ({
   isModalOpen,
@@ -76,6 +77,30 @@ const AttendanceModal = ({
               </span>
               <div onClick={() => setIsModalOpen(false)}>
                 <PrimaryButton size="lg">확인</PrimaryButton>
+              </div>
+            </div>
+          </Modal>
+        );
+      case 3:
+        return (
+          <Modal
+            isOpen={isModalOpen}
+            className={styles.AttendanceContainer}
+            overlayClassName={styles.Overlay}
+          >
+            <img
+              src={dustSunglass}
+              alt="행복 먼지"
+              className={styles.HappyDustImg}
+            />
+            <div className={styles.AttendanceContent}>
+              <span className={styles.AttendanceTitle}>{name}</span>
+              <span className={styles.AttendanceText}>
+                챌린지 성공!! <br />
+                배팅한 코인의 2배를 드릴게요
+              </span>
+              <div onClick={() => setIsModalOpen(false)}>
+                <PrimaryButton size="lg">{coin * 2}코인 받기</PrimaryButton>
               </div>
             </div>
           </Modal>
