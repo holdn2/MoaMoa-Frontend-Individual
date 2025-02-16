@@ -6,12 +6,11 @@ const PeriodPicker = ({ pickerValue, setPickerValue }) => {
 
   const selections = {
     // (현재 연도-12년)부터 (현재 연도+11년)까지 배열 생성
-    year: Array.from(
-      { length: 24 },
-      (_, i) => i + Number(date.getFullYear()) - 12
+    year: Array.from({ length: 24 }, (_, i) =>
+      (i + Number(date.getFullYear()) - 12).toString()
     ),
-    month: Array.from({ length: 12 }, (_, i) => i + 1),
-    day: Array.from({ length: 31 }, (_, i) => i + 1),
+    month: Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, "0")),
+    day: Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, "0")),
   };
 
   return (

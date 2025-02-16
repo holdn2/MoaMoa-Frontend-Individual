@@ -5,11 +5,13 @@
 }
 .contentWrapper {
   display: flex;
+  max-width: 335px;
   flex-direction: column;
   flex: 1;
   background-color: #f8f8f8;
   overflow: auto;
-  align-items: center;
+  margin: 0 auto;
+  padding: 20px 24px;
 }
 
 .descWrapper {
@@ -27,6 +29,7 @@
   font-size: 24px;
   font-weight: 900;
   color: #454545;
+  margin: 0;
 }
 .descWrapper p {
   height: 17px;
@@ -137,4 +140,17 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+.selectPeriodInfo {
+  display: flex;
+  width: 100%;
+  color: var(--Grey-500, #787878);
+  /* rg/14px */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 8px;
+  padding-bottom: 20px;
 }
