@@ -236,3 +236,12 @@ textarea {
   width: 100%;
   /* bottom: 16px; */
 }
+
+.warningText {
+  color: #626262;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
