@@ -4,10 +4,11 @@ import PeriodPickerModal from "./PeriodPickerModal";
 
 const date = new Date();
 const currentYear = date.getFullYear();
-const currentMonth = date.getMonth() + 1;
-const currentDay = date.getDate();
+const currentMonth = String(date.getMonth() + 1).padStart(2, "0");
+const currentDay = String(date.getDate()).padStart(2, "0");
+const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
 
-const SelectPeriod = () => {
+const SelectPeriod = ({ setStartFormatDate, setEndFormatDate }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [startValue, setStartValue] = useState({
     year: currentYear,
@@ -15,17 +16,21 @@ const SelectPeriod = () => {
     day: currentDay,
   });
   const [endValue, setEndValue] = useState({
-    year: startValue.year,
-    month: startValue.month,
-    day: startValue.day,
+    year: currentYear,
+    month: currentMonth,
+    day: currentDay,
   });
+
+  const startFormatDate = `${startValue.year}-${startValue.month}-${startValue.day}`;
+  const endFormatDate = `${endValue.year}-${endValue.month}-${endValue.day}`;
+  const period =
+    (new Date(endFormatDate) - new Date(startFormatDate)) /
+    (1000 * 60 * 60 * 24);
+
   useEffect(() => {
-    setEndValue({
-      year: startValue.year,
-      month: startValue.month,
-      day: startValue.day,
-    });
-  }, [startValue]);
+    setStartFormatDate(startFormatDate);
+    setEndFormatDate(endFormatDate);
+  }, [startFormatDate, endFormatDate, setStartFormatDate, setEndFormatDate]);
 
   return (
     <div className={styles.inputWrapper}>
@@ -35,10 +40,11 @@ const SelectPeriod = () => {
         className={styles.dayButton}
         onClick={() => setModalOpen(true)}
       >
-        <span>
-          {startValue.year}.{startValue.month}.{startValue.day} (월) ~{" "}
-          {endValue.year}.{endValue.month}.{endValue.day} (일)
+        <span className={styles.date}>
+          {startFormatDate} ({weekDays[new Date(startFormatDate).getDay()]}) ~{" "}
+          {endFormatDate} ({weekDays[new Date(endFormatDate).getDay()]})
         </span>
+        <span className={styles.period}>{period}일 간</span>
       </button>
       {modalOpen && (
         <PeriodPickerModal

@@ -1,32 +1,90 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import styles from "./AddChallenge.module.css";
 import ChallengeCategory from "../../components/ChallengeCategory/ChallengeCategory";
 import SelectPeriod from "../../components/SelectPeriod/SelectPeriod";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import { useForm } from "react-hook-form";
+import { addNewChallenge } from "../../apis/challenge/addChallenge";
+import { useNavigate } from "react-router-dom";
 
 const AddChallenge = () => {
   const pageName = "챌린지 만들기";
+  const navigate = useNavigate();
   const {
     register,
     watch,
     setValue,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm({ defaultValues: { people: 1 } });
-  const [challengeClicked, setChallengeClicked] = useState(0);
+  } = useForm({
+    defaultValues: {
+      title: "",
+      content: "",
+      people: 1,
+      startDate: "",
+      endDate: "",
+      targetMoney: "",
+      coin: "",
+      visibility: "public",
+      publicChallenge: true,
+      category: "",
+    },
+  });
+  const [challengeClicked, setChallengeClicked] = useState("");
   const [peopleChecked, setPeopleChecked] = useState(false);
   const [moneyChecked, setMoneyChecked] = useState(false);
 
   const people = watch("people", 1);
   const disabled =
     !watch("title") || !watch("content") || !watch("coin") || isSubmitting;
+
+  // 카테고리 클릭 시 적용되게 함.
+  useEffect(() => {
+    setValue("category", challengeClicked, {
+      shouldValidate: false,
+      shouldDirty: false,
+    });
+  }, [challengeClicked]);
+
+  // 시작날과 종료날 상태
+  const [startFormatDate, setStartFormatDate] = useState(null);
+  const [endFormatDate, setEndFormatDate] = useState(null);
+  useEffect(() => {
+    setValue("startDate", startFormatDate);
+    setValue("endDate", endFormatDate);
+  }, [startFormatDate, endFormatDate]);
+
+  // visibility 값 변경에 따라 publicChallenge 값을 자동으로 설정
+  useEffect(() => {
+    setValue("publicChallenge", watch("visibility") === "public");
+  }, [watch("visibility")]);
+
+  // 챌린지 아이디 상태
+  const [challengeId, setChallengeId] = useState(0);
+
+  // 챌린지 생성 API 실행
+  const onSubmit = async (data) => {
+    try {
+      console.log("챌린지 생성 요청:", data);
+      const result = await addNewChallenge(data, setChallengeId);
+      if (result) {
+        navigate("/challengemodal/challengemodalContent", {
+          state: {
+            name: data.title,
+            type: "create",
+          },
+        });
+      } else {
+        console.error("챌린지 ID를 가져오지 못했습니다.");
+      }
+    } catch (error) {
+      console.error("챌린지 생성 실패:", error);
+    }
+  };
+
   return (
-    <form
-      className={styles.AddChallengePage}
-      onSubmit={handleSubmit((data) => console.log(data))}
-    >
+    <form className={styles.AddChallengePage} onSubmit={handleSubmit(onSubmit)}>
       <Header pageName={pageName} />
       <div className={styles.wrapper}>
         <h1>챌린지 모집글을 작성해봐요!</h1>
@@ -80,7 +138,10 @@ const AddChallenge = () => {
             제한 없음
           </label>
         </div>
-        <SelectPeriod />
+        <SelectPeriod
+          setStartFormatDate={setStartFormatDate}
+          setEndFormatDate={setEndFormatDate}
+        />
         <div className={styles.inputContainer}>
           <p className={styles.inputTitle}>챌린지 목표 금액</p>
           <label className={styles.inputShort}>

@@ -17,11 +17,20 @@
   top: 90px;
   left: 40px;
 }
+@keyframes rotateCounterClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg); /* 반시계 방향 회전 */
+  }
+}
 .TimeCircle {
   width: 92px;
   height: 92px;
   margin-left: 101px;
   margin-top: 120px;
+  animation: rotateCounterClockwise 1s linear infinite; /* 1초마다 무한 반복 */
 }
 .StartContentContainer {
   display: flex;

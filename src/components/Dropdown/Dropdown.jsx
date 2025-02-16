@@ -13,6 +13,10 @@ const Dropdown = ({ typeName, setSortType }) => {
       setSortType("EARLIEST");
     } else if (sortName === "코인순") {
       setSortType("COIN");
+    } else if (sortName === "인기순") {
+      setSortType("POPULARITY");
+    } else if (sortName === "종료임박순") {
+      setSortType("DEADLINE");
     }
   }, [sortName]);
 

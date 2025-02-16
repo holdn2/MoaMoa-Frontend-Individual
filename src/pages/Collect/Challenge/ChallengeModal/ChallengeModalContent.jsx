@@ -1,14 +1,18 @@
 import React, { useEffect } from "react";
-import { useLocation, useOutletContext } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import dustSad from "../../../../assets/CharacterImgs/dustSad.svg";
 import dustSunglass from "../../../../assets/CharacterImgs/dustSunglass.svg/";
 import dustCrownMoney from "../../../../assets/CharacterImgs/dustCrownMoney.svg";
 import styles from "./ChallengeStopModal.module.css";
 import PrimaryButton from "../../../../components/Button/PrimaryButton";
+import { deleteChallenge } from "../../../../apis/challenge/deleteChallenge";
+import { joinChallenge } from "../../../../apis/challenge/joinChallenge";
 
 const ChallengeModalContent = () => {
+  const navigate = useNavigate();
   const location = useLocation();
-  const { successDate, coin, name, type } = location.state;
+  const { allData, successDate, challengeId, coin, name, type } =
+    location.state;
   const { stage, setStage } = useOutletContext() || {};
   useEffect(() => {
     if (type) {
@@ -38,8 +42,14 @@ const ChallengeModalContent = () => {
     join: {
       img: dustCrownMoney,
       desc: name,
-      subDesc: "챌린지참여 완료!",
-      btnText: "챌린지로 이동하기",
+      subDesc: "챌린지 참여 완료!",
+      btnText: "확인",
+    },
+    create: {
+      img: dustSunglass,
+      desc: name,
+      subDesc: "챌린지 생성 완료!",
+      btnText: "확인",
     },
   };
 
@@ -57,21 +67,50 @@ const ChallengeModalContent = () => {
           <button
             type="button"
             className={styles.stopBtn}
-            onClick={() => setStage("fail")}
+            onClick={() => {
+              setStage("fail");
+              console.log("삭제할 챌린지 아이디 : ", challengeId);
+              deleteChallenge(challengeId);
+            }}
           >
             {btnText}
           </button>
           <button
             type="button"
             className={styles.continueBtn}
-            onClick={() => setStage("success")}
+            onClick={() => navigate(-1)}
           >
             {secondBtnText}
           </button>
         </div>
       )}
-      {stage !== "stop" && (
+      {stage === "success" && (
         <PrimaryButton type="button" size="lg" children={btnText} />
+      )}
+      {stage === "fail" && (
+        <div onClick={() => navigate("/collect")}>
+          <PrimaryButton type="button" size="lg" children={btnText} />
+        </div>
+      )}
+      {stage === "join" && (
+        <div
+          onClick={() => {
+            console.log(challengeId, " 참여하기!");
+            joinChallenge(challengeId);
+            navigate("/collect");
+          }}
+        >
+          <PrimaryButton type="button" size="lg" children={btnText} />
+        </div>
+      )}
+      {stage === "create" && (
+        <div
+          onClick={() => {
+            navigate("/collect");
+          }}
+        >
+          <PrimaryButton type="button" size="lg" children={btnText} />
+        </div>
       )}
     </div>
   );

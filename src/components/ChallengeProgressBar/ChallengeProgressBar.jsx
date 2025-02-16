@@ -7,15 +7,15 @@ const ChallengeProgressBar = ({ user }) => {
     <div className={styles.EachChallengerContainer}>
       <div className={styles.ChallengerInfoContainer}>
         <img
-          src={user.userImg}
+          src={user.profileImage}
           alt="유저 프로필 사진"
           style={{ borderRadius: "50%" }}
         />
         <span className={styles.ChallengeTitle}>{user.userName}</span>
       </div>
       <div className={styles.ChallengerProgressContainer}>
-        <ProgressBar size="medium" currentProgress={user.percent} />
-        <span className={styles.ProgressText}>{user.percent}% 사용</span>
+        <ProgressBar size="medium" currentProgress={user.usedRate} />
+        <span className={styles.ProgressText}>{user.usedRate}% 사용</span>
       </div>
     </div>
   );
