@@ -7,7 +7,7 @@ const currentYear = date.getFullYear();
 const currentMonth = date.getMonth() + 1;
 const currentDay = date.getDate();
 
-const SelectPeriod = () => {
+const SelectPeriod = ({ setStartDate, setEndDate }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [startValue, setStartValue] = useState({
     year: currentYear,
@@ -19,6 +19,7 @@ const SelectPeriod = () => {
     month: startValue.month,
     day: startValue.day,
   });
+
   useEffect(() => {
     setEndValue({
       year: startValue.year,
@@ -26,6 +27,18 @@ const SelectPeriod = () => {
       day: startValue.day,
     });
   }, [startValue]);
+
+  // "2025-02-15"와 같은 형식으로 변경
+  const formatDate = ({ year, month, day }) => {
+    return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(
+      2,
+      "0"
+    )}`;
+  };
+  useEffect(() => {
+    setStartDate(formatDate(startValue));
+    setEndDate(formatDate(endValue));
+  }, [startValue, endValue]);
 
   return (
     <div className={styles.inputWrapper}>

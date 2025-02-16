@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const CategoryButton = styled.button`
+const CategoryButton = styled.div`
   background: ${(props) => (props.checked ? "#00BEFC" : "#F1F1F1")};
   color: ${(props) => (props.checked ? "#fff" : "#454545")};
   display: flex;

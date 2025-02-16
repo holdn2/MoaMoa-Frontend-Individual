@@ -7,6 +7,7 @@ const ChallengeCardModal = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const challengeData = location.state?.challenge;
+  console.log(challengeData.challengeId);
   return (
     <>
       <ChallengeCard allData={challengeData} isButton={true} />
