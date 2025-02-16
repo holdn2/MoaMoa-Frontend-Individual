@@ -8,7 +8,13 @@ const FinishConsComp = ({ title, content }) => {
   return (
     <div className={styles.EachInfoContainer}>
       <span className={styles.InfoTitle}>{title}</span>
-      <span className={styles.InfoText}>{content}</span>
+      {title === "설정 기간" ? (
+        <span className={styles.InfoText} style={{ fontSize: "15px" }}>
+          {content}
+        </span>
+      ) : (
+        <span className={styles.InfoText}>{content}</span>
+      )}
     </div>
   );
 };
@@ -19,19 +25,16 @@ const FinishStartCons = ({
   endFormatDate,
   targetAmount,
 }) => {
-  const startDate = new Date(startFormatDate);
-  const endDate = new Date(endFormatDate);
-  const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
-  const showStartDate = `${startDate.getFullYear()}.${startDate.getMonth()}.${startDate.getDate()}(${
-    weekDays[startDate.getDay()]
-  })`;
-  const showEndDate = `${endDate.getMonth()}.${endDate.getDate()}(${
-    weekDays[endDate.getDay()]
-  })`;
+  const formatDateWithDots = (dateString) => {
+    if (!dateString) return ""; // 값이 없을 경우 빈 문자열 반환
+    return dateString.replace(/-/g, ".");
+  };
   const FinishConsCompArr = ["획득 가능 코인", "설정 기간", "설정 금액"];
   const FinishConsContent = [
     `${prize}코인`,
-    `${showStartDate}~${showEndDate}`,
+    `${formatDateWithDots(startFormatDate)}~${formatDateWithDots(
+      endFormatDate
+    )}`,
     `주 ${targetAmount}원`,
   ];
   const navigate = useNavigate();

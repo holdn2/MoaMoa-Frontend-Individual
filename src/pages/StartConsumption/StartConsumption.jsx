@@ -27,9 +27,18 @@ const StartConsumption = () => {
   useEffect(() => {
     getRecentTargetPrice(setRecentTarget);
   }, []);
-  const handleStartConsumption = () => {
+
+  // 나의소비시작하기 결과값
+  const [resultStart, setResultStart] = useState({});
+  const handleStartConsumption = async () => {
     setIsCompleteInput(true);
-    postConsStart(prize, startFormatDate, endFormatDate, targetAmount);
+    const result = await postConsStart(
+      prize,
+      startFormatDate,
+      endFormatDate,
+      targetAmount
+    );
+    setResultStart(result);
   };
 
   return (
@@ -76,10 +85,10 @@ const StartConsumption = () => {
         </>
       ) : (
         <FinishStartCons
-          prize={prize}
-          startFormatDate={startFormatDate}
-          endFormatDate={endFormatDate}
-          targetAmount={targetAmount}
+          prize={resultStart.prize}
+          startFormatDate={resultStart.startDate}
+          endFormatDate={resultStart.endDate}
+          targetAmount={resultStart.targetAmount}
         />
       )}
     </div>

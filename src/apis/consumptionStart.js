@@ -47,7 +47,7 @@ export const postConsStart = async (
         },
       }
     );
-    console.log("Response: ", response.data);
+    return response.data.result;
   } catch (error) {
     console.error("Error fetching postConsStart", error);
   }

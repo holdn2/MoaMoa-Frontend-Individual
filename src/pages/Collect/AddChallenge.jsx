@@ -48,12 +48,12 @@ const AddChallenge = () => {
   }, [challengeClicked]);
 
   // 시작날과 종료날 상태
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startFormatDate, setStartFormatDate] = useState(null);
+  const [endFormatDate, setEndFormatDate] = useState(null);
   useEffect(() => {
-    setValue("startDate", startDate);
-    setValue("endDate", endDate);
-  }, [startDate, endDate]);
+    setValue("startDate", startFormatDate);
+    setValue("endDate", endFormatDate);
+  }, [startFormatDate, endFormatDate]);
 
   // visibility 값 변경에 따라 publicChallenge 값을 자동으로 설정
   useEffect(() => {
@@ -138,7 +138,10 @@ const AddChallenge = () => {
             제한 없음
           </label>
         </div>
-        <SelectPeriod setStartDate={setStartDate} setEndDate={setEndDate} />
+        <SelectPeriod
+          setStartFormatDate={setStartFormatDate}
+          setEndFormatDate={setEndFormatDate}
+        />
         <div className={styles.inputContainer}>
           <p className={styles.inputTitle}>챌린지 목표 금액</p>
           <label className={styles.inputShort}>

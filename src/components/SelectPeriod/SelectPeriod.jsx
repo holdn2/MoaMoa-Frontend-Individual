@@ -9,7 +9,6 @@ const currentDay = String(date.getDate()).padStart(2, "0");
 const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
 
 const SelectPeriod = ({ setStartFormatDate, setEndFormatDate }) => {
-
   const [modalOpen, setModalOpen] = useState(false);
   const [startValue, setStartValue] = useState({
     year: currentYear,
@@ -28,23 +27,10 @@ const SelectPeriod = ({ setStartFormatDate, setEndFormatDate }) => {
     (new Date(endFormatDate) - new Date(startFormatDate)) /
     (1000 * 60 * 60 * 24);
 
-
   useEffect(() => {
     setStartFormatDate(startFormatDate);
     setEndFormatDate(endFormatDate);
   }, [startFormatDate, endFormatDate, setStartFormatDate, setEndFormatDate]);
-
-  // "2025-02-15"와 같은 형식으로 변경
-  const formatDate = ({ year, month, day }) => {
-    return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(
-      2,
-      "0"
-    )}`;
-  };
-  useEffect(() => {
-    setStartDate(formatDate(startValue));
-    setEndDate(formatDate(endValue));
-  }, [startValue, endValue]);
 
   return (
     <div className={styles.inputWrapper}>
