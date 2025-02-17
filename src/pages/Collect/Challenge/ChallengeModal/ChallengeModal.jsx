@@ -6,7 +6,6 @@ import BottomBar from "../../../../components/BottomBar/BottomBar";
 
 const ChallengeModal = () => {
   const pageName = "모으기";
-  const [stage, setStage] = useState("");
 
   return (
     <>
@@ -14,7 +13,7 @@ const ChallengeModal = () => {
       <BottomBar pageName={pageName} />
       <div className={styles.modalOverlay}>
         <div className={styles.modalWrapper}>
-          <Outlet context={{ stage, setStage }} />
+          <Outlet />
           {/*자식 컴포넌트가 렌더링될 위치*/}
         </div>
       </div>

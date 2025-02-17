@@ -1,5 +1,5 @@
 // 나의 소비 입력하기 페이지 구현 예정
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./InputConsumption.module.css";
 import Header from "../../components/Header/Header";
 import question from "../../assets/Content/question.svg";
@@ -8,25 +8,24 @@ import PrimaryButton from "../../components/Button/PrimaryButton";
 import DescModal from "./DescModal";
 import { useNavigate } from "react-router-dom";
 import ChallengeCategory from "../../components/ChallengeCategory/ChallengeCategory";
-import Category from "../../components/ChallengeCategory/Category";
+import ConsCategory from "../../components/ChallengeCategory/ConsCategory";
+import { getConsInput, postConsInput } from "../../apis/consumptionInput";
 
 const InputConsumption = () => {
   const pageName = "나의 소비 입력하기";
   const navigate = useNavigate();
-  const categoryName = [
-    "고정비",
-    "꾸밈비",
-    "활동비",
-    "생활비",
-    "기여비",
-    "기타",
-  ];
   const [isInputState, setIsInputState] = useState(false);
-  const [categoryClicked, setCategoryClicked] = useState(0);
-  const [challengeClicked, setChallengeClicked] = useState(0);
+  const [consCategoryClicked, setConsCategoryClicked] = useState("");
+  const [challengeClicked, setChallengeClicked] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-  // 나의 소비 입력하기 금액부분
   const [myConsumption, setMyConsumption] = useState(0);
+  const [targetAmount, setTargetAmount] = useState(0);
+  useEffect(() => {
+    getConsInput(setTargetAmount);
+  }, []);
+  const handlePostConsInput = () => {
+    postConsInput(consCategoryClicked, challengeClicked, myConsumption);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -42,17 +41,10 @@ const InputConsumption = () => {
               onClick={() => setModalOpen(true)}
             />
           </div>
-          <div className={styles.category}>
-            {categoryName.map((name, index) => (
-              <Category
-                key={name}
-                children={name}
-                checked={categoryClicked === index}
-                onClick={() => setCategoryClicked(index)}
-              />
-            ))}
-          </div>
-          <p>*중복 선택이 불가능합니다.</p>
+          <ConsCategory
+            consCategoryClicked={consCategoryClicked}
+            setConsCategoryClicked={setConsCategoryClicked}
+          />
         </div>
         {modalOpen && (
           <DescModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
@@ -75,7 +67,7 @@ const InputConsumption = () => {
         <div className={styles.inputWrapper}>
           <p>목표 금액까지 남은 금액</p>
           <div className={styles.priceWrapper}>
-            <p className={styles.price}>20,000</p>
+            <p className={styles.price}>{targetAmount - myConsumption}</p>
             <span className={styles.priceDesc}>원</span>
           </div>
         </div>
@@ -88,7 +80,12 @@ const InputConsumption = () => {
             }}
             style={{ pointerEvents: isInputState ? "auto" : "none" }}
           >
-            <PrimaryButton type="button" size="xl" disabled={!isInputState}>
+            <PrimaryButton
+              type="button"
+              size="xl"
+              disabled={!isInputState}
+              onClick={handlePostConsInput}
+            >
               완료
             </PrimaryButton>
           </div>

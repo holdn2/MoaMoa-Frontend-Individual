@@ -7,13 +7,12 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 
 const ProgressChallengeCard = ({ challengeContent, currentProgress }) => {
   const navigate = useNavigate();
-  const currentPercent = (100 * currentProgress) / 7;
   return (
     <div className={styles.ProgressCardContainer}>
       <div className={styles.CardTextContainer}>
         <span className={styles.ChallengeTitle}>{challengeContent}</span>
         <div className={styles.ProgressContainer}>
-          <ProgressBar size="challengeCard" currentProgress={currentPercent} />
+          <ProgressBar size="challengeCard" currentProgress={currentProgress} />
           <span className={styles.CurrentProgressText}>
             {currentProgress}/7
           </span>
