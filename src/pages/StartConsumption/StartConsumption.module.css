@@ -9,7 +9,9 @@
   flex-direction: column;
   flex: 1;
   background-color: #f8f8f8;
-  overflow: auto;
+  overflow: hidden;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 .descWrapper {
@@ -58,89 +60,12 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  position: absolute;
-  bottom: 32px;
+  margin-bottom: 32px;
 }
 
-.dayButton {
-  width: 335px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 12px;
-  background-color: #f1f1f1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.dayButton span {
-  color: #454545;
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.moneyInputButton,
-.moneyInputWrapper {
-  width: 338px;
-  height: 52px;
-  gap: 10px;
-  border-radius: 12px;
-  background-color: #f1f1f1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #787878;
-  font-family: Pretendard;
-}
-.moneyInputButton span {
-  font-size: 14px;
-  font-weight: 600;
-}
-.moneyInput {
-  background-color: #f1f1f1;
-  text-align: center;
-  border: none;
-  color: #787878;
-  font-family: Pretendard;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.GoalInfoContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 17px;
-  margin-top: 50px;
-}
-.EachInfoContainer {
-  display: flex;
-  flex-direction: row;
-  width: 335px;
-  height: 44px;
-  border-radius: 11px;
-  background: #f1f1f1;
-  align-items: center;
-}
-.InfoTitle {
-  margin-left: 18px;
-  width: 125px;
-  color: #2b2b2b;
-  font-family: Pretendard;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-.InfoText {
-  color: var(--Grey-700, #454545);
-  font-family: Pretendard;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
 .selectPeriodInfo {
   display: flex;
+  justify-content: flex-start;
   width: 100%;
   color: var(--Grey-500, #787878);
   /* rg/14px */
@@ -151,5 +76,4 @@
   line-height: normal;
   padding-top: 8px;
   padding-bottom: 20px;
-  margin-left: 40px;
 }

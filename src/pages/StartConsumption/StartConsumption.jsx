@@ -20,10 +20,8 @@ const StartConsumption = () => {
   const [endFormatDate, setEndFormatDate] = useState(null);
   const [targetAmount, setTargetAmount] = useState(0);
   const [recentTarget, setRecentTarget] = useState(0);
-  const prize =
-    ((new Date(endFormatDate) - new Date(startFormatDate)) /
-      (1000 * 60 * 60 * 24)) *
-    10;
+  const period = new Date(endFormatDate) - new Date(startFormatDate);
+  const prize = (period / (1000 * 60 * 60 * 24)) * 10;
   useEffect(() => {
     getRecentTargetPrice(setRecentTarget);
   }, []);
@@ -78,7 +76,15 @@ const StartConsumption = () => {
             onClick={handleStartConsumption}
             style={{ pointerEvents: isInputState ? "auto" : "none" }}
           >
-            <PrimaryButton type="button" size="xl" disabled={!isInputState}>
+            <PrimaryButton
+              type="button"
+              size="xl"
+              disabled={
+                new Date(startFormatDate) < new Date() &&
+                !isInputState &&
+                period <= 0
+              }
+            >
               완료
             </PrimaryButton>
           </div>
@@ -96,26 +102,3 @@ const StartConsumption = () => {
 };
 
 export default StartConsumption;
-
-const data = [
-  {
-    id: 1,
-    title: "난이도",
-    content: "상",
-  },
-  {
-    id: 2,
-    title: "획득 가능 코인",
-    content: "50코인",
-  },
-  {
-    id: 3,
-    title: "설정 기간",
-    content: "24.11.24(월)~11.31(일)",
-  },
-  {
-    id: 4,
-    title: "설정 금액",
-    content: "주 70,000원",
-  },
-];

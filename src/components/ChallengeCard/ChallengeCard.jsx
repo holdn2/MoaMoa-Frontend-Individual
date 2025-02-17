@@ -94,15 +94,13 @@ const ChallengeCard = ({
             size="challengeCard"
             children="챌린지 참여하기"
             type="button"
+            style={{ textDecoration: "none", color: "inherit" }}
             onClick={() =>
-              navigate("/challengemodal/challengemodalContent", {
+              navigate("/challengemodal/join", {
                 state: {
-                  allData: allData,
-                  successDate: successDate,
                   challengeId: allData.challengeId,
-                  coin: allData.coin,
-                  name: allData.challengeName,
-                  type: "join",
+                  name: allData.title,
+                  selectedChallenge: allData,
                 },
               })
             }
@@ -130,13 +128,12 @@ const ChallengeCard = ({
       {isDetailChallenge && (
         <>
           <Link
-            to={"/challengemodal/challengemodalContent"}
+            to={"/challengemodal/stop"}
             state={{
               successDate: successDate,
-              challengeId: allData.challengeId,
+              challengeId: allData.title,
               coin: allData.battleCoin,
               name: allData.title,
-              type: "stop",
             }}
             className={styles.stopChallengeLink}
           >

@@ -99,10 +99,9 @@ const AddChallenge = () => {
       console.log("챌린지 생성 요청:", data);
       const result = await addNewChallenge(data, setChallengeId);
       if (result) {
-        navigate("/challengemodal/challengemodalContent", {
+        navigate("/challengemodal/create", {
           state: {
             name: data.title,
-            type: "create",
           },
         });
       } else {

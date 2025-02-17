@@ -46,9 +46,9 @@ const PublicChallenge = () => {
         {ongoingChallenge.length != 0 ? (
           <div className={styles.joinChallengeWrapper}>
             <div className={styles.joinChallengeContainer}>
-              {ongoingChallenge.map((item, index) => (
+              {ongoingChallenge.map((item) => (
                 <JoinChallenge
-                  key={index}
+                  key={item.challengeId}
                   item={item}
                   onClick={() =>
                     navigate("/challenge/detail", {
@@ -81,9 +81,9 @@ const PublicChallenge = () => {
 
             <div className={styles.joinChallengeWrapper}>
               <div className={styles.joinChallengeContainer}>
-                {waitForStartChallenge.map((item, index) => (
+                {waitForStartChallenge.map((item) => (
                   <JoinChallenge
-                    key={index}
+                    key={item.challengeId}
                     item={item}
                     onClick={() =>
                       navigate("/challenge/detail", {
