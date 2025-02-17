@@ -86,7 +86,7 @@ function App() {
           element: <ChallengeSearch />,
         },
         {
-          path: "/challenge/detail/:challengeId",
+          path: "/challenge/detail",
           element: <DetailChallenge />,
         },
         {

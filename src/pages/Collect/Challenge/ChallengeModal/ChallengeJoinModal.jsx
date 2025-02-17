@@ -8,7 +8,7 @@ import styles from "./ChallengeContentModal.module.css";
 const ChallengeJoinModal = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { challengeId, name } = location.state;
+  const { challengeId, name, selectedChallenge } = location.state;
   console.log(name, challengeId);
   console.log(location.state); // 확인용 콘솔 출력
 
@@ -26,14 +26,17 @@ const ChallengeJoinModal = () => {
           navigate("/collect");
         }}
       >
-        <Link
-          to={`/challenge/detail/${challengeId}`}
-          style={{ textDecoration: "none", color: "inherit" }}
+        <PrimaryButton
+          type="button"
+          size="lg"
+          onClick={() =>
+            navigate("/challenge/detail", {
+              state: { selectedChallenge: selectedChallenge },
+            })
+          }
         >
-          <PrimaryButton type="button" size="lg">
-            챌린지로 이동하기
-          </PrimaryButton>
-        </Link>
+          챌린지로 이동하기
+        </PrimaryButton>
       </div>
     </div>
   );

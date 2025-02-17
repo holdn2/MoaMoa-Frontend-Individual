@@ -100,6 +100,7 @@ const ChallengeCard = ({
                 state: {
                   challengeId: allData.challengeId,
                   name: allData.title,
+                  selectedChallenge: allData,
                 },
               })
             }

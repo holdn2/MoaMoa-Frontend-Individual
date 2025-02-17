@@ -7,7 +7,7 @@ import styles from "./ChallengeContentModal.module.css";
 const ChallengeCreateModal = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { name } = location.state;
+  const { name, selectedChallenge } = location.state;
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.imgContainer}>
@@ -17,7 +17,7 @@ const ChallengeCreateModal = () => {
       <p className={styles.dateInfo}>챌린지 생성 완료!</p>
       <div
         onClick={() => {
-          navigate("/collect");
+          navigate("/collect", {});
         }}
       >
         <PrimaryButton type="button" size="lg">

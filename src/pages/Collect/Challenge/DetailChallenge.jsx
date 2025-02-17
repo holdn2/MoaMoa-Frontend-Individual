@@ -4,18 +4,23 @@ import Header from "../../../components/Header/Header";
 import ChallengeCard from "../../../components/ChallengeCard/ChallengeCard";
 import ChallengeProgressBar from "../../../components/ChallengeProgressBar/ChallengeProgressBar";
 import { getOngoingChallengeDetailInfo } from "../../../apis/challenge/getChallenge";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const DetailChallenge = () => {
   const pageName = "모으기";
-  const challengeId = useParams();
+  const location = useLocation();
+  const { selectedChallenge } = location.state;
 
   // 사용자의 챌린지 진행정도
   const [usedRate, setUsedRate] = useState(0);
   // 다른 멤버 정보
   const [otherMembers, setOtherMembers] = useState([]);
   useEffect(() => {
-    getOngoingChallengeDetailInfo(challengeId, setUsedRate, setOtherMembers);
+    getOngoingChallengeDetailInfo(
+      selectedChallenge.challengeId,
+      setUsedRate,
+      setOtherMembers
+    );
   }, []);
 
   return (
