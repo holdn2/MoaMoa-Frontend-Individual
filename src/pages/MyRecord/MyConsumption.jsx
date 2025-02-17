@@ -27,6 +27,7 @@ const MyConsumption = () => {
   useEffect(() => {
     getMyConsumptionReport(setChallengeData, setChartData, setConsData);
   }, []);
+  const latestChartData = chartData.slice(-4);
 
   // 카테고리별 소비 데이터
   const categoryCons = [
@@ -65,7 +66,7 @@ const MyConsumption = () => {
           </div>
         </div>
         <div className={styles.chart}>
-          <MyConsumptionChart data={chartData} />
+          <MyConsumptionChart data={latestChartData} />
         </div>
       </div>
       {/*지금까지의 나의 소비는 ? */}
