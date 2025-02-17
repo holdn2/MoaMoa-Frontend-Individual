@@ -11,7 +11,15 @@ const Chatting = () => {
   const [chatData, setChatData] = useState([]);
 
   useEffect(() => {
-    fetchChatRoomData(userId, setChatData);
+    fetchChatRoomData(userId, (data) => {
+      // 최근 메시지(createdAt)를 기준으로 내림차순 정렬
+      const sortedData = [...data].sort((a, b) => {
+        const dateA = new Date(a.recentChat?.createdAt || 0);
+        const dateB = new Date(b.recentChat?.createdAt || 0);
+        return dateB - dateA; // 최신 메시지가 위로 오도록 정렬
+      });
+      setChatData(sortedData);
+    });
   }, []);
 
   const formatChatTime = (createdAt) => {

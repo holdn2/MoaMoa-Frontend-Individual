@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Level.module.css";
 import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
@@ -9,9 +9,25 @@ import dustLv3 from "../../assets/DustLevel/Lv3.svg";
 import dustLv4 from "../../assets/DustLevel/Lv4.svg";
 import dustLv5 from "../../assets/DustLevel/Lv5.svg";
 import dustLv6 from "../../assets/DustLevel/Lv6.svg";
+import { getUserInfo } from "../../apis/mypage";
 
 const Level = () => {
   const pageName = "레벨";
+
+  // 유저 코인 정보를 위한 회원조회 api
+  const [userInfo, setUserInfo] = useState({});
+  // 레벨 정보 배열
+  const [levelArr, setLevelArr] = useState([]);
+  useEffect(() => {
+    getUserInfo(setUserInfo);
+  }, []);
+
+  useEffect(() => {
+    if (userInfo.coin !== undefined) {
+      const levels = dustLevel(userInfo.coin);
+      setLevelArr(levels);
+    }
+  }, [userInfo.coin]);
 
   return (
     <div className={styles.LevelPageContainer}>
@@ -30,7 +46,7 @@ const Level = () => {
           </div>
         </div>
         <div className={styles.DustContainer}>
-          {dustLevel.map((item) =>
+          {levelArr.map((item) =>
             item.lv === 0 ? (
               <div key={item.lv} className={styles.LevelContainer}>
                 <img className={styles.DustImg} src={item.img} alt="Lv.0" />
@@ -65,9 +81,7 @@ const Level = () => {
 
 export default Level;
 
-const currentCoin = 150;
-
-const dustLevel = [
+const dustLevel = (currentCoin) => [
   {
     lv: 0,
     img: dustLv0,

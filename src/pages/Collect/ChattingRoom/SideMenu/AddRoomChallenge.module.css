@@ -1,4 +1,4 @@
-.AddRoomChallengePage {
+.AddChallengePage {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -75,7 +75,7 @@ textarea {
   font-weight: 600;
   line-height: normal;
 }
-.inputTextCoin {
+.inputTextShort {
   width: 87px;
   height: 23px;
   flex-shrink: 0;
@@ -90,7 +90,7 @@ textarea {
   font-weight: 600;
   line-height: normal;
 }
-.inputCoin {
+.inputShort {
   display: flex;
   align-items: center;
   color: var(--Grey-700, #454545);
@@ -115,16 +115,18 @@ textarea {
 }
 .peopleDownBtn,
 .peopleUpBtn {
+  pointer-events: none;
   width: 29.714px;
   height: 29.714px;
   flex-shrink: 0;
   background: var(--White, #fff);
-  color: var(--Grey-150, #dbdbdb);
+  color: var(--Grey-800, #dbdbdb);
   text-align: center;
   font-family: Pretendard;
   font-size: 16.508px;
   font-style: normal;
   font-weight: 400;
+  line-height: 150%; /* 24.761px */
   letter-spacing: 0.66px;
 }
 .peopleUpBtn {
@@ -151,7 +153,7 @@ textarea {
   display: flex;
   text-align: center;
   gap: 7px;
-  color: var(--Grey-400, #919191);
+  color: var(--Grey-800, #2b2b2b);
   font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
@@ -159,7 +161,10 @@ textarea {
   line-height: 150%; /* 21px */
   letter-spacing: 0.56px;
 }
-.Checkbox {
+.peopleInfinity input[type="checkbox"] {
+  -webkit-appearance: none; /* Safari, Chrome */
+  -moz-appearance: none; /* Firefox */
+  appearance: none; /* 표준 */
   width: 20px;
   height: 20px;
   padding: 0;
@@ -167,6 +172,22 @@ textarea {
   border: 2px solid #919191;
   border-radius: 2px;
   background-color: white;
+}
+.peopleInfinity input[type="checkbox"]:checked {
+  background-color: #00befc;
+  border-color: #00befc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.peopleInfinity input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
 }
 
 .inputPublic {
@@ -215,4 +236,13 @@ textarea {
   /* position: fixed; */
   width: 100%;
   /* bottom: 16px; */
+}
+
+.warningText {
+  color: #626262;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

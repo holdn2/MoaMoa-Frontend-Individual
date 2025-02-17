@@ -6,13 +6,17 @@ import { useLocation, useNavigate } from "react-router-dom";
 import visible from "../../assets/Content/visible.svg";
 import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
 import dustCrown from "../../assets/CharacterImgs/dustCrown.svg";
+import useModalStore from "../../store/useModalStore";
+import { setNicknameAPI, setPasswordAPI } from "../../apis/join";
 
 // input에 value를 명시해주면 다음으로 넘어가도 안남아있음.
 
 const JoinProcess = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const email = location.state?.email || ""; // 기본값은 빈 문자열
+  const email = location.state?.email;
+  // 인증된 이메일 가져오기
+  const { verifiedEmail } = useModalStore();
 
   const [joinStep, setJoinStep] = useState(1);
   const [nickname, setNickname] = useState("");
@@ -137,7 +141,7 @@ const JoinProcess = () => {
               }}
               onClick={() => {
                 setJoinStep(2);
-                // 이부분에서 가입이 완료됨. 서버로 비밀번호 전송 필요.
+                setPasswordAPI(email, password);
                 console.log("이메일: ", email, " 비밀번호: ", password);
               }}
             >
@@ -150,34 +154,6 @@ const JoinProcess = () => {
           </>
         );
       case 2:
-        return (
-          <>
-            <div className={styles.StageInfoWrapper}>
-              <div className={styles.InfoTextContainer}>
-                <span className={styles.BoldInfo} style={{ marginTop: "70px" }}>
-                  가입 완료!
-                </span>
-                <span className={styles.WelcomeNormal}>
-                  <span style={{ color: "#454545", fontSize: "22px" }}>
-                    닉네임을 설정해주세요!
-                  </span>
-                </span>
-              </div>
-              <img
-                src={dustSunglassCoin}
-                alt="환영하는 먼지"
-                style={{ width: "250px", height: "223px", marginTop: "105px" }}
-              />
-              <div
-                className={styles.ButtonContainer}
-                onClick={() => setJoinStep(3)}
-              >
-                <PrimaryButton>닉네임 설정하기</PrimaryButton>
-              </div>
-            </div>
-          </>
-        );
-      case 3:
         return (
           <>
             <div className={styles.StageInfoWrapper}>
@@ -212,8 +188,9 @@ const JoinProcess = () => {
                 pointerEvents: !nickname || invalidNickname ? "none" : "auto",
               }}
               onClick={() => {
-                setJoinStep(4);
-                // 여기서 닉네임 설정됨.
+                setJoinStep(3);
+                setNicknameAPI(email, nickname);
+                // 서버로 보내기
                 console.log("닉네임 : ", nickname);
               }}
             >
@@ -223,7 +200,36 @@ const JoinProcess = () => {
             </div>
           </>
         );
-      case 4:
+      // case 3:
+      //   return (
+      //     <>
+      //       <div className={styles.StageInfoWrapper}>
+      //         <div className={styles.InfoTextContainer}>
+      //           <span className={styles.BoldInfo} style={{ marginTop: "70px" }}>
+      //             가입 완료!
+      //           </span>
+      //           <span className={styles.WelcomeNormal}>
+      //             <span style={{ color: "#454545", fontSize: "22px" }}>
+      //               닉네임을 설정해주세요!
+      //             </span>
+      //           </span>
+      //         </div>
+      //         <img
+      //           src={dustSunglassCoin}
+      //           alt="환영하는 먼지"
+      //           style={{ width: "250px", height: "223px", marginTop: "105px" }}
+      //         />
+      //         <div
+      //           className={styles.ButtonContainer}
+      //           onClick={() => setJoinStep(3)}
+      //         >
+      //           <PrimaryButton>닉네임 설정하기</PrimaryButton>
+      //         </div>
+      //       </div>
+      //     </>
+      //   );
+
+      case 3:
         return (
           <>
             <div className={styles.StageInfoWrapper}>
