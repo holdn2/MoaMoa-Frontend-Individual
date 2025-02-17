@@ -7,6 +7,7 @@ import emailOK from "../../assets/Content/emailOK.svg";
 import emailCheck from "../../assets/Content/emailCheck.svg";
 import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
 import PwChangeModal from "./PwChangeModal";
+import { loginAPI } from "../../apis/login";
 
 // 닉네임 받아오기
 const nickname = "모아모아짱";
@@ -103,7 +104,9 @@ const Login = () => {
               className={styles.ButtonContainer}
               onClick={() => {
                 if (isCorrect) {
-                  setLoginStep(4), console.log(nickname, inputPw);
+                  setLoginStep(4),
+                    console.log(nickname, inputPw),
+                    loginAPI(email, inputPw);
                 }
               }}
             >

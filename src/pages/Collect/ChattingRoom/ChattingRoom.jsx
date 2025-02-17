@@ -4,7 +4,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import ExitRoomModal from "./SideMenu/ExitRoomModal";
 import ChattingArea from "./DoChatting/ChattingArea";
-import AcceptChallengeModal from "./AcceptChallengeModal";
 import category from "../../../assets/Component1/category.svg";
 import arrowRight from "../../../assets/Navigation/arrowRight.svg";
 import closeBig from "../../../assets/Navigation/closeBig.svg";
@@ -13,6 +12,10 @@ import invite from "../../../assets/Action/invite.svg";
 import makeChallenge from "../../../assets/Content/makeChallenge.svg";
 import pastChallenge from "../../../assets/Content/pastChallenge.svg";
 import exit from "../../../assets/Action/exit.svg";
+import {
+  getRoomCurrentChallenge,
+  getRoomPeopleCnt,
+} from "../../../apis/chatroom";
 
 const ChattingRoom = () => {
   const navigate = useNavigate();
@@ -23,17 +26,31 @@ const ChattingRoom = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  // 챌린지 관련 정보 상태
-  const [challengeData, setChallengeData] = useState(currentChallenge);
+
+  // 채팅방 인원 조회
+  const [peopleCnt, setPeopleCnt] = useState(0);
+  // 채팅방 현재 챌린지 조회
+  const [currentChallengeData, setCurrentChallengeData] = useState({});
+  useEffect(() => {
+    getRoomCurrentChallenge(roomInfo.id, setCurrentChallengeData);
+    getRoomPeopleCnt(roomInfo.id, setPeopleCnt);
+  }, []);
 
   useEffect(() => {
-    // console.log(challengeData);
-  }, [challengeData]);
+    console.log(currentChallengeData);
+  }, [currentChallengeData]);
 
   // 채팅방 나가기 관련 모달상태
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
-  // 챌린지 수락 관련 모달상태
-  const [isChallengeModalOpen, setIsChallengeModalOpen] = useState(false);
+
+  // 날짜 형식 변경
+  const formatToMonthDay = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${month}/${day}`;
+  };
 
   return (
     <>
@@ -46,35 +63,38 @@ const ChattingRoom = () => {
             className={styles.RoomMenu}
             onClick={toggleMenu}
           />
-          {challengeData ? (
+          {currentChallengeData ? (
             <div
               className={styles.ChallengeInfoContainer}
               onClick={() => {
-                if (challengeData.isAccept) {
-                  navigate("/challenge/detail", {
-                    state: { selectedChallenge: detailChallenge },
-                  });
-                } else {
-                  setIsChallengeModalOpen(true);
-                }
+                // 서버에서 챌린지 수락 여부 보내줄것임
+                currentChallengeData.isParticipating
+                  ? // 챌린지 수락 상태이면
+                    navigate("/challenge/detail", {
+                      state: { selectedChallenge: currentChallengeData },
+                    })
+                  : // 챌린지 수락 전이면
+                    navigate("/challengemodal/challengcard", {
+                      state: { challenge: currentChallengeData },
+                    });
               }}
             >
               <div className={styles.ChallengeTextContainer}>
                 <span className={styles.ChallengeTitle}>
-                  {challengeData.title}
+                  {currentChallengeData.title}
                 </span>
                 <div style={{ display: "flex", gap: "14px" }}>
                   <span className={styles.ChallengeText}>
-                    {challengeData.coin}코인
+                    {currentChallengeData.battleCoin}코인
                   </span>
                   <span className={styles.ChallengeText}>
-                    {challengeData.date}
+                    {formatToMonthDay(currentChallengeData.startDate)}
                   </span>
                   <span
                     className={styles.ChallengeText}
                     style={{ color: "#848484" }}
                   >
-                    {challengeData.people}명
+                    {currentChallengeData.participantCount}명
                   </span>
                 </div>
               </div>
@@ -87,7 +107,11 @@ const ChattingRoom = () => {
           ) : (
             <div
               className={styles.ChallengeInfoContainer}
-              onClick={() => navigate(`/chatroom/${roomInfo.id}/roomchallenge`)}
+              onClick={() =>
+                navigate(`/chatroom/${roomInfo.id}/roomchallenge`, {
+                  state: { peopleCnt: peopleCnt },
+                })
+              }
             >
               <div className={styles.ChallengeTextContainer}>
                 <span className={styles.ChallengeTitle}>
@@ -105,12 +129,7 @@ const ChattingRoom = () => {
             </div>
           )}
         </div>
-        <AcceptChallengeModal
-          isModalOpen={isChallengeModalOpen}
-          setIsModalOpen={setIsChallengeModalOpen}
-          challengeData={challengeData}
-          setChallengeData={setChallengeData}
-        />
+
         <div className={styles.MainArea}>
           <div>
             <ChattingArea roomId={roomInfo.id} />
@@ -158,7 +177,9 @@ const ChattingRoom = () => {
               <div
                 className={styles.EachMenuContainer}
                 onClick={() =>
-                  navigate(`/chatroom/${roomInfo.id}/roomchallenge`)
+                  navigate(`/chatroom/${roomInfo.id}/roomchallenge`, {
+                    state: { peopleCnt: peopleCnt },
+                  })
                 }
               >
                 <img src={makeChallenge} alt="챌린지 만들기" />
@@ -200,58 +221,3 @@ const ChattingRoom = () => {
 };
 
 export default ChattingRoom;
-
-const currentChallenge = {
-  id: "asdf",
-  title: "1주일에 5만원으로 살아남기",
-  coin: 500,
-  date: "11/10 (수)",
-  people: 4,
-  isAccept: false,
-};
-
-const detailChallenge = {
-  id: 1,
-  challengeName: "1주일 5만원으로 살아남기",
-  challengeInfo: "이제는 돈을 아껴야 할 때! 소비부터 같이 줄여봐요",
-  startDate: "2024-11-15",
-  endDate: "2024-11-22",
-  coin: 300,
-  people: 127,
-  public: true,
-  category: "taxi",
-  isJoined: true,
-  percent: 50,
-  with: [
-    {
-      id: 1,
-      userName: "황금돼지될래",
-      userImg: "http://placehold.co/49",
-      percent: 40,
-    },
-    {
-      id: 2,
-      userName: "김모아모아",
-      userImg: "http://placehold.co/49",
-      percent: 80,
-    },
-    {
-      id: 3,
-      userName: "햎피그",
-      userImg: "http://placehold.co/49",
-      percent: 50,
-    },
-    {
-      id: 4,
-      userName: "도니도니",
-      userImg: "http://placehold.co/49",
-      percent: 70,
-    },
-    {
-      id: 5,
-      userName: "짱모아",
-      userImg: "http://placehold.co/49",
-      percent: 20,
-    },
-  ],
-};

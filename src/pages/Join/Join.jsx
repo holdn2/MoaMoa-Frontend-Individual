@@ -1,16 +1,49 @@
-import React, { Children, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import styles from "./Join.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import emailOK from "../../assets/Content/emailOK.svg";
 import emailCheck from "../../assets/Content/emailCheck.svg";
 import JoinModal from "./JoinModal";
+import { checkEmailVerify, verifyEmail } from "../../apis/join";
+import useModalStore from "../../store/useModalStore";
 
 const Join = () => {
   const [joinMethodState, setJoinMethodState] = useState(0);
   const navigate = useNavigate();
   // 이메일을 입력한 상태
   const [email, setEmail] = useState("");
+  const { setVerifyEMail } = useModalStore();
+
+  // 인증코드 전송했을 때 버튼 상태
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  // 인증이 된지 안되지 상태
+  const [isVerified, setIsVerified] = useState(false);
+
+  const handleCheckemail = async () => {
+    const verified = await checkEmailVerify();
+    if (verified) {
+      navigate("/join/joinprocess", { state: { email: email } });
+    } else {
+      setModalState(2);
+    }
+  };
+  useEffect(() => {
+    if (isVerified) {
+      navigate("/join/joinprocess");
+    }
+  }, [isVerified]);
+
+  // 네이버 소셜 로그인
+  const handleNaverLogin = () => {
+    window.location.href = "http://moamoa.store/oauth2/authorization/naver";
+  };
+  // 구글 소셜 로그인
+  const handleGoogleLogin = () => {
+    window.location.href = "https://moamoa.store/oauth2/authorization/google";
+  };
+
   // 인증코드 전송 모달 상태. modalState가 2일 때는 인증이 완료된 상태임.
   const [modalState, setModalState] = useState(0);
 
@@ -47,14 +80,27 @@ const Join = () => {
               />
             </div>
             <div className={styles.ButtonWrapper}>
-              <div
-                onClick={() => setModalState(1)}
-                style={{ pointerEvents: email ? "auto" : "none" }}
-              >
-                <PrimaryButton disabled={!email}>
-                  인증링크 전송하기
-                </PrimaryButton>
-              </div>
+              {buttonClicked ? (
+                <div onClick={handleCheckemail}>
+                  <PrimaryButton>인증확인 및 회원가입</PrimaryButton>
+                </div>
+              ) : (
+                <div
+                  onClick={() => {
+                    setModalState(1),
+                      verifyEmail(email),
+                      console.log(email),
+                      setVerifyEMail(email);
+                    setButtonClicked(true);
+                  }}
+                  style={{ pointerEvents: email ? "auto" : "none" }}
+                >
+                  <PrimaryButton disabled={!email}>
+                    인증링크 전송하기
+                  </PrimaryButton>
+                </div>
+              )}
+
               <div className={styles.BorderLineWrapper}>
                 <div
                   style={{
@@ -75,14 +121,14 @@ const Join = () => {
               <button
                 className={styles.JoinMethodContainer}
                 style={{ background: "#00C63B", color: "#fff" }}
-                onClick={() => setJoinMethodState(1)}
+                onClick={handleNaverLogin}
               >
                 네이버로 시작하기
               </button>
               <button
                 className={styles.JoinMethodContainer}
                 style={{ border: "1px solid  #787878 " }}
-                onClick={() => setJoinMethodState(2)}
+                onClick={handleGoogleLogin}
               >
                 Google로 시작하기
               </button>
@@ -141,6 +187,7 @@ const Join = () => {
         modalState={modalState}
         setModalState={setModalState}
         email={email}
+        setButtonClicked={setButtonClicked}
       />
     </div>
   );
