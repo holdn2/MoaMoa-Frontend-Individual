@@ -71,9 +71,7 @@
   margin-left: 53px;
 }
 .InputWrapper {
-  position: absolute;
-  bottom: 360px;
-  left: 20px;
+  padding-top: 58px;
 }
 .ButtonContainer {
   position: absolute;

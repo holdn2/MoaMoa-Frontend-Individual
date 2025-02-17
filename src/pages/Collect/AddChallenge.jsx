@@ -90,14 +90,11 @@ const AddChallenge = () => {
     setValue("publicChallenge", watch("visibility") === "public");
   }, [watch("visibility")]);
 
-  // 챌린지 아이디 상태
-  const [challengeId, setChallengeId] = useState(0);
-
   // 챌린지 생성 API 실행
   const onSubmit = async (data) => {
     try {
       console.log("챌린지 생성 요청:", data);
-      const result = await addNewChallenge(data, setChallengeId);
+      const result = await addNewChallenge(data);
       if (result) {
         navigate("/challengemodal/create", {
           state: {
