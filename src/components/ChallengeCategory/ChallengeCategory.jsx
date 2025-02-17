@@ -34,11 +34,7 @@ const ChallengeCategory = ({
             checked={challengeClicked === challengeName[index]}
             onClick={() => {
               // 같은 카테고리 클릭하면 해제
-              setChallengeClicked(
-                challengeClicked === challengeName[index]
-                  ? ""
-                  : challengeName[index]
-              );
+              setChallengeClicked(challengeName[index]);
             }}
           />
         ))}

@@ -14,6 +14,7 @@ const CategoryButton = styled.div`
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 500;
+  cursor: pointer;
 `;
 
 const Category = ({ children, checked, onClick }) => {
