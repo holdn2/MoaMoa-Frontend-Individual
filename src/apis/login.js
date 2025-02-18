@@ -11,18 +11,20 @@ export const loginAPI = async (email, password) => {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
-    // ✅ JWT 토큰 저장
+    console.log("📌 서버 응답:", response); // 응답 전체 확인
+
+    // ✅ JWT 토큰 확인
     const token = response.headers["authorization"];
     if (token) {
       localStorage.setItem("jwt", token);
       console.log("✅ JWT Token Saved:", token);
+      return { success: true, token }; // ✅ 로그인 성공 응답
     } else {
       console.warn("⚠️ No JWT token found in response headers.");
+      return { success: false }; // ❌ 로그인 실패 응답
     }
-
-    return response.data;
   } catch (error) {
     console.error("❌ Login failed:", error);
-    throw error;
+    return { success: false, error };
   }
 };

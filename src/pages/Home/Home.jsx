@@ -17,12 +17,19 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const pageName = "홈화면";
   const navigate = useNavigate();
-  // 로그인이 되어있는 상태인지
-  const [isLogined, setIsLogined] = useState(true);
 
-  if (!isLogined) {
-    navigate("/join");
-  }
+  // 로그인이 되어있는 상태인지 체크 (JWT 토큰 여부)
+  const [isLogined, setIsLogined] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt"); // 토큰 가져오기
+    if (token) {
+      console.log(token);
+      setIsLogined(true);
+    } else {
+      navigate("/login"); // 로그인 안되어 있으면 로그인 페이지로 이동
+    }
+  }, [navigate]);
 
   // 여기다가 소비 시작했는지, 이미 시작했으면 정보 저장.
   // 이 전에 시작했는지 여부에 따라 보이는 화면이 달라짐
