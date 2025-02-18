@@ -14,6 +14,7 @@ import completeStage from "../../assets/StageExpression/completeStage.svg";
 import timeCircle from "../../assets/StageExpression/timeCircle.svg";
 import dustSad from "../../assets/CharacterImgs/dustSad.svg";
 import dustSunglass from "../../assets/CharacterImgs/dustSunglass.svg";
+import { postDiagnosisFinish } from "../../apis/diagnosis";
 
 const Diagnosis = () => {
   const pageName = "과소비 진단하기";
@@ -318,7 +319,10 @@ const Diagnosis = () => {
             </div>
             <div
               className={styles.ButtonContainer}
-              onClick={() => navigate("/")}
+              onClick={() => {
+                navigate("/");
+                postDiagnosisFinish();
+              }}
             >
               <PrimaryButton>확인</PrimaryButton>
             </div>
