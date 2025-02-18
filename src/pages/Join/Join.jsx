@@ -183,12 +183,7 @@ const Join = () => {
           로그인 하기
         </button>
       </div>
-      <JoinModal
-        modalState={modalState}
-        setModalState={setModalState}
-        email={email}
-        setButtonClicked={setButtonClicked}
-      />
+      <JoinModal modalState={modalState} setModalState={setModalState} />
     </div>
   );
 };
