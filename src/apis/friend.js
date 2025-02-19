@@ -54,3 +54,5 @@ export const postFriendRequest = async (userId) => {
     console.error("Error request add friend :", error);
   }
 };
+
+// 친구 요청 수락 api

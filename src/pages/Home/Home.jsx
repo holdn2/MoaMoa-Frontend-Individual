@@ -18,19 +18,14 @@ import { getChallengeHome } from "../../apis/home";
 const Home = () => {
   const pageName = "홈화면";
   const navigate = useNavigate();
-<<<<<<< HEAD
+
   // 로그인이 되어있는 상태인지
-  const [isLogined, setIsLogined] = useState(true);
+  const [isLogined, setIsLogined] = useState(false);
   const [challengeHome, setChallengeHome] = useState({
     hasParticipatingChallenges: false,
     participatingChallenges: [],
     recruitingChallenges: null,
   });
-=======
->>>>>>> c198c65e901a0654a0a4d4ade2b099b512577d31
-
-  // 로그인이 되어있는 상태인지 체크 (JWT 토큰 여부)
-  const [isLogined, setIsLogined] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt"); // 토큰 가져오기
