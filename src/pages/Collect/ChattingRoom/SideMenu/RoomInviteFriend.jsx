@@ -18,6 +18,7 @@ const RoomInviteFriend = () => {
   const navigate = useNavigate();
 
   // 상태로 friendData 관리
+  // 친구목록 조회는 서버에서 받아와야함.
   const [friends, setFriends] = useState(friendData);
   const [selectedFriends, setSelectedFriends] = useState([]);
 

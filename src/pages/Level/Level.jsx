@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Level.module.css";
 import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import { useLocation } from "react-router-dom";
 import { dustLv6, dustLevelData } from "../../constants/dustLevel";
+
 
 const Level = () => {
   const pageName = "레벨";
@@ -12,6 +13,21 @@ const Level = () => {
   const handleCurrentPercent = (currentCoin, needCoin) => {
     return 100 - (100 * (needCoin - currentCoin)) / needCoin;
   };
+
+  // 유저 코인 정보를 위한 회원조회 api
+  const [userInfo, setUserInfo] = useState({});
+  // 레벨 정보 배열
+  const [levelArr, setLevelArr] = useState([]);
+  useEffect(() => {
+    getUserInfo(setUserInfo);
+  }, []);
+
+  useEffect(() => {
+    if (userInfo.coin !== undefined) {
+      const levels = dustLevel(userInfo.coin);
+      setLevelArr(levels);
+    }
+  }, [userInfo.coin]);
 
   return (
     <div className={styles.LevelPageContainer}>
@@ -30,7 +46,9 @@ const Level = () => {
           </div>
         </div>
         <div className={styles.DustContainer}>
+
           {dustLevelData.map((item) =>
+
             item.lv === 0 ? (
               <div key={item.lv} className={styles.LevelContainer}>
                 <img className={styles.DustImg} src={item.img} alt="Lv.0" />
@@ -67,3 +85,4 @@ const Level = () => {
 };
 
 export default Level;
+
