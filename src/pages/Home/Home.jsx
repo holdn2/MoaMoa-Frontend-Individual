@@ -13,16 +13,26 @@ import useModalStore from "../../store/useModalStore";
 import ToDiagnosisComponent from "../../components/ToDiagnosisComponent/ToDiagnosisComponent";
 import ToNextLevel from "../../components/ToNextLevel/ToNextLevel";
 import { useNavigate } from "react-router-dom";
+import { getChallengeHome } from "../../apis/home";
 
 const Home = () => {
   const pageName = "홈화면";
   const navigate = useNavigate();
   // 로그인이 되어있는 상태인지
   const [isLogined, setIsLogined] = useState(true);
+  const [challengeHome, setChallengeHome] = useState({
+    hasParticipatingChallenges: false,
+    participatingChallenges: [],
+    recruitingChallenges: null,
+  });
 
   if (!isLogined) {
     navigate("/join");
   }
+
+  useEffect(() => {
+    getChallengeHome(setChallengeHome);
+  }, []);
 
   // 여기다가 소비 시작했는지, 이미 시작했으면 정보 저장.
   // 이 전에 시작했는지 여부에 따라 보이는 화면이 달라짐
@@ -66,8 +76,15 @@ const Home = () => {
         {/* 다음 레벨까지 */}
         <ToNextLevel />
         {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
-        {participatedChallenge.length ? <ProgressChallenge /> : <></>}
-        <RecruitChallenge />
+        {challengeHome.hasParticipatingChallenges ? (
+          <ProgressChallenge
+            participatingChallenges={challengeHome.participatingChallenges}
+          />
+        ) : (
+          <RecruitChallenge
+            recruitingChallenges={challengeHome.recruitingChallenges}
+          />
+        )}
       </div>
       <BottomBar pageName={pageName} />
       <AttendanceModal
