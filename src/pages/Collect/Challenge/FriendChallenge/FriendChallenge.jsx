@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./FriendChallenge.module.css";
 import arrowRight from "../../../../assets/Navigation/arrowRight.svg";
 import { Link, useNavigate } from "react-router-dom";
 import ChallengeCard from "../../../../components/ChallengeCard/ChallengeCard";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
 import { getInProgressFriendChallenge } from "../../../../apis/challenge/getChallenge";
+import { getAllFriendsInfo } from "../../../../apis/friend";
 
 const FriendChallenge = ({ friendChallenge }) => {
   const navigate = useNavigate();
@@ -22,32 +23,27 @@ const FriendChallenge = ({ friendChallenge }) => {
   ];
   const friendArray = userData.filter((user) => user.friend === true);
 
+  // 친구 목록 전체 불러오기
+  const [allFriendsData, setAllFriendsData] = useState([]);
+  useEffect(() => {
+    getAllFriendsInfo(setAllFriendsData);
+  }, []);
+
   return (
     <div>
-      <SearchBar
-        isText={true}
-        onClick={() =>
-          navigate("/friendsearch", {
-            state: {
-              userData: userData,
-              friendArray: friendArray,
-              withChallengeFriend: withChallengeFriend,
-            },
-          })
-        }
-      />
+      <SearchBar isText={true} onClick={() => navigate("/friendsearch")} />
       <div className={styles.friendProfileWrapper}>
         <div className={styles.friendDataInfo}>
           <span className={styles.friendCount}>
-            친구 <span style={{ fontWeight: 700 }}>{friendArray.length}</span>명
+            친구{" "}
+            <span style={{ fontWeight: 700 }}>{allFriendsData.length}</span>명
           </span>
           <span
             className={styles.friendMore}
             onClick={() =>
               navigate("/friendlist", {
                 state: {
-                  withChallengeFriend: withChallengeFriend,
-                  friendData: friendArray,
+                  friendData: allFriendsData,
                 },
               })
             }
@@ -57,10 +53,10 @@ const FriendChallenge = ({ friendChallenge }) => {
           </span>
         </div>
         <div className={styles.friendProfileContainer}>
-          {friendArray.map((item) => (
-            <div key={item.id} className={styles.friendProfile}>
-              <img src={item.img} alt="친구 프로필" />
-              {withChallengeFriend.includes(item.userName) && (
+          {allFriendsData.map((item) => (
+            <div key={item.userId} className={styles.friendProfile}>
+              <img src={item.imageUrl} alt="친구 프로필" />
+              {item.isInSameChallenge && (
                 <div className={styles.withFriendProfile}>챌린지</div>
               )}
             </div>
