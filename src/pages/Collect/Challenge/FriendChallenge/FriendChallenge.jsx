@@ -7,7 +7,7 @@ import SearchBar from "../../../../components/SearchBar/SearchBar";
 import { getInProgressFriendChallenge } from "../../../../apis/challenge/getChallenge";
 import { getAllFriendsInfo } from "../../../../apis/friend";
 
-const FriendChallenge = ({ friendChallenge }) => {
+const FriendChallenge = () => {
   const navigate = useNavigate();
   const [inProgressFriendChallenge, setInProgressFriendChallenge] = useState(
     []
@@ -15,13 +15,6 @@ const FriendChallenge = ({ friendChallenge }) => {
   useState(() => {
     getInProgressFriendChallenge(setInProgressFriendChallenge);
   }, []);
-  const challengeFriendArray = friendChallenge.flatMap(
-    (data) => data.with || []
-  );
-  const withChallengeFriend = [
-    ...new Set(challengeFriendArray.map((friend) => friend.userName)),
-  ];
-  const friendArray = userData.filter((user) => user.friend === true);
 
   // 친구 목록 전체 불러오기
   const [allFriendsData, setAllFriendsData] = useState([]);
@@ -53,14 +46,16 @@ const FriendChallenge = ({ friendChallenge }) => {
           </span>
         </div>
         <div className={styles.friendProfileContainer}>
-          {allFriendsData.map((item) => (
-            <div key={item.userId} className={styles.friendProfile}>
-              <img src={item.imageUrl} alt="친구 프로필" />
-              {item.isInSameChallenge && (
-                <div className={styles.withFriendProfile}>챌린지</div>
-              )}
-            </div>
-          ))}
+          {allFriendsData.map((item) => {
+            return (
+              <div key={item.userId} className={styles.friendProfile}>
+                <img src={item.profileImageUrl} alt="친구 프로필" />
+                {item.isInSameChallenge && (
+                  <div className={styles.withFriendProfile}>챌린지</div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
       {inProgressFriendChallenge.length != 0 ? (
@@ -97,111 +92,3 @@ const FriendChallenge = ({ friendChallenge }) => {
 };
 
 export default FriendChallenge;
-
-const userData = [
-  {
-    id: 1,
-    userName: "럭키머니",
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 2,
-    userName: "금나와라", // 친구 X
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: false,
-  },
-  {
-    id: 3,
-    userName: "골든피기",
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 4,
-    userName: "피그핑", // 같은 챌린지
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 5,
-    userName: "모아모아짱", // 친구 X
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: false,
-  },
-  {
-    id: 6,
-    userName: "럭키머니",
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 7,
-    userName: "햎피그", // 같은 챌린지
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 8,
-    userName: "럭키머니",
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 9,
-    userName: "럭키머니",
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 10,
-    userName: "짱모아", // 같은 챌린지
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 11,
-    userName: "럭키머니",
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 12,
-    userName: "럭키머니",
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 13,
-    userName: "황금돼지될래", // 같은 챌린지
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 14,
-    userName: "럭키머니",
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-  {
-    id: 15,
-    userName: "럭키머니",
-    img: "http://placehold.co/49",
-    toInvite: false,
-    friend: true,
-  },
-];

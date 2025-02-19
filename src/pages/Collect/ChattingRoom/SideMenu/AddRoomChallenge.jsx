@@ -110,7 +110,7 @@ const AddRoomChallenge = () => {
       console.log("챌린지 생성 요청:", data);
       const result = await addNewGroupChallenge(params.chatroomId, data);
       if (result) {
-        navigate("/challengemodal/challengemodalContent", {
+        navigate("/challengemodal/create", {
           state: {
             name: data.title,
             type: "create",

@@ -16,18 +16,9 @@ const Level = () => {
 
   // 유저 코인 정보를 위한 회원조회 api
   const [userInfo, setUserInfo] = useState({});
-  // 레벨 정보 배열
-  const [levelArr, setLevelArr] = useState([]);
   useEffect(() => {
     getUserInfo(setUserInfo);
   }, []);
-
-  useEffect(() => {
-    if (userInfo.coin !== undefined) {
-      const levels = dustLevel(userInfo.coin);
-      setLevelArr(levels);
-    }
-  }, [userInfo.coin]);
 
   return (
     <div className={styles.LevelPageContainer}>

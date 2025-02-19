@@ -42,7 +42,7 @@ const FriendList = () => {
             <FreindListBar
               key={item.userId}
               userName={item.nickname}
-              userImg={item.imageUrl}
+              userImg={item.profileImageUrl}
               isWithFriend={withChallengeFriend.includes(item.nickname)}
             />
           ))}

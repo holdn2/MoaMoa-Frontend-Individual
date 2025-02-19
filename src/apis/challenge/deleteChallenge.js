@@ -13,6 +13,7 @@ export const deleteChallenge = async (challengeId) => {
         },
       }
     );
+    console.log(response.data.result);
     console.log(challengeId, "번 챌린지 아이디를 삭제했습니다.");
   } catch (error) {
     console.error("Error delete challenge data:", error);

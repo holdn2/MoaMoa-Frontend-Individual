@@ -36,6 +36,7 @@ const RecruitChallenge = ({ recruitingChallenges }) => {
             challengeContent={challenge.title}
             recruitDday={challenge.remainingDays}
             currentPeople={challenge.participantCountRate}
+            challenge={challenge}
           />
         ))}
       </div>

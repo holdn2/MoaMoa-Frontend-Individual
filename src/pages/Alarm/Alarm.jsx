@@ -96,7 +96,6 @@ const Alarm = () => {
     <div className={styles.AlarmPageContainer}>
       <Header pageName={pageName} />
       <div className={styles.MainArea}>
-
         {groupedNotifications.map((group) => (
           <div key={group.date}>
             <span className={styles.Date}>{group.date}</span>
@@ -107,7 +106,6 @@ const Alarm = () => {
                 </div>
               ))}
             </div>
-
           </div>
         ))}
       </div>
