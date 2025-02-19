@@ -13,9 +13,7 @@ const ProgressChallengeCard = ({ challengeContent, currentProgress }) => {
         <span className={styles.ChallengeTitle}>{challengeContent}</span>
         <div className={styles.ProgressContainer}>
           <ProgressBar size="challengeCard" currentProgress={currentProgress} />
-          <span className={styles.CurrentProgressText}>
-            {currentProgress}/7
-          </span>
+          <span className={styles.CurrentProgressText}>{currentProgress}%</span>
         </div>
       </div>
 
