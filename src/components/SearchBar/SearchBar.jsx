@@ -13,17 +13,23 @@ const SearchBar = ({
   isText,
   isChallenge,
   onClick,
+  isNewFriendSearch,
 }) => {
   const handleSearch = (e) => {
     const searchText = e.target.value.toLowerCase(); // 검색어를 소문자로 변환
     setIsInputText(searchText);
-    const filtering = allData.filter(
-      (item) =>
-        (isChallenge ? item.challengeName || item.title : item.userName)
-          .toLowerCase()
-          .includes(searchText) // 일부 일치 검색
-    );
-    setFiltered(filtering);
+    if (!isNewFriendSearch) {
+      const filtering = allData.filter(
+        (item) =>
+          (isChallenge
+            ? item.challengeName || item.title
+            : item.userName || item.nickname
+          )
+            .toLowerCase()
+            .includes(searchText) // 일부 일치 검색
+      );
+      setFiltered(filtering);
+    }
   };
   return (
     <div onClick={onClick} className={styles.SearchBar}>
