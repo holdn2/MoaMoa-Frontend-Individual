@@ -9,6 +9,7 @@ import check from "../../../assets/SelectButton/check.svg";
 import uncheck from "../../../assets/SelectButton/uncheck.svg";
 import arrowLeftBig from "../../../assets/Navigation/arrowLeftBig.svg";
 import { makeChatRoom } from "../../../apis/chatroom";
+import { getAllFriendsInfo } from "../../../apis/friend";
 
 const MakeRoom = () => {
   const [inviteStep, setInviteStep] = useState(0);
@@ -17,8 +18,12 @@ const MakeRoom = () => {
   // 친구목록 서버에서 받아오는 로직 필요함.
 
   // 상태로 friendData 관리
-  const [friends, setFriends] = useState(friendData);
+  const [friends, setFriends] = useState([]);
   const [selectedFriends, setSelectedFriends] = useState([]);
+
+  useEffect(() => {
+    getAllFriendsInfo(setFriends);
+  }, []);
 
   // 친구 검색
   const [filteredfriends, setFilteredfriends] = useState([]);
@@ -28,12 +33,16 @@ const MakeRoom = () => {
   const handleInviteState = (id) => {
     setFriends((prevFriends) =>
       prevFriends.map((friend) =>
-        friend.id === id ? { ...friend, toInvite: !friend.toInvite } : friend
+        friend.userId === id
+          ? { ...friend, toInvite: !friend.toInvite }
+          : friend
       )
     );
     setFilteredfriends((prevFriends) =>
       prevFriends.map((friend) =>
-        friend.id === id ? { ...friend, toInvite: !friend.toInvite } : friend
+        friend.userId === id
+          ? { ...friend, toInvite: !friend.toInvite }
+          : friend
       )
     );
   };
@@ -63,7 +72,7 @@ const MakeRoom = () => {
     console.log("채팅방 이름 : ", newRoomName);
     console.log("초대한 친구 => ", selectedFriends);
     // 선택된 친구들의 ID 배열 생성
-    const friendsIds = selectedFriends.map((friend) => friend.id);
+    const friendsIds = selectedFriends.map((friend) => friend.userId);
 
     const createdRoomInfo = await makeChatRoom(newRoomName, friendsIds);
     if (createdRoomInfo) {
@@ -96,12 +105,12 @@ const MakeRoom = () => {
                 <div className={styles.SelectedFriendWrapper}>
                   {selectedFriends.map((item) => (
                     <div
-                      key={item.id}
+                      key={item.userId}
                       className={styles.SelectedFriendContainer}
-                      onClick={() => handleInviteState(item.id)}
+                      onClick={() => handleInviteState(item.userId)}
                     >
                       <span className={styles.SelectedFriendName}>
-                        {item.userName}
+                        {item.nickname}
                       </span>
                       <img src={blueCancle} alt="선택 취소" />
                     </div>
@@ -128,9 +137,9 @@ const MakeRoom = () => {
                   <div className={styles.AllFriends}>
                     {filteredfriends.map((item) => (
                       <div
-                        key={item.id}
+                        key={item.userId}
                         className={styles.EachFriendContainer}
-                        onClick={() => handleInviteState(item.id)}
+                        onClick={() => handleInviteState(item.userId)}
                       >
                         <div className={styles.FriendContent}>
                           <img
@@ -139,7 +148,7 @@ const MakeRoom = () => {
                             style={{ borderRadius: "50%" }}
                           />
                           <span className={styles.UsernameStyle}>
-                            {item.userName}
+                            {item.nickname}
                           </span>
                         </div>
                         {item.toInvite ? (
@@ -169,9 +178,9 @@ const MakeRoom = () => {
                   <div className={styles.AllFriends}>
                     {friends.map((item) => (
                       <div
-                        key={item.id}
+                        key={item.userId}
                         className={styles.EachFriendContainer}
-                        onClick={() => handleInviteState(item.id)}
+                        onClick={() => handleInviteState(item.userId)}
                       >
                         <div className={styles.FriendContent}>
                           <img
@@ -180,7 +189,7 @@ const MakeRoom = () => {
                             style={{ borderRadius: "50%" }}
                           />
                           <span className={styles.UsernameStyle}>
-                            {item.userName}
+                            {item.nickname}
                           </span>
                         </div>
                         {item.toInvite ? (
@@ -257,18 +266,3 @@ const MakeRoom = () => {
 };
 
 export default MakeRoom;
-
-const friendData = [
-  {
-    id: 1,
-    userName: "절약왕",
-    img: "",
-    toInvite: false,
-  },
-  {
-    id: 2,
-    userName: "도전왕",
-    img: "",
-    toInvite: false,
-  },
-];

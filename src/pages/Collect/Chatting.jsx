@@ -3,6 +3,7 @@ import styles from "./Chatting.module.css";
 import { useNavigate } from "react-router-dom";
 import chatPlusBtn from "../../assets/Btn/chatPlusBtn.svg";
 import { fetchChatRoomData } from "../../apis/chatroom";
+import { getUserInfo } from "../../apis/mypage";
 
 const userId = 1;
 
@@ -11,7 +12,7 @@ const Chatting = () => {
   const [chatData, setChatData] = useState([]);
 
   useEffect(() => {
-    fetchChatRoomData(userId, (data) => {
+    fetchChatRoomData((data) => {
       // 최근 메시지(createdAt)를 기준으로 내림차순 정렬
       const sortedData = [...data].sort((a, b) => {
         const dateA = new Date(a.recentChat?.createdAt || 0);
