@@ -2,17 +2,14 @@
 import axios from "axios";
 
 // 채팅방 조회 api
-export const fetchChatRoomData = async (userId, setChatData) => {
+export const fetchChatRoomData = async (setChatData) => {
   try {
-    const response = await axios.get(
-      `https://moamoa.store/user-groups/users/${userId}`,
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
-        },
-      }
-    );
+    const response = await axios.get("https://moamoa.store/user-groups", {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+      },
+    });
     setChatData(response.data.result);
   } catch (error) {
     console.error("Error fetching chatting room data:", error);
@@ -23,7 +20,7 @@ export const fetchChatRoomData = async (userId, setChatData) => {
 export const updateChatRoomName = async (roomId, newName) => {
   try {
     const response = await axios.put(
-      `https://moamoa.store/user-groups/${roomId}`,
+      `https://moamoa.store/user-groups/${roomId}/rename`,
       {
         title: newName,
       },
@@ -64,10 +61,10 @@ export const makeChatRoom = async (title, userIds) => {
 };
 
 // 채팅방 나가기 api
-export const deleteChatRoom = async (userGroupId, userId) => {
+export const deleteChatRoom = async (userGroupId) => {
   try {
     const response = await axios.post(
-      `https://moamoa.store/user-groups/${userGroupId}/users/${userId}`,
+      `https://moamoa.store/user-groups/${userGroupId}/leave`,
       {},
       {
         headers: {
@@ -89,6 +86,12 @@ export const inviteFriend = async (userGroupId, userIds) => {
       `https://moamoa.store/user-groups/${userGroupId}/invite`,
       {
         userIds: userIds,
+      },
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
       }
     );
     console.log("Invite Friends:", response.data);

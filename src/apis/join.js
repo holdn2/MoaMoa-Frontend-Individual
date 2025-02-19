@@ -45,7 +45,7 @@ export const setPasswordAPI = async (email, password) => {
 // 닉네임 설정 api
 export const setNicknameAPI = async (email, nickname) => {
   try {
-    const response = await axios.post(`https://moamoa.store/nickname`, {
+    const response = await axios.post("https://moamoa.store/nickname", {
       email: email,
       nickname: nickname,
     });
