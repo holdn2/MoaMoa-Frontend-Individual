@@ -10,10 +10,6 @@ import { initializeSocket } from "../../../../apis/chat";
 // 1. 채팅방에 들어왔을 때 이전 대화 내용은 axios의 get으로 받음.
 // 2. 실시간 채팅은 websocket 연결하여 주고 받음.
 
-// 사용자의 데이터 예시
-const userName = "아무개";
-const userId = 2;
-
 const ChattingArea = ({ roomId }) => {
   // console.log("채팅방 ID : ", roomId);
   // 이전 채팅 내역 조회할 때 해당 채팅들 저장할 배열
@@ -25,9 +21,12 @@ const ChattingArea = ({ roomId }) => {
   // 웹소켓이 연결된 이후에만 메시지를 보낼 수 있는 것을 관리하는 상태
   const [canSend, setCanSend] = useState(false);
 
+  // userId 저장
+  const [userId, setUserId] = useState(0);
+
   // 컴포넌트가 처음 렌더링될 때 한 번만 실행. apis에 폴더에 해당 함수 있음.
   useEffect(() => {
-    fetchChatData(roomId, userId, setChattings);
+    fetchChatData(roomId, setUserId, setChattings);
   }, [roomId]); // roomId가 변경될 때(채팅방을 들어갈 때) 다시 실행
 
   // SockJS + Stomp 클라이언트 생성. 실시간 채팅을 위한 구현.

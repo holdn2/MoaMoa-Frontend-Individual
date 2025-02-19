@@ -4,7 +4,7 @@ import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
 
 // axios로 서버에서 채팅 데이터 가져오는 함수
-export const fetchChatData = async (roomId, userId, setChattings) => {
+export const fetchChatData = async (roomId, setUserId, setChattings) => {
   try {
     const response = await axios.get(
       `https://moamoa.store/chat/rooms/${roomId}/messages`,
@@ -15,7 +15,9 @@ export const fetchChatData = async (roomId, userId, setChattings) => {
         },
       }
     );
-    const groupedData = groupChatsByDate(response.data.result, userId);
+    const userId = response.data.result.loginUserId;
+    setUserId(userId);
+    const groupedData = groupChatsByDate(response.data.result.messages, userId);
     setChattings(groupedData); // 채팅 데이터 상태 업데이트
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -121,7 +123,7 @@ const handleIncomingMsg = (userId, newMsg, setChattings) => {
       img: "http://placehold.co/45",
       chatting: newMsg.content,
       time: time,
-      isMe: newMsg.userId === userId,
+      isMe: true,
     };
 
     const existingDate = prevChattings.find(
