@@ -74,6 +74,7 @@ const AddRoomChallenge = () => {
     !watch("coin") ||
     isSubmitting ||
     !availableCoin || // 배틀코인이 보유코인보다 많거나 0일때 비활성화
+    !challengeClicked || // 카테고리를 선택하지 않았을 때 비활성화
     (watch("startDate") && new Date(watch("startDate")) <= new Date()); // 시작날짜가 현재와 같거나 이전일때 비활성화
 
   useEffect(() => {
