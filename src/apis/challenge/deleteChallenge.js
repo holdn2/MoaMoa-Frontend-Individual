@@ -3,8 +3,9 @@ import axios from "axios";
 
 export const deleteChallenge = async (challengeId) => {
   try {
-    const response = await axios.delete(
+    const response = await axios.post(
       `https://moamoa.store/challenges/${challengeId}/leave`,
+      {},
       {
         headers: {
           Authorization:

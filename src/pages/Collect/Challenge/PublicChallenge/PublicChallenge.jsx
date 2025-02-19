@@ -60,20 +60,25 @@ const PublicChallenge = () => {
             </div>
           </div>
         ) : (
-          <div className={styles.joinChallengeWrapper}>
-            <p className={styles.noJoinChallenge} style={{ marginTop: "20px" }}>
-              현재 진행중인 챌린지가 없어요
-              <br />
-              직접 챌린지를 만들고 시작해보세요!
-            </p>
-            <Link
-              to={"/challenge"}
-              className={styles.noJoinChallengeLink}
-              style={{ marginBottom: "20px" }}
-            >
-              챌린지 만들러 가기
-            </Link>
-          </div>
+          waitForStartChallenge.length === 0 && (
+            <div className={styles.joinChallengeWrapper}>
+              <p
+                className={styles.noJoinChallenge}
+                style={{ marginTop: "20px" }}
+              >
+                현재 진행중인 챌린지가 없어요
+                <br />
+                직접 챌린지를 만들고 시작해보세요!
+              </p>
+              <Link
+                to={"/challenge"}
+                className={styles.noJoinChallengeLink}
+                style={{ marginBottom: "20px" }}
+              >
+                챌린지 만들러 가기
+              </Link>
+            </div>
+          )
         )}
         {waitForStartChallenge.length != 0 && (
           <>
