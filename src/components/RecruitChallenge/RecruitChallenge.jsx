@@ -3,27 +3,6 @@ import React from "react";
 import styles from "./RecruitChallenge.module.css";
 import RecruitChallengeCard from "../RecruitChallengeCard/RecruitChallengeCard";
 
-const dummyData = [
-  {
-    id: 1,
-    challengeContent: "1주일에 5만원 쓰기",
-    recruitDday: 7,
-    currentPeople: 3,
-  },
-  {
-    id: 2,
-    challengeContent: "모집 중인 챌린지 만들기",
-    recruitDday: 1,
-    currentPeople: 2,
-  },
-  {
-    id: 3,
-    challengeContent: "예시 데이터",
-    recruitDday: 5,
-    currentPeople: 7,
-  },
-];
-
 const RecruitChallenge = ({ recruitingChallenges }) => {
   return (
     <div className={styles.RecruitContainer}>
