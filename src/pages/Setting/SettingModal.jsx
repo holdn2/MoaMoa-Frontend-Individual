@@ -82,6 +82,8 @@ const SettingModal = ({
                 </div>
                 <div
                   onClick={() => {
+                    localStorage.removeItem("jwt"); // JWT 토큰 삭제
+                    console.log("✅ 로그아웃: JWT 토큰 삭제됨");
                     postUserDelete();
                     setModalState(3);
                   }}
