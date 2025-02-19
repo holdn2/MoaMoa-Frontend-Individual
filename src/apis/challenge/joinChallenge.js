@@ -30,6 +30,7 @@ export const completeJoinChallenge = async (setCompleteChallenge) => {
       }
     );
     setCompleteChallenge(response.data.result);
+    console.log(response.data.result);
   } catch (error) {
     console.error("Error completed join challenge :", error);
   }

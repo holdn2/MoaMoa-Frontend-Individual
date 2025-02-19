@@ -12,8 +12,10 @@ const MyConsumption = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(0);
   const btnContent = ["1주", "2주", "1개월", "6개월", "1년"];
+  const btnDate = [7, 14, 31, 186, 365];
 
   // 나의 소비 관련 api
+  const [int, setInt] = useState(btnDate[0]);
   const [chartData, setChartData] = useState([]);
   const [consData, setConsData] = useState([]);
   const [challengeData, setChallengeData] = useState({
@@ -25,8 +27,8 @@ const MyConsumption = () => {
     challengeRecords: [],
   });
   useEffect(() => {
-    getMyConsumptionReport(setChallengeData, setChartData, setConsData);
-  }, []);
+    getMyConsumptionReport(int, setChallengeData, setChartData, setConsData);
+  }, [int]);
   const latestChartData = chartData.slice(-4);
 
   // 카테고리별 소비 데이터
@@ -87,7 +89,10 @@ const MyConsumption = () => {
             {btnContent.map((content, idx) => (
               <button
                 key={content}
-                onClick={() => setIsClicked(idx)}
+                onClick={() => {
+                  setIsClicked(idx);
+                  setInt(btnDate[idx]);
+                }}
                 className={
                   isClicked === idx ? styles.activeBtn : styles.inactiveBtn
                 }

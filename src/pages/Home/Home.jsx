@@ -13,7 +13,11 @@ import useModalStore from "../../store/useModalStore";
 import ToDiagnosisComponent from "../../components/ToDiagnosisComponent/ToDiagnosisComponent";
 import ToNextLevel from "../../components/ToNextLevel/ToNextLevel";
 import { useNavigate } from "react-router-dom";
-import { getChallengeHome } from "../../apis/home";
+import {
+  getChallengeHome,
+  getConsChallengeSummary,
+  getDiagnosisFinish,
+} from "../../apis/home";
 
 const Home = () => {
   const pageName = "홈화면";
@@ -24,7 +28,7 @@ const Home = () => {
   const [challengeHome, setChallengeHome] = useState({
     hasParticipatingChallenges: false,
     participatingChallenges: [],
-    recruitingChallenges: null,
+    recruitingChallenges: [],
   });
 
   useEffect(() => {
@@ -37,16 +41,18 @@ const Home = () => {
     }
   }, [navigate]);
 
+  const [isDiagnosis, setIsDiagnosis] = useState(false);
+  const [consChallengeSum, setConsChallengeSum] = useState({
+    consumptionLeft: null,
+    totalConsumption: null,
+    consumptionPercentile: null,
+  });
   useEffect(() => {
     getChallengeHome(setChallengeHome);
+    getDiagnosisFinish(setIsDiagnosis);
+    getConsChallengeSummary(setConsChallengeSum);
   }, []);
 
-  // 여기다가 소비 시작했는지, 이미 시작했으면 정보 저장.
-  // 이 전에 시작했는지 여부에 따라 보이는 화면이 달라짐
-  const [consumption, setConsumption] = useState(2);
-  // 참여중인 챌린지가 있을 경우 혹은 없을 경우
-  const participatedChallenge = [{}];
-  // 로그인 시 모달창 팝업.
   // zustand(전역상태관리)를 이용해서 로그인 시에만 해당 팝업이 뜨게 구현!(제대로 된 공부가 필요한 부분)
   const { hasLogin, setHasLogin } = useModalStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,13 +67,14 @@ const Home = () => {
   }, [hasLogin, setHasLogin]);
 
   const renderConsComponent = () => {
-    switch (consumption) {
-      case 0:
-        return <ToDiagnosisComponent />;
-      case 1:
+    if (!isDiagnosis) {
+      return <ToDiagnosisComponent />;
+    } else {
+      if (consChallengeSum.totalConsumption === null) {
         return <StartConsComponent />;
-      case 2:
+      } else {
         return <InputConsComponent />;
+      }
     }
   };
 
