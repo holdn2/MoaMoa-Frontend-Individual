@@ -7,7 +7,13 @@ import { Client } from "@stomp/stompjs";
 export const fetchChatData = async (roomId, userId, setChattings) => {
   try {
     const response = await axios.get(
-      `https://moamoa.store/chat/rooms/${roomId}/messages`
+      `https://moamoa.store/chat/rooms/${roomId}/messages`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
     );
     const groupedData = groupChatsByDate(response.data.result, userId);
     setChattings(groupedData); // 채팅 데이터 상태 업데이트
@@ -62,6 +68,11 @@ export const initializeSocket = (roomId, userId, setCanSend, setChattings) => {
   const socket = new SockJS(SERVER_URL);
   const client = new Client({
     webSocketFactory: () => socket,
+    connectHeaders: {
+      //   Authorization:
+      //     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+      //
+    },
     debug: (str) => console.log(str),
     reconnectDelay: 5000, // 재연결 시도 시간(ms)
   });

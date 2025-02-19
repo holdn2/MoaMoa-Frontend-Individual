@@ -1,18 +1,14 @@
 // 회원조회 api
+import axiosInstance from "./axiosInstance";
 import axios from "axios";
 
 // 마이페이지에 나오는 user정보를 받아오는 api
 export const getUserInfo = async (setUserInfo) => {
   try {
-    const response = await axios.get("https://moamoa.store/user", {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
-      },
-    });
+    const response = await axiosInstance.get("/user"); // ✅ 자동으로 JWT 포함됨
     setUserInfo(response.data.result);
   } catch (error) {
-    console.error("Error fetching mypage data", error);
+    console.error("❌ Error fetching mypage data:", error);
   }
 };
 

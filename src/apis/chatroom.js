@@ -5,7 +5,13 @@ import axios from "axios";
 export const fetchChatRoomData = async (userId, setChatData) => {
   try {
     const response = await axios.get(
-      `https://moamoa.store/user-groups/users/${userId}`
+      `https://moamoa.store/user-groups/users/${userId}`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
     );
     setChatData(response.data.result);
   } catch (error) {
@@ -20,6 +26,12 @@ export const updateChatRoomName = async (roomId, newName) => {
       `https://moamoa.store/user-groups/${roomId}`,
       {
         title: newName,
+      },
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
       }
     );
     console.log("Chat room name updated:", response.data);
@@ -36,6 +48,12 @@ export const makeChatRoom = async (title, userIds) => {
       {
         title: title,
         userIds: userIds,
+      },
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
       }
     );
     console.log("Make Chat room:", response.data);
@@ -93,5 +111,44 @@ export const getRoomPastChallenge = async (roomId, setPastChallengeData) => {
     setPastChallengeData(response.data.result);
   } catch (error) {
     console.error("Error fetching room past challenge data:", error);
+  }
+};
+
+// 채팅방 챌린지 조회 api
+export const getRoomCurrentChallenge = async (
+  roomId,
+  setCurrentChallengeData
+) => {
+  try {
+    const response = await axios.get(
+      `https://moamoa.store/user-groups/${roomId}/challenges/ongoing`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
+    );
+    setCurrentChallengeData(response.data.result[0]);
+  } catch (error) {
+    console.error("Error fetching room current challenge data:", error);
+  }
+};
+
+// 해당 채팅방 인원 조회 api
+export const getRoomPeopleCnt = async (roomId, setPeopleCnt) => {
+  try {
+    const response = await axios.get(
+      `https://moamoa.store/user-groups/${roomId}/people`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
+    );
+    setPeopleCnt(response.data.result);
+  } catch (error) {
+    console.error("Error fetching room current challenge data:", error);
   }
 };

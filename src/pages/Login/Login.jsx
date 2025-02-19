@@ -7,6 +7,8 @@ import emailOK from "../../assets/Content/emailOK.svg";
 import emailCheck from "../../assets/Content/emailCheck.svg";
 import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
 import PwChangeModal from "./PwChangeModal";
+import { loginAPI } from "../../apis/login";
+import JoinModal from "../Join/JoinModal";
 
 // 닉네임 받아오기
 const nickname = "모아모아짱";
@@ -14,16 +16,14 @@ const nickname = "모아모아짱";
 // setState는 비동기적으로 동작하므로 즉시 반영하려면 이벤트값을 바로 이용해야함.
 
 const Login = () => {
-  // 서버에 결과 요청 후 맞으면 isCorrect가 true가 되게. 로그인 정보가 맞는지.
-  const [isCorrect, setIsCorrect] = useState(true);
-
   const navigate = useNavigate();
 
   const [loginStep, setLoginStep] = useState(0);
   // 이메일 상태
   const [email, setEmail] = useState("");
   // 인증코드 전송 모달 상태. modalState가 2일 때는 인증이 완료된 상태임.
-  const [modalState, setModalState] = useState(0);
+  const [loginModalState, setLoginModalState] = useState(0);
+  const [pwModalState, setPwModalState] = useState(0);
 
   const [inputPw, setInputPw] = useState("");
   const [visiblePw, setVisiblePw] = useState(false);
@@ -32,7 +32,26 @@ const Login = () => {
   const [newPw, setNewPw] = useState("");
   const [newPwCheck, setNewPwCheck] = useState("");
 
-  // 로그인 한 뒤 2초 후 홈화면으로 가기
+  // 로그인 실행 함수
+  const handleLogin = async () => {
+    try {
+      console.log("🔄 로그인 요청 중...", email, inputPw);
+      const response = await loginAPI(email, inputPw);
+
+      if (response.success) {
+        console.log("✅ Login successful:", response);
+        setLoginStep(4); // ✅ 로그인 성공 시 4단계로 이동
+      } else {
+        console.warn("⚠️ 로그인 실패: 서버에서 토큰을 제공하지 않음.");
+        setLoginModalState(3);
+      }
+    } catch (error) {
+      console.error("❌ Login failed:", error);
+      setLoginModalState(3);
+    }
+  };
+
+  // 2초 후 홈화면으로 가기
   useEffect(() => {
     if (loginStep === 4) {
       const timer = setTimeout(() => {
@@ -99,14 +118,7 @@ const Login = () => {
               </span>
             </div>
 
-            <div
-              className={styles.ButtonContainer}
-              onClick={() => {
-                if (isCorrect) {
-                  setLoginStep(4), console.log(nickname, inputPw);
-                }
-              }}
-            >
+            <div className={styles.ButtonContainer} onClick={handleLogin}>
               <PrimaryButton>다음</PrimaryButton>
             </div>
           </>
@@ -138,7 +150,7 @@ const Login = () => {
                 >
                   이메일 주소
                 </span>
-                {modalState === 2 ? (
+                {pwModalState === 2 ? (
                   <img
                     className={styles.EmailCheckImg}
                     src={emailOK}
@@ -166,7 +178,7 @@ const Login = () => {
             </div>
             <div
               className={styles.ButtonContainer}
-              onClick={() => setModalState(1)}
+              onClick={() => setPwModalState(1)}
               style={{
                 pointerEvents: !email ? "none" : "auto",
               }}
@@ -317,9 +329,13 @@ const Login = () => {
       }}
     >
       {renderLogin()}
+      <JoinModal
+        modalState={loginModalState}
+        setModalState={setLoginModalState}
+      />
       <PwChangeModal
-        modalState={modalState}
-        setModalState={setModalState}
+        modalState={pwModalState}
+        setModalState={setPwModalState}
         setLoginStep={setLoginStep}
         email={email}
       />
