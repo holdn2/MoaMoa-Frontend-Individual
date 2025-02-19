@@ -17,9 +17,11 @@ const ProgressChallengeCard = ({
         <span className={styles.ChallengeTitle}>{challengeContent}</span>
         <div className={styles.ProgressContainer}>
           <ProgressBar size="challengeCard" currentProgress={currentProgress} />
+
           <span className={styles.CurrentProgressText}>
             {`${parseInt(currentProgress)}%`}
           </span>
+
         </div>
       </div>
 
