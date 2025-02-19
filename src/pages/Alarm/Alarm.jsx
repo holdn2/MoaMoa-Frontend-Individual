@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Alarm.module.css";
 import Header from "../../components/Header/Header";
 import coin3 from "../../assets/Content/coin3.svg";
@@ -6,6 +6,7 @@ import getBlack from "../../assets/Tab/getBlack.svg";
 import invite from "../../assets/Action/invite.svg";
 import acceptButton from "../../assets/AcceptButton/acceptButton.svg";
 import refuseButton from "../../assets/AcceptButton/refuseButton.svg";
+import { getNotifications } from "../../apis/alarm";
 const dummyData = [
   {
     date: "2024.11.22",
@@ -69,6 +70,10 @@ const dummyData = [
 
 const Alarm = () => {
   const pageName = "알림 페이지";
+  const [notification, setNotification] = useState([]);
+  useEffect(() => {
+    getNotifications(setNotification);
+  }, []);
   const renderAlarm = (type, content) => {
     switch (type) {
       case "coin":
@@ -78,7 +83,7 @@ const Alarm = () => {
             <span className={styles.ContentText}>{content}</span>
           </div>
         );
-      case "challenge":
+      case "CHALLENGE_INVITATION":
         return (
           <div className={styles.EachAlarmContainer}>
             <img src={getBlack} alt="챌린지 알람" />
