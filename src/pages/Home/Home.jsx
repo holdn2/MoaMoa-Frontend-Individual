@@ -90,15 +90,17 @@ const Home = () => {
         {/* 다음 레벨까지 */}
         <ToNextLevel />
         {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
-        {challengeHome.hasParticipatingChallenges ? (
-          <ProgressChallenge
-            participatingChallenges={challengeHome.participatingChallenges}
-          />
-        ) : (
-          <RecruitChallenge
-            recruitingChallenges={challengeHome.recruitingChallenges}
-          />
-        )}
+        {challengeHome.hasParticipatingChallenges
+          ? challengeHome.participatingChallenges !== null && (
+              <ProgressChallenge
+                participatingChallenges={challengeHome.participatingChallenges}
+              />
+            )
+          : challengeHome.recruitingChallenges !== null && (
+              <RecruitChallenge
+                recruitingChallenges={challengeHome.recruitingChallenges}
+              />
+            )}
       </div>
       <BottomBar pageName={pageName} />
       <AttendanceModal
