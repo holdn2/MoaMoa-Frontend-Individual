@@ -62,3 +62,19 @@ export const getChallengeHome = async (setChallengeHome) => {
     console.error("Error fetching getChallengeHome", error);
   }
 };
+
+// 코인 가져오는 api
+export const getLevelHome = async (setLevel) => {
+  try {
+    const response = await axios.get("https://moamoa.store/home", {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+      },
+    });
+    setLevel(response.data.result.coinSummary);
+    console.log(response.data.result.coinSummary);
+  } catch (error) {
+    console.error("Error fetching getCoinHome", error);
+  }
+};

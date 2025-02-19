@@ -90,9 +90,7 @@ const Home = () => {
         <ToNextLevel />
         {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
         {challengeHome.hasParticipatingChallenges ? (
-          <ProgressChallenge
-            participatingChallenges={challengeHome.participatingChallenges}
-          />
+          <ProgressChallenge participatingChallenges={null} />
         ) : (
           <RecruitChallenge
             recruitingChallenges={challengeHome.recruitingChallenges}

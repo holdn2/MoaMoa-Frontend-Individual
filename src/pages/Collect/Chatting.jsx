@@ -83,8 +83,10 @@ const Chatting = () => {
                   <></>
                 )}
 
-                {item.unreadCnt ? (
-                  <div className={styles.UnreadChatCnt}>+{item.unreadCnt}</div>
+                {item.unreadCount !== 0 ? (
+                  <div className={styles.UnreadChatCnt}>
+                    +{item.unreadCount}
+                  </div>
                 ) : (
                   <></>
                 )}

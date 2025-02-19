@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
 import styles from "./AttendanceModal.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
@@ -9,6 +9,7 @@ import {
   completedChallengeClame,
   completeJoinChallenge,
 } from "../../apis/challenge/joinChallenge";
+import { getLevelHome } from "../../apis/home";
 
 const AttendanceModal = ({
   isModalOpen,
@@ -16,10 +17,10 @@ const AttendanceModal = ({
   modalState,
   setModalState,
 }) => {
-  // 레벨업을 위해 필요한 코인
-  const [requiredCoin, setRequiredCoin] = useState(1000);
-  // 현재 유저가 가진 코인
-  const [currentCoin, setCurrentCoin] = useState(800);
+  const [currentCoin, setCurrentCoin] = useState(300);
+  const [level, setLevel] = useState(1);
+  const prevLevel = useRef(1);
+
   const [completeChallenge, setCompleteChallenge] = useState([]);
   const successChallenge = completeChallenge.filter(
     (challenge) => challenge.goalAchieved === true
@@ -35,12 +36,14 @@ const AttendanceModal = ({
 
   useEffect(() => {
     completeJoinChallenge(setCompleteChallenge);
+    getLevelHome(setLevel);
   }, []);
 
   // 코인 변경 시 실행. 레벨업 가능 코인 수 도달 시 레벨업 아니면 그냥 닫기
   useEffect(() => {
     console.log(currentCoin);
-    if (currentCoin >= requiredCoin) {
+    if (level > prevLevel.current) {
+      prevLevel.current = newLevel;
       setModalState(2);
     }
     if (successChallenge?.length > 0) {
@@ -172,6 +175,7 @@ const AttendanceModal = ({
                   <div
                     onClick={() => {
                       setIsModalOpen(false);
+                      completedChallengeClame(challenge.challengeId);
                     }}
                   >
                     <PrimaryButton type="button" size="lg">

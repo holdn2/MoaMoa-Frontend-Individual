@@ -19,12 +19,12 @@ const MyConsumption = () => {
   const [chartData, setChartData] = useState([]);
   const [consData, setConsData] = useState([]);
   const [challengeData, setChallengeData] = useState({
-    totalEarned: 0,
     successRate: 0,
     top: 0,
     totalTries: 0,
     totalSucceed: 0,
-    challengeRecords: [],
+    stats: [],
+    totalSpent: {},
   });
   useEffect(() => {
     getMyConsumptionReport(int, setChallengeData, setChartData, setConsData);
@@ -47,7 +47,7 @@ const MyConsumption = () => {
       <MyChallengeBar
         children="나의 소비 성공 확률은?"
         isConsumption={true}
-        successRate={challengeData.successRate * 100}
+        successRate={parseInt(challengeData.successRate * 100)}
         top={challengeData.top}
         totalTries={challengeData.totalTries}
         totalSucceed={challengeData.totalSucceed}

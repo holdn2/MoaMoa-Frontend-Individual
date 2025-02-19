@@ -7,21 +7,7 @@ import PurchaseModal from "./PurchaseModal";
 import purchased from "../../assets/Decoration/purchased.svg";
 import coinWhite from "../../assets/Content/coinWhite.svg";
 import coin3 from "../../assets/Content/coin3.svg";
-import defaultOutline from "../../assets/Decoration/Outlines/defaultOutline.svg";
-import blueOutline from "../../assets/Decoration/Outlines/blueOutline.svg";
-import yellowOutline from "../../assets/Decoration/Outlines/yellowOutline.svg";
-import pinkOutline from "../../assets/Decoration/Outlines/pinkOutline.svg";
-import littleStarOutline from "../../assets/Decoration/Outlines/littleStarOutline.svg";
-import cloverOutline from "../../assets/Decoration/Outlines/cloverOutline.svg";
-import heartOutline from "../../assets/Decoration/Outlines/heartOutline.svg";
-import sunglassOutline from "../../assets/Decoration/Outlines/sunglassOutline.svg";
-import manyStarOutline from "../../assets/Decoration/Outlines/manyStarOutline.svg";
-import bubbleOutline from "../../assets/Decoration/Outlines/bubbleOutline.svg";
-import tenCoin from "../../assets/Decoration/Cost/tenCoin.svg";
-import selectedThirtyCoin from "../../assets/Decoration/Cost/selectedThirtyCoin.svg";
-import twentyCoin from "../../assets/Decoration/Cost/twentyCoin.svg";
-import thirtyCoin from "../../assets/Decoration/Cost/thirtyCoin.svg";
-import { getDecoItemInfo } from "../../apis/decoProfile";
+import { changeDecoItem, getDecoItemInfo } from "../../apis/decoProfile";
 
 const DecoProfile = () => {
   const pageName = "프로필 꾸미기";
@@ -32,10 +18,12 @@ const DecoProfile = () => {
   const [profileItems, setProfileItems] = useState([]);
   // 서버에서 가져온 아이템들 중 구매한 아이템 배열
   const [boughtItems, setBoughtItem] = useState([]);
+  // 사용중인 테두리 ID
+  const [selectedOutlineId, setSelectedOutlineId] = useState(0);
 
   // 아이템 구매 시 즉시 반영되도록 설정.
   const fetchDecoItems = () => {
-    getDecoItemInfo(setProfileItems, setBoughtItem);
+    getDecoItemInfo(setProfileItems, setBoughtItem, setSelectedOutlineId);
   };
   useEffect(() => {
     fetchDecoItems();
@@ -59,13 +47,12 @@ const DecoProfile = () => {
     setWantToPurchaseItem(buyItem[0]);
   }, [wantToPurchaseId]);
 
-  // 보유 중인 테두리 중 사용할 것 클릭하는 로직. 수정 필요
-  const handleOutlineUse = (useOutline) => {
-    // const updatedOutlines = outlines.map((item) => ({
-    //   ...item,
-    //   use: item.id === useOutline.id,
-    // }));
-    // setOutlines(updatedOutlines);
+  // 테두리 적용 로직 수정
+  const handleOutlineUse = async (useOutline) => {
+    if (selectedOutlineId !== useOutline.itemId) {
+      await changeDecoItem(useOutline.itemId); // 서버에 적용 요청
+      setSelectedOutlineId(useOutline.itemId); // 상태 업데이트
+    }
   };
 
   return (
@@ -88,16 +75,15 @@ const DecoProfile = () => {
                     src={item.imageUrl}
                     alt={item.type}
                   />
-                  {/* 추후 아이템 사용여부 추가 */}
-                  {/* {item.use ? (
+                  {/* ✅ 선택된 경우 체크 아이콘 표시 */}
+                  {selectedOutlineId === item.itemId && (
                     <img
                       style={{ width: "21px", height: "21px" }}
-                      src={purchased}
+                      className={styles.CheckIcon}
+                      src={purchased} // 체크 아이콘 이미지
                       alt="사용 중인 테두리 체크"
                     />
-                  ) : (
-                    <div style={{ width: "21px", height: "21px" }}></div>
-                  )} */}
+                  )}
                 </button>
               ))}
             </div>
@@ -185,6 +171,7 @@ const DecoProfile = () => {
           itemImage={wantToPurchaseItem.imageUrl}
           itemPrice={wantToPurchaseItem.price}
           fetchDecoItems={fetchDecoItems}
+          handleOutlineUse={handleOutlineUse}
         />
       ) : (
         <></>

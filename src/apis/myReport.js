@@ -18,6 +18,7 @@ export const getMyConsumptionReport = async (
         },
       }
     );
+    console.log(response.data.result);
     setChallengeData(response.data.result);
     setChartData(response.data.result.stats);
     setConsData(response.data.result.totalSpent);
