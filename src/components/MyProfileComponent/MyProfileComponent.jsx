@@ -60,7 +60,15 @@ const MyProfileComponent = () => {
   return (
     <div className={styles.MyProfileContainer}>
       <div className={styles.DustNameContainer}>
-        <img src={userInfo.dustImage} alt="먼지" className={styles.DustImg} />
+        <div className={styles.ImgContainer}>
+          <img src={userInfo.dustImage} alt="먼지" className={styles.DustImg} />
+          <img
+            src={userInfo.boarderUrl}
+            alt="테두리"
+            className={styles.borderImg}
+          />
+        </div>
+
         <button className={styles.NicknameContainer} onClick={openModal}>
           <div className={styles.ForFixContainer}>
             <span className={styles.FixText}>내 닉네임</span>
