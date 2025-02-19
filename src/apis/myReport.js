@@ -3,13 +3,14 @@ import axios from "axios";
 
 // 나의기록 나의소비 api
 export const getMyConsumptionReport = async (
+  int,
   setChallengeData,
   setChartData,
   setConsData
 ) => {
   try {
     const response = await axios.get(
-      "https://moamoa.store/user/my-consumption",
+      `https://moamoa.store/user/my-consumption?duration=${int}`,
       {
         headers: {
           Authorization:

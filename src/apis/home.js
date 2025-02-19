@@ -1,5 +1,20 @@
 import axios from "axios";
 
+export const getUserNameHome = async (setUserName) => {
+  try {
+    const response = await axios.get("https://moamoa.store/home", {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+      },
+    });
+    setUserName(response.data.result.nickName);
+    console.log(response.data.result.nickName);
+  } catch (error) {
+    console.error("Error fetching getUserNameHome", error);
+  }
+};
+
 // 과소비 진단 여부 확인 api
 export const getDiagnosisFinish = async (setIsDiagnosis) => {
   try {

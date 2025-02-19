@@ -18,13 +18,13 @@ const RecruitChallengeCard = ({
       <div className={styles.CardTextContainer}>
         <span className={styles.ChallengeTitle}>{challengeContent}</span>
         <div className={styles.DayPeopleText}>
-          <span className={styles.DayText}>D-{recruitDday}</span>
+          <span className={styles.DayText}>{recruitDday}</span>
           <img
             src={people}
             alt="사람들 이모티콘"
             className={styles.PeopleImg}
           />
-          <span className={styles.CurrentPeople}>{currentPeople}/10</span>
+          <span className={styles.CurrentPeople}>{currentPeople}</span>
         </div>
       </div>
       <button

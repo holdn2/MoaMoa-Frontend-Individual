@@ -7,6 +7,8 @@ import SecondaryButton from "../../components/Button/SecondaryButton";
 import dustSweat from "../../assets/CharacterImgs/dustSweat.svg";
 import dustSad from "../../assets/CharacterImgs/dustSad.svg";
 import dustHappy from "../../assets/CharacterImgs/dustHappy.svg";
+import { postUserDelete } from "../../apis/setting";
+import { useNavigate } from "react-router-dom";
 
 const SettingModal = ({
   isModalOpen,
@@ -14,6 +16,7 @@ const SettingModal = ({
   modalState,
   setModalState,
 }) => {
+  const navigate = useNavigate();
   const renderSettingModal = () => {
     switch (modalState) {
       case 1:
@@ -66,14 +69,15 @@ const SettingModal = ({
               <div className={styles.ConfirmContainer}>
                 <div
                   onClick={() => {
-                    setModalState(3);
+                    setModalState(4);
                   }}
                 >
                   <PrimaryButton size="sm">계속할래요</PrimaryButton>
                 </div>
                 <div
                   onClick={() => {
-                    setModalState(4);
+                    postUserDelete();
+                    setModalState(3);
                   }}
                 >
                   <SecondaryButton size="sm">중단할래요</SecondaryButton>
@@ -96,7 +100,12 @@ const SettingModal = ({
               <span className={styles.ConfirmInfoText}>
                 앞으로의 절약생활도 응원할게요!
               </span>
-              <div onClick={() => setIsModalOpen(false)}>
+              <div
+                onClick={() => {
+                  setIsModalOpen(false);
+                  navigate("/");
+                }}
+              >
                 <PrimaryButton size="unsubscribeConfirm">확인</PrimaryButton>
               </div>
             </div>

@@ -24,18 +24,18 @@ const dummyData = [
   },
 ];
 
-const RecruitChallenge = () => {
+const RecruitChallenge = ({ recruitingChallenges }) => {
   return (
     <div className={styles.RecruitContainer}>
       <span className={styles.RecruitText}>모집 중인 챌린지</span>
       <div>
-        {dummyData.map((item) => (
+        {recruitingChallenges.map((challenge) => (
           // 챌린지 카드도 따로 컴포넌트로 빼서 구현함
           <RecruitChallengeCard
-            key={item.id}
-            challengeContent={item.challengeContent}
-            recruitDday={item.recruitDday}
-            currentPeople={item.currentPeople}
+            key={challenge.challengeId}
+            challengeContent={challenge.title}
+            recruitDday={challenge.remainingDays}
+            currentPeople={challenge.participantCountRate}
           />
         ))}
       </div>

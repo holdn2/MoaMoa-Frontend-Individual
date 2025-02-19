@@ -7,9 +7,13 @@ import dateBlue from "../../assets/Content/dateBlue.svg";
 
 const MyChallengeRecord = ({ item, isConsData }) => {
   let startDate = new Date(item.startDate);
-  startDate = `${startDate.getMonth() + 1}.${startDate.getDate()}`;
+  startDate = `${String(startDate.getFullYear()).slice(-2)}.${
+    startDate.getMonth() + 1
+  }.${startDate.getDate()}`;
   let endDate = new Date(item.endDate);
-  endDate = `${endDate.getMonth() + 1}.${endDate.getDate()}`;
+  endDate = `${String(endDate.getFullYear()).slice(-2)}.${
+    endDate.getMonth() + 1
+  }.${endDate.getDate()}`;
   return (
     <div className={item.succeed ? styles.successWrapper : styles.failWrapper}>
       <img src={item.succeed ? graySuccess : grayFail} />

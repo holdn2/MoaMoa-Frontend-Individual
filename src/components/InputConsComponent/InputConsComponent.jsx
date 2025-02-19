@@ -5,33 +5,38 @@ import { useNavigate } from "react-router-dom";
 import dustCrown from "../../assets/CharacterImgs/dustCrown.svg";
 import ProgressSemiCircle from "../ProgressSemiCircle/ProgressSemiCircle";
 import { useEffect, useState } from "react";
+import { getConsChallengeSummary, getUserNameHome } from "../../apis/home";
 
 const InputConsComponent = () => {
   const navigate = useNavigate();
-
-  const userName = "모아모아짱";
-  const stateMsg = "거의 다 왔어요!";
-  const restCost = 15000;
-  const totalCost = 195000;
-  const [progressPercent, setProgressPercent] = useState(
-    parseInt((100 * totalCost) / (totalCost + restCost))
-  );
+  const [userName, setUserName] = useState("");
+  const [consChallengeSum, setConsChallengeSum] = useState({
+    consumptionLeft: 0,
+    totalConsumption: 0,
+    consumptionPercentile: 0,
+  });
   useEffect(() => {
-    parseInt((100 * totalCost) / (totalCost + restCost));
-  }, [totalCost]);
+    getConsChallengeSummary(setConsChallengeSum);
+    getUserNameHome(setUserName);
+  }, []);
+
+  const restCost = consChallengeSum.consumptionLeft;
+  const totalCost = consChallengeSum.totalConsumption;
   return (
     <div className={styles.InputContainer}>
       <div className={styles.TxtImgContainer}>
         <span className={styles.TextContainer}>
           <span className={styles.UserName}>{userName} </span>님,
           <br />
-          {stateMsg}
+          거의 다 왔어요!
         </span>
         <img className={styles.ImgContainer} src={dustCrown} alt="왕관 먼지" />
       </div>
       <div className={styles.InputConsContainer}>
         <div className={styles.CurrentConsContainer}>
-          <ProgressSemiCircle percentage={progressPercent} />
+          <ProgressSemiCircle
+            percentage={consChallengeSum.consumptionPercentile}
+          />
           <div className={styles.AllCostContainer}>
             <div className={styles.CostContainer}>
               <span className={styles.CostText}>현재 남은 소비 금액</span>

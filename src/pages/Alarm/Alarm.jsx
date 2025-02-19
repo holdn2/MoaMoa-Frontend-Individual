@@ -115,9 +115,9 @@ const Alarm = () => {
     <div className={styles.AlarmPageContainer}>
       <Header pageName={pageName} />
       <div className={styles.MainArea}>
-        {dummyData.map((item) => (
+        {notification.map((alarm) => (
           <div key={item.date}>
-            <span className={styles.Date}>{item.date}</span>
+            <span className={styles.Date}>{alarm.date}</span>
             {item.alarms.map((value, index) => (
               <div key={index} className={styles.AlarmContainer}>
                 {renderAlarm(value.type, value.content)}

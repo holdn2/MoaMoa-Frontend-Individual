@@ -4,6 +4,7 @@ import styles from "./AttendanceModal.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import dustHappy from "../../assets/CharacterImgs/dustHappy.svg";
 import dustSunglass from "../../assets/CharacterImgs/dustSunglass.svg";
+import dustSad from "../../assets/CharacterImgs/dustSad.svg";
 import {
   completedChallengeClame,
   completeJoinChallenge,
@@ -20,6 +21,12 @@ const AttendanceModal = ({
   // 현재 유저가 가진 코인
   const [currentCoin, setCurrentCoin] = useState(800);
   const [completeChallenge, setCompleteChallenge] = useState([]);
+  const successChallenge = completeChallenge.filter(
+    (challenge) => challenge.goalAchieved === true
+  );
+  const failChallenge = completeChallenge.filter(
+    (challenge) => challenge.goalAchieved === false
+  );
 
   // 200코인 받기 클릭 시 현재 코인 update
   const addCoin = () => {
@@ -35,8 +42,12 @@ const AttendanceModal = ({
     console.log(currentCoin);
     if (currentCoin >= requiredCoin) {
       setModalState(2);
-    } else if (completeChallenge.length > 0) {
+    }
+    if (successChallenge?.length > 0) {
       setModalState(3);
+    }
+    if (failChallenge?.length > 0) {
+      setModalState(4);
     } else {
       setIsModalOpen(false);
     }
@@ -99,7 +110,7 @@ const AttendanceModal = ({
       case 3:
         return (
           <>
-            {completeChallenge.map((challenge) => (
+            {successChallenge.map((challenge) => (
               <Modal
                 isOpen={isModalOpen}
                 className={styles.AttendanceContainer}
@@ -127,6 +138,44 @@ const AttendanceModal = ({
                   >
                     <PrimaryButton size="lg">
                       {challenge.battleCoin * 2}코인 받기
+                    </PrimaryButton>
+                  </div>
+                </div>
+              </Modal>
+            ))}
+          </>
+        );
+      case 4:
+        return (
+          <>
+            {failChallenge.map((challenge) => (
+              <Modal
+                isOpen={isModalOpen}
+                className={styles.AttendanceContainer}
+                overlayClassName={styles.Overlay}
+                key={challenge.challengeId}
+              >
+                <img
+                  src={dustSad}
+                  alt="울고 있는 먼지 캐릭터"
+                  className={styles.HappyDustImg}
+                />
+                <div className={styles.AttendanceContent}>
+                  <span className={styles.AttendanceTitle}>
+                    {challenge.title}
+                  </span>
+                  <span className={styles.AttendanceText}>
+                    챌린지 실패..
+                    <br />
+                    배팅한 {challenge.battleCoin}코인을 잃게 돼요
+                  </span>
+                  <div
+                    onClick={() => {
+                      setIsModalOpen(false);
+                    }}
+                  >
+                    <PrimaryButton type="button" size="lg">
+                      확인
                     </PrimaryButton>
                   </div>
                 </div>
