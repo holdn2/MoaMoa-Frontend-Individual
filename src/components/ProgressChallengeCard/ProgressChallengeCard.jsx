@@ -5,7 +5,11 @@ import { useNavigate } from "react-router-dom";
 import arrowRight from "../../assets/Navigation/arrowRight.svg";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
-const ProgressChallengeCard = ({ challengeContent, currentProgress }) => {
+const ProgressChallengeCard = ({
+  challengeContent,
+  currentProgress,
+  challenge,
+}) => {
   const navigate = useNavigate();
   return (
     <div className={styles.ProgressCardContainer}>
@@ -13,9 +17,11 @@ const ProgressChallengeCard = ({ challengeContent, currentProgress }) => {
         <span className={styles.ChallengeTitle}>{challengeContent}</span>
         <div className={styles.ProgressContainer}>
           <ProgressBar size="challengeCard" currentProgress={currentProgress} />
+
           <span className={styles.CurrentProgressText}>
-            {currentProgress}/7
+            {`${parseInt(currentProgress)}%`}
           </span>
+
         </div>
       </div>
 
@@ -23,7 +29,7 @@ const ProgressChallengeCard = ({ challengeContent, currentProgress }) => {
         className={styles.ArrowContainer}
         onClick={() =>
           navigate("/challenge/detail", {
-            state: { selectedChallenge: dummy },
+            state: { selectedChallenge: challenge },
           })
         }
       >

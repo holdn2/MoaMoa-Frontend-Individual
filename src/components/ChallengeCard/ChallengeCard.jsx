@@ -20,7 +20,7 @@ const formatDate2 = (isoDate) => {
   const month = String(date.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 +1
   const day = String(date.getDate()).padStart(2, "0");
 
-  return `${month}.${day}`; // "YYYY.MM.DD" 형식
+  return `${month}.${day}`; // MM.DD" 형식
 };
 
 const ChallengeCard = ({
@@ -52,9 +52,12 @@ const ChallengeCard = ({
   const successDate = Math.floor(
     (new Date(allData.endDate) - currentDate) / (1000 * 60 * 60 * 24)
   );
-  const detailTime = `${23 - currentDate.getHours()}:${
-    59 - currentDate.getMinutes()
-  }:${59 - currentDate.getSeconds()}`;
+  const detailTime = `${String(23 - currentDate.getHours()).padStart(
+    2,
+    "0"
+  )}:${String(59 - currentDate.getMinutes()).padStart(2, "0")}:${String(
+    59 - currentDate.getSeconds()
+  ).padStart(2, "0")}`;
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentDate(new Date());

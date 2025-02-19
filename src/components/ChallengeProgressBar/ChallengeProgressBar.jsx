@@ -7,7 +7,7 @@ const ChallengeProgressBar = ({ user }) => {
     <div className={styles.EachChallengerContainer}>
       <div className={styles.ChallengerInfoContainer}>
         <img
-          src={user.profileImage}
+          src={user.profileImageUrl}
           alt="유저 프로필 사진"
           style={{ borderRadius: "50%" }}
         />

@@ -14,6 +14,7 @@ const ProgressChallenge = ({ participatingChallenges }) => {
             key={challenge.challengeId}
             challengeContent={challenge.title}
             currentProgress={challenge.usageRate}
+            challenge={challenge}
           />
         ))}
       </div>

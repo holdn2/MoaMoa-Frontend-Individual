@@ -66,8 +66,15 @@ export const makeChatRoom = async (title, userIds) => {
 // 채팅방 나가기 api
 export const deleteChatRoom = async (userGroupId, userId) => {
   try {
-    const response = await axios.delete(
-      `https://moamoa.store/user-groups/${userGroupId}/users/${userId}`
+    const response = await axios.post(
+      `https://moamoa.store/user-groups/${userGroupId}/users/${userId}`,
+      {},
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
     );
     console.log("Delete Chat room ...");
   } catch (error) {

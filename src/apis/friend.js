@@ -14,6 +14,7 @@ export const getAllFriendsInfo = async (setAllFriendsData) => {
         },
       }
     );
+    console.log(response.data.result);
     setAllFriendsData(response.data.result);
   } catch (error) {
     console.error("Error fetching all friends data", error);

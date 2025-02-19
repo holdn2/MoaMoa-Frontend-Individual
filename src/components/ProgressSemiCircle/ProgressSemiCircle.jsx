@@ -26,7 +26,7 @@ const ProgressSemiCircle = ({ percentage }) => {
     else if (percentage < 75) return semiCircle65;
     else if (percentage < 85) return semiCircle75;
     else if (percentage < 95) return semiCircle85;
-    else if (percentage === 100) return semiCircle100;
+    else if (percentage >= 100) return semiCircle100;
     return semiCircle95;
   }, [percentage]);
 
