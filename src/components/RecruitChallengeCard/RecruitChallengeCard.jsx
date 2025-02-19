@@ -31,8 +31,12 @@ const RecruitChallengeCard = ({
       <button
         className={styles.ArrowContainer}
         onClick={() => {
-          navigate("/challengemodal/challengcard", {
-            state: { challenge: challenge },
+          navigate("/challengemodal/join", {
+            state: {
+              challengeId: challenge.challengeId,
+              name: challenge.title,
+              selectedChallenge: challenge,
+            },
           });
         }}
       >

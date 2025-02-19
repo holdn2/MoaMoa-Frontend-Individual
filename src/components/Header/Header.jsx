@@ -1,5 +1,5 @@
 // 상단 헤더 컴포넌트
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
 import bell from "../../assets/Navigation/bell.svg";
@@ -9,6 +9,7 @@ import arrowLeftBig from "../../assets/Navigation/arrowLeftBig.svg";
 import setting from "../../assets/Navigation/setting.svg";
 import plus from "../../assets/Navigation/plus.svg";
 import closeBig from "../../assets/Navigation/closeBig.svg";
+import { getUserInfo } from "../../apis/mypage";
 
 const Header = ({
   pageName,
@@ -17,6 +18,16 @@ const Header = ({
   collectBack,
 }) => {
   const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState({
+    nickname: "",
+    dustImage: "",
+    level: 0,
+    beenWith: 0,
+    coin: 0,
+  });
+  useEffect(() => {
+    getUserInfo(setUserInfo);
+  }, []);
 
   const renderHeaderContent = () => {
     switch (pageName) {
@@ -26,7 +37,13 @@ const Header = ({
             <button onClick={() => navigate("/alarm")}>
               <img src={bell} alt="알림" />
             </button>
-            <button onClick={() => navigate("/level")}>
+            <button
+              onClick={() =>
+                navigate("/level", {
+                  state: { currentCoin: userInfo.coin },
+                })
+              }
+            >
               <img src={dust} alt="먼지" />
             </button>
             <button onClick={() => navigate("/mycoin")}>
