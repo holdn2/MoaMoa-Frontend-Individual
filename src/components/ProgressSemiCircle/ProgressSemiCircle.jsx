@@ -33,7 +33,7 @@ const ProgressSemiCircle = ({ percentage }) => {
   return (
     <div className={styles.Wrapper}>
       <img src={progressImg} alt={`${percentage}%`} />
-      <span className={styles.PercentText}>{percentage}%</span>
+      <span className={styles.PercentText}>{percentage.toFixed(1)}%</span>
     </div>
   );
 };

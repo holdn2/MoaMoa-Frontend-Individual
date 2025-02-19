@@ -134,7 +134,7 @@ const ChallengeCard = ({
             to={"/challengemodal/stop"}
             state={{
               successDate: successDate,
-              challengeId: allData.title,
+              challengeId: allData.challengeId,
               coin: allData.battleCoin,
               name: allData.title,
             }}

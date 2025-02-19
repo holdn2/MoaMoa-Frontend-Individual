@@ -22,10 +22,7 @@ import {
 const Home = () => {
   const pageName = "홈화면";
   const navigate = useNavigate();
-<<<<<<< HEAD
-=======
 
->>>>>>> 82f568357e634efb18685fdac42c20f90ebc2776
   // 로그인이 되어있는 상태인지
   const [isLogined, setIsLogined] = useState(false);
   const [challengeHome, setChallengeHome] = useState({
@@ -34,15 +31,15 @@ const Home = () => {
     recruitingChallenges: [],
   });
 
-  useEffect(() => {
-    const token = localStorage.getItem("jwt"); // 토큰 가져오기
-    if (token) {
-      console.log(token);
-      setIsLogined(true);
-    } else {
-      navigate("/login"); // 로그인 안되어 있으면 로그인 페이지로 이동
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("jwt"); // 토큰 가져오기
+  //   if (token) {
+  //     console.log(token);
+  //     setIsLogined(true);
+  //   } else {
+  //     navigate("/login"); // 로그인 안되어 있으면 로그인 페이지로 이동
+  //   }
+  // }, [navigate]);
 
   const [isDiagnosis, setIsDiagnosis] = useState(false);
   const [consChallengeSum, setConsChallengeSum] = useState({
@@ -93,13 +90,17 @@ const Home = () => {
         {/* 다음 레벨까지 */}
         <ToNextLevel />
         {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
-        {challengeHome.hasParticipatingChallenges ? (
-          <ProgressChallenge participatingChallenges={null} />
-        ) : (
-          <RecruitChallenge
-            recruitingChallenges={challengeHome.recruitingChallenges}
-          />
-        )}
+        {challengeHome.hasParticipatingChallenges
+          ? challengeHome.participatingChallenges !== null && (
+              <ProgressChallenge
+                participatingChallenges={challengeHome.participatingChallenges}
+              />
+            )
+          : challengeHome.recruitingChallenges !== null && (
+              <RecruitChallenge
+                recruitingChallenges={challengeHome.recruitingChallenges}
+              />
+            )}
       </div>
       <BottomBar pageName={pageName} />
       <AttendanceModal
