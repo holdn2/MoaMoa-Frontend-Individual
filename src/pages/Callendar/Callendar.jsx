@@ -1,11 +1,12 @@
 // 캘린더 페이지 구현
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import styles from "./Callendar.module.css";
 import dustLv6 from "../../assets/DustLevel/Lv6.svg";
 import arrowLeft from "../../assets/Navigation/arrowLeft.svg";
 import arrowRight from "../../assets/Navigation/arrowRight.svg";
 import attendanceCheck from "../../assets/Content/attendanceCheck.svg";
+import { getAttendanceApi } from "../../apis/attendance";
 
 const attendanceData = [
   "2024-12-23",
@@ -25,6 +26,10 @@ const Callendar = () => {
   const [year, setYear] = useState(date.getFullYear());
   const [month, setMonth] = useState(date.getMonth() + 1);
   // console.log(date.toISOString());
+  const [allAttendaceData, setAllAttendaceData] = useState([]);
+  useEffect(() => {
+    getAttendanceApi(setAllAttendaceData);
+  }, []);
 
   const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -100,7 +105,7 @@ const Callendar = () => {
     <div className={styles.CallendarPageContainer}>
       <Header pageName={pageName} />
       <div className={styles.MainArea}>
-        <div className={styles.CheerUpContainer}>
+        {/* <div className={styles.CheerUpContainer}>
           <div className={styles.ContentWrapper}>
             <span className={styles.CheerUpText}>
               연속 출석 5일 째예요 !
@@ -111,7 +116,7 @@ const Callendar = () => {
             </span>
             <img style={{ width: "96px" }} src={dustLv6} alt="레벨 6" />
           </div>
-        </div>
+        </div> */}
         <div className={styles.CalendarContainer}>
           <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
             <img
@@ -145,7 +150,7 @@ const Callendar = () => {
             <div className={styles.Line} />
             <div className={styles.DaysWrapper}>
               {calendarDays.map(({ day, isCurrentMonth, fullDate }, idx) => {
-                const isChecked = attendanceData.includes(fullDate);
+                const isChecked = allAttendaceData.includes(fullDate);
                 return (
                   <div key={idx}>
                     {isChecked ? (

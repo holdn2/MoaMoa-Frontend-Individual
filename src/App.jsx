@@ -38,6 +38,7 @@ import ChallengeFailModal from "./pages/Collect/Challenge/ChallengeModal/Challen
 import ChallengeStopModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeStopModal";
 import ChallengeJoinModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeJoinModal";
 import ChallengeCreateModal from "./pages/Collect/Challenge/ChallengeModal/ChallengeCreateModal";
+import OAuthCallback from "./pages/OAuthCallback";
 
 function App() {
   const router = createBrowserRouter([
@@ -184,6 +185,10 @@ function App() {
         {
           path: "/diagnosis",
           element: <Diagnosis />,
+        },
+        {
+          path: "/oauth/callback",
+          element: <OAuthCallback />,
         },
       ],
     },

@@ -9,6 +9,7 @@ import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
 import PwChangeModal from "./PwChangeModal";
 import { loginAPI } from "../../apis/login";
 import JoinModal from "../Join/JoinModal";
+import { getUserInfo } from "../../apis/mypage";
 
 // 닉네임 받아오기
 const nickname = "모아모아짱";
@@ -17,6 +18,12 @@ const nickname = "모아모아짱";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const [userInfo, setUserInfo] = useState({});
+
+  useEffect(() => {
+    getUserInfo(setUserInfo);
+  }, []);
 
   const [loginStep, setLoginStep] = useState(0);
   // 이메일 상태
@@ -303,7 +310,7 @@ const Login = () => {
               <span className={styles.LoginProcessText}>로그인 완료!</span>
               <span className={styles.WelcomeUserText}>
                 <span style={{ color: "#454545", fontSize: "22px" }}>
-                  {nickname}
+                  {userInfo.nickname}
                 </span>{" "}
                 님 환영해요!
               </span>
