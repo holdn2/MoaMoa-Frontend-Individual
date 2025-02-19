@@ -2,7 +2,11 @@
 import axios from "axios";
 
 // 프로필 테두리 정보 가져오는 api
-export const getDecoItemInfo = async (setProfileItems, setBoughtItem) => {
+export const getDecoItemInfo = async (
+  setProfileItems,
+  setBoughtItem,
+  setSelectedOutlineId
+) => {
   try {
     const response = await axios.get(
       "https://moamoa.store/user/adorn-profile",
@@ -28,6 +32,7 @@ export const getDecoItemInfo = async (setProfileItems, setBoughtItem) => {
 
     setProfileItems(notBoughtItems);
     setBoughtItem(boughtItems);
+    setSelectedOutlineId(response.data.result.currentBoarderId);
   } catch (error) {
     console.error("Error fetching deco items data", error);
   }
@@ -48,9 +53,35 @@ export const purchaseDecoItem = async (itemId) => {
         },
       }
     );
-    console.log("Purchase item :", response.data.result);
-    return response.data.result;
+    if (response.data.result.itemId === 0) {
+      console.log("구매실패");
+    } else {
+      console.log("Purchase item :", response.data.result);
+    }
+    return response.data.result.itemId;
   } catch (error) {
     console.error("Error purchasing item :", error);
+  }
+};
+
+// 사용중인 테두리 바꾸기
+export const changeDecoItem = async (itemId) => {
+  try {
+    const response = await axios.post(
+      "https://moamoa.store/user/adorn-profile",
+      {
+        itemId: itemId,
+      },
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
+    );
+    console.log("Using item :", response.data.result);
+    return response.data.result.itemId;
+  } catch (error) {
+    console.error("Error using item :", error);
   }
 };

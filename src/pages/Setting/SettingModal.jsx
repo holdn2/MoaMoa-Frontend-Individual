@@ -7,7 +7,9 @@ import SecondaryButton from "../../components/Button/SecondaryButton";
 import dustSweat from "../../assets/CharacterImgs/dustSweat.svg";
 import dustSad from "../../assets/CharacterImgs/dustSad.svg";
 import dustHappy from "../../assets/CharacterImgs/dustHappy.svg";
+
 import { postUserDelete } from "../../apis/setting";
+
 import { useNavigate } from "react-router-dom";
 
 const SettingModal = ({
@@ -18,6 +20,7 @@ const SettingModal = ({
 }) => {
   const navigate = useNavigate();
   const renderSettingModal = () => {
+    const navigate = useNavigate();
     switch (modalState) {
       case 1:
         return (
@@ -30,7 +33,10 @@ const SettingModal = ({
             <div className={styles.ConfirmContainer}>
               <div
                 onClick={() => {
+                  localStorage.removeItem("jwt"); // JWT 토큰 삭제
+                  console.log("✅ 로그아웃: JWT 토큰 삭제됨");
                   setIsModalOpen(false);
+                  navigate("/");
                 }}
               >
                 <PrimaryButton size="sm">네</PrimaryButton>
