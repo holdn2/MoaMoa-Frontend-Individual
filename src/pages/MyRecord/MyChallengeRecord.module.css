@@ -40,7 +40,7 @@
 .challengeInfo {
   display: flex;
   align-items: center;
-  gap: 17px;
+  gap: 9px;
   padding-top: 5.5px;
 }
 .date {
