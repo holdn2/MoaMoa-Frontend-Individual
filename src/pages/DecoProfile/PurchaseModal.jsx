@@ -5,6 +5,7 @@ import styles from "./PurchaseModal.module.css";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SecondaryButton from "../../components/Button/SecondaryButton";
 import { purchaseDecoItem } from "../../apis/decoProfile";
+import JoinModal from "../Join/JoinModal";
 
 const PurchaseModal = ({
   isModalOpen,
@@ -13,25 +14,41 @@ const PurchaseModal = ({
   itemImage,
   itemPrice,
   fetchDecoItems,
+  handleOutlineUse,
 }) => {
   const [modalState, setModalState] = useState(0);
 
   // 구매 로직
   const handlePurchase = async (itemId) => {
-    await purchaseDecoItem(itemId);
-    console.log(itemId, " 구매완료");
-    setModalState(0);
-    setIsModalOpen(false);
-    fetchDecoItems(); // 구매 완료 후 즉시 반영되도록 함수 호출
+    const isSuccess = await purchaseDecoItem(itemId);
+    if (isSuccess === 0) {
+      console.log(itemId, " 구매하기 실패");
+      setModalState(0);
+      setIsModalOpen(false);
+      setFailModalState(5);
+    } else {
+      console.log(itemId, " 구매완료");
+      setModalState(0);
+      setIsModalOpen(false);
+      fetchDecoItems(); // 구매 완료 후 즉시 반영되도록 함수 호출
+    }
   };
 
   const handlePurchaseAndUse = async (itemId) => {
-    await purchaseDecoItem(itemId);
+    const isSuccess = await purchaseDecoItem(itemId);
     // 구매한 아이템 바로 적용하는 로직 필요
-    console.log(itemId, " 구매완료 및 바로 적용");
-    setModalState(0);
-    setIsModalOpen(false);
-    fetchDecoItems(); // 구매 완료 후 즉시 반영되도록 함수 호출
+    if (isSuccess === 0) {
+      console.log(itemId, " 구매하기 실패");
+      setModalState(0);
+      setIsModalOpen(false);
+      setFailModalState(5);
+    } else {
+      console.log(itemId, " 구매완료 및 바로 적용");
+      handleOutlineUse({ itemId });
+      setModalState(0);
+      setIsModalOpen(false);
+      fetchDecoItems(); // 구매 완료 후 즉시 반영되도록 함수 호출
+    }
   };
 
   const renderPurchaseModal = () => {
@@ -107,7 +124,16 @@ const PurchaseModal = ({
         );
     }
   };
-  return <div>{renderPurchaseModal()}</div>;
+  const [failModalState, setFailModalState] = useState(0);
+  return (
+    <div>
+      {renderPurchaseModal()}
+      <JoinModal
+        modalState={failModalState}
+        setModalState={setFailModalState}
+      />
+    </div>
+  );
 };
 
 export default PurchaseModal;

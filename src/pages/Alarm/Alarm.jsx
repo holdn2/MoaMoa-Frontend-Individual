@@ -7,6 +7,7 @@ import invite from "../../assets/Action/invite.svg";
 import acceptButton from "../../assets/AcceptButton/acceptButton.svg";
 import refuseButton from "../../assets/AcceptButton/refuseButton.svg";
 import { getNotifications } from "../../apis/alarm";
+import { acceptFriendRequest } from "../../apis/friend";
 
 const Alarm = () => {
   const pageName = "알림 페이지";
@@ -31,6 +32,7 @@ const Alarm = () => {
       }
 
       grouped[date].alarms.push({
+        id: item.id,
         type: item.type,
         content: item.content,
         createdAt: item.createdAt, // 시간 정렬을 위해 저장
@@ -49,7 +51,7 @@ const Alarm = () => {
   };
 
   const groupedNotifications = groupNotificationsByDate(notification);
-  const renderAlarm = (type, content) => {
+  const renderAlarm = (type, content, notificationId) => {
     switch (type) {
       case "CHALLENGE_COMPLETION":
         return (
@@ -70,10 +72,20 @@ const Alarm = () => {
           <div className={styles.EachAlarmContainer}>
             <img src={invite} alt="친구 요청 알람" />
             <span className={styles.ContentText}>{content}</span>
-            <button onClick={() => console.log("수락")}>
+            <button
+              onClick={() => {
+                console.log("친구 요청 수락");
+                acceptFriendRequest(notificationId, true);
+              }}
+            >
               <img src={acceptButton} alt="수락 버튼" />
             </button>
-            <button onClick={() => console.log("거절")}>
+            <button
+              onClick={() => {
+                console.log("친구 요청 거절");
+                acceptFriendRequest(notificationId, false);
+              }}
+            >
               <img src={refuseButton} alt="거절 버튼" />
             </button>
           </div>
@@ -89,7 +101,9 @@ const Alarm = () => {
             <span className={styles.Date}>{group.date}</span>
             <div className={styles.AlarmContainer}>
               {group.alarms.map((alarm, index) => (
-                <div key={index}>{renderAlarm(alarm.type, alarm.content)}</div>
+                <div key={index}>
+                  {renderAlarm(alarm.type, alarm.content, alarm.id)}
+                </div>
               ))}
             </div>
           </div>

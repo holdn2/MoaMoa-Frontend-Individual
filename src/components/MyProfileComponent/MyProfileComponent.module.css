@@ -18,10 +18,20 @@
   align-items: center;
   height: 91px;
 }
+.ImgContainer {
+  position: relative;
+}
 .DustImg {
+  position: relative;
   display: flex;
-  width: 106px;
-  height: 106px;
+  width: 100px;
+  height: 100px;
+  z-index: 100;
+}
+.borderImg {
+  position: absolute;
+  top: -10px;
+  left: -12px;
 }
 .NickNameContainer {
   display: flex;
