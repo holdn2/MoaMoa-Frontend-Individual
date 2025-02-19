@@ -65,7 +65,9 @@ const AddChallenge = () => {
     isSubmitting ||
     !availableCoin || // 배틀코인이 보유코인보다 많거나 0일때 비활성화
     !challengeClicked || // 카테고리를 선택하지 않았을 때 비활성화
-    (watch("startDate") && new Date(watch("startDate")) <= new Date()); // 시작날짜가 현재와 같거나 이전일때 비활성화
+    (watch("startDate") &&
+      (new Date(watch("startDate")) <= new Date() ||
+        new Date(watch("endDate")) <= new Date(watch("startDate"))));
 
   useEffect(() => {
     console.log("비활성화 상태:", disabled);
@@ -81,6 +83,7 @@ const AddChallenge = () => {
   // 시작날과 종료날 상태
   const [startFormatDate, setStartFormatDate] = useState(null);
   const [endFormatDate, setEndFormatDate] = useState(null);
+
   useEffect(() => {
     setValue("startDate", startFormatDate);
     setValue("endDate", endFormatDate);
