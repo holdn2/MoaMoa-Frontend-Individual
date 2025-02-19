@@ -31,15 +31,16 @@ const Home = () => {
     recruitingChallenges: [],
   });
 
-  useEffect(() => {
-    const token = localStorage.getItem("jwt"); // 토큰 가져오기
-    if (token) {
-      console.log(token);
-      setIsLogined(true);
-    } else {
-      navigate("/login"); // 로그인 안되어 있으면 로그인 페이지로 이동
-    }
-  }, [navigate]);
+  // 잠시 해당 로직 중지. 추후 다시 정상화
+  // useEffect(() => {
+  //   const token = localStorage.getItem("jwt"); // 토큰 가져오기
+  //   if (token) {
+  //     console.log(token);
+  //     setIsLogined(true);
+  //   } else {
+  //     navigate("/login"); // 로그인 안되어 있으면 로그인 페이지로 이동
+  //   }
+  // }, [navigate]);
 
   const [isDiagnosis, setIsDiagnosis] = useState(false);
   const [consChallengeSum, setConsChallengeSum] = useState({
