@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MyCoin.module.css";
 import Header from "../../components/Header/Header";
 import coinYellow from "../../assets/Content/coinYellow.svg";
-import dustSunglassCoin from "../../assets/CharacterImgs/dustSunglassCoin.svg";
+import { getMyCoinReport } from "../../apis/myCoin";
 
 const earnedHistoryData = [
   {
@@ -51,8 +51,16 @@ const EarningHistory = ({ content, date, coin }) => {
 
 const MyCoin = () => {
   const pageName = "내 코인";
-  const userName = "모아모아짱";
-  const myCoin = 320;
+  const [coinReport, setCoinReport] = useState({
+    coin: 0,
+    nickname: "",
+    dustUrl: "",
+    transactions: [],
+  });
+
+  useEffect(() => {
+    getMyCoinReport(setCoinReport);
+  }, []);
   return (
     <div className={styles.MyCoinPageContainer}>
       <Header pageName={pageName} />
@@ -66,14 +74,14 @@ const MyCoin = () => {
                 src={coinYellow}
                 alt="코인이미지"
               />
-              <span className={styles.MyCoin}>{myCoin}</span>
+              <span className={styles.MyCoin}>{coinReport.coin}</span>
             </div>
           </div>
           <div className={styles.EncourageContainer}>
             <div className={styles.EncourageTextContainer}>
               <span className={styles.UserNameText}>
                 <span style={{ fontSize: "22px", fontWeight: "700" }}>
-                  {userName}
+                  {coinReport.nickname}
                 </span>{" "}
                 님,
               </span>
@@ -85,19 +93,19 @@ const MyCoin = () => {
             </div>
             <img
               style={{ width: "115px", height: "114px" }}
-              src={dustSunglassCoin}
+              src={coinReport.dustUrl}
               alt="선글라스,코인 먼지"
             />
           </div>
         </div>
         <div className={styles.EarnedCoinContainer}>
           <span className={styles.EarnedText}>적립내역</span>
-          {earnedHistoryData.map((item) => (
+          {coinReport.transactions.map((transaction, index) => (
             <EarningHistory
-              key={item.id}
-              content={item.content}
-              date={item.date}
-              coin={item.coin}
+              key={index}
+              content={transaction.title}
+              date={transaction.date}
+              coin={transaction.transaction}
             />
           ))}
         </div>
