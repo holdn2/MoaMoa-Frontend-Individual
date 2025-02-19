@@ -96,6 +96,10 @@ const Alarm = () => {
     <div className={styles.AlarmPageContainer}>
       <Header pageName={pageName} />
       <div className={styles.MainArea}>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 82f568357e634efb18685fdac42c20f90ebc2776
         {groupedNotifications.map((group) => (
           <div key={group.date}>
             <span className={styles.Date}>{group.date}</span>
@@ -106,6 +110,10 @@ const Alarm = () => {
                 </div>
               ))}
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 82f568357e634efb18685fdac42c20f90ebc2776
           </div>
         ))}
       </div>

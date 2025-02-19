@@ -22,6 +22,10 @@ import {
 const Home = () => {
   const pageName = "홈화면";
   const navigate = useNavigate();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 82f568357e634efb18685fdac42c20f90ebc2776
   // 로그인이 되어있는 상태인지
   const [isLogined, setIsLogined] = useState(false);
   const [challengeHome, setChallengeHome] = useState({
