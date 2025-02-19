@@ -29,7 +29,11 @@ const DetailChallenge = () => {
 
       <div className={styles.wrapper}>
         <section>
-          <h3>현재 진행중인 챌린지</h3>
+          {selectedChallenge.status === "RECRUITING" ? (
+            <h3>시작 대기중인 챌린지</h3>
+          ) : (
+            <h3>현재 진행중인 챌린지</h3>
+          )}
           <ChallengeCard
             allData={selectedChallenge}
             isDetailChallenge={true}
