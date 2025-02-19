@@ -31,7 +31,6 @@ const Home = () => {
     recruitingChallenges: [],
   });
 
-  // 잠시 해당 로직 중지. 추후 다시 정상화
   // useEffect(() => {
   //   const token = localStorage.getItem("jwt"); // 토큰 가져오기
   //   if (token) {
