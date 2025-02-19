@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import { useLocation } from "react-router-dom";
 import { dustLv6, dustLevelData } from "../../constants/dustLevel";
-
+import { getUserInfo } from "../../apis/mypage";
 
 const Level = () => {
   const pageName = "레벨";
@@ -46,9 +46,7 @@ const Level = () => {
           </div>
         </div>
         <div className={styles.DustContainer}>
-
           {dustLevelData.map((item) =>
-
             item.lv === 0 ? (
               <div key={item.lv} className={styles.LevelContainer}>
                 <img className={styles.DustImg} src={item.img} alt="Lv.0" />
@@ -85,4 +83,3 @@ const Level = () => {
 };
 
 export default Level;
-

@@ -33,8 +33,10 @@ const ChallengeCategory = ({
             children={name}
             checked={challengeClicked === challengeName[index]}
             onClick={() => {
-              // 같은 카테고리 클릭하면 해제
-              setChallengeClicked(challengeName[index]);
+              // 같은 카테고리를 다시 클릭하면 해제, 다른 카테고리를 클릭하면 변경
+              setChallengeClicked((prev) =>
+                prev === challengeName[index] ? "" : challengeName[index]
+              );
             }}
           />
         ))}

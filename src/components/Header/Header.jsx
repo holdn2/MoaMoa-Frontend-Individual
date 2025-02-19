@@ -89,7 +89,7 @@ const Header = ({
             </button>
             <button
               className={styles.GoSettingButton}
-              onClick={() => navigate("/setting")}
+              onClick={() => navigate("/friendsearch")}
             >
               <img src={plus} alt="친구 추가 페이지로 가는 버튼" />
             </button>

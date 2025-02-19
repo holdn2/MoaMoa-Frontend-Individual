@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { postFriendRequest } from "../../apis/friend";
 
 const ListWrapper = styled.div`
   display: flex;
@@ -63,7 +64,18 @@ const NotFriendMark = styled.button`
   line-height: normal;
 `;
 
-const FreindListBar = ({ userName, userImg, isNotFriend, isWithFriend }) => {
+const FreindListBar = ({
+  userName,
+  userImg,
+  isNotFriend,
+  isWithFriend,
+  userId,
+  setModalState,
+}) => {
+  const handleFriendRequest = () => {
+    postFriendRequest(userId);
+    setModalState(4);
+  };
   return (
     <ListWrapper>
       <FriendInfo>
@@ -71,7 +83,11 @@ const FreindListBar = ({ userName, userImg, isNotFriend, isWithFriend }) => {
         <span>{userName}</span>
       </FriendInfo>
       {isWithFriend && <WithFriendMark>챌린지</WithFriendMark>}
-      {isNotFriend && <NotFriendMark>친구추가</NotFriendMark>}
+      {isNotFriend && (
+        <div onClick={handleFriendRequest}>
+          <NotFriendMark>친구요청</NotFriendMark>
+        </div>
+      )}
     </ListWrapper>
   );
 };

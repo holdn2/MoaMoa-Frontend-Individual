@@ -44,6 +44,16 @@ const JoinModal = ({ modalState, setModalState }) => {
             <span className={styles.Text}>로그인에 실패했어요!</span>
           </Modal>
         );
+      case 4:
+        return (
+          <Modal
+            isOpen={true}
+            className={styles.AuthLinkContainer}
+            overlayClassName={styles.Overlay}
+          >
+            <span className={styles.Text}>친구 요청을 보냈어요!</span>
+          </Modal>
+        );
     }
   };
   return <>{renderJoinModal()}</>;

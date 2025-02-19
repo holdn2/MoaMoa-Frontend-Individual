@@ -4,21 +4,6 @@ import PrimaryButton from "../Button/PrimaryButton";
 import SecondaryButton from "../Button/SecondaryButton";
 import { checkAndChangeNickname } from "../../apis/mypage";
 
-const dummyData = [
-  {
-    id: 1,
-    nickname: "모아모아",
-  },
-  {
-    id: 2,
-    nickname: "먼지",
-  },
-  {
-    id: 3,
-    nickname: "건국대",
-  },
-];
-
 // 닉네임 변경 모달 컴포넌트
 const NicknameChangeModal = ({
   userName,
@@ -50,15 +35,24 @@ const NicknameChangeModal = ({
               className={styles.InputNewNickname}
               type="text"
               placeholder={userName}
-              onChange={(e) => setNewNickname(e.target.value)}
+              onChange={(e) =>
+                setNewNickname(e.target.value.replace(/\s/g, ""))
+              } // 띄어쓰기 제거
             />
             {userName === newNickname ? (
               <div onClick={onClose}>
                 <PrimaryButton size="lg">확인</PrimaryButton>
               </div>
             ) : (
-              <div onClick={() => setModalState(2)}>
-                <PrimaryButton size="lg">확인</PrimaryButton>
+              <div
+                onClick={() => {
+                  setModalState(2);
+                }}
+                style={{ pointerEvents: newNickname === "" ? "none" : "auto" }}
+              >
+                <PrimaryButton size="lg" disabled={newNickname === ""}>
+                  확인
+                </PrimaryButton>
               </div>
             )}
           </div>
