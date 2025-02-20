@@ -15,7 +15,8 @@ export const getUserNameHome = async (setUserName) => {
 export const getDiagnosisFinish = async (setIsDiagnosis) => {
   try {
     const response = await axiosInstance.get("/home");
-    setIsDiagnosis(response.data.result.needOverConsumptionTest);
+    const isDiagnosis = response.data.result.needOverConsumptionTest;
+    setIsDiagnosis(isDiagnosis);
     console.log(response.data.result);
   } catch (error) {
     console.error("Error fetching getDiagnosisFinish", error);
@@ -58,7 +59,7 @@ export const getLevelHome = async (setLevel) => {
 // 출석한 날짜 가져오는 api
 export const getAttendanceDates = async (setAtendance) => {
   try {
-    const response = await axios.get("https://moamoa.store/home");
+    const response = await axiosInstance.get("/home");
     setAtendance(response.data.result.attendanceDates);
     console.log(response.data.result.attendanceDates);
   } catch (error) {

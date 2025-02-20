@@ -8,13 +8,13 @@ import acceptButton from "../../assets/AcceptButton/acceptButton.svg";
 import refuseButton from "../../assets/AcceptButton/refuseButton.svg";
 import { getNotifications } from "../../apis/alarm";
 import { acceptFriendRequest } from "../../apis/friend";
+import JoinModal from "../Join/JoinModal";
 
 const Alarm = () => {
   const pageName = "알림 페이지";
   const [notification, setNotification] = useState([]);
   useEffect(() => {
     getNotifications(setNotification);
-    // console.log(notification);
   }, []);
 
   // 날짜별로 알림을 그룹화하고, 최신 날짜 순으로 정렬하는 함수
@@ -51,6 +51,25 @@ const Alarm = () => {
   };
 
   const groupedNotifications = groupNotificationsByDate(notification);
+
+  const [acceptModalState, setAcceptModalState] = useState(0);
+
+  // 친구 요청 수락/거절 후 알림 제거
+  const handleFriendRequest = async (notificationId, isAccepted) => {
+    try {
+      await acceptFriendRequest(notificationId, isAccepted);
+
+      // 친구 요청 수락 or 거절 팝업
+      isAccepted ? setAcceptModalState(6) : setAcceptModalState(7);
+      // 상태에서 알림 제거
+      setNotification((prevNotifications) =>
+        prevNotifications.filter((notif) => notif.id !== notificationId)
+      );
+    } catch (error) {
+      console.error("알림 처리 중 오류:", error);
+    }
+  };
+
   const renderAlarm = (type, content, notificationId) => {
     switch (type) {
       case "CHALLENGE_COMPLETION":
@@ -75,7 +94,7 @@ const Alarm = () => {
             <button
               onClick={() => {
                 console.log("친구 요청 수락");
-                acceptFriendRequest(notificationId, true);
+                handleFriendRequest(notificationId, true);
               }}
             >
               <img src={acceptButton} alt="수락 버튼" />
@@ -83,7 +102,7 @@ const Alarm = () => {
             <button
               onClick={() => {
                 console.log("친구 요청 거절");
-                acceptFriendRequest(notificationId, false);
+                handleFriendRequest(notificationId, false);
               }}
             >
               <img src={refuseButton} alt="거절 버튼" />
@@ -108,6 +127,10 @@ const Alarm = () => {
             </div>
           </div>
         ))}
+        <JoinModal
+          modalState={acceptModalState}
+          setModalState={setAcceptModalState}
+        />
       </div>
     </div>
   );
