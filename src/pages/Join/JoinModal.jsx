@@ -64,6 +64,26 @@ const JoinModal = ({ modalState, setModalState }) => {
             <span className={styles.Text}>코인이 부족합니다!</span>
           </Modal>
         );
+      case 6:
+        return (
+          <Modal
+            isOpen={true}
+            className={styles.AuthLinkContainer}
+            overlayClassName={styles.Overlay}
+          >
+            <span className={styles.Text}>친구요청을 수락했습니다!</span>
+          </Modal>
+        );
+      case 7:
+        return (
+          <Modal
+            isOpen={true}
+            className={styles.AuthLinkContainer}
+            overlayClassName={styles.Overlay}
+          >
+            <span className={styles.Text}>친구요청을 거절했습니다!</span>
+          </Modal>
+        );
     }
   };
   return <>{renderJoinModal()}</>;
