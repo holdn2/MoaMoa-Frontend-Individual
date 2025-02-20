@@ -1,12 +1,17 @@
 // 챌린지 참여 api
 import axios from "axios";
-import axiosInstance from "../axiosInstance.js";
 
 export const joinChallenge = async (challengeId) => {
   try {
-    const response = await axiosInstance.post(
-      `/challenges/${challengeId}/join`,
+    const response = await axios.post(
+      `https://moamoa.store/challenges/${challengeId}/join`,
       {},
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
     );
   } catch (error) {
     console.error("Error join challenge :", error);
@@ -15,8 +20,14 @@ export const joinChallenge = async (challengeId) => {
 
 export const completeJoinChallenge = async (setCompleteChallenge) => {
   try {
-    const response = await axiosInstance.get(
-      "/challenges/completed/unclaimed",
+    const response = await axios.get(
+      "https://moamoa.store/challenges/completed/unclaimed",
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
     );
     setCompleteChallenge(response.data.result);
     console.log(response.data.result);
@@ -27,9 +38,15 @@ export const completeJoinChallenge = async (setCompleteChallenge) => {
 
 export const completedChallengeClame = async (challengeId) => {
   try {
-    const response = await axiosInstance.post(
-      `/challenges/completed/claim/${challengeId}`,
+    const response = await axios.post(
+      `https://moamoa.store/challenges/completed/claim/${challengeId}`,
       {},
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
     );
     console.log(response.data.result);
   } catch (error) {

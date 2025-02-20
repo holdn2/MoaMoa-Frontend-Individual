@@ -2,13 +2,18 @@
 import axios from "axios";
 import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
-import axiosInstance from "./axiosInstance.js";
 
 // axios로 서버에서 채팅 데이터 가져오는 함수
 export const fetchChatData = async (roomId, setUserId, setChattings) => {
   try {
-    const response = await axiosInstance.get(
-      `/chat/rooms/${roomId}/messages`
+    const response = await axios.get(
+      `https://moamoa.store/chat/rooms/${roomId}/messages`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
+        },
+      }
     );
     const userId = response.data.result.loginUserId;
     setUserId(userId);
