@@ -28,7 +28,7 @@
 .TimeCircle {
   width: 92px;
   height: 92px;
-  margin-left: 131px;
+  margin-left: 126px;
   margin-top: 120px;
   animation: rotateCounterClockwise 1s linear infinite; /* 1초마다 무한 반복 */
 }
@@ -68,7 +68,7 @@
   width: 219px;
   height: 219px;
   margin-top: 5px;
-  margin-left: 53px;
+  margin-left: 65px;
 }
 .InputWrapper {
   padding-top: 58px;
