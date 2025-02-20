@@ -76,7 +76,9 @@ const Home = () => {
   }, [hasLogin, setHasLogin]);
 
   const renderConsComponent = () => {
+
     if (isDiagnosis) {
+
       return <ToDiagnosisComponent />;
     } else {
       if (consChallengeSum.totalConsumption === null) {
