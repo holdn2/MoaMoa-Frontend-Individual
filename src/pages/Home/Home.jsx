@@ -95,7 +95,8 @@ const Home = () => {
         세가지 중 상태에 따라 어떤 것이 나올지 결정됨. */}
         {renderConsComponent()}
         {/* 캘린더 */}
-        <MiniCallendar />ㅎ{/* 다음 레벨까지 */}
+        <MiniCallendar />
+        {/* 다음 레벨까지 */}
         <ToNextLevel />
         {/* 모집 중인 챌린지 또는 챌린지 진행상황 */}
         {challengeHome.hasParticipatingChallenges
