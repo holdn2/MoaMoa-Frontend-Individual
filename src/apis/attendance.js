@@ -11,10 +11,18 @@ export const getAttendanceApi = async (setAttendanceData) => {
     const uniqueDates = new Set();
 
     rawData.forEach((item) => {
-      // 날짜 포맷 "YYYY-MM-DD"로 변환
-      console.log(item.attendanceTime);
-      const date = new Date(item.attendanceTime).toISOString().split("T")[0];
-      uniqueDates.add(date); // ✅ Set으로 중복 제거
+      console.log("원본 시간:", item.attendanceTime);
+      const dateObj = new Date(item.attendanceTime);
+
+      // ✅ 로컬 타임존 기준으로 날짜 추출
+      const year = dateObj.getFullYear();
+      const month = String(dateObj.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작
+      const day = String(dateObj.getDate()).padStart(2, "0");
+
+      const localDate = `${year}-${month}-${day}`;
+      console.log("로컬 기준 날짜:", localDate);
+
+      uniqueDates.add(localDate);
     });
 
     // ✅ Set을 배열로 변환 후 setAttendanceData에 저장
