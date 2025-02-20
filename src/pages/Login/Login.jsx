@@ -10,6 +10,7 @@ import PwChangeModal from "./PwChangeModal";
 import { loginAPI } from "../../apis/login";
 import JoinModal from "../Join/JoinModal";
 import { getUserInfo } from "../../apis/mypage";
+import favicon from "../../assets/favicon.svg";
 
 // 닉네임 받아오기
 const nickname = "모아모아짱";
@@ -25,7 +26,7 @@ const Login = () => {
     getUserInfo(setUserInfo);
   }, []);
 
-  const [loginStep, setLoginStep] = useState(0);
+  const [loginStep, setLoginStep] = useState(5);
   // 이메일 상태
   const [email, setEmail] = useState("");
   // 인증코드 전송 모달 상태. modalState가 2일 때는 인증이 완료된 상태임.
@@ -61,6 +62,15 @@ const Login = () => {
       setLoginModalState(3);
     }
   };
+  // 스플래시 화면 2초 띄우기
+  useEffect(() => {
+    if (loginStep === 5) {
+      const timer = setTimeout(() => {
+        setLoginStep(0);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // 2초 후 홈화면으로 가기
   useEffect(() => {
@@ -325,6 +335,13 @@ const Login = () => {
               style={{ width: "222px", height: "198px", marginTop: "101px" }}
             />
           </>
+        );
+      case 5:
+        return (
+          <div className={styles.splashWrapper}>
+            <img src={favicon} alt="로고 이미지" />
+            <p>절약을 시작하는 가장 재미있는 방법</p>
+          </div>
         );
     }
   };
