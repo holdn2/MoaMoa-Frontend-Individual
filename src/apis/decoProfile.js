@@ -1,5 +1,6 @@
 // 프로필 꾸미기 관련 api
 import axios from "axios";
+import axiosInstance from "./axiosInstance.js";
 
 // 프로필 테두리 정보 가져오는 api
 export const getDecoItemInfo = async (
@@ -8,14 +9,8 @@ export const getDecoItemInfo = async (
   setSelectedOutlineId
 ) => {
   try {
-    const response = await axios.get(
-      "https://moamoa.store/user/adorn-profile",
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
-        },
-      }
+    const response = await axiosInstance.get(
+      "/user/adorn-profile",
     );
     const items = response.data.result.items;
     const boughtItemIds = response.data.result.boughtItemId;
@@ -41,17 +36,11 @@ export const getDecoItemInfo = async (
 // 테두리 구매 관련 api
 export const purchaseDecoItem = async (itemId) => {
   try {
-    const response = await axios.post(
-      "https://moamoa.store/user/item",
+    const response = await axiosInstance.post(
+      "/user/item",
       {
         itemId: itemId,
       },
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
-        },
-      }
     );
     if (response.data.result.itemId === 0) {
       console.log("구매실패");
@@ -67,17 +56,11 @@ export const purchaseDecoItem = async (itemId) => {
 // 사용중인 테두리 바꾸기
 export const changeDecoItem = async (itemId) => {
   try {
-    const response = await axios.post(
-      "https://moamoa.store/user/adorn-profile",
+    const response = await axiosInstance.post(
+      "/user/adorn-profile",
       {
         itemId: itemId,
       },
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczODQ4NjQ0OSwiZXhwIjoxNzQxMDc4NDQ5fQ.tccAfZ4LfshBl5S8n1lgj5pfrU9VybbNyulS7aZGXyc",
-        },
-      }
     );
     console.log("Using item :", response.data.result);
     return response.data.result.itemId;
