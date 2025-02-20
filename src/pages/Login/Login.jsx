@@ -47,7 +47,11 @@ const Login = () => {
 
       if (response.success) {
         console.log("✅ Login successful:", response);
-        setLoginStep(4); // ✅ 로그인 성공 시 4단계로 이동
+
+        // 응답에 사용자 정보가 있다면 바로 업데이트
+        setUserInfo(response.userInfo);
+
+        setLoginStep(4);
       } else {
         console.warn("⚠️ 로그인 실패: 서버에서 토큰을 제공하지 않음.");
         setLoginModalState(3);
