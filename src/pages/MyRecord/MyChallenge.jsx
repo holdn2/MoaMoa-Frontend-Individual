@@ -36,7 +36,11 @@ const MyChallenge = () => {
         totalSucceed={challengeData.totalSucceed}
       />
       <section className={styles.challengeRecordWrapper}>
-        {challengeData.challengeRecords && <p>내 챌린지 기록은 ?</p>}
+        {challengeData.challengeRecords.length > 0 ? (
+          <p>내 챌린지 기록은 ?</p>
+        ) : (
+          <></>
+        )}
         <div className={styles.challengeRecord}>
           {challengeData.challengeRecords.map((item) => (
             <MyChallengeRecord key={item.challengeId} item={item} />
