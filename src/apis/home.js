@@ -15,7 +15,8 @@ export const getUserNameHome = async (setUserName) => {
 export const getDiagnosisFinish = async (setIsDiagnosis) => {
   try {
     const response = await axiosInstance.get("/home");
-    setIsDiagnosis(response.data.result.needOverConsumptionTest);
+    const isDiagnosis = response.data.result.needOverConsumptionTest;
+    setIsDiagnosis(isDiagnosis);
     console.log(response.data.result);
   } catch (error) {
     console.error("Error fetching getDiagnosisFinish", error);
