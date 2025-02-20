@@ -1,6 +1,5 @@
 // 홈 페이지 제작 중
 import React, { useEffect, useState } from "react";
-import Cookies from "js-cookie";
 import BottomBar from "../../components/BottomBar/BottomBar";
 import Header from "../../components/Header/Header";
 import styles from "./Home.module.css";
@@ -34,18 +33,25 @@ const Home = () => {
 
   useEffect(() => {
     // 기본 로그인: localStorage에서 토큰을 가져옴
-    let token = localStorage.getItem("jwt");
-
-    // 만약 localStorage에 토큰이 없고 쿠키에 있다면(소셜 로그인)
-    if (!token) {
-      token = Cookies.get("jwt");
-      if (token) {
-        // 쿠키에서 가져온 토큰을 localStorage에 저장
-        localStorage.setItem("jwt", token);
-      }
+    const params = new URLSearchParams(window.location.search);
+    console.log("params" + URLSearchParams)
+    const token = params.get('token');
+    if(token != null) {
+      document.cookie = `Authorization=Bearer ${encodeURIComponent(token)}; Path=/;`;
+      console.log("Cookie set:", document.cookie);
     }
 
-    if (token) {
+    const login = document.cookie.includes("Authorization=Bearer");
+    // 만약 localStorage에 토큰이 없고 쿠키에 있다면(소셜 로그인)
+    // if (!token) {
+    //   token = Cookies.get("jwt");
+    //   if (token) {
+    //     // 쿠키에서 가져온 토큰을 localStorage에 저장
+    //     localStorage.setItem("jwt", token);
+    //   }
+    // }
+
+    if (login) {
       console.log("로그인된 토큰:", token);
       setIsLogined(true);
     } else {
