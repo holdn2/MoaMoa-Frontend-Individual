@@ -8,6 +8,7 @@ import acceptButton from "../../assets/AcceptButton/acceptButton.svg";
 import refuseButton from "../../assets/AcceptButton/refuseButton.svg";
 import { getNotifications } from "../../apis/alarm";
 import { acceptFriendRequest } from "../../apis/friend";
+import JoinModal from "../Join/JoinModal";
 
 const Alarm = () => {
   const pageName = "알림 페이지";
