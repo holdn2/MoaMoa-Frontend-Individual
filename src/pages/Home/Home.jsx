@@ -37,21 +37,12 @@ const Home = () => {
     console.log("params" + URLSearchParams)
     const token = params.get('token');
     if(token != null) {
-      document.cookie = `Authorization=Bearer ${encodeURIComponent(token)}; Path=/;`;
-      console.log("Cookie set:", document.cookie);
+      localStorage.setItem("jwt", token);
     }
 
-    const login = document.cookie.includes("Authorization=Bearer");
-    // 만약 localStorage에 토큰이 없고 쿠키에 있다면(소셜 로그인)
-    // if (!token) {
-    //   token = Cookies.get("jwt");
-    //   if (token) {
-    //     // 쿠키에서 가져온 토큰을 localStorage에 저장
-    //     localStorage.setItem("jwt", token);
-    //   }
-    // }
+    const login = localStorage.getItem("jwt")
 
-    if (login) {
+    if (login != null) {
       console.log("로그인된 토큰:", token);
       setIsLogined(true);
     } else {

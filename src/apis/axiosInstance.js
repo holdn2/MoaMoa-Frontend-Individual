@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://moamoa.store",
+  baseURL: "http://localhost:9000",
   headers: {
     "Content-Type": "application/json",
   },
@@ -13,7 +13,7 @@ axiosInstance.interceptors.request.use(
     const token = localStorage.getItem("jwt"); // 저장된 JWT 토큰 가져오기
     console.log("📌 Axios Interceptor - JWT Token:", token);
     if (token) {
-      config.headers["Authorization"] = `${token}`; // ✅ 자동 추가
+      config.headers["Authorization"] = `Bearer ${token}`; // ✅ 자동 추가
     }
     return config;
   },
