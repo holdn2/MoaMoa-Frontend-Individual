@@ -60,6 +60,8 @@ const StartConsumption = () => {
             />
             <p className={styles.selectPeriodInfo}>
               *내가 원하는 시작일/종료일을 직접 선택해 보세요!
+              <br />
+              (시작 날짜는 현재 날짜와 동일해야 합니다.)
             </p>
             <div className={styles.inputWrapper}>
               <p>목표 금액</p>
@@ -80,8 +82,9 @@ const StartConsumption = () => {
               type="button"
               size="xl"
               disabled={
-                new Date(startFormatDate) < new Date() &&
-                !isInputState &&
+                new Date(startFormatDate).toDateString() !==
+                  new Date().toDateString() ||
+                !isInputState ||
                 period <= 0
               }
             >

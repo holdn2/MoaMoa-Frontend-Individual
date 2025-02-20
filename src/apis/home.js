@@ -55,3 +55,14 @@ export const getLevelHome = async (setLevel) => {
     console.error("Error fetching getCoinHome", error);
   }
 };
+
+// 출석한 날짜 가져오는 api
+export const getAttendanceDates = async (setAtendance) => {
+  try {
+    const response = await axios.get("https://moamoa.store/home");
+    setAtendance(response.data.result.attendanceDates);
+    console.log(response.data.result.attendanceDates);
+  } catch (error) {
+    console.error("Error fetching getAttendanceDates", error);
+  }
+};

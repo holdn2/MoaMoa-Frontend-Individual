@@ -34,13 +34,13 @@ const Home = () => {
   useEffect(() => {
     // 기본 로그인: localStorage에서 토큰을 가져옴
     const params = new URLSearchParams(window.location.search);
-    console.log("params" + URLSearchParams)
-    const token = params.get('token');
-    if(token != null) {
+    console.log("params" + URLSearchParams);
+    const token = params.get("token");
+    if (token != null) {
       localStorage.setItem("jwt", token);
     }
 
-    const login = localStorage.getItem("jwt")
+    const login = localStorage.getItem("jwt");
 
     if (login != null) {
       console.log("로그인된 토큰:", token);
@@ -65,7 +65,7 @@ const Home = () => {
   // zustand(전역상태관리)를 이용해서 로그인 시에만 해당 팝업이 뜨게 구현!(제대로 된 공부가 필요한 부분)
   const { hasLogin, setHasLogin } = useModalStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalState, setModalState] = useState(1);
+  const [modalState, setModalState] = useState(0);
 
   // 로그인 후 첫 홈화면에서만 실행
   useEffect(() => {
@@ -76,14 +76,10 @@ const Home = () => {
   }, [hasLogin, setHasLogin]);
 
   const renderConsComponent = () => {
-    if (!isDiagnosis) {
-      return <ToDiagnosisComponent />;
+    if (consChallengeSum.totalConsumption === null) {
+      return <StartConsComponent />;
     } else {
-      if (consChallengeSum.totalConsumption === null) {
-        return <StartConsComponent />;
-      } else {
-        return <InputConsComponent />;
-      }
+      return <InputConsComponent />;
     }
   };
 
