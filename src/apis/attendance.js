@@ -4,9 +4,7 @@ import axiosInstance from "./axiosInstance";
 
 export const getAttendanceApi = async (setAttendanceData) => {
   try {
-    const response = await axiosInstance.get(
-      "/attendances"
-    );
+    const response = await axiosInstance.get("/attendances");
     const rawData = response.data.result;
 
     // ✅ 날짜별로 중복 제거 후 날짜만 저장
@@ -14,6 +12,7 @@ export const getAttendanceApi = async (setAttendanceData) => {
 
     rawData.forEach((item) => {
       // 날짜 포맷 "YYYY-MM-DD"로 변환
+      console.log(item.attendanceTime);
       const date = new Date(item.attendanceTime).toISOString().split("T")[0];
       uniqueDates.add(date); // ✅ Set으로 중복 제거
     });

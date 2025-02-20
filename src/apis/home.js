@@ -59,7 +59,7 @@ export const getLevelHome = async (setLevel) => {
 // 출석한 날짜 가져오는 api
 export const getAttendanceDates = async (setAtendance) => {
   try {
-    const response = await axios.get("https://moamoa.store/home");
+    const response = await axiosInstance.get("/home");
     setAtendance(response.data.result.attendanceDates);
     console.log(response.data.result.attendanceDates);
   } catch (error) {
