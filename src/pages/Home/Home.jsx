@@ -50,7 +50,7 @@ const Home = () => {
     }
   }, [navigate]);
 
-  const [isDiagnosis, setIsDiagnosis] = useState(false);
+  const [isDiagnosis, setIsDiagnosis] = useState(true);
   const [consChallengeSum, setConsChallengeSum] = useState({
     consumptionLeft: null,
     totalConsumption: null,
@@ -76,7 +76,9 @@ const Home = () => {
   }, [hasLogin, setHasLogin]);
 
   const renderConsComponent = () => {
-    if (!isDiagnosis) {
+
+    if (isDiagnosis) {
+
       return <ToDiagnosisComponent />;
     } else {
       if (consChallengeSum.totalConsumption === null) {
