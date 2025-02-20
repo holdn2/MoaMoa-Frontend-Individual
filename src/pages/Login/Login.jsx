@@ -10,7 +10,7 @@ import PwChangeModal from "./PwChangeModal";
 import { loginAPI } from "../../apis/login";
 import JoinModal from "../Join/JoinModal";
 import { getUserInfo } from "../../apis/mypage";
-import favicon from "../../../public/favicon.svg";
+import favicon from "../../assets/favicon.svg";
 
 // 닉네임 받아오기
 const nickname = "모아모아짱";
@@ -62,7 +62,7 @@ const Login = () => {
   useEffect(() => {
     if (loginStep === 5) {
       const timer = setTimeout(() => {
-        setLoginModalState(0);
+        setLoginStep(0);
       }, 2000);
       return () => clearTimeout(timer);
     }
