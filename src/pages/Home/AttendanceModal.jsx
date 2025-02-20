@@ -9,7 +9,7 @@ import {
   completedChallengeClame,
   completeJoinChallenge,
 } from "../../apis/challenge/joinChallenge";
-import { getLevelHome } from "../../apis/home";
+import { getAttendanceDates, getLevelHome } from "../../apis/home";
 
 const AttendanceModal = ({
   isModalOpen,
@@ -29,6 +29,11 @@ const AttendanceModal = ({
     (challenge) => challenge.goalAchieved === false
   );
 
+  const [attendance, setAtendance] = useState([]);
+  const latestDate = useRef(
+    attendance.sort((a, b) => new Date(b) - new Date(a))[0]
+  );
+
   // 200코인 받기 클릭 시 현재 코인 update
   const addCoin = () => {
     setCurrentCoin((prev) => prev + 200);
@@ -37,11 +42,18 @@ const AttendanceModal = ({
   useEffect(() => {
     completeJoinChallenge(setCompleteChallenge);
     getLevelHome(setLevel);
+    getAttendanceDates(setAtendance);
   }, []);
 
   // 코인 변경 시 실행. 레벨업 가능 코인 수 도달 시 레벨업 아니면 그냥 닫기
   useEffect(() => {
     console.log(currentCoin);
+    const diffDays = Math.floor(
+      (new Date() - new Date(latestDate)) / (1000 * 60 * 60 * 24)
+    );
+    if (diffDays === 14) {
+      setModalState(1);
+    }
     if (level > prevLevel.current) {
       prevLevel.current = newLevel;
       setModalState(2);

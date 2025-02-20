@@ -68,7 +68,7 @@ const Home = () => {
   // zustand(전역상태관리)를 이용해서 로그인 시에만 해당 팝업이 뜨게 구현!(제대로 된 공부가 필요한 부분)
   const { hasLogin, setHasLogin } = useModalStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalState, setModalState] = useState(1);
+  const [modalState, setModalState] = useState(0);
 
   // 로그인 후 첫 홈화면에서만 실행
   useEffect(() => {

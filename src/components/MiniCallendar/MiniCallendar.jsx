@@ -2,39 +2,17 @@ import { useNavigate } from "react-router-dom";
 import styles from "./MiniCallendar.module.css";
 import arrowRightSmall from "../../assets/Navigation/arrowRightSmall.svg";
 import attendanceCheck from "../../assets/Content/attendanceCheck.svg";
+import { useEffect, useState } from "react";
+import { getAttendanceDates } from "../../apis/home";
 
 const MiniCallendar = () => {
   const navigate = useNavigate();
-  const week = [
-    {
-      day: "월",
-      attendance: false,
-    },
-    {
-      day: "화",
-      attendance: true,
-    },
-    {
-      day: "수",
-      attendance: false,
-    },
-    {
-      day: "목",
-      attendance: true,
-    },
-    {
-      day: "금",
-      attendance: true,
-    },
-    {
-      day: "토",
-      attendance: false,
-    },
-    {
-      day: "일",
-      attendance: false,
-    },
-  ];
+  const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
+  const [attendance, setAtendance] = useState([]);
+  useEffect(() => {
+    getAttendanceDates(setAtendance);
+  }, []);
+  const isAttend = attendance.map((day) => new Date(day).getDay());
 
   return (
     <div className={styles.CallendarContainer}>
@@ -48,17 +26,17 @@ const MiniCallendar = () => {
       <span className={styles.AttendanceTitle}>출석체크</span>
       <div className={styles.Line} />
       <div className={styles.DayContainer}>
-        {week.map((item) =>
-          item.attendance ? (
+        {weekDays.map((item, index) =>
+          isAttend.includes(index) ? (
             <img
-              key={item.day}
+              key={item}
               src={attendanceCheck}
               alt="출석"
               style={{ width: "24px", margin: "0 5px" }}
             />
           ) : (
-            <span key={item.day} className={styles.DayText}>
-              {item.day}
+            <span key={item} className={styles.DayText}>
+              {item}
             </span>
           )
         )}
