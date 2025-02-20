@@ -44,7 +44,7 @@ const PurchaseModal = ({
       setFailModalState(5);
     } else {
       console.log(itemId, " 구매완료 및 바로 적용");
-      handleOutlineUse(itemId);
+      handleOutlineUse({ itemId });
       setModalState(0);
       setIsModalOpen(false);
       fetchDecoItems(); // 구매 완료 후 즉시 반영되도록 함수 호출
