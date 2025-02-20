@@ -101,6 +101,7 @@
   font-weight: 500;
   line-height: normal;
   border-bottom: 1px solid #787878;
+  cursor: pointer;
 }
 .LoginProcessTextContainer {
   display: flex;

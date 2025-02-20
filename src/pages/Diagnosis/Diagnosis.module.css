@@ -38,9 +38,7 @@
   width: 272px;
   justify-content: flex-start;
   margin-top: 113px;
-  padding: 0 20px;
-  overflow-x: hidden;
-  box-sizing: border-box;
+  margin-left: 40px;
 }
 .TextContainer {
   display: flex;
