@@ -15,7 +15,7 @@
 .StageImg {
   position: absolute;
   top: 90px;
-  left: 40px;
+  left: 20px;
 }
 @keyframes rotateCounterClockwise {
   0% {
@@ -28,7 +28,7 @@
 .TimeCircle {
   width: 92px;
   height: 92px;
-  margin-left: 101px;
+  margin-left: 131px;
   margin-top: 120px;
   animation: rotateCounterClockwise 1s linear infinite; /* 1초마다 무한 반복 */
 }
