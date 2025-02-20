@@ -148,3 +148,21 @@
   position: absolute;
   bottom: 32px;
 }
+
+.splashWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap");
+
+.splashWrapper p {
+  color: var(--Primary-800, #004961);
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: var(--Primary-800, #004961);
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

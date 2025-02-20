@@ -34,13 +34,13 @@ const Home = () => {
   useEffect(() => {
     // 기본 로그인: localStorage에서 토큰을 가져옴
     const params = new URLSearchParams(window.location.search);
-    console.log("params" + URLSearchParams)
-    const token = params.get('token');
-    if(token != null) {
+    console.log("params" + URLSearchParams);
+    const token = params.get("token");
+    if (token != null) {
       localStorage.setItem("jwt", token);
     }
 
-    const login = localStorage.getItem("jwt")
+    const login = localStorage.getItem("jwt");
 
     if (login != null) {
       console.log("로그인된 토큰:", token);
@@ -76,14 +76,10 @@ const Home = () => {
   }, [hasLogin, setHasLogin]);
 
   const renderConsComponent = () => {
-    if (!isDiagnosis) {
-      return <ToDiagnosisComponent />;
+    if (consChallengeSum.totalConsumption === null) {
+      return <StartConsComponent />;
     } else {
-      if (consChallengeSum.totalConsumption === null) {
-        return <StartConsComponent />;
-      } else {
-        return <InputConsComponent />;
-      }
+      return <InputConsComponent />;
     }
   };
 
