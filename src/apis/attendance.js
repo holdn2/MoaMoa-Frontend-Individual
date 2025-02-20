@@ -5,7 +5,7 @@ import axiosInstance from "./axiosInstance";
 export const getAttendanceApi = async (setAttendanceData) => {
   try {
     const response = await axiosInstance.get(
-      "https://moamoa.store/attendances"
+      "/attendances"
     );
     const rawData = response.data.result;
 
