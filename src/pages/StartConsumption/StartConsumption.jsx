@@ -80,8 +80,9 @@ const StartConsumption = () => {
               type="button"
               size="xl"
               disabled={
-                new Date(startFormatDate) < new Date() &&
-                !isInputState &&
+                new Date(startFormatDate).toDateString() !==
+                  new Date().toDateString() ||
+                !isInputState ||
                 period <= 0
               }
             >
