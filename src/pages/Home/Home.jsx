@@ -76,10 +76,14 @@ const Home = () => {
   }, [hasLogin, setHasLogin]);
 
   const renderConsComponent = () => {
-    if (consChallengeSum.totalConsumption === null) {
-      return <StartConsComponent />;
+    if (!isDiagnosis) {
+      return <ToDiagnosisComponent />;
     } else {
-      return <InputConsComponent />;
+      if (consChallengeSum.totalConsumption === null) {
+        return <StartConsComponent />;
+      } else {
+        return <InputConsComponent />;
+      }
     }
   };
 

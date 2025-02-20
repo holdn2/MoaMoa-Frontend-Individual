@@ -51,7 +51,7 @@ const AttendanceModal = ({
     const diffDays = Math.floor(
       (new Date() - new Date(latestDate)) / (1000 * 60 * 60 * 24)
     );
-    if (diffDays === 14) {
+    if (diffDays >= 14) {
       setModalState(1);
     }
     if (level > prevLevel.current) {
