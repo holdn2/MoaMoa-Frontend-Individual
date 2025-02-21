@@ -23,7 +23,6 @@ const ChallengeJoinModal = () => {
         onClick={() => {
           console.log(challengeId, " 참여하기!");
           joinChallenge(challengeId);
-          navigate("/collect");
         }}
       >
         <PrimaryButton
