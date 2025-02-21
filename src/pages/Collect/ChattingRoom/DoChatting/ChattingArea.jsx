@@ -32,13 +32,15 @@ const ChattingArea = ({ roomId }) => {
   // SockJS + Stomp 클라이언트 생성. 실시간 채팅을 위한 구현.
   useEffect(() => {
     // apis폴더에 저장된 함수
-    const client = initializeSocket(roomId, userId, setCanSend, setChattings);
-    stompClientRef.current = client; // stompClient를 useRef에 저장
+    if (userId !== 0) {
+      const client = initializeSocket(roomId, userId, setCanSend, setChattings);
+      stompClientRef.current = client; // stompClient를 useRef에 저장
 
-    return () => {
-      client.deactivate();
-      setCanSend(false);
-    };
+      return () => {
+        client.deactivate();
+        setCanSend(false);
+      };
+    }
   }, [roomId]);
 
   // 유저가 메시지 전송 시 실행되는 함수
