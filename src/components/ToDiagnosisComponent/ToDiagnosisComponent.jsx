@@ -19,7 +19,9 @@ const ToDiagnosisComponent = () => {
         <span className={styles.TextContainer}>
           먼저,
           <br />
-          {/* {userInfo.nickname}님의 */}
+          {userInfo?.nickname
+            ? `${userInfo.nickname}님의`
+            : "사용자 정보 불러오는 중..."}
           <br />
           과소비 진단이 필요해요!
         </span>
