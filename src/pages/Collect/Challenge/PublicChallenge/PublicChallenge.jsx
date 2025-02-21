@@ -28,7 +28,7 @@ const PublicChallenge = () => {
   useEffect(() => {
     getOngoingChallenge(setOngoingChallenge, setWaitForStartChallenge);
     getRecommendChallenge(sortType, setRecommendChallenges);
-  }, [sortType]);
+  }, [sortType, ongoingChallenge, waitForStartChallenge, recommendChallenges]);
 
   return (
     <>
