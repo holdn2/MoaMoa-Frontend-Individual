@@ -96,6 +96,8 @@ export const initializeSocket = (roomId, userId, setCanSend, setChattings) => {
 
 // 새로운 메시지 처리 함수. 구독 중일 때 새로운 메시지 발생 시 실행되는 함수
 const handleIncomingMsg = (userId, newMsg, setChattings) => {
+  // isMe 값 직접 비교하여 설정
+  const isMe = String(userId) === String(newMsg.userId);
   setChattings((prevChattings) => {
     const date = new Date(newMsg.createdAt);
     const formattedDate = date.toLocaleDateString("ko-KR", {
@@ -109,9 +111,6 @@ const handleIncomingMsg = (userId, newMsg, setChattings) => {
       minute: "2-digit",
       hour12: true,
     });
-
-    // isMe 값 직접 비교하여 설정
-    const isMe = String(userId) === String(newMsg.userId);
 
     const newChat = {
       id: newMsg.chatId,
