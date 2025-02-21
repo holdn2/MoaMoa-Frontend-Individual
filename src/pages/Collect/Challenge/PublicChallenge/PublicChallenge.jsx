@@ -42,23 +42,25 @@ const PublicChallenge = () => {
         }
       />
       <div className={styles.wrapper}>
-        <h3>현재 진행중인 챌린지</h3>
         {ongoingChallenge.length != 0 ? (
-          <div className={styles.joinChallengeWrapper}>
-            <div className={styles.joinChallengeContainer}>
-              {ongoingChallenge.map((item) => (
-                <JoinChallenge
-                  key={item.challengeId}
-                  item={item}
-                  onClick={() =>
-                    navigate("/challenge/detail", {
-                      state: { selectedChallenge: item },
-                    })
-                  }
-                />
-              ))}
+          <>
+            <h3>현재 진행중인 챌린지</h3>
+            <div className={styles.joinChallengeWrapper}>
+              <div className={styles.joinChallengeContainer}>
+                {ongoingChallenge.map((item) => (
+                  <JoinChallenge
+                    key={item.challengeId}
+                    item={item}
+                    onClick={() =>
+                      navigate("/challenge/detail", {
+                        state: { selectedChallenge: item },
+                      })
+                    }
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          </>
         ) : (
           waitForStartChallenge.length === 0 && (
             <div className={styles.joinChallengeWrapper}>
