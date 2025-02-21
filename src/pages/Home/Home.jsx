@@ -39,7 +39,7 @@ const Home = () => {
 
     // ✅ 소셜 로그인 (URL에 토큰 있는 경우)
     if (tokenFromURL) {
-      localStorage.setItem("jwt", tokenFromURL);
+      localStorage.setItem("jwt", "Bearer " + tokenFromURL);
       console.log("소셜 로그인 토큰:", tokenFromURL);
       setIsLogined(true);
       return;
