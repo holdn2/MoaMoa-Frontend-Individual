@@ -99,8 +99,7 @@ export const initializeSocket = (roomId, userId, setCanSend, setChattings) => {
 const handleIncomingMsg = (userId, newMsg, setChattings) => {
   console.log("내 아이디 : ", userId);
   console.log("메시지 아이디 : ", newMsg.userId);
-  // isMe 값 직접 비교하여 설정
-  const isMe = String(userId) === String(newMsg.userId);
+
   setChattings((prevChattings) => {
     const date = new Date(newMsg.createdAt);
     const formattedDate = date.toLocaleDateString("ko-KR", {
@@ -122,7 +121,7 @@ const handleIncomingMsg = (userId, newMsg, setChattings) => {
       img: newMsg.profileImageUrl,
       chatting: newMsg.content,
       time: time,
-      isMe: isMe,
+      isMe: userId === newMsg.userId,
     };
 
     const existingDate = prevChattings.find(
