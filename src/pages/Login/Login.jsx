@@ -50,7 +50,8 @@ const Login = () => {
         console.log("✅ Login successful:", response);
 
         // 응답에 사용자 정보가 있다면 바로 업데이트
-        setUserInfo(response.userInfo);
+        // 토큰 저장 후 사용자 정보 가져오기
+        await getUserInfo(setUserInfo);
 
         setLoginStep(4);
       } else {
@@ -324,7 +325,9 @@ const Login = () => {
               <span className={styles.LoginProcessText}>로그인 완료!</span>
               <span className={styles.WelcomeUserText}>
                 <span style={{ color: "#454545", fontSize: "22px" }}>
-                  {userInfo.nickname}
+                  {userInfo?.nickname
+                    ? `${userInfo.nickname}`
+                    : "사용자 정보 불러오는 중..."}
                 </span>{" "}
                 님 환영해요!
               </span>
