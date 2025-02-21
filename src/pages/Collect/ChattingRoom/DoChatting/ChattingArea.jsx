@@ -99,7 +99,7 @@ const ChattingArea = ({ roomId }) => {
                 <ChattingComponent
                   key={chat.id}
                   nickname={chat.nickname}
-                  profileImg={chat.profileImageUrl}
+                  profileImg="http://placehold.co/45"
                   chatting={chat.chatting}
                   chatTime={chat.time}
                   isMe={chat.isMe}
