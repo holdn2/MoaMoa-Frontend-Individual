@@ -7,9 +7,7 @@ import axiosInstance from "./axiosInstance.js";
 // axios로 서버에서 채팅 데이터 가져오는 함수
 export const fetchChatData = async (roomId, setUserId, setChattings) => {
   try {
-    const response = await axiosInstance.get(
-      `/chat/rooms/${roomId}/messages`
-    );
+    const response = await axiosInstance.get(`/chat/rooms/${roomId}/messages`);
     const userId = response.data.result.loginUserId;
     setUserId(userId);
     const groupedData = groupChatsByDate(response.data.result.messages, userId);
@@ -118,7 +116,7 @@ const handleIncomingMsg = (userId, newMsg, setChattings) => {
       img: "http://placehold.co/45",
       chatting: newMsg.content,
       time: time,
-      isMe: true,
+      isMe: newMsg.userId === userId,
     };
 
     const existingDate = prevChattings.find(
