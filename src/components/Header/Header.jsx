@@ -57,7 +57,7 @@ const Header = ({
             {collectBack ? (
               <button
                 className={styles.GoBackButton}
-                onClick={() => navigate(-1)}
+                onClick={() => navigate("/collect")}
               >
                 <img src={arrowLeftBig} alt="뒤로가기" />
               </button>
