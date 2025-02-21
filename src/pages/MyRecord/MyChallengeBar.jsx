@@ -66,7 +66,9 @@ const MyChallengeBar = ({
       <Title>{children}</Title>
       <ContentWrapper>
         <CircleWrapper>
-          <ProgressSemiCircle percentage={successRate} />
+          <ProgressSemiCircle
+            percentage={Number.isFinite(successRate) ? successRate : 0}
+          />
         </CircleWrapper>
         <SubDesc>상위 {top}%</SubDesc>
         <Desc>
