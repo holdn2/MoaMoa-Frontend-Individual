@@ -3,6 +3,7 @@ import axios from "axios";
 import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
 import axiosInstance from "./axiosInstance.js";
+import { useState } from "react";
 
 // axios로 서버에서 채팅 데이터 가져오는 함수
 export const fetchChatData = async (roomId, setUserId, setChattings) => {
@@ -109,14 +110,17 @@ const handleIncomingMsg = (userId, newMsg, setChattings) => {
       hour12: true,
     });
 
+    // isMe 값 직접 비교하여 설정
+    const isMe = String(userId) === String(newMsg.userId);
+
     const newChat = {
       id: newMsg.chatId,
       nickname: newMsg.userName,
       profile: "People",
-      img: "http://placehold.co/45",
+      img: newMsg.profileImageUrl,
       chatting: newMsg.content,
       time: time,
-      isMe: newMsg.userId === userId,
+      isMe: isMe,
     };
 
     const existingDate = prevChattings.find(

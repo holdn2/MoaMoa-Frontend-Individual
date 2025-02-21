@@ -34,20 +34,24 @@ const Home = () => {
   });
 
   useEffect(() => {
-    // 기본 로그인: localStorage에서 토큰을 가져옴
     const params = new URLSearchParams(window.location.search);
-    console.log("params" + URLSearchParams);
-    const token = params.get("token");
-    if (token != null) {
-      localStorage.setItem("jwt", token);
+    const tokenFromURL = params.get("token");
+
+    // ✅ 소셜 로그인 (URL에 토큰 있는 경우)
+    if (tokenFromURL) {
+      localStorage.setItem("jwt", tokenFromURL);
+      console.log("소셜 로그인 토큰:", tokenFromURL);
+      setIsLogined(true);
+      return;
     }
 
-    const login = localStorage.getItem("jwt");
-
-    if (login != null) {
-      console.log("로그인된 토큰:", token);
+    // ✅ 일반 로그인 (localStorage에 이미 토큰 저장된 경우)
+    const tokenFromStorage = localStorage.getItem("jwt");
+    if (tokenFromStorage) {
+      console.log("일반 로그인 토큰:", tokenFromStorage);
       setIsLogined(true);
     } else {
+      console.log("토큰 없음, 로그인 페이지로 이동");
       navigate("/login");
     }
   }, [navigate]);
