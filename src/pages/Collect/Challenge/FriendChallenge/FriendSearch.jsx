@@ -55,7 +55,7 @@ const FriendSearch = () => {
               <FreindListBar
                 key={item.userId}
                 userName={item.nickname}
-                userImg={item.imageUrl}
+                userImg={item.profileImageUrl}
                 isNotFriend={isNotFriend.includes(item.nickname)} // 친구가 아닌 유저
                 isWithFriend={withChallengeFriend.includes(item.nickname)} // 챌린지 같이 하고 있는 유저
                 userId={item.userId}
