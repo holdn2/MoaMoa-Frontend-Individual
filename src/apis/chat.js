@@ -10,6 +10,7 @@ export const fetchChatData = async (roomId, setUserId, setChattings) => {
   try {
     const response = await axiosInstance.get(`/chat/rooms/${roomId}/messages`);
     const userId = response.data.result.loginUserId;
+    console.log("나의 아이디:", userId);
     setUserId(userId);
     const groupedData = groupChatsByDate(response.data.result.messages, userId);
     setChattings(groupedData); // 채팅 데이터 상태 업데이트
