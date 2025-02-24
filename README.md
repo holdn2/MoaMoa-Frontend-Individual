@@ -7,7 +7,7 @@
 여러 사용자 또는 친구와 함께 챌린지를 생성하고 이를 달성하면서 절약을 재미있게 만드는 웹앱 서비스입니다. <br/>
 챌린지 성공 후 코인을 얻어 먼지를 키우고 꾸미며 절약에 대한 재미를 느낄 수 있습니다.😄
 
-📎[모아모아 바로가기](https://moa-moa-frontend-individual.vercel.app/)
+🔗[모아모아 바로가기](https://moa-moa-frontend-individual.vercel.app/)
 
 # 사용 기술
 React, Figma, Axios
